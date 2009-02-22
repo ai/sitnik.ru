@@ -9,3 +9,9 @@ desc 'Remove generated files'
 task :clobber do
   PUBLIC.rmtree if PUBLIC.exist?
 end
+
+namespace :build do
+  task :create_public => :clobber do
+    PUBLIC.mkpath
+  end
+end
