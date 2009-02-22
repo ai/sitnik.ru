@@ -10,6 +10,10 @@ task :clobber do
   PUBLIC.rmtree if PUBLIC.exist?
 end
 
+desc "Compile HAML and SASS and copy all files to public/"
+task :build => ['build:create_public', 'build:haml', 'build:sass', 'build:copy']
+task :default => :build
+
 namespace :build do
   task :create_public => :clobber do
     PUBLIC.mkpath
