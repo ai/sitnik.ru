@@ -30,4 +30,14 @@ namespace :build do
       sh "sass --style compressed #{sass} #{css}"
     end
   end
+  
+  task :copy do
+    Pathname.glob(CONTENT.join('**/*').to_s, File::FNM_DOTMATCH) do |from|
+      next if from.directory?
+      next if '.sass' == from.extname or '.haml' == from.extname
+      to = PUBLIC + from.relative_path_from(CONTENT)
+      to.dirname.mkpath
+      to.make_link(from)
+    end
+  end
 end
