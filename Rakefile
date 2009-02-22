@@ -22,4 +22,12 @@ namespace :build do
       sh "haml --style ugly #{haml} #{file}"
     end
   end
+  
+  task :sass do
+    Pathname.glob(CONTENT.join('**/*.sass').to_s) do |sass|
+      css = PUBLIC + sass.relative_path_from(CONTENT).sub_ext('.css')
+      css.dirname.mkpath
+      sh "sass --style compressed #{sass} #{css}"
+    end
+  end
 end
