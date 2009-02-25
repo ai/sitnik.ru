@@ -6,6 +6,7 @@
     %title Андрей «A.I.» Ситник
     %meta{ name: 'Keywords', content: 'Андрей Ситник, Ситник, A.I., AI' }
     %meta{ name: 'Description', content: 'Домашняя страница Андрея «A.I.» Ситника' }
+    %link{ rel: 'stylesheet', type: 'text/css', media: 'screen', href: 'style.css' }
     %meta{'http-equiv' => 'X-XRDS-Location', content: 'http://iskin.myopenid.com/?xrds=1' }
     %link{ rel: 'openid.server', href: 'http://www.myopenid.com/server' }
     %link{ rel: 'openid.delegate', href: 'http://iskin.myopenid.com/' }
@@ -14,41 +15,47 @@
     %link{ rel: 'shortcut icon', href: 'favicon.ico', type: 'image/x-icon' }
     %link{ rel: 'pavatar', href: 'http://sitnik.ru/pavatar.png' }
     %link{ rel: 'meta', type: 'application/rdf+xml', title: 'FOAF', href: 'foaf.rdf' }
-  %body
-    %div.vcard
-      %a{ href: 'photo.jpg' }
+  %body.vcard
+    %div#center
+      %a#image{ href: 'photo.jpg' }
         %img.photo{ src: 'photo.small.jpg', style: 'width: 200px; height: 267px;', alt: 'Фотография Андрея Ситника' }
-      %h1.n
-        %span.given-name Андрей
-        «<span class="nickname">A.I.</span>»
-        %span.family-name Ситник
-      %ul#contacts
-        %li
-          Jabber:
-          %a.url{ href: 'xmpp:andrey@sitnik.ru', rel: 'me' } andrey@sitnik.ru
-        %li
-          Эл. почта:
-          %a.email{ href: 'mailto:andrey@sitnik.ru', rel: 'me' } andrey@sitnik.ru
-        %li.tel
-          Мобильный телефон:
-          .hidden.type cell
-          %span.value +7 911 769 65 71
-        %li.adr
-          Место жительства:
-          .hidden.type home
-          %span
-            %a.locality{ href: 'http://ru.wikipedia.org/wiki/%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3' }> Санкт-Петербург
-            , <abbr title='станция метро'>м.</abbr> <a href='http://maps.google.com/maps?q=59.919917,30.466750&amp;t=h'>Площадь Большевиков</a>
-          .hidden
-            .country-name Россия
-            .geo
-              .latitude 59.919917
-              .longitude 30.466750
-        %li
-          Открытый ключ:
-          %a{ href: '1F710E4D.asc' } 1F710E4D
-      .hidden
-        .fn Андрей Ситник
-        .bday 1987-06-04
-        .tz +03:00
-        %a.url{ href: 'http://sitnik.ru' } sitnik.ru
+      %div#contacts
+        %h1.n
+          %span.given-name Андрей
+          «<span class="nickname">A.I.</span>»
+          %span.family-name Ситник
+        %ul
+          %li.xmpp
+            %div
+              %span.label Jabber:
+              %a.url{ href: 'xmpp:andrey@sitnik.ru', rel: 'me' } andrey@sitnik.ru
+          %li.mail
+            %div
+              %span.label Эл. почта:
+              %a.email{ href: 'mailto:andrey@sitnik.ru', rel: 'me' } andrey@sitnik.ru
+          %li.tel
+            %div
+              %span.label Телефон:
+              .hidden.type cell
+              %span.value +7 911 769 65 71
+          %li.adr
+            %div
+              %span.label Расположение:
+              .hidden.type home
+              %span
+                %a.locality{ href: 'http://ru.wikipedia.org/wiki/%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3' }> Санкт-Петербург
+                , <abbr title='станция метро'>м.</abbr> <a href='http://maps.google.com/maps?q=59.919917,30.466750&amp;t=h'>Площадь Большевиков</a>
+              .hidden
+                .country-name Россия
+                .geo
+                  .latitude 59.919917
+                  .longitude 30.466750
+          %li.gpg
+            %div
+              %span.label Открытый ключ:
+              %a{ href: '1F710E4D.asc' } 1F710E4D
+        .hidden
+          .fn Андрей Ситник
+          .bday 1987-06-04
+          .tz +03:00
+          %a.url{ href: 'http://sitnik.ru' } sitnik.ru

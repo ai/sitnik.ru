@@ -6,6 +6,7 @@
     %title Andrey “A.I.” Sitnik
     %meta{ name: 'Keywords', content: 'Andrey Sitnik, Sitnik, A.I., AI, Андрей Ситник, Ситник' }
     %meta{ name: 'Description', content: 'Andrey “A.I.” Sitnik homepage' }
+    %link{ rel: 'stylesheet', type: 'text/css', media: 'screen', href: 'style.css' }
     %meta{'http-equiv' => 'X-XRDS-Location', content: 'http://iskin.myopenid.com/?xrds=1' }
     %link{ rel: 'openid.server', href: 'http://www.myopenid.com/server' }
     %link{ rel: 'openid.delegate', href: 'http://iskin.myopenid.com/' }
@@ -14,41 +15,47 @@
     %link{ rel: 'shortcut icon', href: 'favicon.ico', type: 'image/x-icon' }
     %link{ rel: 'pavatar', href: 'http://sitnik.ru/pavatar.png' }
     %link{ rel: 'meta', type: 'application/rdf+xml', title: 'FOAF', href: 'foaf.rdf' }
-  %body
-    %div.vcard
-      %a{ href: 'photo.jpg' }
+  %body.vcard
+    %div#center
+      %a#image{ href: 'photo.jpg' }
         %img.photo{ src: 'photo.small.jpg', style: 'width: 200px; height: 267px;', alt: 'Andrey Sitnik photo' }
-      %h1.n
-        %span.given-name Andrey
-        “<span class="nickname">A.I.</span>”
-        %span.family-name Sitnik
-      %ul#contacts
-        %li
-          Jabber:
-          %a{ href: 'xmpp:andrey@sitnik.ru', rel: 'me' } andrey@sitnik.ru
-        %li
-          E-mail:
-          %a.email{ href: 'mailto:andrey@sitnik.ru', rel: 'me' } andrey@sitnik.ru
-        %li.tel
-          Mobile phone:
-          .hidden.type cell
-          %span.value +7 911 769 65 71
-        %li.adr
-          Location:
-          .hidden.type home
-          %span
-            %a.locality{ href: 'http://en.wikipedia.org/wiki/Saint_Petersburg' }> Saint Petersburg
-            ,
-            %a.country-name{ href: 'http://en.wikipedia.org/wiki/Russia' } Russia
-          .hidden
-            .geo
-              .latitude 59.919917
-              .longitude 30.466750
-        %li
-          Public key:
-          %a{ href: '1F710E4D.asc' } 1F710E4D
-      .hidden
-        .fn Andrey Sitnik
-        .bday 1987-06-04
-        .tz +03:00
-        %a.url{ href: 'http://sitnik.ru' } sitnik.ru
+      %div#contacts
+        %h1.n
+          %span.given-name Andrey
+          “<span class="nickname">A.I.</span>”
+          %span.family-name Sitnik
+        %ul
+          %li.xmpp
+            %div
+              %span.label Jabber:
+              %a{ href: 'xmpp:andrey@sitnik.ru', rel: 'me' } andrey@sitnik.ru
+          %li.mail
+            %div
+              %span.label E-mail:
+              %a.email{ href: 'mailto:andrey@sitnik.ru', rel: 'me' } andrey@sitnik.ru
+          %li.tel
+            %div
+              %span.label Phone:
+              .hidden.type cell
+              %span.value +7 911 769 65 71
+          %li.adr
+            %div
+              %span.label Location:
+              .hidden.type home
+              %span
+                %a.locality{ href: 'http://en.wikipedia.org/wiki/Saint_Petersburg' }> Saint Petersburg
+                ,
+                %a.country-name{ href: 'http://en.wikipedia.org/wiki/Russia' } Russia
+              .hidden
+                .geo
+                  .latitude 59.919917
+                  .longitude 30.466750
+          %li.gpg
+            %div
+              %span.label Public key:
+              %a{ href: '1F710E4D.asc' } 1F710E4D
+        .hidden
+          .fn Andrey Sitnik
+          .bday 1987-06-04
+          .tz +03:00
+          %a.url{ href: 'http://sitnik.ru' } sitnik.ru
