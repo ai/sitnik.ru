@@ -17,10 +17,10 @@
     %link{ rel: 'meta', type: 'application/rdf+xml', title: 'FOAF', href: 'foaf.rdf' }
     %link{ rel: 'publickey pgpkey', type: 'application/pgp-keys', href: '1F710E4D.asc' }
   %body.vcard
-    %div#center
+    #center
       %a#image{ href: 'photo.jpg' }
         %img.photo{ src: 'photo.small.jpg', style: 'width: 200px; height: 267px;', alt: 'Andrey Sitnik photo' }
-      %div#contacts
+      #contacts
         %h1.n
           %span.given-name Andrey
           “<span class="nickname">A.I.</span>”
@@ -60,5 +60,5 @@
           .bday 1987-06-04
           .tz +03:00
           %a.url{ href: 'http://sitnik.ru' } sitnik.ru
-    %div#languages
+    #languages
       %a{ href: 'index.html.ru', rel: 'alternate', lang: 'ru'} ↶ По-русски
