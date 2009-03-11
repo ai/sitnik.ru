@@ -1,18 +1,21 @@
 require 'rake'
 require 'pathname'
 
+UPLOAD_TO = 'sitnik@sitnik.ru:/home/sitnik/data/www/sitnik.ru/'
+
 ROOT    = Pathname.new(__FILE__).dirname.realpath
 PUBLIC  = ROOT.join('public')
 CONTENT = ROOT.join('content')
+
+task :default => :public
 
 desc 'Remove generated files'
 task :clobber do
   PUBLIC.rmtree if PUBLIC.exist?
 end
 
-desc "Compile HAML and SASS and copy all files to public/"
+desc 'Compile HAML and SASS and copy all files to public/'
 task :build => ['build:create_public', 'build:haml', 'build:sass', 'build:copy']
-task :default => :build
 
 namespace :build do
   task :create_public => :clobber do
@@ -44,4 +47,15 @@ namespace :build do
       to.make_link(from)
     end
   end
+end
+
+desc 'Compile and upload content'
+task :public => :build do
+  sh 'rsync ' +
+    '--recursive ' +
+    '--delete ' +
+    '--compress ' +
+    '--progress ' +
+    '--human-readable ' +
+    'public/ ' + UPLOAD_TO
 end
