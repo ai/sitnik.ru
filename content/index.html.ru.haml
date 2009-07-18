@@ -1,25 +1,25 @@
 !!! Strict
 %html{ html_attrs('ru') }
-  %head{ profile: 'http://gmpg.org/xfn/11' }
-    %meta{'http-equiv' => 'Content-Type', content: 'text/html; charset=UTF-8'}
-    %meta{'http-equiv' => 'Content-Language', content: 'ru'}
+  %head( profile='http://gmpg.org/xfn/11' )
+    %meta( http-equiv='Content-Type' content='text/html; charset=UTF-8' )
+    %meta( http-equiv='Content-Language' content='ru' )
     %title Андрей «A.I.» Ситник
-    %meta{ name: 'Keywords', content: 'Андрей Ситник, Ситник, A.I., AI' }
-    %meta{ name: 'Description', content: 'Домашняя страница Андрея «A.I.» Ситника' }
-    %link{ rel: 'stylesheet', type: 'text/css', href: 'style.css' }
-    %meta{'http-equiv' => 'X-XRDS-Location', content: 'http://iskin.myopenid.com/?xrds=1' }
-    %link{ rel: 'openid.server', href: 'http://www.myopenid.com/server' }
-    %link{ rel: 'openid.delegate', href: 'http://iskin.myopenid.com/' }
-    %link{ rel: 'openid2.provider', href: 'http://www.myopenid.com/server' }
-    %link{ rel: 'openid2.local_id', href: 'http://iskin.myopenid.com' }
-    %link{ rel: 'shortcut icon', href: 'favicon.ico', type: 'image/x-icon' }
-    %link{ rel: 'pavatar', href: 'http://sitnik.ru/pavatar.png' }
-    %link{ rel: 'meta', type: 'application/rdf+xml', title: 'FOAF', href: 'foaf.rdf' }
-    %link{ rel: 'publickey pgpkey', type: 'application/pgp-keys', href: '1F710E4D.asc' }
+    %meta( name='Keywords' content='Андрей Ситник, Ситник, A.I., AI' )
+    %meta( name='Description' content='Домашняя страница Андрея «A.I.» Ситника' )
+    %link( rel='stylesheet' type='text/css' href='style.css' )
+    %meta( http-equiv='X-XRDS-Location' content='http://iskin.myopenid.com/?xrds=1' )
+    %link( rel='openid.server' href='http://www.myopenid.com/server' )
+    %link( rel='openid.delegate' href='http://iskin.myopenid.com/' )
+    %link( rel='openid2.provider' href='http://www.myopenid.com/server' )
+    %link( rel='openid2.local_id' href='http://iskin.myopenid.com' )
+    %link( rel='shortcut icon' href='favicon.ico' type='image/x-icon' )
+    %link( rel='pavatar' href='http://sitnik.ru/pavatar.png' )
+    %link( rel='meta' type='application/rdf+xml' title='FOAF' href='foaf.rdf' )
+    %link( rel='publickey pgpkey' type='application/pgp-keys' href='1F710E4D.asc' )
   %body.vcard
     #center
-      %a#image{ href: 'photo.jpg' }
-        %img.photo{ src: 'photo.small.jpg', style: 'width: 200px; height: 267px;', alt: 'Фотография Андрея Ситника' }
+      %a#image( href='photo.jpg' )
+        %img.photo( src='photo.small.jpg' style='width: 200px; height: 267px;' alt='Фотография Андрея Ситника' )
       #contacts
         %h1.n
           %span.given-name Андрей
@@ -29,22 +29,22 @@
           %li.xmpp
             %div
               %span.label Jabber:
-              %a.url{ href: 'xmpp:andrey@sitnik.ru', rel: 'me' } andrey@sitnik.ru
+              %a.url( href='xmpp:andrey@sitnik.ru' rel='me' ) andrey@sitnik.ru
           %li.mail
             %div
               %span.label Эл. почта:
-              %a.email{ href: 'mailto:andrey@sitnik.ru', rel: 'me' } andrey@sitnik.ru
+              %a.email( href='mailto:andrey@sitnik.ru' rel='me' ) andrey@sitnik.ru
           %li.tel
             %div
               %span.label Телефон:
               .hidden.type cell
-              %a.value{ href: 'tel:+79117696571' } +7 911 769 65 71
+              %a.value( href='tel:+79117696571' ) +7 911 769 65 71
           %li.adr
             %div
               %span.label Расположение:
               .hidden.type home
               %span
-                %a.locality{ href: 'http://ru.wikipedia.org/wiki/%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3' }> Санкт-Петербург
+                %a.locality( href='http://ru.wikipedia.org/wiki/%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3' )> Санкт-Петербург
                 , <abbr title='станция метро'>м.</abbr> <a href='http://maps.google.com/maps?q=59.919917,30.466750&amp;t=h'>Проспект Большевиков</a>
               .hidden
                 .country-name Россия
@@ -54,27 +54,27 @@
           %li.gpg
             %div
               %span.label Открытый ключ:
-              %a{ href: 'http://sitnik.ru/1F710E4D.asc' } 1F710E4D
+              %a( href='http://sitnik.ru/1F710E4D.asc' ) 1F710E4D
         .hidden
           .fn Андрей Ситник
           .bday 1987-06-04
           .tz +03:00
-          %a.url{ href: 'http://sitnik.ru' } sitnik.ru
+          %a.url( href='http://sitnik.ru' ) sitnik.ru
       %ul#links
         %li
-          %a{ href: 'http://github.com/ai', rel: 'me' } GitHub
+          %a( href='http://github.com/ai' rel='me' ) GitHub
           %p Разработка
         %li
-          %a{ href: 'http://last.fm/user/iskin', rel: 'me' } Last.fm
+          %a( href='http://last.fm/user/iskin' rel='me' ) Last.fm
           %p Музыка
         %li
-          %a{ href: 'http://ru.wikipedia.org/wiki/User:A.I.', rel: 'me' } Википедия
+          %a( href='http://ru.wikipedia.org/wiki/User:A.I.' rel='me' ) Википедия
           %p Статьи
         %li
-          %a{ href: 'http://iskin.habrahabr.ru/', rel: 'me' } Хабрахабр
+          %a( href='http://iskin.habrahabr.ru/' rel='me' ) Хабрахабр
           %p <abbr title="Информационные технологии">ИТ</abbr>-статьи
         %li.last
-          %a{ href: 'http://vkontakte.ru/id475146', rel: 'me' } В Контакте
+          %a( href='http://vkontakte.ru/id475146' rel='me' ) В Контакте
           %p Друзья
     #languages
-      %a{ href: 'index.html.en', rel: 'alternate', lang: 'en'} ↶ Switch to English
+      %a( href='index.html.en' rel='alternate' lang='en' ) ↶ Switch to English
