@@ -1,14 +1,9 @@
 #!/usr/bin/env ruby1.9
-# Compile HAML and SASS and copy all files to public/
+# Compile HAML and SASS and copy all files to public/.
 
-require 'pathname'
-
-ROOT    = Pathname.new(__FILE__).dirname.parent.realpath
-PUBLIC  = ROOT.join('public')
-CONTENT = ROOT.join('content')
+require File.join(File.dirname(__FILE__), 'config')
 
 PUBLIC.rmtree if PUBLIC.exist?
-
 PUBLIC.mkpath
 
 Pathname.glob(CONTENT.join('**/*.haml').to_s) do |haml|

@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby1.9
+# Run script/build automatically on any changes in content/.
+
+require File.join(File.dirname(__FILE__), 'config')
+
+Signal.trap('INT') do
+  puts ''
+  exit 0
+end
+
+puts 'Script is watching for changes. Press Ctrl-C to Stop.'
+
+build
+last_changes = Time.now
+
+loop do
+  Pathname.glob(CONTENT.join('**/*').to_s, File::FNM_DOTMATCH) do |path|
+    if last_changes < File.ctime(path)
+      relative = path.relative_path_from(CONTENT)
+      if File.directory? path
+        puts "Files in #{relative} was be changed. Rebuild."
+      else
+        puts "File #{relative} has changes. Rebuild."
+      end
+      build
+      last_changes = Time.now
+      break
+    end
+  end
+  sleep 1
+end
