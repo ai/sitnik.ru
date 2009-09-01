@@ -1,7 +1,14 @@
 !background = #333
 
+@font-face
+  font-family: 'Cuprum'
+  src: url(Cuprum.otf)
+@font-face
+  font-family: 'Philosopher'
+  src: url(Philosopher.otf)
+
 body
-  font-family: "Trebuchet MS", sans-serif
+  font-family: Cuprum, "Trebuchet MS", sans-serif
 *
   margin: 0
   padding: 0
@@ -10,18 +17,19 @@ a img
 .hidden
   display: none
 h1
+  font: normal 100% Philosopher, "Trebuchet MS", sans-serif
   margin-bottom: 0.5em
 @media screen
   body
     background = !background
     color: white
-    font-size: 120%
+    font-size: 130%
     padding: 10ex 0.5em 0.5em 0.5em
     text-align: center
   h1
     margin-left: 22px
     padding-left: 0.4em
-    font-size: 190%
+    font-size: 200%
   a:link
     color: #0081de
   a:visited
@@ -67,7 +75,7 @@ h1
       list-style: none
       display: inline-block
       text-align: left
-      margin: 2em 0.85em 0 0
+      margin: 1.5em 0.72em 0 0
       width: 6em
     li.last
       margin-right: 0
