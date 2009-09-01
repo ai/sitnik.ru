@@ -17,64 +17,63 @@
     %link( rel='meta' type='application/rdf+xml' title='FOAF' href='foaf.rdf' )
     %link( rel='publickey pgpkey' type='application/pgp-keys' href='1F710E4D.asc' )
   %body.vcard
-    #center
-      %a#image( href='photo.jpg' )
-        %img.photo( src='photo.small.jpg' style='width: 200px; height: 267px;' alt='Andrey Sitnik photo' )
-      #contacts
-        %h1.n
-          %span.given-name Andrey
-          “<span class="nickname">A.I.</span>”
-          %span.family-name Sitnik
-        %ul
-          %li.xmpp
-            %div
-              %span.label Jabber:
-              %a( href='xmpp:andrey@sitnik.ru' rel='me' ) andrey@sitnik.ru
-          %li.mail
-            %div
-              %span.label E-mail:
-              %a.email( href='mailto:andrey@sitnik.ru' rel='me' ) andrey@sitnik.ru
-          %li.tel
-            %div
-              %span.label Phone:
-              .hidden.type cell
-              %a.value( href='tel:+79117696571' ) +7 911 769 65 71
-          %li.adr
-            %div
-              %span.label Location:
-              .hidden.type home
-              %span
-                %a.locality( href='http://en.wikipedia.org/wiki/Saint_Petersburg' )> Saint Petersburg
-                ,
-                %a.country-name( href='http://en.wikipedia.org/wiki/Russia' ) Russia
-              .hidden
-                .geo
-                  .latitude 59.919917
-                  .longitude 30.466750
-          %li.gpg
-            %div
-              %span.label Public key:
-              %a( href='http://sitnik.ru/1F710E4D.asc' ) 1F710E4D
-        .hidden
-          .fn Andrey Sitnik
-          .bday 1987-06-04
-          .tz +03:00
-          %a.url( href='http://sitnik.ru' ) sitnik.ru
-      %ul#links
-        %li
-          %a( href='http://github.com/ai' rel='me' ) GitHub
-          %p Development
-        %li
-          %a( href='http://last.fm/user/iskin' rel='me' ) Last.fm
-          %p Music
-        %li
-          %a( href='http://ru.wikipedia.org/wiki/User:A.I.' rel='me' ) Wikipedia
-          %p Articles
-        %li
-          %a( href='http://iskin.habrahabr.ru/' rel='me' ) Habrahabr
-          %p <abbr title="Information technology">IT</abbr> articles
-        %li.last
-          %a( href='http://vkontakte.ru/id475146' rel='me' ) V Kontakte
-          %p Friends
+    %a#image( href='photo.jpg' )
+      %img.photo( src='photo.small.jpg' style='width: 200px; height: 267px;' alt='Andrey Sitnik photo' )
+    #contacts
+      %h1.n
+        %span.given-name Andrey
+        “<span class="nickname">A.I.</span>”
+        %span.family-name Sitnik
+      %ul
+        %li.xmpp
+          %span.label
+            %span Jabber:
+          %a( href='xmpp:andrey@sitnik.ru' rel='me' ) andrey@sitnik.ru
+        %li.mail
+          %span.label
+            %span E-mail:
+          %a.email( href='mailto:andrey@sitnik.ru' rel='me' ) andrey@sitnik.ru
+        %li.tel
+          %span.label
+            %span Phone:
+          %a.value( href='tel:+79117696571' ) +7 911 769 65 71
+          .hidden.type cell
+        %li.adr
+          %span.label
+            %span Location:
+          %span
+            %a.locality( href='http://en.wikipedia.org/wiki/Saint_Petersburg' )> Saint Petersburg
+            ,
+            %a.country-name( href='http://en.wikipedia.org/wiki/Russia' ) Russia
+          .hidden
+            .type home
+            .geo
+              .latitude 59.919917
+              .longitude 30.466750
+        %li.gpg
+          %span.label
+            %span Public key:
+          %a( href='http://sitnik.ru/1F710E4D.asc' ) 1F710E4D
+      .hidden
+        .fn Andrey Sitnik
+        .bday 1987-06-04
+        .tz +03:00
+        %a.url( href='http://sitnik.ru' ) sitnik.ru
+    %ul#links
+      %li
+        %a( href='http://github.com/ai' rel='me' ) GitHub
+        %p Development
+      %li
+        %a( href='http://ru.wikipedia.org/wiki/User:A.I.' rel='me' ) Wikipedia
+        %p Articles
+      %li
+        %a( href='http://iskin.habrahabr.ru/' rel='me' ) Habrahabr
+        %p <abbr title="Information technology">IT</abbr> articles
+      %li
+        %a( href='http://vkontakte.ru/id475146' rel='me' ) V Kontakte
+        %p Friends
+      %li
+        %a( href='http://last.fm/user/iskin' rel='me' ) Last.fm
+        %p Music
     #languages
       %a( href='index.html.ru' rel='alternate' lang='ru' ) ↶ По-русски

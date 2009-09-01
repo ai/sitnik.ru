@@ -1,3 +1,5 @@
+!background = #333
+
 body
   font-family: "Trebuchet MS", sans-serif
 *
@@ -11,12 +13,14 @@ h1
   margin-bottom: 0.5em
 @media screen
   body
-    background: #333
+    background = !background
     color: white
     font-size: 120%
+    padding: 10ex 0.5em 0.5em 0.5em
+    text-align: center
   h1
     margin-left: 22px
-    padding-left: 0.9em
+    padding-left: 0.4em
     font-size: 190%
   a:link
     color: #0081de
@@ -24,50 +28,49 @@ h1
     color: #3a6d91
   a:hover
     text-decoration: none
-  #center
-    width: 34em
-    margin: 10% auto 0 auto
-    padding: 0 1em
-    #image
-      position: absolute
-    #contacts
-      padding-left: 200px
-      height: 12em
-      min-height: 267px
-      li
-        margin-left: 1em
-        list-style: none
-        padding: 0 0 0.3em 8.8em
+  #image
+    margin: 0 0.7em 0.7em 0
+    display: inline-block
+  #contacts
+    text-align: left
+    display: inline-block
+    width: 24em
+    max-width: 100%
+    vertical-align: top
+    li
+      list-style: none
+      padding-bottom: 0.3em
+      .label
         background: url(icons.png) no-repeat
-        div
-          padding-left: 22px
-          .label
-            position: absolute
-            margin-left: -8.8em
-            padding-left: 0.6em
-            background: #333
-            width: 8.2em
-            min-height: 23px
-          a, span
-            background: #333
-      .xmpp
-        background-position:  0    0.1em
-      .mail
-        background-position: -22px 0.1em
-      .tel
-        background-position: -44px 0.1em
-      .adr
-        background-position: -66px 0.1em
-      .gpg
-        background-position: -88px 0.1em
-    #links
-      height: 6.2em
-      li
-        list-style: none
+        padding-left: 22px
         float: left
-        margin: 3em 2.4em 0 0
-      li.last
-        margin-right: 0
+        width: 8.5em
+        padding-bottom: 1px
+        span
+          display: block
+          padding-left: 0.6em
+          width: 7.9em
+          background= !background
+          min-height: 23px
+    .xmpp .label
+      background-position:  0    0.1em
+    .mail .label
+      background-position: -22px 0.1em
+    .tel .label
+      background-position: -44px 0.1em
+    .adr .label
+      background-position: -66px 0.1em
+    .gpg .label
+      background-position: -88px 0.1em
+  #links
+    li
+      list-style: none
+      display: inline-block
+      text-align: left
+      margin: 2em 0.85em 0 0
+      width: 6em
+    li.last
+      margin-right: 0
   #languages
     position: absolute
     top: 0.5em
