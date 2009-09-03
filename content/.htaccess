@@ -1,0 +1,4 @@
+AddDefaultCharset UTF-8                                   
+AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+AddLanguage en .en
+AddLanguage ru .ru
