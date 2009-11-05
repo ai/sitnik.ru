@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby1.9
 # Constants and common code for generator and uploader.
 
 UPLOAD_TO = 'ai@sitnik.ru:/home/ai/sitnik.ru/'

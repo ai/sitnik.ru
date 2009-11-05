@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby1.9
+#!/usr/bin/env ruby1.9.1
 # Compile HAML and SASS and copy all files to public/.
 
 require File.join(File.dirname(__FILE__), 'config')
