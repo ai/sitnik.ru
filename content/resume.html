@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru" xml:lang="ru">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Резюме Андрея Ситника</title>
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            a {
+                color: black;
+            }
+            a:hover {
+                text-decoration: none;
+            }
+            body {
+                font: 110% "Trebuchet MS", sans-serif;
+                line-height: 150%;
+                width: 30em;
+                max-width: 100%;
+                margin: 3ex auto 2ex auto;
+            }
+            h1 {
+                font: normal 150% Georgia, serif;
+                margin-bottom: 1ex;
+            }
+            #contacts, .source, .date {
+                font-size: 80%;
+                color: gray;
+                }
+            #contacts {
+                float: right;
+                margin-top: 0.7ex;
+                }
+                #contacts a {
+                    color: gray;
+                }
+            .date {
+                float: right;
+            }
+            h2 {
+                font: normal 130% Georgia, serif;
+                margin: 2ex 0 1ex 0;
+            }
+            h3 {
+                font: bold 100% "Trebuchet MS", sans-serif;
+                display: inline;
+            }
+            li {
+                list-style: none;
+            }
+            #history li {
+                margin-bottom: 3ex;
+            }
+            li:before {
+                content: '\2014\a0';
+                float: left;
+                margin-left: -1.25em;
+            }
+            .clickable {
+                border-bottom: 1px dotted black;
+                cursor: pointer;
+            }
+            #skills .selected {
+                border-bottom: 1px solid black;
+                cursor: pointer;
+            }
+            .highlighed {
+                border-right: 2px solid gray;
+                padding-right: 1em;
+                width: 30em;
+            }
+            #history .selected {
+                border-right: 2px solid black;
+                padding-right: 1em;
+                width: 30em;
+            }
+            @media print {
+                body {
+                    width: auto;
+                    margin: 0;
+                    margin-left: 1.25em;
+                }
+                a {
+                    text-decoration: none;
+                }
+                .source {
+                    display: none;
+                }
+                #skills .selected, #history .selected {
+                    border: none;
+                    padding-right: 0;
+                    width: auto;
+                }
+            }
+        </style>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            jQuery(function($) {
+                $('#skills h3, #skills span').mouseover(function() {
+                    if ($(this).hasClass('selected')) return
+                    
+                    $('#history .' + this.className).addClass('highlighed')
+                    $(this).addClass('clickable')
+                    
+                }).mouseout(function() {
+                    if ($(this).hasClass('selected')) return
+                    
+                    $(this).removeClass('clickable')
+                    $('#history .' + this.className).removeClass('highlighed')
+                    
+                }).click(function() {
+                    $('.selected').removeClass('selected')
+                    
+                    if ($(this).hasClass('clickable')) {
+                        $(this).removeClass('clickable')
+                        $('#history .' + this.className).
+                            removeClass('highlighed').addClass('selected')
+                        $(this).addClass('selected')
+                    } else {
+                        $('#history .' + this.className).addClass('highlighed')
+                        $(this).addClass('clickable')
+                    }
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <p id="contacts">
+          +7&thinsp;911&thinsp;769&thinsp;65&thinsp;71;
+          <a href="mailto:andrey@sitnik.ru">andrey@sitnik.ru</a>;
+          <a href="http://sitnik.ru">sitnik.ru</a>
+        </p>
+        
+        <h1>Андрей Ситник</h1>
+        
+        <p id="target"><strong>Цель:</strong> разработчик на Ruby on Rails.</p>
+        
+        <h2>Умения</h2>
+        <ul id="skills">
+            <li>
+                <h3 class="ruby">Ruby</h3>:
+                    <span class="rails">Ruby on Rails</span>,
+                    <span class="sinatra">Sinatra</span>,
+                    <span class="merb">Merb</span>,
+                    <span class="jruby">JRuby</span>,
+                    <span class="rspec">RSpec</span>.
+            </li>
+            <li>
+                <h3 class="java">Java</h3>: JavaSE, Swing,
+                    <span class="javame">JavaME</span>.
+            </li>
+            <li>
+                <h3 class="db">Базы данных</h3>:
+                    <span class="mysql">MySQL</span>,
+                    <span class="postgresql">PostgreSQL</span>,
+                    SQLite,
+                    <span class="mongodb">MongoDB</span>.
+            </li>
+            <li>
+                <h3 class="vcs">Системы контроля версий</h3>:
+                    <span class="git">Git</span>,
+                    <span class="hg">Mercurial</span>,
+                    Bazaar,
+                    Subversion.
+            </li>
+            <li>
+                <h3>Linux</h3>: администрирование, сборка deb-пакетов.
+            </li>
+            <li>
+                <h3 class="html">Вёрстка</h3>:
+                    <span class="css">CSS-вёрстка</span>,
+                    <span class="jquery">jQuery</span>,
+                    <span class="js">ненавязчивый JavaScript</span>.
+            </li>
+            <li>
+                <h3 class="ui">Проектирование интерфейсов</h3>.
+            </li>
+        </ul>
+        
+        <h2>Опыт работы</h2>
+        <ul id="history">
+            <li class="ruby vcs sinatra merb jruby rspec git">
+                <h3><a href="http://r18n.rubyforge.org/">R18n</a></h3>
+                <a href="http://github.com/ai/r18n" class="source">исходный код</a>
+                <span class="date">сентябрь 2008 — настоящий день</span>
+                <p>
+                    Библиотека для локализации приложений на Ruby с поддержкой
+                    Sinatra, Merb, JRuby, UNIX и Windows.
+                </p>
+            </li>
+            <li class="ruby vcs rspec git">
+                <h3>D²NA</h3>
+                <a href="http://github.com/ai/d2na" class="source">исходный код</a>
+                <span class="date">декабрь 2008 — настоящий день</span>
+                <p>
+                    Мой научный проект на Ruby по генетическим алгоритмам.
+                </p>
+            </li>
+            <li class="ruby db vcs html ui sinatra mongodb git css jquery js">
+                <h3><a href="http://movie-alert.r09.railsrumble.com/">Movie Alert</a></h3>
+                <a href="http://github.com/brainopia/movie-alert"  class="source">исходный код</a>
+                <span class="date">сентябрь 2009</span>
+                <p>
+                    Командный проект в Rails Rumble 2009: подписка на
+                    выходящие в прокат фильмы. Моя задача состояла в разработке
+                    интерфейса, AJAX-кода и контроллеров Sinatra. Опыт работы
+                    с нереалиционной СУБД MongoDB.
+                </p>
+            </li>
+            <li class="ruby vcs rspec git">
+                <h3>Plain Record</h3>
+                <a href="http://github.com/ai/plain_record" class="source">исходный код</a>
+                <span class="date">июль 2009</span>
+                <p>
+                    Сериализация объектов в файлы, которые потом удобно править
+                    руками. Для устранения зоопарка моделей в библиотеках для
+                    генерации статичных HTML-страниц сайта (типа webgen).
+                </p>
+            </li>
+            <li class="ruby db vcs html rails postgresql git css">
+                <h3><a href="http://insales.ru">InSales</a></h3>
+                <span class="date">январь — апрель 2009</span>
+                <p>
+                    Разработка на Ruby on Rails панели управления SaaS-сервиса 
+                    интернет-магазинов. Удалённая сдельная работа.
+                </p>
+            </li>
+            <li class="ruby db ui vcs html rails mysql git css jquery js">
+                <h3><a href="http://r08.railsrumble.com/teams/gobrain">Preved</a></h3>
+                <a href="http://github.com/brainopia/gobrain" class="source">исходный код</a>
+                <span class="date">октябрь 2008</span>
+                <p>
+                    Командный проект в Rails Rumble 2008: AJAX-чат через
+                    Flash-сокеты на Ruby on Rails. Моя задача состояла в
+                    разработке интерфейса и JS-кода.
+                </p>
+            </li>
+            <li class="db vcs html postgresql hg css js">
+                <h3><a href="http://www.spooort.ru/">Spooort</a></h3>
+                <span class="date">август — октябрь 2008</span>
+                <p>
+                    Разработка API для JS-виджетов социальной сети.
+                </p>
+            </li>
+            <li class="ruby java jruby rspec">
+                <h3><a href="http://ruby2jar.rubyforge.org/">Ruby2Jar</a></h3>
+                <a href="http://github.com/ai/ruby2jar" class="source">исходный код</a>
+                <span class="date">июнь 2008</span>
+                <p>
+                    Сборка JRuby-проекта в JAR.
+                </p>
+            </li>
+            <li class="ui java javame">
+                <h3><a href="http://ballistics.sf.net/">Space Ballistics</a></h3>
+                <a href="http://sf.net/projects/ballistics/files/" class="source">исходный код</a>
+                <span class="date">апрель 2007</span>
+                <p>
+                    Игра для JavaME-платформы.
+                </p>
+            </li>
+            <li>
+                <h3 class="html">Image Cup 2007</h3>
+                <span class="date">апрель 2007</span>
+                <p>
+                    Вёрстка сайта на ASP.Net и презентация проекта на российском
+                    финале Image Cup 2007.
+                </p>
+            </li>
+            <li class="ui db html mysql css">
+                <h3><a href="http://bibro.sf.net/">Bibro</a></h3>
+                <a href="http://sf.net/projects/bibro/" class="source">исходный код</a>
+                <span class="date">март — июль 2006</span>
+                <p>
+                    Анализ посещений сайта с клиент-серверной модульной
+                    архитектурой с внутренним XML-протоколом.
+                </p>
+            </li>
+        </ul>
+        
+        <h2>Образование</h2>
+        <p>Шестой курс СПбГПУ Факультета Технической Кибернетики. В данный
+        момент дописываю диплом на специалиста.</p>
+        
+        <h2>Английский язык</h2>
+        <p>Свободное чтение и написание технической документации. Локализация
+        приложений на русский язык.</p>
+    </body>
+</html>
