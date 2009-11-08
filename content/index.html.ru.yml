@@ -1,0 +1,52 @@
+name:
+  first: Андрей
+  nick: A.I.
+  last: Ситник
+  
+keywords: Андрей Ситник, Ситник, A.I., AI
+description: Домашняя страница Андрея «A.I.» Ситника
+
+photo: Фотография Андрея Ситника
+
+labels:
+  jabber: Jabber
+  email: Эл. почта
+  phone: Телефон
+  location: Расположение
+  key: Открытый ключ
+
+locality:
+  name: Санкт-Петербург
+  href: http://ru.wikipedia.org/wiki/%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3
+  other: <abbr title='станция метро'>м.</abbr> <a href='http://maps.google.com/maps?q=59.919917,30.466750&amp;t=h'>Проспект Большевиков</a>
+
+country:
+  name: Россия
+
+quotes:
+  open: «
+  close: »
+
+links:
+  github:
+    name: GitHub
+    desc: Код
+  twitter:
+    name: Twitter
+    desc: Статусы
+  wikipedia:
+    name: Википедия
+    desc: Статьи
+  habrahabr:
+    name: Хабрахабр
+    desc: <abbr title="Информационные технологии">ИТ</abbr>-статьи
+  vkontakte:
+    name: В Контакте
+    desc: Друзья
+  lastfm:
+    name: Last.fm
+    desc: Музыка
+
+translate:
+  lang: en
+  title: Switch to English

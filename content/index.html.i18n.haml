@@ -1,0 +1,91 @@
+!!! Strict
+%html{ html_attrs(@lang) }
+  %head( profile='http://gmpg.org/xfn/11' )
+    %meta( http-equiv='Content-Type' content='text/html; charset=UTF-8' )
+    %meta{ 'http-equiv' => 'Content-Language', content: @lang }
+    %title
+      = @i18n.name.first
+      = @i18n.quotes.open + @i18n.name.nick + @i18n.quotes.close
+      = @i18n.name.last
+    %meta{ name: 'Keywords', content: @i18n.keywords }
+    %meta{ name: 'Description', content: @i18n.description }
+    %link( rel='stylesheet' type='text/css' href='style.css' )
+    %meta( http-equiv='X-XRDS-Location' content='http://iskin.myopenid.com/?xrds=1' )
+    %link( rel='openid.server' href='http://www.myopenid.com/server' )
+    %link( rel='openid.delegate' href='http://iskin.myopenid.com/' )
+    %link( rel='openid2.provider' href='http://www.myopenid.com/server' )
+    %link( rel='openid2.local_id' href='http://iskin.myopenid.com' )
+    %link( rel='shortcut icon' href='favicon.ico' type='image/x-icon' )
+    %link( rel='pavatar' href='http://sitnik.ru/pavatar.png' )
+    %link( rel='meta' type='application/rdf+xml' title='FOAF' href='foaf.rdf' )
+    %link( rel='publickey pgpkey' type='application/pgp-keys' href='1F710E4D.asc' )
+  %body.vcard
+    %a#image( href='photo.jpg' )
+      %img.photo{ src: 'photo.small.jpg', style: 'width: 200px; height: 267px;', alt: @i18n.photo }
+    #contacts
+      %h1.n
+        %span.given-name= @i18n.name.first
+        = @i18n.quotes.open + '<span class="nickname">' + @i18n.name.nick + '</span>' + @i18n.quotes.close
+        %span.family-name= @i18n.name.last
+      %ul
+        %li.xmpp
+          %span.label
+            %span= @i18n.labels.jabber + ':'
+          %a( href='xmpp:andrey@sitnik.ru' rel='me' ) andrey@sitnik.ru
+        %li.mail
+          %span.label
+            %span= @i18n.labels.email + ':'
+          %a.email( href='mailto:andrey@sitnik.ru' rel='me' ) andrey@sitnik.ru
+        %li.tel
+          %span.label
+            %span= @i18n.labels.phone + ':'
+          %a.value( href='tel:+79117696571' ) +7 911 769 65 71
+          .hidden.type cell
+        %li.adr
+          %span.label
+            %span= @i18n.labels.location + ':'
+          %span
+            %a.locality{ href: @i18n.locality.href }>= @i18n.locality.name
+            - if @i18n.locality.other
+              ,
+              = @i18n.locality.other
+            - if @i18n.country.href
+              ,
+              %a.country-name{ href: @i18n.country.href }= @i18n.country.name
+          .hidden
+            .type home
+            - unless @i18n.country.href
+              .country-name= @i18n.country.name
+            .geo
+              .latitude 59.919917
+              .longitude 30.466750
+        %li.gpg
+          %span.label
+            %span= @i18n.labels.key + ':'
+          %a( href='http://sitnik.ru/1F710E4D.asc' ) 1F710E4D
+      .hidden
+        .fn= @i18n.name.first + ' ' + @i18n.name.last
+        .bday 1987-06-04
+        .tz +03:00
+        %a.url( href='http://sitnik.ru' ) sitnik.ru
+    %ul#links
+      %li
+        %a( href='http://github.com/ai' rel='me' )= @i18n.links.github.name
+        %p= @i18n.links.github.desc
+      %li
+        %a( href='http://twitter.com/andrey_sitnik' rel='me' )= @i18n.links.twitter.name
+        %p= @i18n.links.twitter.desc
+      %li
+        %a( href='http://ru.wikipedia.org/wiki/User:A.I.' rel='me' )= @i18n.links.wikipedia.name
+        %p= @i18n.links.wikipedia.desc
+      %li
+        %a( href='http://iskin.habrahabr.ru/' rel='me' )= @i18n.links.habrahabr.name
+        %p= @i18n.links.habrahabr.desc
+      %li
+        %a( href='http://vkontakte.ru/id475146' rel='me' )= @i18n.links.vkontakte.name
+        %p= @i18n.links.vkontakte.desc
+      %li
+        %a( href='http://last.fm/user/iskin' rel='me' )= @i18n.links.lastfm.name
+        %p= @i18n.links.lastfm.desc
+    #languages
+      %a{ href: "index.html.#{@i18n.translate.lang}", rel: 'alternate', lang: @i18n.translate.lang }= '↶ ' + @i18n.translate.title
