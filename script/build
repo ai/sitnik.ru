@@ -6,10 +6,25 @@ require File.join(File.dirname(__FILE__), 'config')
 PUBLIC.rmtree if PUBLIC.exist?
 PUBLIC.mkpath
 
+exclude = []
+
 Pathname.glob(CONTENT.join('**/*.haml').to_s) do |haml|
   file = PUBLIC + haml.relative_path_from(CONTENT).sub_ext('')
   file.dirname.mkpath
-  `haml --style ugly #{haml} #{file}`
+  if '.i18n' == file.extname
+    file = file.sub_ext('')
+    Pathname.glob(haml.sub(/\.i18n\.haml$/, '.*.yml').to_s) do |translation|
+      exclude << translation
+      @lang = translation.sub_ext('').extname.sub(/^./, '')
+      @i18n = Translation.new(YAML.load_file(translation))
+      
+      File.open(file.to_s + ".#{@lang}", 'w') do |io|
+        io << Haml::Engine.new(File.read(haml), ugly: true).render(self)
+      end
+    end
+  else
+    `haml --style ugly #{haml} #{file}`
+  end
 end
 
 Pathname.glob(CONTENT.join('**/*.sass').to_s) do |sass|
@@ -21,6 +36,7 @@ end
 Pathname.glob(CONTENT.join('**/*').to_s, File::FNM_DOTMATCH) do |from|
   next if from.directory?
   next if '.sass' == from.extname or '.haml' == from.extname
+  next if exclude.include? from
   to = PUBLIC + from.relative_path_from(CONTENT)
   to.dirname.mkpath
   begin
