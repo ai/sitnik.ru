@@ -1,31 +1,22 @@
-name:
-  first: Andrey
-  nick: A.I.
-  last: Sitnik
-
+name: Andrey “A.I.” Sitnik
 keywords: Andrey Sitnik, Sitnik, A.I., AI, Андрей Ситник, Ситник
 description: Andrey “A.I.” Sitnik homepage
-
 photo: Andrey Sitnik photo
 
-labels:
-  jabber: Jabber
-  email: E-mail
+contacts:
+  address: E-mail/XMPP
   phone: Phone
   location: Location
   key: Public key
 
+
 locality:
   name: Saint Petersburg
   href: http://en.wikipedia.org/wiki/Saint_Petersburg
-
 country:
   name: Russia
   href: http://en.wikipedia.org/wiki/Russia
 
-quotes:
-  open: “
-  close: ”
 
 links:
   github:
@@ -40,13 +31,13 @@ links:
   habrahabr:
     name: Habrahabr
     desc: <abbr title="Information technology">IT</abbr> articles
+  slideshare:
+    name: SlideShare
+    desc: Presentations
   vkontakte:
     name: V Kontakte
     desc: Friends
-  lastfm:
-    name: Last.fm
-    desc: Music
-
 translate:
   lang: ru
+  icon: ☭
   title: По-русски

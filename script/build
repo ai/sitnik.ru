@@ -18,19 +18,13 @@ Pathname.glob(CONTENT.join('**/*.haml').to_s) do |haml|
       @lang = translation.sub_ext('').extname.sub(/^./, '')
       @i18n = Translation.new(YAML.load_file(translation))
       
-      File.open(file.to_s + ".#{@lang}", 'w') do |io|
-        io << Haml::Engine.new(File.read(haml), ugly: true).render(self)
+      File.open(file.sub_ext(".#{@lang}#{file.extname}"), 'w') do |io|
+        io << Haml::Engine.new(File.read(haml)).render(self)
       end
     end
   else
     `haml --style ugly #{haml} #{file}`
   end
-end
-
-Pathname.glob(CONTENT.join('**/*.sass').to_s) do |sass|
-  css = PUBLIC + sass.relative_path_from(CONTENT).sub_ext('.css')
-  css.dirname.mkpath
-  `sass --no-cache --style compressed #{sass} #{css}`
 end
 
 Pathname.glob(CONTENT.join('**/*').to_s, File::FNM_DOTMATCH) do |from|
@@ -42,4 +36,9 @@ Pathname.glob(CONTENT.join('**/*').to_s, File::FNM_DOTMATCH) do |from|
   begin
     to.make_link(from)
   rescue; end
+end
+
+Pathname.glob(PUBLIC.join('**/*.{html,css,otf}').to_s) do |file|
+  next if file.basename.to_s =~ /^google/
+  `gzip --best -c #{file} > #{file}.gz`
 end

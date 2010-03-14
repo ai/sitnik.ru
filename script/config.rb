@@ -1,6 +1,6 @@
 # Constants and common code for generator and uploader.
 
-UPLOAD_TO = 'ai@sitnik.ru:/home/ai/sitnik.ru/'
+UPLOAD_TO = 'ai@188.120.225.1:/home/ai/sitnik.ru'
 
 require 'pathname'
 require 'rubygems'
@@ -13,7 +13,11 @@ PUBLIC  = ROOT.join('public')
 CONTENT = ROOT.join('content')
 
 def build
-  load Pathname.new(__FILE__).dirname.join('build')
+  `#{Pathname.new(__FILE__).dirname.join('build')}`
+end
+
+def t
+  @i18n
 end
 
 class Translation
