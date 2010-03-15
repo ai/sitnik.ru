@@ -15,17 +15,19 @@
             a:hover {
                 text-decoration: none;
             }
+            html {
+                padding: 0 1.7em;
+            }
             body {
                 font: 110% "Trebuchet MS", sans-serif;
                 line-height: 150%;
                 width: 30em;
                 max-width: 100%;
                 margin: 3ex auto 2ex auto;
-                padding-left: 1.7em
             }
             h1 {
                 font: normal 150% Georgia, serif;
-                margin-bottom: 1ex;
+                float: left;
             }
             #contacts, .source, .date {
                 font-size: 80%;
@@ -33,11 +35,18 @@
                 }
             #contacts {
                 float: right;
-                margin-top: 0.7ex;
+                text-align: right;
+                padding-top: 0.7ex;
+                width: 20.5em;
+                max-width: 100%;
                 }
                 #contacts a {
                     color: gray;
                 }
+            #target {
+              padding-top: 1.1ex;
+              clear: both;
+            }
             .date {
                 float: right;
             }
@@ -108,6 +117,9 @@
                 }
             }
             @media all and (max-device-width: 481px) {
+                body {
+                  width: auto !important;
+                }
                 .selected {
                     border-right: none !important;
                     }
@@ -152,13 +164,13 @@
         </script>
     </head>
     <body>
+        <h1>Андрей Ситник</h1>
+        
         <p id="contacts">
           +7&thinsp;911&thinsp;769&thinsp;65&thinsp;71;
           <a href="mailto:andrey@sitnik.ru">andrey@sitnik.ru</a>;
           <a href="http://sitnik.ru">sitnik.ru</a>
         </p>
-        
-        <h1>Андрей Ситник</h1>
         
         <p id="target"><strong>Цель:</strong> разработчик на Ruby on Rails.</p>
         
