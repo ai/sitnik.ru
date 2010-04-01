@@ -31,6 +31,8 @@
     
     %style( type='text/css' )
       :sass
+        @import compass/css3
+        
         !line_height= 130%
         
         @font-face
@@ -67,13 +69,9 @@
           float: left
           margin: 0 2em 1.5em 0
           border: none
-          -webkit-box-shadow= 1px 1px 3px #111
-          -moz-box-shadow= 1px 1px 3px #111
-          box-shadow= 1px 1px 3px #111
+          +box-shadow(1px, 1px, 3px, #111)
         #photo:hover img
-          -webkit-box-shadow= 2px 2px 4px #151515
-          -moz-box-shadow= 2px 2px 4px #151515
-          box-shadow= 2px 2px 4px #151515
+          +box-shadow(2px, 2px, 4px, #151515)
         dl
           float: left
           margin: 0 3em 1.5em 0

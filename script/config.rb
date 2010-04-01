@@ -7,6 +7,8 @@ require 'rubygems'
 
 gem 'haml'
 require 'haml'
+gem 'compass'
+require 'compass'
 
 ROOT    = Pathname.new(__FILE__).dirname.parent.realpath
 PUBLIC  = ROOT.join('public')
