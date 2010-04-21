@@ -60,10 +60,10 @@
         a:hover
           text-decoration: underline
         h1
-          font-size: 340%
+          font-size: #{'en' == @lang ? '280%' : '260%'}
           font-weight: normal
           line-height= !line_height
-          margin-bottom: 0.25em
+          margin-bottom:  #{'en' == @lang ? '0.25em' : '0.35em'}
           text-shadow: 2px 2px 5px black
         #photo img
           float: left
@@ -102,15 +102,12 @@
           top: 0.5em
           right: 1em
           color: #44b0ba
-        body:lang(ru)
-          h1
-            font-size: 320%
-            margin-bottom: 0.3em
-        @media all and (max-device-width: 321px)
+        @media handheld, screen and (max-device-width: 321px)
           #root
             margin-top: 1.5em !important
           h1
-            margin-bottom: 0.5em
+            font-size: #{'en' == @lang ? '210%' : '180%'}
+            margin-bottom: #{'en' == @lang ? '0.5em' : '0.7em'}
           #translate
             left: 0.5em
   %body
