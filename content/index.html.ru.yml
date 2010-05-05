@@ -1,4 +1,7 @@
-name: Андрей «A.I.» Ситник
+name:
+  first: Андрей
+  nick: A.I.
+  last: Ситник
 keywords: Андрей Ситник, Ситник, A.I., AI
 description: Личная страница Андрея «A.I.» Ситника
 photo: Фотография Андрея Ситника
@@ -13,7 +16,6 @@ locality:
   name: Санкт-Петербург
   href: http://ru.wikipedia.org/wiki/%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3
   other: <abbr title='станция метро'>м.</abbr> <a href='http://maps.google.com/maps?q=59.919917,30.466750&amp;t=h'>Пр. Большевиков</a>
-
 
 links:
   github:
@@ -39,3 +41,5 @@ translate:
   lang: en
   icon: ★
   title: Switch to English
+
+quotes: «%1»

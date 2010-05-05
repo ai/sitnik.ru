@@ -1,4 +1,7 @@
-name: Andrey “A.I.” Sitnik
+name:
+  first: Andrey
+  nick: A.I.
+  last: Sitnik
 keywords: Andrey Sitnik, Sitnik, A.I., AI, Андрей Ситник, Ситник
 description: Andrey “A.I.” Sitnik homepage
 photo: Andrey Sitnik photo
@@ -9,14 +12,12 @@ contacts:
   location: Location
   key: Public key
 
-
 locality:
   name: Saint Petersburg
   href: http://en.wikipedia.org/wiki/Saint_Petersburg
 country:
   name: Russia
   href: http://en.wikipedia.org/wiki/Russia
-
 
 links:
   github:
@@ -37,7 +38,10 @@ links:
   vkontakte:
     name: V Kontakte
     desc: Friends
+
 translate:
   lang: ru
   icon: ☭
   title: По-русски
+
+quotes: “%1”

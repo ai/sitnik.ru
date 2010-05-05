@@ -2,7 +2,10 @@
 %html{ lang: @lang }
   %head
     %meta( charset='UTF-8' )
-    %title= @i18n.name
+    %title
+      = t.name.first
+      = t.quotes(t.name.nick)
+      = t.name.last
     %link( rel='icon' href='favicon.ico' type='image/x-icon' )
     
     %meta{ name: 'keywords', content: t.keywords }
@@ -50,6 +53,13 @@
               $('h1, dl, ul, #translate').animate({ opacity: hide }, 800)
               return false
           })
+          
+          $('.nick').mouseenter(function() {
+              $('<div class="avatar"><img src="avatar.png" /></div>').
+                  prependTo('#photo').hide().fadeIn()
+          }).mouseleave(function() {
+              $('.avatar').fadeOut(function() { $(this).remove() })
+          })
       })
     
     %style( type='text/css' )
@@ -92,17 +102,24 @@
           display: block
           float: left
           margin: 0 2em 1.5em 0
-          .thumb
+          img
             border: none
+          .thumb
             +box-shadow(1px, 1px, 3px, #111)
             &:hover
               +box-shadow(2px, 2px, 4px, #151515)
           .real
-            border: none
             +box-shadow(2px, 2px, 4px, #151515)
             position: absolute
             z-index: 10
             max-width: 100%
+          .avatar
+            position: absolute
+            width: 165px
+            height: 190px
+            background: black
+            text-align: center
+            padding: 77px 0 0 35px
         dl
           float: left
           margin: 0 3em 1.5em 0
@@ -143,7 +160,10 @@
             left: 0.5em
   %body
     #root
-      %h1= t.name
+      %h1
+        = t.name.first
+        = t.quotes("<span class=\"nick\">#{t.name.nick}</span>")
+        = t.name.last
       %a#photo( href='photo.jpg' )
         %img.thumb{ src: 'photo.small.jpg', style: 'width: 200px; height: 267px;', alt: t.photo }
       %dl
