@@ -45,7 +45,7 @@
                   $('<img src="' + link.attr('href') + '" class="real" />').
                       prependTo(link).css({
                           width: '350px', margin: '-48px 0 0 -' + left + 'px'
-                      }).fadeIn().animate({
+                      }).hide().fadeIn().animate({
                           width: '600px', marginTop: '-120px'
                       })
                   var hide = 0
