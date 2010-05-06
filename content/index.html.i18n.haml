@@ -34,23 +34,23 @@
           
           $('#photo').click(function() {
               var link = $(this)
-              var real = link.find('.real')
-              if (real.length) {
-                  real.animate({ width: '350px', marginTop: '-48px' }).
-                       fadeOut(function() { $(this).remove() })
-                  var hide = 1
-              } else {
-                  var left = link.position().left
-                  if (left > 78) left = '78'
-                  $('<img src="' + link.attr('href') + '" class="real" />').
-                      prependTo(link).css({
-                          width: '350px', margin: '-48px 0 0 -' + left + 'px'
-                      }).hide().fadeIn().animate({
-                          width: '600px', marginTop: '-120px'
+              var top = link.position().top - 48
+              var left = link.position().left - 78
+              if (0 > left) left = 0
+              var full = $('<div id="full"></div>').hide().prependTo('body')
+              var img  = $('<img src="' + link.attr('href') + '" />').
+                  appendTo(full).css({ width: 350, top: top, left: left })
+              full.fadeIn(function() {
+                  img.animate({
+                      width: '600px', top: 20,
+                      left: ($(document).width() - 600) / 2
+                  })
+              }).click(function() {
+                  img.animate({ width: '350px', top: top, left: left },
+                      function() {
+                          full.fadeOut(function() { $(this).remove() })
                       })
-                  var hide = 0
-              }
-              $('h1, dl, ul, #translate').animate({ opacity: hide }, 800)
+              })
               return false
           })
           
@@ -83,6 +83,18 @@
           line-height= !line_height
         body
           padding: 0.5em
+        #full
+          position: absolute
+          width: 100%
+          height: 100%
+          margin: -0.5em
+          z-index: 9
+          background: #2a2a2a
+          cursor: pointer
+          img
+            position: absolute
+            +box-shadow(2px, 2px, 4px, #151515)
+            max-width: 100%
         #root
           margin: 3.5em auto 0 auto
           width: 49em
@@ -110,11 +122,6 @@
             +box-shadow(1px, 1px, 3px, #111)
             &:hover
               +box-shadow(2px, 2px, 4px, #151515)
-          .real
-            +box-shadow(2px, 2px, 4px, #151515)
-            position: absolute
-            z-index: 10
-            max-width: 100%
           .avatar
             position: absolute
             width: 165px
@@ -137,6 +144,7 @@
           line-height= !line_height
         dt, li p
           opacity: 0.6
+          transition: opacity 400ms linear
           -webkit-transition: opacity 400ms linear
         ul
           width: 18em
