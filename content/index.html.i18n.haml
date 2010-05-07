@@ -36,14 +36,14 @@
               var link = $(this)
               var top = link.position().top - 48
               var left = link.position().left - 78
-              if (0 > left) left = 0
               var full = $('<div id="full"></div>').hide().prependTo('body')
               var img  = $('<img src="' + link.attr('href') + '" />').
                   appendTo(full).css({ width: 350, top: top, left: left })
               full.fadeIn(function() {
+                  var to = ($(document).width() - 600) / 2
                   img.animate({
                       width: '600px', top: 20,
-                      left: ($(document).width() - 600) / 2
+                      left: to > 0 ? to : 0
                   })
               }).click(function() {
                   img.animate({ width: '350px', top: top, left: left },
