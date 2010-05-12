@@ -56,9 +56,9 @@
           
           $('.nick').mouseenter(function() {
               $('<div class="avatar"><img src="avatar.png" /></div>').
-                  prependTo('#photo').hide().fadeIn()
+                  prependTo('#photo').hide().delay(200).fadeIn()
           }).mouseleave(function() {
-              $('.avatar').fadeOut(function() { $(this).remove() })
+              $('.avatar').stop(true).fadeOut(function() { $(this).remove() })
           })
       })
     
