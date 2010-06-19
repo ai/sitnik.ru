@@ -7,6 +7,8 @@ require 'rubygems'
 
 gem 'haml'
 require 'haml'
+require 'sass'
+require 'sass/plugin'
 gem 'compass'
 require 'compass'
 

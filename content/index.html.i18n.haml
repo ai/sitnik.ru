@@ -66,8 +66,6 @@
       :sass
         @import compass/css3
         
-        !line_height= 130%
-        
         @font-face
           font-family: 'Cuprum'
           src: url(Cuprum.eot)
@@ -80,7 +78,7 @@
           background: #333
           font: 16px Cuprum, Helvetica, sans-serif
           color: white
-          line-height= !line_height
+          line-height: 1.3
         body
           padding: 0.5em
         #full
@@ -93,7 +91,7 @@
           cursor: pointer
           img
             position: absolute
-            +box-shadow(2px, 2px, 4px, #151515)
+            @include box-shadow(2px, 2px, 4px, #151515)
             max-width: 100%
         #root
           margin: 3.5em auto 0 auto
@@ -107,7 +105,6 @@
         h1
           font-size: #{'en' == @lang ? '280%' : '260%'}
           font-weight: normal
-          line-height= !line_height
           margin-bottom:  #{'en' == @lang ? '0.25em' : '0.37em'}
           text-shadow: 2px 2px 5px black
           .nick:hover
@@ -119,9 +116,9 @@
           img
             border: none
           .thumb
-            +box-shadow(1px, 1px, 3px, #111)
+            @include box-shadow(1px, 1px, 3px, #111)
             &:hover
-              +box-shadow(2px, 2px, 4px, #151515)
+              @include box-shadow(2px, 2px, 4px, #151515)
           .avatar
             position: absolute
             width: 165px
@@ -141,11 +138,10 @@
           margin-bottom: 0.55em
           text-shadow: 1px 1px 2px black
           font-size: 140%
-          line-height= !line_height
         dt, li p
           opacity: 0.6
-          transition: opacity 400ms linear
-          -webkit-transition: opacity 400ms linear
+          transition: opacity 500ms ease
+          -webkit-transition: opacity 500ms ease
         ul
           width: 18em
           max-width: 100%
