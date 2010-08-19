@@ -16,8 +16,8 @@ ROOT    = Pathname.new(__FILE__).dirname.parent.realpath
 PUBLIC  = ROOT.join('public')
 CONTENT = ROOT.join('content')
 
-def build
-  `#{Pathname.new(__FILE__).dirname.join('build')}`
+def build(options)
+  `#{Pathname.new(__FILE__).dirname.join('build')} #{options}`
 end
 
 def t

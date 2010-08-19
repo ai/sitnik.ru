@@ -3,5 +3,5 @@
 
 require File.join(File.dirname(__FILE__), 'config')
 
-build
+build :production
 exec "rsync --recursive --delete --compress --progress --human-readable #{PUBLIC}/ #{UPLOAD_TO}"

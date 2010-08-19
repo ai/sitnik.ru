@@ -16,7 +16,7 @@
     %link( rel='openid2.provider' href='http://www.myopenid.com/server' )
     %link( rel='openid2.local_id' href='http://iskin.myopenid.com' )
     
-    %script( type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' )
+    %script( src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' )
     :javascript
       if ('/' == location.pathname && 'ru' == navigator.language)
           location = location + 'index.ru.html'      
@@ -62,7 +62,7 @@
           })
       })
     
-    %style( type='text/css' )
+    %style
       :sass
         @import compass/css3
         
@@ -165,6 +165,19 @@
             margin-bottom: #{'en' == @lang ? '0.5em' : '0.7em'}
           #translate
             left: 0.5em
+    
+    - if production?
+      :javascript
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-18062508-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.async = true;
+            ga.src = 'http://www.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+  
   %body
     #root
       %h1
