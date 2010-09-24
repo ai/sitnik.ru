@@ -3,6 +3,7 @@
 UPLOAD_TO = 'ai@188.120.225.1:/home/ai/sitnik.ru'
 
 require 'pathname'
+require 'yaml'
 require 'rubygems'
 
 gem 'haml'
