@@ -1,7 +1,47 @@
 #!/usr/bin/env ruby
 # Compile HAML and SASS and copy all files to public/.
 
-require File.join(File.dirname(__FILE__), 'config')
+require 'pathname'
+require 'yaml'
+require 'rubygems'
+
+gem 'haml'
+require 'haml'
+require 'sass'
+
+ROOT    = Pathname.new(__FILE__).dirname.parent.realpath
+PUBLIC  = ROOT.join('public')
+CONTENT = ROOT.join('content')
+
+def build(options = '')
+  `#{Pathname.new(__FILE__).dirname.join('build')} #{options}`
+end
+
+def t
+  @i18n
+end
+
+class Pathname
+   def sub_ext(repl)
+     ext = File.extname(@path)
+     self.class.new(@path.chomp(ext) + repl)
+   end
+end
+
+class Translation
+  def initialize(hash)
+    @data = hash
+  end
+  def method_missing(name, *params)
+    value = @data[name.to_s]
+    if value.is_a? Hash
+      Translation.new(value)
+    else
+      params.each_with_index { |p, i| value = value.gsub("%#{i+1}", p.to_s) }
+      value
+    end
+  end
+end
 
 def production?
   'production' == ARGV.first
@@ -45,7 +85,7 @@ Pathname.glob(CONTENT.join('**/*').to_s, File::FNM_DOTMATCH) do |from|
   rescue; end
 end
 
-Pathname.glob(PUBLIC.join('**/*.{html,css,otf}').to_s) do |file|
+Pathname.glob(PUBLIC.join('**/*.{html,css,js}').to_s) do |file|
   next if file.basename.to_s =~ /^google/
   `gzip --best -c #{file} > #{file}.gz`
 end

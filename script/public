@@ -3,4 +3,4 @@
 
 cd `dirname $0`
 ./build production
-rsync --recursive --delete --compress --progress --human-readable ../public/ ai@188.120.225.1:/home/ai/sitnik.r
+rsync --recursive --delete --compress --progress --human-readable ../public/ ai@188.120.225.1:/home/ai/sitnik.ru
