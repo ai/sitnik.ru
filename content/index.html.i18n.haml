@@ -54,10 +54,10 @@
               return false
           })
           
-          $('.nick').mouseenter(function() {
+          $('.nick').hover(function() {
               $('<div class="avatar"><img src="avatar.png" /></div>').
                   prependTo('#photo').hide().delay(200).fadeIn()
-          }).mouseleave(function() {
+          }, function() {
               $('.avatar').stop(true).fadeOut(function() { $(this).remove() })
           })
       })
@@ -65,7 +65,10 @@
     %link( href='http://fonts.googleapis.com/css?family=Cuprum&subset=cyrillic' rel='stylesheet' )/
     %style
       :sass
-        @import compass/css3
+        @mixin box-shadow($color, $hoff, $voff, $blur)
+          box-shadow: $color $hoff $voff $blur
+          -webkit-box-shadow: $color $hoff $voff $blur
+          -moz-box-shadow: $color $hoff $voff $blur
         
         *
           margin: 0

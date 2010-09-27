@@ -15,9 +15,6 @@ exclude = []
 Pathname.glob(CONTENT.join('**/*.haml').to_s) do |haml|
   file = PUBLIC + haml.relative_path_from(CONTENT).sub_ext('')
   file.dirname.mkpath
-  
-  Compass.configuration.line_comments = false
-  Sass::Plugin.options = Compass.sass_engine_options
       
   if '.i18n' == file.extname
     file = file.sub_ext('')

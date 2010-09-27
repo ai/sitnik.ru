@@ -9,9 +9,6 @@ require 'rubygems'
 gem 'haml'
 require 'haml'
 require 'sass'
-require 'sass/plugin'
-gem 'compass'
-require 'compass'
 
 ROOT    = Pathname.new(__FILE__).dirname.parent.realpath
 PUBLIC  = ROOT.join('public')
