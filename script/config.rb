@@ -14,12 +14,19 @@ ROOT    = Pathname.new(__FILE__).dirname.parent.realpath
 PUBLIC  = ROOT.join('public')
 CONTENT = ROOT.join('content')
 
-def build(options)
+def build(options = '')
   `#{Pathname.new(__FILE__).dirname.join('build')} #{options}`
 end
 
 def t
   @i18n
+end
+
+class Pathname
+   def sub_ext(repl)
+     ext = File.extname(@path)
+     self.class.new(@path.chomp(ext) + repl)
+   end
 end
 
 class Translation

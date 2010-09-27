@@ -1,5 +1,5 @@
 !!! 5
-%html{ lang: @lang }
+%html{ :lang => @lang }
   %head
     %meta( charset='UTF-8' )
     %title
@@ -8,8 +8,8 @@
       = t.name.last
     %link( rel='icon' href='favicon.ico' type='image/x-icon' )
     
-    %meta{ name: 'keywords', content: t.keywords }
-    %meta{ name: 'description', content: t.description }
+    %meta{ :name => 'keywords', :content => t.keywords }
+    %meta{ :name => 'description', :content => t.description }
     
     %link( rel='openid.server' href='http://www.myopenid.com/server' )
     %link( rel='openid.delegate' href='http://iskin.myopenid.com/' )
@@ -184,7 +184,7 @@
         = t.quotes("<span class=\"nick\">#{t.name.nick}</span>")
         = t.name.last
       %a#photo( href='photo.jpg' )
-        %img.thumb{ src: 'photo.small.jpg', style: 'width: 200px; height: 267px;', alt: t.photo }
+        %img.thumb( src="photo.small.jpg" style="width: 200px; height: 267px;" alt="#{t.photo}" )
       %dl
         %dt= t.contacts.address
         %dd
@@ -194,11 +194,11 @@
           %a( href='tel:+79117696571' ) +7 911 769 65 71
         %dt= t.contacts.location
         %dd
-          %a.locality{ href: t.locality.href }>= t.locality.name
+          %a.locality{ :href => t.locality.href }>= t.locality.name
           - if t.country
             ,
             %div
-              %a{ href: @i18n.country.href }= t.country.name
+              %a{ :href => @i18n.country.href }= t.country.name
           - elsif t.locality.other
             ,
             %div= t.locality.other
@@ -226,4 +226,4 @@
           %a( href='http://vkontakte.ru/iskin' )= t.links.vkontakte.name
     #translate
       = t.translate.icon
-      %a{ href: "index.#{t.translate.lang}.html", rel: 'alternate', lang: t.translate.lang }= t.translate.title
+      %a{ :href => "index.#{t.translate.lang}.html", :rel => 'alternate', :lang => t.translate.lang }= t.translate.title

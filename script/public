@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby1.9.2
+#!/usr/bin/env ruby
 # Compile and upload content.
 
 require File.join(File.dirname(__FILE__), 'config')
