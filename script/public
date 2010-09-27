@@ -1,7 +1,6 @@
-#!/usr/bin/env ruby
+#!/bin/sh
 # Compile and upload content.
 
-require File.join(File.dirname(__FILE__), 'config')
-
-build :production
-exec "rsync --recursive --delete --compress --progress --human-readable #{PUBLIC}/ #{UPLOAD_TO}"
+cd `dirname $0`
+./build production
+rsync --recursive --delete --compress --progress --human-readable ../public/ ai@188.120.225.1:/home/ai/sitnik.r
