@@ -16,7 +16,7 @@
     %link( rel='openid2.provider' href='http://www.myopenid.com/server' )
     %link( rel='openid2.local_id' href='http://iskin.myopenid.com' )
     
-    %script( src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' )
+    %script( src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js' )
     :javascript
       if ('/' == location.pathname && 'ru' == navigator.language)
           location = location + 'index.ru.html'      
@@ -24,17 +24,12 @@
           if ($.browser.msie) $('li p, dt').css('opacity', 0.6)
           
           $('li a, dd').hover(function(e) {
-              var label = $(this).prev()
-              if ($.browser.webkit || $.browser.opera) {
-                  label.css('opacity', ('mouseenter' == e.type ? 1 : 0.6))
-              } else {
-                  label.animate({ opacity: ('mouseenter' == e.type ? 1 : 0.6) })
-              }
+              $(this).prev().css('opacity', ('mouseenter' == e.type ? 1 : 0.6))
           })
           
           $('#photo').click(function() {
               var link = $(this)
-              var top = link.position().top - 48
+              var top  = link.position().top - 48
               var left = link.position().left - 78
               var full = $('<div id="full"></div>').hide().prependTo('body')
               var img  = $('<img src="' + link.attr('href') + '" />').
@@ -47,9 +42,9 @@
                   })
               }).click(function() {
                   img.animate({ width: '350px', top: top, left: left },
-                      function() {
-                          full.fadeOut(function() { $(this).remove() })
-                      })
+                              function() {
+                                  full.fadeOut(function() { $(this).remove() })
+                              })
               })
               return false
           })
@@ -65,11 +60,6 @@
     %link( href='http://fonts.googleapis.com/css?family=Cuprum&subset=cyrillic' rel='stylesheet' )/
     %style
       :sass
-        @mixin box-shadow($color, $hoff, $voff, $blur)
-          box-shadow: $color $hoff $voff $blur
-          -webkit-box-shadow: $color $hoff $voff $blur
-          -moz-box-shadow: $color $hoff $voff $blur
-        
         *
           margin: 0
           padding: 0
@@ -90,7 +80,7 @@
           cursor: pointer
           img
             position: absolute
-            @include box-shadow(2px, 2px, 4px, #151515)
+            box-shadow: 2px 2px 4px #151515
             max-width: 100%
         #root
           margin: 3.5em auto 0 auto
@@ -99,8 +89,8 @@
         a
           color: #44b0ba
           text-decoration: none
-        a:hover
-          text-decoration: underline
+          &:hover
+            text-decoration: underline
         h1
           font-size: #{'en' == @lang ? '280%' : '260%'}
           font-weight: normal
@@ -115,9 +105,9 @@
           img
             border: none
           .thumb
-            @include box-shadow(1px, 1px, 3px, #111)
+            box-shadow: 1px 1px 3px #111
             &:hover
-              @include box-shadow(2px, 2px, 4px, #151515)
+              box-shadow: 2px 2px 4px #151515
           .avatar
             position: absolute
             width: 165px
@@ -140,6 +130,7 @@
         dt, li p
           opacity: 0.6
           transition: opacity 500ms ease
+          -moz-transition: opacity 500ms ease
           -webkit-transition: opacity 500ms ease
           -o-transition: opacity 500ms ease
         ul
