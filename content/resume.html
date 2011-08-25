@@ -11,8 +11,11 @@
             a {
                 color: black;
             }
-            a:hover {
+            a:hover, a.tel {
                 text-decoration: none;
+            }
+            a.tel {
+                cursor: default;
             }
             html {
                 padding: 0 1.7em;
@@ -177,7 +180,7 @@
         <h1>Андрей Ситник</h1>
 
         <p id="contacts">
-          +7&thinsp;911&thinsp;769&thinsp;65&thinsp;71;
+          <a href="tel:+79117696571" class="tel">+7&thinsp;911&thinsp;769&thinsp;65&thinsp;71</a>;
           <a href="mailto:andrey@sitnik.ru">andrey@sitnik.ru</a>;
           <a href="http://sitnik.ru">sitnik.ru</a>
         </p>
@@ -266,6 +269,16 @@
                     Язык и интерпретатор на JavaScript, чтобы на нём программа
                     сама писала себя используя генетические алгоритмы
                     (генетическое программирование).
+                </p>
+            </li>
+            <li class="ruby vcs git">
+                <h3>Gmate</h3>
+                <a href="https://github.com/gmate/gmate" class="source">исходный код</a>
+                <span class="date">март 2010 — настоящий день</span>
+                <p>
+                    Управление разработки пакета расширений, тем и улучшений для
+                    текстового редактора
+                    <a href="http://projects.gnome.org/gedit/">gedit</a>.
                 </p>
             </li>
             <li class="html ruby rails db mysql css jquery js ui vcs git html5">
