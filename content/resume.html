@@ -136,19 +136,19 @@
             jQuery(function($) {
                 $('#skills h3, #skills span').mouseover(function() {
                     if ($(this).hasClass('selected')) return
-                    
+
                     $('#history .' + this.className).addClass('highlighed')
                     $(this).addClass('clickable')
-                    
+
                 }).mouseout(function() {
                     if ($(this).hasClass('selected')) return
-                    
+
                     $(this).removeClass('clickable')
                     $('#history .' + this.className).removeClass('highlighed')
-                    
+
                 }).click(function() {
                     $('.selected').removeClass('selected')
-                    
+
                     if ($(this).hasClass('clickable')) {
                         $(this).removeClass('clickable')
                         $('#history .' + this.className).
@@ -175,15 +175,15 @@
     </head>
     <body>
         <h1>Андрей Ситник</h1>
-        
+
         <p id="contacts">
           +7&thinsp;911&thinsp;769&thinsp;65&thinsp;71;
           <a href="mailto:andrey@sitnik.ru">andrey@sitnik.ru</a>;
           <a href="http://sitnik.ru">sitnik.ru</a>
         </p>
-        
+
         <p id="target"><strong>Цель:</strong> разработчик на Ruby on Rails.</p>
-        
+
         <h2>Умения</h2>
         <ul id="skills">
             <li>
@@ -228,7 +228,7 @@
                 <h3 class="evolution">Эволюционные вычисления и генетическое программирование</h3>.
             </li>
         </ul>
-        
+
         <h2>Опыт работы</h2>
         <ul id="history">
             <li class="html ruby rails rspec db postgresql css jquery js vcs git html5">
@@ -382,13 +382,13 @@
                 </p>
             </li>
         </ul>
-        
+
         <h2>Образование</h2>
         <p>
           Диплом инженера по специальности «Автоматизированные системы
           обработки информации и управления», полученный в СПбГПУ.
         </p>
-        
+
         <h2>Английский язык</h2>
         <p>
           Свободное чтение и написание технической документации. Локализация

@@ -7,26 +7,26 @@
       = t.quotes(t.name.nick)
       = t.name.last
     %link( rel='icon' href='favicon.ico' type='image/x-icon' )
-    
+
     %meta{ :name => 'keywords', :content => t.keywords }
     %meta{ :name => 'description', :content => t.description }
-    
+
     %link( rel='openid.server' href='http://www.myopenid.com/server' )
     %link( rel='openid.delegate' href='http://iskin.myopenid.com/' )
     %link( rel='openid2.provider' href='http://www.myopenid.com/server' )
     %link( rel='openid2.local_id' href='http://iskin.myopenid.com' )
-    
+
     %script( src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js' )
     :javascript
       if ('/' == location.pathname && 'ru' == navigator.language)
           location = location + 'index.ru.html'      
       jQuery(function($) {
           if ($.browser.msie) $('li p, dt').css('opacity', 0.6)
-          
+
           $('li a, dd').hover(function(e) {
               $(this).prev().css('opacity', ('mouseenter' == e.type ? 1 : 0.6))
           })
-          
+
           $('#photo').click(function() {
               var link = $(this)
               var top  = link.position().top - 48
@@ -48,7 +48,7 @@
               })
               return false
           })
-          
+
           $('.nick').hover(function() {
               $('<div class="avatar"><img src="avatar.png" /></div>').
                   prependTo('#photo').hide().delay(200).fadeIn()
@@ -56,7 +56,7 @@
               $('.avatar').stop(true).fadeOut(function() { $(this).remove() })
           })
       })
-    
+
     %link( href='http://fonts.googleapis.com/css?family=Cuprum&subset=cyrillic' rel='stylesheet' )/
     %style
       :sass
@@ -155,7 +155,7 @@
             margin-bottom: #{'en' == @lang ? '0.5em' : '0.7em'}
           #translate
             left: 0.5em
-    
+
     - if production?
       :javascript
         var _gaq = _gaq || [];
@@ -167,7 +167,7 @@
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(ga, s);
         })();
-  
+
   %body
     #root
       %h1
