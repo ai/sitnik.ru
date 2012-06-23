@@ -61,14 +61,14 @@ exclude = []
 Pathname.glob(CONTENT.join('**/*.haml').to_s) do |haml|
   file = PUBLIC + haml.relative_path_from(CONTENT).sub_ext('')
   file.dirname.mkpath
-      
+
   if '.i18n' == file.extname
     file = file.sub_ext('')
     Pathname.glob(haml.sub(/\.i18n\.haml$/, '.*.yml').to_s) do |translation|
       exclude << translation
       @lang = translation.sub_ext('').extname.sub(/^./, '')
       @i18n = Translation.new(YAML.load_file(translation))
-      
+
       File.open(file.sub_ext(".#{@lang}#{file.extname}"), 'w') do |io|
         io << Haml::Engine.new(File.read(haml)).render(self)
       end

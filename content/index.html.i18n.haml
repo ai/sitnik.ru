@@ -19,7 +19,7 @@
     %script( src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js' )
     :javascript
       if ('/' == location.pathname && 'ru' == navigator.language)
-          location = location + 'index.ru.html'      
+          location = location + 'index.ru.html'
       jQuery(function($) {
           if ($.browser.msie) $('li p, dt').css('opacity', 0.6)
 
@@ -168,21 +168,21 @@
             s.parentNode.insertBefore(ga, s);
         })();
 
-  %body
+  %body( itemscope itemtype="http://schema.org/Person" )
     #root
-      %h1
-        = t.name.first
+      %h1( itemprop="name" )
+        %span( itemprop="givenName" )= t.name.first
         = t.quotes("<span class=\"nick\">#{t.name.nick}</span>")
-        = t.name.last
-      %a#photo( href='photo.jpg' )
+        %span( itemprop="familyName" )= t.name.last
+      %a#photo( href='photo.jpg' itemprop="image" )
         %img.thumb( src="photo.small.jpg" style="width: 200px; height: 267px;" alt="#{t.photo}" )
       %dl
         %dt= t.contacts.address
         %dd
-          %a( href='mailto:andrey@sitnik.ru' ) andrey@sitnik.ru
+          %a( href='mailto:andrey@sitnik.ru' itemprop="email" ) andrey@sitnik.ru
         %dt= t.contacts.phone
         %dd
-          %a( href='tel:+79117696571' ) +7 911 769 65 71
+          %a( href='tel:+79117696571' itemprop="telephone" ) +7 911 769 65 71
         %dt= t.contacts.location
         %dd
           %a.locality{ :href => t.locality.href }>= t.locality.name
@@ -199,22 +199,22 @@
       %ul
         %li
           %p= t.links.github.desc
-          %a( href='http://github.com/ai' )= t.links.github.name
+          %a( href='http://github.com/ai' rel="me" )= t.links.github.name
         %li
           %p= t.links.twitter.desc
-          %a( href='http://twitter.com/andrey_sitnik' )= t.links.twitter.name
+          %a( href='http://twitter.com/andrey_sitnik' rel="me" )= t.links.twitter.name
         %li
           %p= t.links.wikipedia.desc
-          %a( href='http://ru.wikipedia.org/wiki/User:A.I.' )= t.links.wikipedia.name
+          %a( href='http://ru.wikipedia.org/wiki/User:A.I.' rel="me" )= t.links.wikipedia.name
         %li
           %p= t.links.habrahabr.desc
-          %a( href='http://iskin.habrahabr.ru/blog/' )= t.links.habrahabr.name
+          %a( href='http://iskin.habrahabr.ru/blog/' rel="me" )= t.links.habrahabr.name
         %li
           %p= t.links.slideshare.desc
-          %a( href='http://www.slideshare.net/iskin' )= t.links.slideshare.name
+          %a( href='http://www.slideshare.net/iskin' rel="me" )= t.links.slideshare.name
         %li
           %p= t.links.vkontakte.desc
-          %a( href='http://vk.com/iskin' )= t.links.vkontakte.name
+          %a( href='http://vk.com/iskin' rel="me" )= t.links.vkontakte.name
     #translate
       = t.translate.icon
       %a{ :href => "index.#{t.translate.lang}.html", :rel => 'alternate', :lang => t.translate.lang }= t.translate.title
