@@ -1,8 +1,8 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    haml (3.1.1)
-    sass (3.1.2)
+    haml (3.1.6)
+    sass (3.2.0)
 
 PLATFORMS
   ruby
