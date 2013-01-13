@@ -217,4 +217,4 @@
           %a( href='http://vk.com/iskin' rel="me" )= t.links.vkontakte.name
     #translate
       = t.translate.icon
-      %a{ :href => "index.#{t.translate.lang}.html", :rel => 'alternate', :lang => t.translate.lang }= t.translate.title
+      %a{ :href => "index.#{t.translate.lang}.html", :rel => 'alternate', :hreflang => t.translate.lang }= t.translate.title
