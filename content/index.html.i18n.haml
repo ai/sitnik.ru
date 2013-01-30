@@ -21,8 +21,6 @@
       if ('/' == location.pathname && 'ru' == navigator.language)
           location = location + 'index.ru.html'
       jQuery(function($) {
-          if ($.browser.msie) $('li p, dt').css('opacity', 0.6)
-
           $('li a, dd').hover(function(e) {
               $(this).prev().css('opacity', ('mouseenter' == e.type ? 1 : 0.6))
           })
