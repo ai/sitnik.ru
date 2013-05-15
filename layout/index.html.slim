@@ -3,6 +3,7 @@ html lang=r18n.locale.code
   head
     meta charset="UTF-8"
     title= t.title
+    = js_from_cdn('jquery', '2.0.0')
     style= assets['style.css']
     - if production?
       = include_statistics

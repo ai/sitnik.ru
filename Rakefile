@@ -67,6 +67,12 @@ class Helpers
     end
   end
 
+  def js_from_cdn(lib, version)
+    url  = "//ajax.googleapis.com/ajax/libs/"
+    url += "#{lib}/#{version}/#{lib}#{production? ? '.min' : ''}.js"
+    "<script src=#{url}></script>"
+  end
+
   def include_statistics
     LAYOUT.join('statistics.html').read
   end
