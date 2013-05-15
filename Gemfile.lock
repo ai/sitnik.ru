@@ -1,0 +1,66 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    autoprefixer-rails (0.4.20130515)
+      execjs
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.6.2)
+    dimensions (1.2.0)
+    execjs (1.4.0)
+      multi_json (~> 1.0)
+    hike (1.2.2)
+    json (1.8.0)
+    libv8 (3.11.8.17)
+    mime-types (1.23)
+    multi_json (1.7.3)
+    r18n-core (1.1.5)
+    rack (1.5.2)
+    rack-protection (1.5.0)
+      rack
+    rails-sass-images (0.3)
+      dimensions (> 0)
+      mime-types (> 0)
+      sass (> 0)
+      sprockets (> 0)
+    rake (10.0.4)
+    ref (1.0.4)
+    sass (3.2.9)
+    sinatra (1.4.2)
+      rack (~> 1.5, >= 1.5.2)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
+    slim (1.3.8)
+      temple (~> 0.6.3)
+      tilt (~> 1.3.3)
+    sprockets (2.9.3)
+      hike (~> 1.2)
+      multi_json (~> 1.0)
+      rack (~> 1.0)
+      tilt (~> 1.1, != 1.3.0)
+    temple (0.6.4)
+    therubyracer (0.11.4)
+      libv8 (~> 3.11.8.12)
+      ref
+    tilt (1.3.7)
+    uglifier (2.1.0)
+      execjs (>= 0.3.0)
+      multi_json (~> 1.0, >= 1.0.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  autoprefixer-rails
+  coffee-script
+  json
+  r18n-core
+  rails-sass-images
+  rake
+  sass
+  sinatra
+  slim (> 1.3.0)
+  sprockets
+  therubyracer
+  uglifier

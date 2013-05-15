@@ -1,0 +1,10 @@
+doctype 5
+html lang=r18n.locale.code
+  head
+    meta charset="UTF-8"
+    title= t.title
+    style= assets['style.css']
+    - if production?
+      = include_statistics
+  body
+    script= assets['action.js']
