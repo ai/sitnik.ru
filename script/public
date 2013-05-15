@@ -1,6 +1,0 @@
-#!/bin/sh
-# Compile and upload content.
-
-cd `dirname $0`
-./build production
-rsync --recursive --delete --compress --progress --human-readable ../public/ ai@sitnik.ru:/home/ai/sitnik.ru
