@@ -35,16 +35,27 @@ body
   height: 100%
   border-radius: 50%
   background-size: 100% 100%
+  box-shadow: 1px 1px 0 white
 
+.images
+  perspective: 400px
 .mask, .photo
   backface-visibility: hidden
-  transition: transform 1.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)
-.photo
-  transform: rotateY(180deg)
-.images.is-real
-  .mask
-    transform: rotateY(-180deg)
-  .photo
+.images
+  &.is-animated
+    .mask, .photo
+      transition: transform 1.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+  &.with-left-rotation
+    .photo
+      transform: rotateY(180deg)
+    &.is-real .mask
+      transform: rotateY(-180deg)
+  &.with-right-rotation
+    .photo
+      transform: rotateY(-180deg)
+    &.is-real .mask
+      transform: rotateY(180deg)
+  &.is-real .photo, .mask
     transform: rotateY(0)
 
 .name
