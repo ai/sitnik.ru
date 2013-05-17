@@ -2,10 +2,20 @@ doctype 5
 html lang=r18n.locale.code
   head
     meta charset="UTF-8"
-    title= t.title
+    title= t.name.given + ' ' + t.name.family
     = js_from_cdn('jquery', '2.0.0')
+    link rel="stylesheet" href="//fonts.googleapis.com/css?family=Cuprum&amp;subset=latin,cyrillic"
+    = disable_mobile_zoom
     style= assets['style.css']
     - if production?
       = include_statistics
   body
+    .person( itemscope itemtype="http://schema.org/Person" )
+      .images
+        .mask
+        img.photo src=gravatar_url('andrey@sitnik.ru', size: 440)
+      h1.name
+        span( itemprop="givenName" )= t.name.given
+        = ' '
+        span( itemprop="familyName" )= t.name.family
     script= assets['action.js']

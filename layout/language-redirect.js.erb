@@ -1,14 +1,8 @@
 (function () {
-    var translations = <%= R18n.available_locales.
-        map    { |i| i.code.downcase }.
-        reject { |i| i == 'ru' } %>;
-
     var system   = navigator.userLanguage || navigator.language;
     var language = system.toLowerCase().replace(/-\w+$/, '');
 
-    for (var i = 0; i < translations.length; i++) {
-        if ( language == translations[i] ) {
-            location.pathname = '/' + translations[i];
-        }
+    if ( language == 'en' ) {
+        location.pathname = '/en';
     }
 })();

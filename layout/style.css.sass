@@ -1,0 +1,52 @@
+@import "rails-sass-images"
+
+*
+  margin: 0
+  padding: 0
+
+body
+  color: #333
+  background: #f8f8f8
+  background-image: inline("noise.png")
+  text-align: center
+  font: 15px Cuprum, sans-serif
+  text-shadow: 1px 1px 0 white
+
+.person
+  padding: 10px
+
+.images
+  width: 220px
+  height: 220px
+  position: relative
+  margin: 70px auto 80px auto
+
+.mask
+  position: absolute
+  top: 0
+  left: -8px
+  +hidpi-inline("mask.png")
+
+.photo
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  border-radius: 50%
+  background-size: 100% 100%
+
+.mask, .photo
+  backface-visibility: hidden
+  transition: transform 1.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+.photo
+  transform: rotateY(180deg)
+.images.is-real
+  .mask
+    transform: rotateY(-180deg)
+  .photo
+    transform: rotateY(0)
+
+.name
+  font-weight: normal
+  font-size: 46px

@@ -17,6 +17,7 @@ require 'sprockets'
 require 'coffee_script'
 require 'rails-sass-images'
 require 'autoprefixer-rails'
+require 'gravatar_image_tag'
 
 require 'r18n-core'
 R18n.default_places = ROOT.join('i18n')
@@ -76,6 +77,15 @@ class Helpers
   def include_statistics
     LAYOUT.join('statistics.html').read
   end
+
+  def disable_mobile_zoom
+    '<meta name="viewport" content="width=device-width, initial-scale=1.0, ' +
+      'maximum-scale=1.0, user-scalable=0" />'
+  end
+
+  def gravatar_url(email, opts = { })
+    GravatarImageTag::gravatar_url(email, opts)
+  end
 end
 
 def move_with_extra_js(from, to, js)
@@ -127,6 +137,7 @@ task :server do
 
   class SitnikRu < Sinatra::Base
     set :public_folder, nil
+    set :bind, '0.0.0.0'
     set :port, 3000
 
     get /^(\/|\/index\.html)$/ do

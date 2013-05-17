@@ -12,5 +12,6 @@ gem 'therubyracer'
 gem 'coffee-script'
 gem 'rails-sass-images'
 gem 'autoprefixer-rails'
+gem 'gravatar_image_tag'
 
 gem 'r18n-core'
