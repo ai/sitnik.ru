@@ -39,24 +39,12 @@ body
 
 .images
   perspective: 400px
+  cursor: pointer
 .mask, .photo
   backface-visibility: hidden
-.images
-  &.is-animated
-    .mask, .photo
-      transition: transform 1.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)
-  &.with-left-rotation
-    .photo
-      transform: rotateY(180deg)
-    &.is-real .mask
-      transform: rotateY(-180deg)
-  &.with-right-rotation
-    .photo
-      transform: rotateY(-180deg)
-    &.is-real .mask
-      transform: rotateY(180deg)
-  &.is-real .photo, .mask
-    transform: rotateY(0)
+  transition: transform 1.4s cubic-bezier(0.165, 0.84, 0.44, 1)
+.photo
+  transform: rotateY(-180deg)
 
 .name
   font-weight: normal
