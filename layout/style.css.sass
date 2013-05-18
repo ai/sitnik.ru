@@ -1,11 +1,22 @@
 @import "rails-sass-images"
 
+@function black($opacity)
+  @return rgba(0, 0, 0, $opacity)
+
+@function white($opacity)
+  @return rgba(255, 255, 255, $opacity)
+
 @mixin no-tap-highlight
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0)
+  -webkit-tap-highlight-color: white(0)
 
 *
   margin: 0
   padding: 0
+li
+  list-style: none
+a
+  color: #333
+  text-decoration: none
 
 body
   color: #333
@@ -21,7 +32,7 @@ body
   width: 220px
   height: 220px
   position: relative
-  margin: 70px auto 80px auto
+  margin: 50px auto 60px auto
 
 .mask, .photo
   cursor: pointer
@@ -55,3 +66,38 @@ body
 .name
   font-weight: normal
   font-size: 46px
+
+.list
+  padding-top: 50px
+  font-size: 18px
+.piece
+  display: inline-block
+  margin-right: 40px
+  width: 190px
+  text-align: left
+  vertical-align: top
+
+.link
+  display: inline-block
+  padding: 8px 10px
+  background: black(0)
+  transition: background 200ms
+  &:hover
+    background: black(0.04)
+
+.contacts
+  .label
+    color: #666
+  .value
+    padding-top: 3px
+    font-size: 24px
+
+.links
+  .dash
+    color: #bbb
+    padding: 0 4px
+  .login
+    color: #666
+  .service
+    color: #333
+    font-size: 24px

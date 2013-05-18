@@ -1,3 +1,16 @@
 name:
   given: Андрей
   family: Ситник
+location:
+  city: Санкт-Петербург
+  country: Россия
+
+contacts:
+  email: Эл. почта
+  location: Расположение
+  phone: Телефон
+
+links:
+  github: ГитХаб
+  twitter: Твиттер
+  vk: В Контакте

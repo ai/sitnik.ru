@@ -19,5 +19,46 @@ html lang=r18n.locale.code
         = ' '
         span( itemprop="familyName" )= t.name.family
 
+      ul.contacts.list
+        li.piece
+          a.link href="mailto:andrey@sitnik.ru"
+            .label= t.contacts.email
+            .value( itemprop="email" ) andrey@sitnik.ru
+        li.piece
+          a.link href="https://maps.google.com/maps?q=Russia,+Saint+Petersburg"
+            .label= t.contacts.location
+            .value( itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" )
+              span( itemprop="addressLocality" )= t.location.city
+              = ', '
+              span( itemprop="addressCountry" )= t.location.country
+        li.piece
+          a.link href="tel:+79117696571"
+            .label= t.contacts.phone
+            .value( itemprop="telephone" ) +7 911 769 65 71
+
+      ul.links.list
+        li.piece
+          a.link href="https://github.com/ai" rel="me"
+            span.service= t.links.github
+            span.dash= '/'
+            span.login ai
+        li.piece
+          a.link href="https://twitter.com/andrey_sitnik" rel="me"
+            span.service= t.links.twitter
+            span.dash= '/'
+            span.login andrey_sitnik
+        - if t.links.vk.translated?
+          li.piece
+            a.link href="https://vk.com/iskin" rel="me"
+              span.service= t.links.vk
+              span.dash= '/'
+              span.login iskin
+        - else
+          li.piece
+            a.link href="https://facebook.com/andrey.sitnik" rel="me"
+              span.service= t.links.facebook
+              span.dash= '/'
+              span.login andrey.sitnik
+
     script= assets['action.js']
     style= assets['images.css']

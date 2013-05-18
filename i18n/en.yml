@@ -1,3 +1,16 @@
 name:
   given: Andrey
   family: Sitnik
+location:
+  city: Saint Peterburg
+  country: Russia
+
+contacts:
+  email: E-mail
+  location: Location
+  phone: Phone
+
+links:
+  github: GitHub
+  twitter: Twitter
+  facebook: Facebook
