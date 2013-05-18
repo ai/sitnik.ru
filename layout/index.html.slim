@@ -13,9 +13,11 @@ html lang=r18n.locale.code
     .person( itemscope itemtype="http://schema.org/Person" )
       .images.is-animated.with-right-rotation
         .mask
-        img.photo src=gravatar_url('andrey@sitnik.ru', size: 440)
+        img.photo itemprop="image" src=gravatar_url('andrey@sitnik.ru', size: 440)
       h1.name
         span( itemprop="givenName" )= t.name.given
         = ' '
         span( itemprop="familyName" )= t.name.family
+
     script= assets['action.js']
+    style= assets['images.css']

@@ -10,7 +10,6 @@
 body
   color: #333
   background: #f8f8f8
-  background-image: inline("noise.png")
   text-align: center
   font: 15px Cuprum, sans-serif
   text-shadow: 1px 1px 0 white
@@ -32,7 +31,8 @@ body
   position: absolute
   top: 0
   left: -8px
-  +hidpi-inline("mask.png")
+  +image-size("mask.png", 2)
+  background-size: 100% 100%
 
 .photo
   position: absolute
