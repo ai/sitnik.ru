@@ -1,5 +1,8 @@
 @import "rails-sass-images"
 
+@mixin no-tap-highlight
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0)
+
 *
   margin: 0
   padding: 0
@@ -21,6 +24,10 @@ body
   position: relative
   margin: 70px auto 80px auto
 
+.mask, .photo
+  cursor: pointer
+  +no-tap-highlight
+
 .mask
   position: absolute
   top: 0
@@ -39,7 +46,6 @@ body
 
 .images
   perspective: 400px
-  cursor: pointer
 .mask, .photo
   backface-visibility: hidden
   transition: transform 1.4s cubic-bezier(0.165, 0.84, 0.44, 1)
