@@ -4,7 +4,7 @@ html lang=r18n.locale.code
     meta charset="UTF-8"
     title= t.name.given + ' ' + t.name.family
     = js_from_cdn('jquery', '2.0.0')
-    link rel="stylesheet" href="//fonts.googleapis.com/css?family=Cuprum&amp;subset=latin,cyrillic"
+    link rel="stylesheet" href="//fonts.googleapis.com/css?family=Cuprum&subset=latin,cyrillic"
     = disable_mobile_zoom
     style= assets['style.css']
     - if production?
@@ -21,9 +21,9 @@ html lang=r18n.locale.code
 
       ul.contacts.list
         li.piece
-          a.link href="mailto:andrey@sitnik.ru"
+          a.link href="mailto:#{ data.email }"
             .label= t.contacts.email
-            .value( itemprop="email" ) andrey@sitnik.ru
+            .value( itemprop="email" )= data.email
         li.piece
           a.link href="https://maps.google.com/maps?q=Russia,+Saint+Petersburg"
             .label= t.contacts.location
@@ -32,33 +32,18 @@ html lang=r18n.locale.code
               = ', '
               span( itemprop="addressCountry" )= t.location.country
         li.piece
-          a.link href="tel:+79117696571"
+          a.link href="tel:#{ data.phone.gsub(/\s/, '') }"
             .label= t.contacts.phone
-            .value( itemprop="telephone" ) +7 911 769 65 71
+            .value( itemprop="telephone" )= data.phone
 
       ul.links.list
-        li.piece
-          a.link href="https://github.com/ai" rel="me"
-            span.service= t.links.github
-            span.dash= '/'
-            span.login ai
-        li.piece
-          a.link href="https://twitter.com/andrey_sitnik" rel="me"
-            span.service= t.links.twitter
-            span.dash= '/'
-            span.login andrey_sitnik
-        - if t.links.vk.translated?
-          li.piece
-            a.link href="https://vk.com/iskin" rel="me"
-              span.service= t.links.vk
-              span.dash= '/'
-              span.login iskin
-        - else
-          li.piece
-            a.link href="https://facebook.com/andrey.sitnik" rel="me"
-              span.service= t.links.facebook
-              span.dash= '/'
-              span.login andrey.sitnik
+        - data.links.each do |link|
+          - if translated? t.links[link.service]
+            li.piece class=link.service
+              a.link href="https://#{ link.service }/#{ link.login }" rel="me"
+                span.service= t.links[link.service]
+                span.dash= '/'
+                span.login= link.login
 
     script= assets['action.js']
     style= assets['images.css']

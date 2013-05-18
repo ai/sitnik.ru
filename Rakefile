@@ -1,3 +1,4 @@
+require 'ostruct'
 require 'pathname'
 
 class Pathname
@@ -34,7 +35,12 @@ class Helpers
   def self.instance(env)
     @@instance ||= self.new
     @@instance.env = env
+    @@instance.clear!
     @@instance
+  end
+
+  def clear!
+    @data = nil
   end
 
   def assets
@@ -85,6 +91,24 @@ class Helpers
 
   def gravatar_url(email, opts = { })
     GravatarImageTag::gravatar_url(email, opts)
+  end
+
+  def hash_to_struct(obj)
+    return obj.map { |i| hash_to_struct(i) } if obj.is_a? Array
+    return obj unless obj.is_a? Hash
+
+    obj.each_pair { |key, value| obj[key] = hash_to_struct(value) }
+    OpenStruct.new(obj)
+  end
+
+  def data
+    @data ||= begin
+      hash_to_struct YAML.load_file(ROOT.join('data.yml'))
+    end
+  end
+
+  def translated?(str)
+    str.translated? and str.locale == r18n.locale
   end
 end
 

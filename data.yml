@@ -1,0 +1,12 @@
+email: andrey@sitnik.ru
+phone: +7 911 769 65 71
+
+links:
+  - service: github
+    login: ai
+  - service: twitter
+    login: andrey_sitnik
+  - service: vk
+    login: iskin
+  - service: facebook
+    login: andrey.sitnik
