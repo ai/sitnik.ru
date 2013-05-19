@@ -65,23 +65,25 @@ body
 
 .name
   font-weight: normal
-  font-size: 46px
+  font-size: 48px
+  padding-bottom: 20px
 
 .list
-  padding-top: 50px
+  padding-top: 30px
   font-size: 18px
 .piece
   display: inline-block
-  margin-right: 40px
-  width: 190px
+  margin-right: 50px
+  width: 190px + 30px
   text-align: left
   vertical-align: top
 
 .link
   display: inline-block
-  padding: 8px 10px
+  padding: 10px 10px 8px 10px
   background: black(0)
   transition: background 200ms
+  position: relative
   &:hover
     background: black(0.04)
 
@@ -91,13 +93,42 @@ body
   .value
     padding-top: 3px
     font-size: 24px
+    transition: color 200ms
+  .link:hover .value
+    color: black
 
 .links
+  .icon
+    position: absolute
+    left: 10px
+    opacity: 0.75
+    transition: opacity 200ms
+  .service
+    color: #333
+    font-size: 24px
   .dash
     color: #bbb
     padding: 0 4px
   .login
     color: #666
-  .service
-    color: #333
-    font-size: 24px
+  .service, .dash, .login
+    transition: color 200ms
+  .link:hover
+    .icon
+      opacity: 1
+    .service
+      color: black
+    .dash
+      color: #888
+    .login
+      color: #333
+
+@each $service in github, twitter, vk, facebook
+  .#{ $service }
+    .link
+      padding-left: (image-width("#{ $service }.png") / 2) + 20px
+      margin-left: (image-width("#{ $service }.png") / -2) - 10px
+    .icon
+      top: round((45px - (image-height("#{ $service }.png") / 2)) / 2)
+      +image-size("#{ $service }.png", 2)
+      background-size: 100% 100%

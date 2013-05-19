@@ -4,7 +4,7 @@ html lang=r18n.locale.code
     meta charset="UTF-8"
     title= t.name.given + ' ' + t.name.family
     = js_from_cdn('jquery', '2.0.0')
-    link rel="stylesheet" href="//fonts.googleapis.com/css?family=Cuprum&subset=latin,cyrillic"
+    link rel="stylesheet" href="//fonts.googleapis.com/css?family=Cuprum&amp;subset=latin,cyrillic"
     = disable_mobile_zoom
     style= assets['style.css']
     - if production?
@@ -13,7 +13,7 @@ html lang=r18n.locale.code
     .person( itemscope itemtype="http://schema.org/Person" )
       .images.is-animated.with-right-rotation
         .mask
-        img.photo itemprop="image" src=gravatar_url('andrey@sitnik.ru', size: 440)
+        img.photo itemprop="image" src=gravatar_url('andrey@sitnik.ru', size: 440) alt=t.photo
       h1.name
         span( itemprop="givenName" )= t.name.given
         = ' '
@@ -40,10 +40,14 @@ html lang=r18n.locale.code
         - data.links.each do |link|
           - if translated? t.links[link.service]
             li.piece class=link.service
-              a.link href="https://#{ link.service }/#{ link.login }" rel="me"
+              a.link href="https://#{ link.service }.com/#{ link.login }" rel="me"
+                .icon
                 span.service= t.links[link.service]
                 span.dash= '/'
                 span.login= link.login
+
+      meta itemprop="url" content="http://sitnik.ru/"
+      meta itemprop="birthDate" content="1987-04-06"
 
     script= assets['action.js']
     style= assets['images.css']

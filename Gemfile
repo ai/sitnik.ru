@@ -4,7 +4,7 @@ gem 'rake'
 gem 'sinatra'
 gem 'json'
 
-gem 'slim',               '> 1.3.0'
+gem 'slim',               '>= 2.0.0.pre.8'
 gem 'sass'
 gem 'uglifier'
 gem 'sprockets'
