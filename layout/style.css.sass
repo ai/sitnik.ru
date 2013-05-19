@@ -18,12 +18,17 @@ a
   color: #333
   text-decoration: none
 
+html
+  position: relative
+  min-height: 100%
+
 body
   color: #333
   background: #f8f8f8
   text-align: center
   font: 15px Cuprum, sans-serif
   text-shadow: 1px 1px 0 white
+  margin-bottom: 100px
 
 .person
   padding: 10px
@@ -132,3 +137,24 @@ body
       top: round((45px - (image-height("#{ $service }.png") / 2)) / 2)
       +image-size("#{ $service }.png", 2)
       background-size: 100% 100%
+
+.languages
+  position: absolute
+  left: 0
+  bottom: 0
+  right: 0
+.lang
+  display: inline-block
+  margin: 0 0 13px 20px
+  color: #666
+  border-bottom: 1px solid black(0.2)
+  line-height: 1
+  transition: color 200ms, border 200ms
+  &.is-current
+    color: #333
+    border-bottom: none
+  &:first-child
+    margin-left: 0
+  &:hover
+    color: #333
+    border-bottom-color: #333

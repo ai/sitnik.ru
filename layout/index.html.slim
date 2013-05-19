@@ -49,5 +49,13 @@ html lang=r18n.locale.code
       meta itemprop="url" content="http://sitnik.ru/"
       meta itemprop="birthDate" content="1987-04-06"
 
+      .languages
+        - each_locale do |code, locale|
+          - if locale == r18n.locale
+            a.lang.is-current= locale.title
+          - else
+            - url = "/#{code if code != 'ru'}"
+            a.lang( href=url rel="alternate" hreflang=code )= locale.title
+
     script= assets['action.js']
     style= assets['images.css']

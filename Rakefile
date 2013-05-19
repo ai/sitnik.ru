@@ -69,7 +69,7 @@ class Helpers
   end
 
   def each_locale(&block)
-    r18n.available_locales.sort { |a, b| a.code <=> b.code }.each do |locale|
+    r18n.available_locales.sort { |a, b| b.code <=> a.code }.each do |locale|
       yield(locale.code, locale)
     end
   end
