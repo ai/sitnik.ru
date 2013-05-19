@@ -51,6 +51,7 @@ body
   background-size: 100% 100%
 
 .photo
+  display: none
   position: absolute
   top: 0
   left: 0
@@ -60,13 +61,29 @@ body
   background-size: 100% 100%
   box-shadow: 1px 1px 0 white
 
-.images
-  perspective: 400px
-.mask, .photo
-  backface-visibility: hidden
-  transition: transform 1.4s cubic-bezier(0.165, 0.84, 0.44, 1)
-.photo
-  transform: rotateY(-180deg)
+.transform-2d
+  .mask, .photo
+    transition: opacity 800ms, transform 800ms
+  .mask
+    z-index: 2
+  .photo
+    display: block
+  .photo, .is-real .mask
+    transform: scale(0.7)
+    opacity: 0
+  .is-real .photo, .mask
+    transform: scale(1)
+    opacity: 1
+
+.transform-3d
+  .images
+    perspective: 400px
+  .mask, .photo
+    backface-visibility: hidden
+    transition: transform 1.4s cubic-bezier(0.165, 0.84, 0.44, 1)
+  .photo
+    display: block
+    transform: rotateY(-180deg)
 
 .name
   font-weight: normal
