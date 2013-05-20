@@ -2,6 +2,16 @@ $ ->
   after = (ms, fn) -> setTimeout(fn, ms)
   $body = $('body')
 
+  # Нажатие на тач-интерфейсе
+
+  links = $('.link, .lang')
+  links.on 'touchstart', ->
+    $(@).addClass('is-tapped')
+  links.on 'touchend touchmove', ->
+    $(@).removeClass('is-tapped').addClass('was-tapped')
+  links.on 'mouseneter', ->
+    $(@).removeClass('was-tapped')
+
   # Определяем наличие 3D
 
   detect3d = ->

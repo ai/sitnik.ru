@@ -55,7 +55,8 @@ html lang=r18n.locale.code
             a.lang.is-current= locale.title
           - else
             - url = "/#{code if code != 'ru'}"
-            a.lang( href=url rel="alternate" hreflang=code )= locale.title
+            a.lang( href=url rel="alternate" hreflang=code )
+              span.text= locale.title
 
     script= assets['action.js']
     style= assets['images.css']

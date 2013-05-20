@@ -28,7 +28,7 @@ body
   text-align: center
   font: 15px Cuprum, sans-serif
   text-shadow: 1px 1px 0 white
-  margin-bottom: 100px
+  margin-bottom: 90px
 
 .person
   padding: 10px
@@ -102,40 +102,69 @@ body
 
 .link
   display: inline-block
-  padding: 10px 10px 8px 10px
+  padding: 10px 14px 8px 14px
   background: black(0)
   transition: background 200ms
   position: relative
+  +no-tap-highlight
   &:hover
     background: black(0.04)
+  &:active
+    transform: translateY(2px)
+  &.is-tapped
+    transition: none
+    transform: scale(0.9)
+    background: black(0.04)
+  &.was-tapped:hover
+    background: black(0)
+  &.was-tapped:active
+    transform: none
 
 .contacts
-  .label
-    color: #666
   .value
     padding-top: 3px
     font-size: 24px
+  .label, .value
     transition: color 200ms
-  .link:hover .value
-    color: black
+  .link.is-tapped
+    .label, .value
+      transition: none
+  .link, .link.was-tapped:hover
+    .label
+      color: #666
+    .value
+      color: #333
+  .link:hover, .link.is-tapped
+    .label
+      color: #333
+    .value
+      color: black
 
 .links
   .icon
     position: absolute
     left: 10px
-    opacity: 0.75
     transition: opacity 200ms
   .service
-    color: #333
     font-size: 24px
   .dash
     color: #bbb
     padding: 0 4px
-  .login
-    color: #666
   .service, .dash, .login
     transition: color 200ms
-  .link:hover
+  .link.is-tapped
+    .service, .dash, .login
+      transition: none
+  .link, .link.was-tapped:hover
+    .icon
+      opacity: 0.75
+    .service
+      color: #333
+    .dash
+      color: #bbb
+    .login
+      color: #666
+  .link:hover, .link.is-tapped
     .icon
       opacity: 1
     .service
@@ -148,8 +177,8 @@ body
 @each $service in github, twitter, vk, facebook
   .#{ $service }
     .link
-      padding-left: (image-width("#{ $service }.png") / 2) + 20px
-      margin-left: (image-width("#{ $service }.png") / -2) - 10px
+      padding-left: (image-width("#{ $service }.png") / 2) + 24px
+      margin-left: (image-width("#{ $service }.png") / -2) - 14px
     .icon
       top: round((45px - (image-height("#{ $service }.png") / 2)) / 2)
       +image-size("#{ $service }.png", 2)
@@ -162,11 +191,19 @@ body
   right: 0
 .lang
   display: inline-block
-  margin: 0 0 13px 20px
-  color: #666
-  border-bottom: 1px solid black(0.2)
-  line-height: 1
-  transition: color 200ms, border 200ms
+  margin: 0 0 8px 4px
+  padding: 7px 8px
+  background: black(0)
+  transition: background 200ms, color 200ms
+  +no-tap-highlight
+  .text
+    display: inline-block
+    transition: border 200ms
+    line-height: 1
+  &, &.was-tapped:hover
+    color: #666
+    .text
+      border-bottom: 1px solid black(0.2)
   &.is-current
     color: #333
     border-bottom: none
@@ -174,4 +211,14 @@ body
     margin-left: 0
   &:hover
     color: #333
-    border-bottom-color: #333
+    .text
+      border-bottom-color: #333
+  &:active
+    transform: translateY(2px)
+  &.is-tapped
+    transition: none
+    transform: scale(0.9)
+    background: black(0.04)
+    color: black
+  &.was-tapped:active
+    transform: none
