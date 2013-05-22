@@ -91,11 +91,21 @@ body
   padding: 10px 14px 8px 14px
   transition: background 200ms
   position: relative
+  border-radius: 3px
+  .icon
+    position: absolute
+    left: 10px
+    transition: opacity 200ms
   +no-hover
     background: black(0)
     transform: none
+    .icon
+      opacity: 0.75
   &:hover
     background: black(0.04)
+  &:hover, &.is-tapped
+    .icon
+      opacity: 1
   &:active
     transform: translateY(2px)
   &.is-tapped
@@ -104,6 +114,8 @@ body
     background: black(0.04)
 
 .contacts
+  .icon
+    margin-top: 26px
   .value
     padding-top: 3px
     font-size: 24px
@@ -125,10 +137,6 @@ body
         color: black
 
 .links
-  .icon
-    position: absolute
-    left: 10px
-    transition: opacity 200ms
   .service
     font-size: 24px
   .dash
@@ -138,8 +146,6 @@ body
     transition: color 200ms
   .link
     +no-hover
-      .icon
-        opacity: 0.75
       .service
         color: #333
       .dash
@@ -150,8 +156,6 @@ body
       .service, .dash, .login
         transition: none
     &:hover, &.is-tapped
-      .icon
-        opacity: 1
       .service
         color: black
       .dash
@@ -159,14 +163,14 @@ body
       .login
         color: #333
 
-@each $service in github, twitter, vk, facebook
-  .#{ $service }
+@each $icon in email, location, phone, github, twitter, vk, facebook
+  .#{ $icon }
     .link
-      padding-left: (image-width("#{ $service }.png") / 2) + 24px
-      margin-left: (image-width("#{ $service }.png") / -2) - 14px
+      padding-left: (image-width("#{ $icon }.png") / 2) + 24px
+      margin-left: (image-width("#{ $icon }.png") / -2) - 14px
     .icon
-      top: round((45px - (image-height("#{ $service }.png") / 2)) / 2)
-      +image-size("#{ $service }.png", 2)
+      top: round((45px - (image-height("#{ $icon }.png") / 2)) / 2)
+      +image-size("#{ $icon }.png", 2)
       background-size: 100% 100%
 
 +sticky-footer(85px, ".languages")

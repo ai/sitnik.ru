@@ -4,6 +4,6 @@ body
 .mask
   background-image: inline("mask.png")
 
-@each $service in github, twitter, vk, facebook
-  .#{ $service } .icon
-    background-image: inline("#{ $service }.png")
+@each $icon in email, location, phone, github, twitter, vk, facebook
+  .#{ $icon } .icon
+    background-image: inline("#{ $icon }.png")

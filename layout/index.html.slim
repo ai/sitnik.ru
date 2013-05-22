@@ -20,19 +20,22 @@ html lang=r18n.locale.code
         span( itemprop="familyName" )= t.name.family
 
       ul.contacts.list
-        li.piece
+        li.piece.email
           a.link href="mailto:#{ data.email }"
+            .icon
             .label= t.contacts.email
             .value( itemprop="email" )= data.email
-        li.piece
+        li.piece.location
           a.link href="https://maps.google.com/maps?q=Russia,+Saint+Petersburg"
+            .icon
             .label= t.contacts.location
             .value( itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" )
               span( itemprop="addressLocality" )= t.location.city
               = ', '
               span( itemprop="addressCountry" )= t.location.country
-        li.piece
+        li.piece.phone
           a.link href="tel:#{ data.phone.gsub(/\s/, '') }"
+            .icon
             .label= t.contacts.phone
             .value( itemprop="telephone" )= data.phone
 
