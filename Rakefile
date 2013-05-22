@@ -7,10 +7,10 @@ class Pathname
   end
 end
 
-ROOT    = Pathname(__FILE__).dirname
-CONTENT = ROOT.join('content/')
-PUBLIC  = ROOT.join('public/')
-LAYOUT  = ROOT.join('layout/')
+ROOT   = Pathname(__FILE__).dirname
+PUBLIC = ROOT.join('public/')
+LAYOUT = ROOT.join('layout/')
+IMAGES = ROOT.join('images/')
 
 require 'evil-front'
 require 'gravatar_image_tag'
@@ -43,6 +43,9 @@ class Helpers
     @sprockets ||= begin
       Sprockets::Environment.new(ROOT) do |env|
         env.append_path(LAYOUT)
+        env.append_path(IMAGES)
+        env.append_path(ROOT.join('scripts/'))
+        env.append_path(ROOT.join('styles/'))
 
         if @env == :production
           env.js_compressor  = Uglifier.new(copyright: false)
@@ -141,7 +144,7 @@ task :build do
   end
 
   %w( favicon.ico apple-touch-icon.png ).each do |file|
-    FileUtils.cp LAYOUT.join(file), PUBLIC.join(file)
+    FileUtils.cp IMAGES.join(file), PUBLIC.join(file)
   end
 
   print "\n"
@@ -167,11 +170,11 @@ task :server do
     end
 
     get '/favicon.ico' do
-      send_file LAYOUT.join('favicon.ico')
+      send_file IMAGES.join('favicon.ico')
     end
 
     get '/apple-touch-icon.png' do
-      send_file LAYOUT.join('apple-touch-icon.png')
+      send_file IMAGES.join('apple-touch-icon.png')
     end
 
     def build_page(locale_code)
