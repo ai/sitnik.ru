@@ -9,17 +9,12 @@ a
   color: #333
   text-decoration: none
 
-html
-  position: relative
-  min-height: 100%
-
 body
   color: #333
   background: #f8f8f8
   text-align: center
   font: 15px Cuprum, sans-serif
   text-shadow: 1px 1px 0 white
-  margin-bottom: 90px
   +no-tap-highlight
 
 .person
@@ -174,11 +169,11 @@ body
       +image-size("#{ $service }.png", 2)
       background-size: 100% 100%
 
++sticky-footer(85px, ".languages")
+
 .languages
-  position: absolute
-  left: 0
-  bottom: 0
-  right: 0
+  padding-top: 85px - 38px
+  height: 38px
 .lang
   display: inline-block
   margin: 0 0 8px 4px
