@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ai/evil-front.git
-  revision: 9037cf021a48f2904a089c4fedb399c276f7e82e
+  revision: 1b8932d5b591ec5888ac43805e2c79a58e9840aa
   specs:
     evil-front (0.1)
       autoprefixer-rails (>= 0.4)
