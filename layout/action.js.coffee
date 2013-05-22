@@ -1,27 +1,9 @@
+#= require evil-front/tappable
+#= require evil-front/detect-3d
+
 $ ->
   after = (ms, fn) -> setTimeout(fn, ms)
   $body = $('body')
-
-  # Нажатие на тач-интерфейсе
-
-  links = $('.link, .lang')
-  links.on 'touchstart', ->
-    $(@).addClass('is-tapped')
-  links.on 'touchend touchmove', ->
-    $(@).removeClass('is-tapped').addClass('was-tapped')
-  links.on 'mouseneter', ->
-    $(@).removeClass('was-tapped')
-
-  # Определяем наличие 3D
-
-  detect3d = ->
-    support = $body.css('perspective')?
-    if support and document.body.style.webkitPerspective?
-      support = matchMedia("(transform-3d), (-webkit-transform-3d)").matches
-    support
-  support3d = detect3d()
-
-  $body.addClass(if support3d then 'transform-3d' else 'transform-2d')
 
   # Вращение фотографии и маски
 
@@ -29,7 +11,7 @@ $ ->
   images = $('.images')
   photo  = $('.photo')
   mask   = $('.mask')
-  rotate = if support3d
+  rotate = if evil.body.hasClass('transform-3d')
     (direction) ->
       angle += if direction == 'left' then -180 else 180
       photo.css(transform: "rotateY(#{ angle }deg)")

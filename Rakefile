@@ -12,12 +12,7 @@ CONTENT = ROOT.join('content/')
 PUBLIC  = ROOT.join('public/')
 LAYOUT  = ROOT.join('layout/')
 
-require 'slim'
-require 'uglifier'
-require 'sprockets'
-require 'coffee_script'
-require 'rails-sass-images'
-require 'autoprefixer-rails'
+require 'evil-front'
 require 'gravatar_image_tag'
 
 require 'r18n-core'
@@ -29,6 +24,7 @@ end
 
 class Helpers
   include R18n::Helpers
+  include EvilFront::Helpers
 
   attr_accessor :env
 
@@ -55,6 +51,7 @@ class Helpers
 
         AutoprefixerRails.install(env)
         RailsSassImages.install(env)
+        EvilFront.install(env)
       end
     end
   end
@@ -82,11 +79,6 @@ class Helpers
 
   def include_statistics
     LAYOUT.join('statistics.html').read
-  end
-
-  def disable_mobile_zoom
-    '<meta name="viewport" content="width=device-width, initial-scale=1.0, ' +
-      'maximum-scale=1.0, user-scalable=0" />'
   end
 
   def gravatar_url(email, opts = { })

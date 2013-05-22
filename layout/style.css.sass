@@ -1,13 +1,4 @@
-@import "rails-sass-images"
-
-@function black($opacity)
-  @return rgba(0, 0, 0, $opacity)
-
-@function white($opacity)
-  @return rgba(255, 255, 255, $opacity)
-
-@mixin no-tap-highlight
-  -webkit-tap-highlight-color: white(0)
+@import "evil-front"
 
 *
   margin: 0
@@ -29,6 +20,7 @@ body
   font: 15px Cuprum, sans-serif
   text-shadow: 1px 1px 0 white
   margin-bottom: 90px
+  +no-tap-highlight
 
 .person
   padding: 10px
@@ -41,7 +33,6 @@ body
 
 .mask, .photo
   cursor: pointer
-  +no-tap-highlight
 
 .mask
   position: absolute
@@ -80,7 +71,7 @@ body
     perspective: 400px
   .mask, .photo
     backface-visibility: hidden
-    transition: transform 1.4s cubic-bezier(0.165, 0.84, 0.44, 1)
+    transition: transform 1.4s $easeOutQuart
   .photo
     display: block
     transform: rotateY(-180deg)
@@ -103,10 +94,11 @@ body
 .link
   display: inline-block
   padding: 10px 14px 8px 14px
-  background: black(0)
   transition: background 200ms
   position: relative
-  +no-tap-highlight
+  +no-hover
+    background: black(0)
+    transform: none
   &:hover
     background: black(0.04)
   &:active
@@ -115,10 +107,6 @@ body
     transition: none
     transform: scale(0.9)
     background: black(0.04)
-  &.was-tapped:hover
-    background: black(0)
-  &.was-tapped:active
-    transform: none
 
 .contacts
   .value
@@ -126,19 +114,20 @@ body
     font-size: 24px
   .label, .value
     transition: color 200ms
-  .link.is-tapped
-    .label, .value
-      transition: none
-  .link, .link.was-tapped:hover
-    .label
-      color: #666
-    .value
-      color: #333
-  .link:hover, .link.is-tapped
-    .label
-      color: #333
-    .value
-      color: black
+  .link
+    +no-hover
+      .label
+        color: #666
+      .value
+        color: #333
+    &.is-tapped
+      .label, .value
+        transition: none
+    &:hover, &.is-tapped
+      .label
+        color: #333
+      .value
+        color: black
 
 .links
   .icon
@@ -152,27 +141,28 @@ body
     padding: 0 4px
   .service, .dash, .login
     transition: color 200ms
-  .link.is-tapped
-    .service, .dash, .login
-      transition: none
-  .link, .link.was-tapped:hover
-    .icon
-      opacity: 0.75
-    .service
-      color: #333
-    .dash
-      color: #bbb
-    .login
-      color: #666
-  .link:hover, .link.is-tapped
-    .icon
-      opacity: 1
-    .service
-      color: black
-    .dash
-      color: #888
-    .login
-      color: #333
+  .link
+    +no-hover
+      .icon
+        opacity: 0.75
+      .service
+        color: #333
+      .dash
+        color: #bbb
+      .login
+        color: #666
+    &.is-tapped
+      .service, .dash, .login
+        transition: none
+    &:hover, &.is-tapped
+      .icon
+        opacity: 1
+      .service
+        color: black
+      .dash
+        color: #888
+      .login
+        color: #333
 
 @each $service in github, twitter, vk, facebook
   .#{ $service }
@@ -195,20 +185,20 @@ body
   padding: 7px 8px
   background: black(0)
   transition: background 200ms, color 200ms
-  +no-tap-highlight
   .text
     display: inline-block
     transition: border 200ms
     line-height: 1
-  &, &.was-tapped:hover
+  &:first-child
+    margin-left: 0
+  +no-hover
     color: #666
+    transform: none
     .text
       border-bottom: 1px solid black(0.2)
   &.is-current
     color: #333
     border-bottom: none
-  &:first-child
-    margin-left: 0
   &:hover
     color: #333
     .text
@@ -220,5 +210,3 @@ body
     transform: scale(0.9)
     background: black(0.04)
     color: black
-  &.was-tapped:active
-    transform: none
