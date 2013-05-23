@@ -23,7 +23,7 @@ $ ->
 
   manual = false
   $(window).load ->
-    after 1000, ->
+    after 3000, ->
       rotate('right') unless manual
 
   # Вращение по клику

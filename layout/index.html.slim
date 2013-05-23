@@ -32,7 +32,7 @@ html lang=r18n.locale.code
             .value( itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" )
               span( itemprop="addressLocality" )= t.location.city
               = ', '
-              span( itemprop="addressCountry" )= t.location.country
+              div( itemprop="addressCountry" )= t.location.country
         li.piece.phone
           a.link href="tel:#{ data.phone.gsub(/\s/, '') }"
             .icon
