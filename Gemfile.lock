@@ -17,7 +17,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    autoprefixer-rails (0.4.20130523)
+    autoprefixer-rails (0.4.20130524)
       execjs
     coffee-script (2.2.0)
       coffee-script-source
