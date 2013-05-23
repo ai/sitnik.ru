@@ -12,6 +12,8 @@ PUBLIC = ROOT.join('public/')
 LAYOUT = ROOT.join('layout/')
 IMAGES = ROOT.join('images/')
 
+STANDALONE = %w( favicon.ico apple-touch-icon.png )
+
 require 'evil-front'
 require 'gravatar_image_tag'
 
@@ -143,9 +145,7 @@ task :build do
     print '.'
   end
 
-  %w( favicon.ico apple-touch-icon.png ).each do |file|
-    FileUtils.cp IMAGES.join(file), PUBLIC.join(file)
-  end
+  STANDALONE.each { |i| FileUtils.cp IMAGES.join(i), PUBLIC.join(i) }
 
   print "\n"
 end
@@ -169,12 +169,10 @@ task :server do
       send_file PUBLIC.join('en.html')
     end
 
-    get '/favicon.ico' do
-      send_file IMAGES.join('favicon.ico')
-    end
-
-    get '/apple-touch-icon.png' do
-      send_file IMAGES.join('apple-touch-icon.png')
+    STANDALONE.each do |image|
+      get "/#{image}" do
+        send_file IMAGES.join(image)
+      end
     end
 
     def build_page(locale_code)

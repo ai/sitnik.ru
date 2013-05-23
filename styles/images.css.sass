@@ -1,9 +1,6 @@
 body
   background-image: inline("noise.png")
 
-.mask
-  background-image: inline("mask.png")
-
 @each $icon in email, location, phone, github, twitter, vk, facebook
   .#{ $icon } .icon
     background-image: inline("#{ $icon }.png")
