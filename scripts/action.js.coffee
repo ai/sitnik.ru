@@ -44,35 +44,34 @@ $ ->
   if window.history and history.pushState
 
     translations = { }
-    translation  = (url, callback) ->
-      if translations[url]
-        callback.apply(this, translations[url])
+    translation  = (lang, callback) ->
+      if translations[lang]
+        callback(translations[lang])
       else
         $.ajax
-          type: 'GET'
-          url:   url
-          fail: -> location = url
+          url:      "/#{lang}.content"
+          dataType: 'text'
+          fail: ->
+            location = if lang == 'ru' then '/' else "/#{lang}"
           success: (html) ->
-            title   = html.match(/<title>([^<]+)<\/title>/)[1]
-            content = $(html).find('.content').html()
-            translations[url] = [title, content]
-            callback.apply(this, translations[url])
+            translations[lang] = html
+            callback(translations[lang])
 
-    translations[location.pathname] = [document.title, $('.content').html()]
+    translations[$('html').attr('lang')] = $('.content').html()
 
     $('.lang').click ->
       link = $(@)
       return false if link.hasClass('is-loading') or link.hasClass('is-current')
       link.addClass('is-loading')
       evil.queue (done) ->
-        translation link.attr('href'), (title, content) ->
+        translation link.attr('hreflang'), (html) ->
           $('.lang').removeClass('is-current')
           link.addClass('is-current').removeClass('is-loading')
 
-          document.title = title
           old  = $('.content')
-          next = $('<div class="content is-next is-hidden" />').html(content).
+          next = $('<div class="content is-next is-hidden" />').html(html).
                    insertAfter(old)
+          document.title = next.find('.name').text()
 
           after 1, ->
             old.addClass('is-hidden')

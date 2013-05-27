@@ -1,0 +1,41 @@
+h1.name
+  span( itemprop="givenName" )= t.name.given
+  = ' '
+  span( itemprop="familyName" )= t.name.family
+ul.contacts.list
+  li.piece.email
+    a.link href="mailto:#{ data.email }"
+      .icon
+      .label= t.contacts.email
+      .value( itemprop="email" )= data.email
+  li.piece.location
+    a.link href="https://maps.google.com/maps?q=Russia,+Saint+Petersburg"
+      .icon
+      .label= t.contacts.location
+      .value( itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" )
+        span( itemprop="addressLocality" )= t.location.city
+        = ', '
+        div( itemprop="addressCountry" )= t.location.country
+  li.piece.phone
+    a.link href="tel:#{ data.phone.gsub(/\s/, '') }"
+      .icon
+      .label= t.contacts.phone
+      .value( itemprop="telephone" )= data.phone
+ul.links.list
+  - data.links.each do |link|
+    - if translated? t.links[link.service]
+      li.piece class=link.service
+        a.link href="https://#{ link.service }.com/#{ link.login }" rel="me"
+          .icon
+          span.service= t.links[link.service]
+          span.dash= '/'
+          span.login= link.login
+.meta
+  meta itemprop="url" content="http://sitnik.ru/"
+  meta itemprop="birthDate" content="1987-04-06"
+  a rel="me" href="http://ru.wikipedia.org/wiki/%D0%A3%D1%87%D0%B0%D1%81%D1%82%D0%BD%D0%B8%D0%BA:A.I."
+  a rel="me" href="https://plus.google.com/114244234979851049299"
+  a rel="me" href="http://habrahabr.ru/users/iskin/"
+  - data.links.each do |link|
+    - unless translated? t.links[link.service]
+      a rel="me" href="https://#{ link.service }.com/#{ link.login }"

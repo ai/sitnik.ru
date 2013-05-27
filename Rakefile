@@ -66,6 +66,16 @@ class Helpers
     Slim::Template.new(file.to_s, options).render(self, &block)
   end
 
+  def partial(name)
+    render(LAYOUT.join("_#{name}.slim"))
+  end
+
+  def render_to_file(file, template)
+    path = PUBLIC.join(file)
+    path.open('w') { |io| io << render(LAYOUT.join(template)) }
+    path
+  end
+
   def production?
     @env == :production
   end
@@ -122,10 +132,9 @@ def build_index(production = false)
   locale = R18n.get.locale.code.downcase
 
   PUBLIC.mkpath
+  helper.render_to_file("#{locale}.content", '_content.slim')
 
-  file = PUBLIC.join("#{locale}.html")
-  file.open('w') { |io| io << helper.render(index) }
-
+  file = helper.render_to_file("#{locale}.html", 'index.html.slim')
   if locale == 'ru'
     redirect = helper.assets['language-redirect.js']
     move_with_extra_js(file, PUBLIC.join("index.html"), redirect)
@@ -175,6 +184,11 @@ task :server do
       end
     end
 
+    get "/:locale.content" do
+      build_page(params[:locale])
+      send_file PUBLIC.join(params[:locale] + '.content')
+    end
+
     def build_page(locale_code)
       R18n.clear_cache!
       R18n.set(locale_code).reload!
@@ -191,8 +205,10 @@ task :deploy => :build do
       'git rm *.ico',
       'git rm *.png',
       'git rm *.html',
+      'git rm *.content',
       'cp public/* ./',
       'git add *.html',
       'git add *.png',
+      'git add *.content',
       'git add *.ico'].join(' && ')
 end
