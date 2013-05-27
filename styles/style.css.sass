@@ -85,6 +85,9 @@ body
 
 // Content
 
+.list, .languages
+  +styled-taps
+
 .name
   font-weight: normal
   font-size: 48px
@@ -127,7 +130,6 @@ body
   &:active
     transform: translateY(2px)
   &.is-tapped
-    transition: none
     transform: scale(0.9)
     background: black(0.04)
 
@@ -206,7 +208,6 @@ $max-icon: 51px
   display: inline-block
   margin: 0 0 8px 4px
   padding: 7px 8px
-  background: black(0)
   transition: background 200ms, color 200ms
   position: relative
   .text
@@ -230,21 +231,24 @@ $max-icon: 51px
   +no-hover
     color: #666
     transform: none
+    background: black(0)
     .text
       border-bottom: 1px solid black(0.2)
-    &.is-current .text
-      border-bottom: none
   &.is-current
-    color: #333
-    border-bottom: none
+    &, &:hover, &.is-tapped
+      color: #333
+      transform: none
+      background: black(0)
+      .text
+        border-bottom: none
   &:hover
     color: #333
+    background: black(0.04)
     .text
       border-bottom-color: #333
   &:active
     transform: translateY(2px)
   &.is-tapped
-    transition: none
     transform: scale(0.9)
     background: black(0.04)
     color: black
@@ -317,12 +321,12 @@ $max-icon: 51px
   right: 0
 
 .name, .contacts .label, .contacts .icon, .contacts .value, .links .link
-  .transform-2d &
+  .transform-2d .content.is-animated &
     transition: opacity 600ms
   .transform-2d .content.is-hidden &
     opacity: 0
 
-  .transform-3d &
+  .transform-3d .content.is-animated &
     transition: transform 600ms
     backface-visibility: hidden
   .transform-3d .content.is-hidden &

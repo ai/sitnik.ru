@@ -57,28 +57,33 @@ $ ->
             translations[lang] = html
             callback(translations[lang])
 
-    translations[$('html').attr('lang')] = $('.content').html()
+    currentLang = $('html').attr('lang')
+    translations[currentLang] = $('.content').html()
 
     $('.lang').click ->
       link = $(@)
-      return false if link.hasClass('is-loading') or link.hasClass('is-current')
-      link.addClass('is-loading')
+      lang = link.attr('hreflang')
+
       evil.queue (done) ->
-        translation link.attr('hreflang'), (html) ->
+        return done() if currentLang == lang
+        link.addClass('is-loading')
+
+        translation lang, (html) ->
           $('.lang').removeClass('is-current')
           link.addClass('is-current').removeClass('is-loading')
 
-          old  = $('.content')
-          next = $('<div class="content is-next is-hidden" />').html(html).
-                   insertAfter(old)
+          old  = $('.content').addClass('is-animated')
+          next = $('<div class="content is-next is-hidden is-animated" />').
+                   html(html).insertAfter(old)
           document.title = next.find('.name').text()
 
           after 1, ->
             old.addClass('is-hidden')
             next.removeClass('is-hidden')
           after 601, ->
-            next.removeClass('is-next')
+            next.removeClass('is-next is-animated')
             old.remove()
+            currentLang = lang
             done()
 
           history.pushState({ }, '', link.attr('href'))
