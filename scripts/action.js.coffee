@@ -1,6 +1,7 @@
 #= require evil-front/after
 #= require evil-front/tappable
 #= require evil-front/detect-3d
+#= require evil-front/queue
 
 $ ->
 
@@ -40,37 +41,39 @@ $ ->
 
   # Смена языка
 
-  waiters = []
-  waiting = false
-  call    = (callback) ->
-    waiting = true
-    callback ->
-      waiting = false
-      waiter  = waiters.pop()
-      call(waiter) if waiter
-
-  locked  = (callback) ->
-    if waiting
-      waiters.push(callback)
-    else
-      call(callback)
-
   if window.history and history.pushState
+
+    translations = { }
+    translation  = (url, callback) ->
+      if translations[url]
+        callback.apply(this, translations[url])
+      else
+        $.ajax
+          type: 'GET'
+          url:   url
+          fail: -> location = url
+          success: (html) ->
+            title   = html.match(/<title>([^<]+)<\/title>/)[1]
+            content = $(html).find('.content').html()
+            translations[url] = [title, content]
+            callback.apply(this, translations[url])
+
+    translations[location.pathname] = [document.title, $('.content').html()]
+
     $('.lang').click ->
       link = $(@)
       return false if link.hasClass('is-loading') or link.hasClass('is-current')
       link.addClass('is-loading')
-      locked (done) =>
-        ajax = $.get(link.attr('href'))
-        ajax.fail -> location = link.attr('url')
-        ajax.success (html) ->
+      evil.queue (done) ->
+        translation link.attr('href'), (title, content) ->
           $('.lang').removeClass('is-current')
           link.addClass('is-current').removeClass('is-loading')
 
-          document.title = html.match(/<title>([^<]+)<\/title>/)[1]
+          document.title = title
           old  = $('.content')
-          next = $(html).find('.content').
-                   addClass('is-next is-hidden').insertAfter(old)
+          next = $('<div class="content is-next is-hidden" />').html(content).
+                   insertAfter(old)
+
           after 1, ->
             old.addClass('is-hidden')
             next.removeClass('is-hidden')

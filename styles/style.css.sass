@@ -218,6 +218,8 @@ $max-icon: 51px
     &.is-tapped
       background: black(0)
       color: inherit
+  &.is-loading
+    animation: blinking 800ms infinite
   &:first-child
     margin-left: 0
   +no-hover
@@ -242,11 +244,13 @@ $max-icon: 51px
     background: black(0.04)
     color: black
 
-@keyframes rotating
-  from
-    transform: rotate(0)
-  to
-    transform: rotate(360deg)
+@keyframes blinking
+  0%
+    opacity: 1
+  50%
+    opacity: 0.3
+  100%
+    opacity: 1
 
 // Small screens
 
