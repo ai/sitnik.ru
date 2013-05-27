@@ -1,5 +1,7 @@
 @import "evil-front"
 
+// Main
+
 *
   margin: 0
   padding: 0
@@ -22,6 +24,8 @@ body
 
 .meta
   display: none
+
+// Photo/mask
 
 .images
   width: 220px
@@ -73,6 +77,8 @@ body
   .photo
     display: block
     transform: rotateY(-180deg)
+
+// Content
 
 .name
   font-weight: normal
@@ -170,6 +176,8 @@ body
       .login
         color: #333
 
+// Icons
+
 $max-icon: 51px
 
 @each $icon in email, location, phone, github, twitter, vk, facebook
@@ -182,6 +190,8 @@ $max-icon: 51px
       +image-size("#{ $icon }.png", 2)
       background-size: 100% 100%
 
+// Footer
+
 +sticky-footer(85px, ".languages")
 
 .languages
@@ -193,10 +203,21 @@ $max-icon: 51px
   padding: 7px 8px
   background: black(0)
   transition: background 200ms, color 200ms
+  position: relative
   .text
     display: inline-block
     transition: border 200ms
     line-height: 1
+  &:first-child .loader
+    left: auto
+    right: 100%
+  &.is-current
+    cursor: text
+    &:hover, &:active
+      transform: none
+    &.is-tapped
+      background: black(0)
+      color: inherit
   &:first-child
     margin-left: 0
   +no-hover
@@ -204,6 +225,8 @@ $max-icon: 51px
     transform: none
     .text
       border-bottom: 1px solid black(0.2)
+    &.is-current .text
+      border-bottom: none
   &.is-current
     color: #333
     border-bottom: none
@@ -218,6 +241,14 @@ $max-icon: 51px
     transform: scale(0.9)
     background: black(0.04)
     color: black
+
+@keyframes rotating
+  from
+    transform: rotate(0)
+  to
+    transform: rotate(360deg)
+
+// Small screens
 
 +max-width(886)
   .piece
@@ -264,3 +295,26 @@ $max-icon: 51px
 @media all and (max-width: 540px) and (max-height: 715px)
   .links
     margin-top: 15px
+
+// Language changing
+
+.content-position
+  position: relative
+
+.content.is-next
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+
+.name, .contacts .label, .contacts .icon, .contacts .value, .links .link
+  .transform-2d &
+    transition: opacity 600ms
+  .transform-2d .content.is-hidden &
+    opacity: 0
+
+  .transform-3d &
+    transition: transform 600ms
+    backface-visibility: hidden
+  .transform-3d .content.is-hidden &
+    transform: rotateX(180deg)
