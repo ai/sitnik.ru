@@ -30,7 +30,7 @@ class Helpers
 
   attr_accessor :env
 
-  def self.instance(env)
+  def self.instance(env = :development)
     @@instance ||= self.new
     @@instance.env = env
     @@instance.clear!
@@ -156,6 +156,10 @@ task :build do
 
   STANDALONE.each { |i| FileUtils.cp IMAGES.join(i), PUBLIC.join(i) }
 
+  PUBLIC.join('images.css').open('w') do |io|
+    io << Helpers.instance(:production).assets['images.css']
+  end
+
   print "\n"
 end
 
@@ -184,6 +188,11 @@ task :server do
       end
     end
 
+    get "/images.css" do
+      content_type 'text/css'
+      Helpers.instance.assets['images.css'].to_s
+    end
+
     get "/:locale.content" do
       build_page(params[:locale])
       send_file PUBLIC.join(params[:locale] + '.content')
@@ -205,10 +214,12 @@ task :deploy => :build do
       'git rm *.ico',
       'git rm *.png',
       'git rm *.html',
+      'git rm *.css',
       'git rm *.content',
       'cp public/* ./',
       'git add *.html',
       'git add *.png',
+      'git add *.css',
       'git add *.content',
       'git add *.ico'].join(' && ')
 end

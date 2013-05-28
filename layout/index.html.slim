@@ -6,6 +6,7 @@ html lang=r18n.locale.code
     = js_from_cdn('jquery', '2.0.0')
     link rel="stylesheet" href="//fonts.googleapis.com/css?family=Cuprum&amp;subset=latin,cyrillic"
     = disable_mobile_zoom
+    link rel="stylesheet" href="/images.css"
     style= assets['style.css']
     - if production?
       = include_statistics
@@ -26,5 +27,3 @@ html lang=r18n.locale.code
             .loader
 
     script= assets['action.js']
-    style= assets['images.css']
-    style= assets['mask.css']
