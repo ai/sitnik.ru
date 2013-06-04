@@ -79,5 +79,4 @@ DEPENDENCIES
   r18n-core
   rake
   sinatra
-  slim (>= 2.0.0.pre.8)
   therubyracer

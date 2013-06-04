@@ -6,7 +6,6 @@ gem 'json'
 
 gem 'evil-front',          github: 'ai/evil-front'
 
-gem 'slim',               '>= 2.0.0.pre.8'
 gem 'therubyracer'
 gem 'gravatar_image_tag'
 
