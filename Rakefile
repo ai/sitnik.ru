@@ -8,9 +8,9 @@ class Pathname
 end
 
 ROOT   = Pathname(__FILE__).dirname
-PUBLIC = ROOT.join('public/')
-LAYOUT = ROOT.join('layout/')
+VIEWS  = ROOT.join('views/')
 IMAGES = ROOT.join('images/')
+PUBLIC = ROOT.join('public/')
 
 STANDALONE = %w( favicon.ico apple-touch-icon.png )
 
@@ -44,7 +44,6 @@ class Helpers
   def assets
     @sprockets ||= begin
       Sprockets::Environment.new(ROOT) do |env|
-        env.append_path(LAYOUT)
         env.append_path(IMAGES)
         env.append_path(ROOT.join('scripts/'))
         env.append_path(ROOT.join('styles/'))
@@ -65,12 +64,12 @@ class Helpers
   end
 
   def partial(name)
-    render(LAYOUT.join("_#{name}.slim"))
+    render(VIEWS.join("_#{name}.slim"))
   end
 
   def render_to_file(file, template)
     path = PUBLIC.join(file)
-    path.open('w') { |io| io << render(LAYOUT.join(template)) }
+    path.open('w') { |io| io << render(VIEWS.join(template)) }
     path
   end
 
@@ -91,7 +90,7 @@ class Helpers
   end
 
   def include_statistics
-    LAYOUT.join('statistics.html').read
+    VIEWS.join('statistics.html').read
   end
 
   def gravatar_url(email, opts = { })
@@ -125,7 +124,7 @@ def move_with_extra_js(from, to, js)
 end
 
 def build_index(production = false)
-  index  = LAYOUT.join('index.html.slim')
+  index  = VIEWS.join('index.html.slim')
   helper = Helpers.instance(production ? :production : :development)
   locale = R18n.get.locale.code.downcase
 
