@@ -23,7 +23,7 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.6.2)
+    coffee-script-source (1.6.3)
     csso-rails (0.3.0)
       execjs (~> 1.4)
     dimensions (1.2.0)
