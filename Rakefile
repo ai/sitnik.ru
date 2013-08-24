@@ -24,7 +24,7 @@ class Sprockets::Context
   include R18n::Helpers
 end
 
-class Helpers
+class Builder
   include R18n::Helpers
   include EvilFront::Helpers
 
@@ -124,16 +124,16 @@ def move_with_extra_js(from, to, js)
 end
 
 def build_index(production = false)
-  index  = VIEWS.join('index.html.slim')
-  helper = Helpers.instance(production ? :production : :development)
-  locale = R18n.get.locale.code.downcase
+  index   = VIEWS.join('index.html.slim')
+  locale  = R18n.get.locale.code.downcase
+  builder = Builder.instance(production ? :production : :development)
 
   PUBLIC.mkpath
-  helper.render_to_file("#{locale}.content", '_content.slim')
+  builder.render_to_file("#{locale}.content", '_content.slim')
 
-  file = helper.render_to_file("#{locale}.html", 'index.html.slim')
+  file = builder.render_to_file("#{locale}.html", 'index.html.slim')
   if locale == 'ru'
-    redirect = helper.assets['language-redirect.js']
+    redirect = builder.assets['language-redirect.js']
     move_with_extra_js(file, PUBLIC.join("index.html"), redirect)
   end
 end
@@ -154,7 +154,7 @@ task :build do
   STANDALONE.each { |i| FileUtils.cp IMAGES.join(i), PUBLIC.join(i) }
 
   PUBLIC.join('images.css').open('w') do |io|
-    io << Helpers.instance(:production).assets['images.css']
+    io << Builder.instance(:production).assets['images.css']
   end
 
   print "\n"
@@ -187,7 +187,7 @@ task :server do
 
     get "/images.css" do
       content_type 'text/css'
-      Helpers.instance.assets['images.css'].to_s
+      Builder.instance.assets['images.css'].to_s
     end
 
     get "/:locale.content" do
