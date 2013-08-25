@@ -13,8 +13,11 @@ IMAGES = ROOT.join('images/')
 PUBLIC = ROOT.join('public/')
 
 STANDALONE = %w( favicon.ico apple-touch-icon.png )
+ASSETS     = %w( images.css jquery.js )
 
 require 'evil-front'
+JqueryCdn.local_url = proc { '/jquery.js' }
+
 require 'gravatar_image_tag'
 
 require 'r18n-core'
@@ -83,12 +86,6 @@ class Builder
     end
   end
 
-  def js_from_cdn(lib, version)
-    url  = "//ajax.googleapis.com/ajax/libs/"
-    url += "#{lib}/#{version}/#{lib}#{production? ? '.min' : ''}.js"
-    "<script src=#{url}></script>"
-  end
-
   def include_statistics
     VIEWS.join('statistics.html').read
   end
@@ -153,8 +150,9 @@ task :build do
 
   STANDALONE.each { |i| FileUtils.cp IMAGES.join(i), PUBLIC.join(i) }
 
-  PUBLIC.join('images.css').open('w') do |io|
-    io << Builder.instance(:production).assets['images.css']
+  builder = Builder.instance(:production)
+  ASSETS.each do |asset|
+    PUBLIC.join(asset).open('w') { |io| io << builder.assets[asset] }
   end
 
   print "\n"
@@ -185,14 +183,16 @@ task :server do
       end
     end
 
-    get "/images.css" do
-      content_type 'text/css'
-      Builder.instance.assets['images.css'].to_s
-    end
-
     get "/:locale.content" do
       build_page(params[:locale])
       send_file PUBLIC.join(params[:locale] + '.content')
+    end
+
+    ASSETS.each do |asset|
+      get "/#{asset}" do
+        content_type(asset =~ /\.css$/ ? 'text/css' : 'text/javascript')
+        Builder.instance.assets[asset].to_s
+      end
     end
 
     def build_page(locale_code)
