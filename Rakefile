@@ -212,11 +212,13 @@ task :deploy => :build do
       'git rm *.png',
       'git rm *.html',
       'git rm *.css',
+      'git rm *.js',
       'git rm *.content',
       'cp public/* ./',
       'git add *.html',
       'git add *.png',
       'git add *.css',
+      'git add *.js',
       'git add *.content',
       'git add *.ico'].join(' && ')
 end
