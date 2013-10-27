@@ -164,8 +164,8 @@ task :server do
 
   class SitnikRu < Sinatra::Base
     set :public_folder, nil
-    set :bind, '0.0.0.0'
     set :port, 3000
+    set :lock, true
 
     get /^(\/|\/index\.html)$/ do
       build_page('ru')
