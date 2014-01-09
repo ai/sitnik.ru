@@ -15,7 +15,7 @@ PUBLIC = ROOT.join('public/')
 STANDALONE = %w( favicon.ico apple-touch-icon.png )
 ASSETS     = %w( images.css jquery.js )
 
-require 'evil-front'
+require 'evil-front-all'
 JqueryCdn.local_url = proc { '/jquery.js' }
 
 require 'gravatar_image_tag'
