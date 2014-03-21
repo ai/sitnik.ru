@@ -25,11 +25,13 @@ ul.links.list
   - data.links.each do |link|
     - if translated? t.links[link.service]
       li.piece class=link.service
-        a.link href="https://#{ link.service }.com/#{ link.login }" rel="me"
+        - login = link.login
+        - login = login[R18n.get.locale.code] if login.is_a? OpenStruct
+        a.link href="https://#{ link.service }.com/#{ login }" rel="me"
           .icon
           span.service= t.links[link.service]
           span.dash= '/'
-          span.login= link.login
+          span.login= login
 .meta
   meta itemprop="url" content="http://sitnik.ru/"
   meta itemprop="birthDate" content="1987-04-06"

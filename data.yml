@@ -5,7 +5,9 @@ links:
   - service: github
     login: ai
   - service: twitter
-    login: andrey_sitnik
+    login:
+      ru: andrey_sitnik
+      en: andreysitnik
   - service: vk
     login: iskin
   - service: facebook
