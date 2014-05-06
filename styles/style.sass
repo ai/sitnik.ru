@@ -221,12 +221,7 @@ $max-icon: 51px
     left: auto
     right: 100%
   &.is-current
-    cursor: text
-    &:hover, &:active
-      transform: none
-    &.is-tapped
-      background: black(0)
-      color: inherit
+    pointer-events: none
   &.is-loading
     animation: blinking 800ms infinite
   &:first-child
