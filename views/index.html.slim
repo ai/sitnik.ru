@@ -3,13 +3,19 @@ html lang=r18n.locale.code
   head
     meta charset="UTF-8"
     title= t.name.given + ' ' + t.name.family
+
+    link rel="icon" type="image/png" href="/favicon192.png" sizes="192x192"
+    meta name="viewport"    content="width=device-width"
+    meta name="theme-color" content="#333"
+
     = include_jquery(env: env)
     link rel="stylesheet" href="//fonts.googleapis.com/css?family=Cuprum&amp;subset=latin,cyrillic"
-    = disable_mobile_zoom
     link rel="stylesheet" href="/images.css"
     style= assets['style.css']
+
     - if production?
       = include_statistics
+
   body
     .person( itemscope itemtype="http://schema.org/Person" )
       .images.is-animated.with-right-rotation

@@ -12,7 +12,7 @@ VIEWS  = ROOT.join('views/')
 IMAGES = ROOT.join('images/')
 PUBLIC = ROOT.join('public/')
 
-STANDALONE = %w( favicon.ico apple-touch-icon.png )
+STANDALONE = %w( favicon.ico favicon192.png apple-touch-icon.png )
 ASSETS     = %w( images.css jquery.js )
 
 require 'evil-front-all'
