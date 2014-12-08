@@ -62,7 +62,7 @@ class Builder
   end
 
   def render(file, &block)
-    options = { format: :html5, disable_escape: true, pretty: false }
+    options = { format: :html, disable_escape: true, pretty: false }
     Slim::Template.new(file.to_s, options).render(self, &block)
   end
 
@@ -139,8 +139,6 @@ desc 'Build site files'
 task :build do
   PUBLIC.mkpath
   PUBLIC.glob('*') { |i| i.rmtree }
-
-  print 'build'
 
   R18n.available_locales.each do |locale|
     R18n.set(locale.code)
