@@ -51,11 +51,13 @@ class Builder
         env.append_path(ROOT.join('scripts/'))
         env.append_path(ROOT.join('styles/'))
 
-        EvilFront.install_all(env)
+        AutoprefixerRails.install(env)
+        JqueryCdn.install(env)
+        EvilFront.install(env)
 
         if @env == :production
           env.js_compressor  = Uglifier.new(copyright: false)
-          env.css_compressor = :csso
+          env.css_compressor = :sass
         end
       end
     end
