@@ -212,6 +212,7 @@ task :deploy => :build do
       'git rm *.ico',
       'git rm *.png',
       'git rm *.html',
+      'git rm *.txt',
       'git rm *.css',
       'git rm *.js',
       'git rm *.content',
@@ -219,6 +220,7 @@ task :deploy => :build do
       'git add *.html',
       'git add *.png',
       'git add *.css',
+      'git add *.txt',
       'git add *.js',
       'git add *.content',
       'git add *.ico'].join(' && ')
