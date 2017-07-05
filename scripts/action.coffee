@@ -1,3 +1,4 @@
+#= require evil-front/shortcuts
 #= require evil-front/after
 #= require evil-front/tappable
 #= require evil-front/detect-3d
