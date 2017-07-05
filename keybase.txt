@@ -1,0 +1,60 @@
+==================================================================
+https://keybase.io/iskin
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://sitnik.ru
+  * I am iskin (https://keybase.io/iskin) on keybase.
+  * I have a public key with fingerprint BF0B F36F 0C23 36C7 A197  F941 A9E0 9B94 1F71 0E4D
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "01113cc6fd15462e5d2b1d3e4232d048c866d8491156deef2975d0fe61d8efd73a470a",
+            "fingerprint": "bf0bf36f0c2336c7a197f941a9e09b941f710e4d",
+            "host": "keybase.io",
+            "key_id": "a9e09b941f710e4d",
+            "kid": "01113cc6fd15462e5d2b1d3e4232d048c866d8491156deef2975d0fe61d8efd73a470a",
+            "uid": "f7bf88444bb4f94c7eec9a8314aa0e19",
+            "username": "iskin"
+        },
+        "service": {
+            "hostname": "sitnik.ru",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1499268600,
+    "expire_in": 157680000,
+    "prev": "3ca4562355091631fbf5c900258394f6f09bd7da461c3a780e1e17d21f94f6ed",
+    "seqno": 9,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owGtUj1rVEEUfUZXMKIkWFkJU8oSZt58L2JplyJYCcoyH3c2w8b3Xt57uxpCai0t
+xEIhWEjAQlJYpExnivwJS7cP2Cg4s8TO0mpmzj3ncO6d++bW1WJl/fP3D2/v7d7e
+vHK+sMWTZ4Pf+8jWfg+N9tEUlgfseOj68TR6NEKYEEKdE8ETzkQJ3JeWeAqspKXH
+TDklhFdME8KFBwilltzjAIJ4BcFLapjEBg1RiNUE2qaNVZ9sbcA2UBGwKykVThqi
+ZdCMGA1Y23QJkmBgPgm36y4rUjhrOtiIdcLSY7yM9w/+f849W9oFaYNSjDFrWcrp
+JIDTRlHCjMFAdCZ20FbmOSR27KaxQgdDlKB5dJCnmtu4LHexr+J0o50lVdPWfe3q
+nQRv930zyqp+r8m0F2DHlwZjGyufBpgEc2i7WFdoRBLT9TE7EqZ1KZTAeIjgZRNb
+GMfM4FIojDPatDBPltQZxkVJOceaiC1Kgg3caYxLrqhmIX2Itl56wwRx1EiVegMi
+fUlCrkKebwe7VY1GOuU0k2U3k8r0sxbQwerrR9eK9ZXi+mAlb1axemPt77od3SwO
+7x+fDL59UbOf/OLs4fnJxdG7xafi46vjB3cf/wqHp1und75uri1+PD17/wc=
+=GD+C
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/iskin
+
+==================================================================

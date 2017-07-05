@@ -149,6 +149,7 @@ task :build do
   end
 
   STANDALONE.each { |i| FileUtils.cp IMAGES.join(i), PUBLIC.join(i) }
+  FileUtils.cp ROOT.join('keybase.txt'), PUBLIC.join('keybase.txt')
 
   builder = Builder.instance(:production)
   ASSETS.each do |asset|
