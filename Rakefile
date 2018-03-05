@@ -56,7 +56,7 @@ class Builder
         EvilFront.install(env)
 
         if @env == :production
-          env.js_compressor  = Uglifier.new(copyright: false)
+          env.js_compressor  = Uglifier.new(output: { comments: :none })
           env.css_compressor = :sass
         end
       end
