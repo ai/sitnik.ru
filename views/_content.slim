@@ -9,13 +9,13 @@ ul.contacts.list
       .label= t.contacts.email
       .value( itemprop="email" )= data.email
   li.piece.location
-    a.link href="https://maps.google.com/maps?q=Russia,+Saint+Petersburg"
+    a.link href="https://maps.google.com/maps?q=USA,+New+York"
       .icon
       .label= t.contacts.location
       .value( itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" )
         span( itemprop="addressLocality" )= t.location.city
         = ', '
-        div( itemprop="addressCountry" )= t.location.country
+        span( itemprop="addressCountry" )= t.location.country
   li.piece.phone
     a.link href="tel:#{ data.phone.gsub(/\s/, '') }"
       .icon
