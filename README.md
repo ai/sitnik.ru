@@ -2,8 +2,8 @@ Page with my contacts and main links, [sitnik.ru](http://sitnik.ru).
 
 Contacts:
 * E-mail: andrey@sitnik.ru
-* Phone: +79117696571
-* Location: Saint Peterburg, Russia
+* Phone: +19143123913
+* Location: New York, USA
 
 Links:
 * Twitter: [andrey_sinik](https://twitter.com/andrey_sitnik)
