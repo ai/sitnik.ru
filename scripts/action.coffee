@@ -23,7 +23,7 @@ $ ->
   # Вращение после загрузки
 
   manual = false
-  $(window).load ->
+  $(window).on 'load', ->
     after 3000, ->
       rotate('right') unless manual
 
