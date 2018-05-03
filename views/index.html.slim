@@ -17,10 +17,10 @@ html lang=r18n.locale.code
       = include_statistics
 
   body
-    .person( itemscope itemtype="http://schema.org/Person" )
+    .person( itemscope itemtype="https://schema.org/Person" )
       .images.is-animated.with-right-rotation
         .mask
-        img.photo itemprop="image" src=gravatar_url('andrey@sitnik.ru', size: 440) alt=t.photo
+        img.photo itemprop="image" src=gravatar_url('andrey@sitnik.ru', size: 440, secure: true) alt=t.photo
 
       .content-position
         .content= partial 'content'

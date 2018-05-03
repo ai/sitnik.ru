@@ -12,7 +12,7 @@ ul.contacts.list
     a.link href="https://maps.google.com/maps?q=USA,+New+York"
       .icon
       .label= t.contacts.location
-      .value( itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" )
+      .value( itemprop="address" itemscope itemtype="https://schema.org/PostalAddress" )
         span( itemprop="addressLocality" )= t.location.city
         = ', '
         span( itemprop="addressCountry" )= t.location.country
@@ -33,11 +33,11 @@ ul.links.list
           span.dash= '/'
           span.login= login
 .meta
-  meta itemprop="url" content="http://sitnik.ru/"
+  meta itemprop="url" content="https://sitnik.ru/"
   meta itemprop="birthDate" content="1987-04-06"
-  a rel="me" href="http://ru.wikipedia.org/wiki/%D0%A3%D1%87%D0%B0%D1%81%D1%82%D0%BD%D0%B8%D0%BA:A.I."
+  a rel="me" href="https://ru.wikipedia.org/wiki/%D0%A3%D1%87%D0%B0%D1%81%D1%82%D0%BD%D0%B8%D0%BA:A.I."
   a rel="me" href="https://plus.google.com/114244234979851049299"
-  a rel="me" href="http://habrahabr.ru/users/iskin/"
+  a rel="me" href="https://habrahabr.ru/users/iskin/"
   - data.links.each do |link|
     - unless translated? t.links[link.service]
       a rel="me" href="https://#{ link.service }.com/#{ link.login }"

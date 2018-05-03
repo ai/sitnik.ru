@@ -1,4 +1,4 @@
-Page with my contacts and main links, [sitnik.ru](http://sitnik.ru).
+Page with my contacts and main links, [sitnik.ru](https://sitnik.ru).
 
 Contacts:
 * E-mail: andrey@sitnik.ru
