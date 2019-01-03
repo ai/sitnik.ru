@@ -1,8 +1,0 @@
-(function () {
-    var system   = navigator.userLanguage || navigator.language;
-    var language = system.toLowerCase().replace(/-\w+$/, '');
-
-    if ( language == 'en' ) {
-        location.pathname = '/en';
-    }
-})();
