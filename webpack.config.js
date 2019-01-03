@@ -40,7 +40,14 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './en.pug',
+      filename: 'en/index.html',
+      templateParameters: { langRedirect: false },
+      minify: HTML_MINIFY
+    }),
+    new HtmlWebpackPlugin({
+      template: './en.pug',
       filename: 'index.html',
+      templateParameters: { langRedirect: true },
       minify: HTML_MINIFY
     }),
     new CopyPlugin([{ from: 'public/' }])
@@ -49,6 +56,7 @@ module.exports = {
     contentBase: path.join(__dirname, '..', 'public'),
     overlay: true,
     stats: 'errors-only',
+    port: 8081,
     open: true
   }
 }

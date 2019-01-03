@@ -1,8 +1,12 @@
 doctype html
 html( lang="en" itemtype="https://schema.org/Person" itemscope )
   head
-    script if(/^ru/.test(navigator.language))location.pathname='/ru'
+    if langRedirect
+      script if(/^ru/.test(navigator.language))location.pathname='/ru'
     meta( charset="UTF-8" )
     title Andrey Sitnik
     meta( name="viewport" content="width=device-width" )
   body
+    h1
+      span( itemprop="givenName" ) Andrey
+      span( itemprop="familyName" ) Sitnik
