@@ -4,7 +4,9 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
     meta( charset="UTF-8" )
     title Андрей Ситник
     meta( name="viewport" content="width=device-width" )
+    link( rel="stylesheet" href="../index.css" )
   body
+    a( href="../en/index.pug" )
     .text
       h1
         span( itemprop="givenName" ) Андрей
@@ -13,3 +15,4 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
       .contacts
         a( href="mailto:andrey@sitnik.ru" itemprop="email" ) andrey@sitnik.ru
         a( href="tel:+19143123913" itemprop="telephone" ) +1 914 312 3913
+    script( src="../index.js" )

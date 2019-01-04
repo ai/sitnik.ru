@@ -1,13 +1,18 @@
+- var root = typeof mainPage !== 'undefined' ? './' : '../'
+
 doctype html
 html( lang="en" itemtype="https://schema.org/Person" itemscope )
   head
-    if langRedirect
+    if typeof mainPage !== 'undefined'
       script if(/^ru/.test(navigator.language))location.pathname='/ru'
     meta( charset="UTF-8" )
     title Andrey Sitnik
     meta( name="viewport" content="width=device-width" )
+    link( rel="stylesheet" href=root + 'index.css' )
   body
+    a( href=root + 'ru/index.pug' )
     h1
       span( itemprop="givenName" ) Andrey
       = ' '
       span( itemprop="familyName" ) Sitnik
+    script( src=root + 'index.js' )
