@@ -15,7 +15,7 @@ const HTML_MINIFY = {
 
 module.exports = {
   mode: 'development',
-  entry: './index.js',
+  entry: './src/index.js',
   context: path.join(__dirname),
   devtool: 'cheap-module-source-map',
   output: {
@@ -50,7 +50,8 @@ module.exports = {
       templateParameters: { langRedirect: true },
       minify: HTML_MINIFY
     }),
-    new CopyPlugin([{ from: 'public/' }])
+    new CopyPlugin([{ from: 'public/' }]),
+    new webpack.optimize.ModuleConcatenationPlugin()
   ],
   devServer: {
     contentBase: path.join(__dirname, '..', 'public'),

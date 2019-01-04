@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "lint": "eslint *.js && stylelint *.css",
+    "lint": "eslint *.js src/**/*.js && stylelint src/**/*.css",
     "test": "yarn lint",
     "clean": "rimraf dist/",
     "start": "webpack-dev-server",
