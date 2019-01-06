@@ -1,6 +1,8 @@
 doctype html
 html( lang="ru" itemtype="https://schema.org/Person" itemscope )
   head
+
+
     title Андрей Ситник
     include ../head.pug
   body
@@ -8,7 +10,7 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
       .layout_globe
         .layout_language
           a.link( href="/en/index.pug" hreflang="en" rel="alternate" ) English
-        h1
+        h1.layout_title
           span( itemprop="givenName" ) Андрей
           = ' '
           span( itemprop="familyName" ) Ситник
