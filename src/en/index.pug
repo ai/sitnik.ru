@@ -4,13 +4,11 @@ doctype html
 html( lang="en" itemtype="https://schema.org/Person" itemscope )
   head
     if typeof mainPage !== 'undefined'
-      script if(/^ru/.test(navigator.language))location.pathname='/ru'
-    meta( charset="UTF-8" )
+      script if(/^ru/.test(navigator.language))location.pathname='/ru/index.html'
     title Andrey Sitnik
-    meta( name="viewport" content="width=device-width" )
-    link( rel="stylesheet" href=root + 'index.css' )
+    include ../head.pug
   body
-    a( href=root + 'ru/index.pug' )
+    a( href=root + 'ru/index.pug' hreflang="ru" rel="alternate" )
     h1
       span( itemprop="givenName" ) Andrey
       = ' '

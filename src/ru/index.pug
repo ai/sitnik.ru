@@ -1,18 +1,16 @@
 doctype html
 html( lang="ru" itemtype="https://schema.org/Person" itemscope )
   head
-    meta( charset="UTF-8" )
     title Андрей Ситник
-    meta( name="viewport" content="width=device-width" )
-    link( rel="stylesheet" href="../index.css" )
+    include ../head.pug
   body
-    a( href="../en/index.pug" )
+    a( href="../en/index.pug" hreflang="en" rel="alternate" )
+    .contacts
+      a( href="mailto:andrey@sitnik.ru" itemprop="email" ) andrey@sitnik.ru
+      a( href="tel:+19143123913" itemprop="telephone" ) +1 914 312 3913
     .text
       h1
         span( itemprop="givenName" ) Андрей
         = ' '
         span( itemprop="familyName" ) Ситник
-      .contacts
-        a( href="mailto:andrey@sitnik.ru" itemprop="email" ) andrey@sitnik.ru
-        a( href="tel:+19143123913" itemprop="telephone" ) +1 914 312 3913
     script( src="../index.js" )
