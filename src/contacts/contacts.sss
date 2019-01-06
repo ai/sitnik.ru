@@ -6,10 +6,11 @@
 .contacts_notes
   padding-top: 5px
   font-size: 16px
-  text-align: right
+  display: flex
+  justify-content: space-between
 
-.contacts :first-child .contacts_notes
-  text-align: left
+.contacts_notes.is-right
+  justify-content: flex-end
 
 .contacts_separator
   display: inline-block

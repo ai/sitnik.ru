@@ -3,6 +3,7 @@
   position: relative
   text-decoration: none
   color: rgb(24, 124, 255)
+  border-radius: 0.3em
 
 .link::before
   content: ""
@@ -15,7 +16,8 @@
   background: rgba(24, 124, 255, 0.2)
   transform: scaleY(0.06)
   transform-origin: 0 100% 0
-  transition: transform 200ms
+  transition: all 200ms
+  z-index: -1
 
 .link:hover::before
   transform: none
