@@ -4,7 +4,7 @@
     "lint": "eslint *.js src/**/*.js && stylelint src/**/*.css",
     "test": "yarn lint",
     "clean": "rimraf dist/",
-    "start": "parcel serve src/index.pug",
+    "start": "parcel serve src/index.pug --open",
     "build": "parcel build src/index.pug --experimental-scope-hoisting"
   },
   "browserslist": [
@@ -16,11 +16,11 @@
   "staticPath": "public",
   "devDependencies": {
     "@logux/eslint-config": "^27.0.0",
-    "eslint": "^5.11.1",
+    "eslint": "^5.12.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^22.1.2",
-    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-prefer-let": "^1.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-security": "^1.4.0",
