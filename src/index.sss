@@ -13,6 +13,13 @@ body
 a:active
   transform: scale(0.9)
 
+a:focus
+  outline: none
+
+a::-moz-focus-inner
+  border: 0
+
 @media (prefers-reduced-motion: reduce)
-  *
+  *,
+  *::before
     transition: none !important

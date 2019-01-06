@@ -4,6 +4,7 @@
   text-decoration: none
   color: rgb(24, 124, 255)
   border-radius: 0.3em
+  transition: color 200ms
 
 .link::before
   content: ""
@@ -21,3 +22,7 @@
 
 .link:hover::before
   transform: none
+
+.link:focus::before
+  transform: none
+  background: rgb(24,124,255)
