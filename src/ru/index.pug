@@ -5,12 +5,15 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
     include ../head.pug
   body
     a( href="/en/index.pug" hreflang="en" rel="alternate" )
-    .contacts
-      a( href="mailto:andrey@sitnik.ru" itemprop="email" ) andrey@sitnik.ru
-      a( href="tel:+19143123913" itemprop="telephone" ) +1 914 312 3913
+    .layout
+      .layout_globe
+        h1
+          span( itemprop="givenName" ) Андрей
+          = ' '
+          span( itemprop="familyName" ) Ситник
+      .layout_links
+        .contacts
+          a( href="mailto:andrey@sitnik.ru" itemprop="email" ) andrey@sitnik.ru
+          a( href="tel:+19143123913" itemprop="telephone" ) +1 914 312 3913
     .text
-      h1
-        span( itemprop="givenName" ) Андрей
-        = ' '
-        span( itemprop="familyName" ) Ситник
     script( src="/index.js" )
