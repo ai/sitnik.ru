@@ -16,8 +16,22 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
           span( itemprop="familyName" ) Ситник
       .layout_links
         .contacts
-          a.link( href="mailto:andrey@sitnik.ru" itemprop="email" ) 
-            | andrey@sitnik.ru
-          a.link( href="tel:+19143123913" itemprop="telephone" )
-            | +1 914 312 3913
+          div
+            a.link( href="mailto:andrey@sitnik.ru" itemprop="email" )
+              | andrey@sitnik.ru
+            .contacts_notes
+              a.link( href="https://keybase.io/iskin" )
+                | PGP 1F710E4D
+          div
+            a.link( href="tel:+19143123913" itemprop="telephone" )
+              | +1 914 312 3913
+            .contacts_notes
+              link( itemprop="sameAs" href="https://wa.me/19143123913" )
+
+
+              link( itemprop="sameAs" href="weixin://dl/chat?andrey_sitnik" )
+
+
+              a.link( href="https://t.me/sitnik" itemprop="sameAs" )
+                | Телеграм
     script( src="/index.js" )
