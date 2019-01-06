@@ -1,5 +1,3 @@
-- var root = typeof mainPage !== 'undefined' ? './' : '../'
-
 doctype html
 html( lang="en" itemtype="https://schema.org/Person" itemscope )
   head
@@ -8,9 +6,9 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
     title Andrey Sitnik
     include ../head.pug
   body
-    a( href=root + 'ru/index.pug' hreflang="ru" rel="alternate" )
+    a( href="/ru/index.pug" hreflang="ru" rel="alternate" )
     h1
       span( itemprop="givenName" ) Andrey
       = ' '
       span( itemprop="familyName" ) Sitnik
-    script( src=root + 'index.js' )
+    script( src="/index.js" )
