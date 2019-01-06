@@ -4,16 +4,18 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
     title Андрей Ситник
     include ../head.pug
   body
-    a( href="/en/index.pug" hreflang="en" rel="alternate" )
     .layout
       .layout_globe
+        .layout_language
+          a.link( href="/en/index.pug" hreflang="en" rel="alternate" ) English
         h1
           span( itemprop="givenName" ) Андрей
           = ' '
           span( itemprop="familyName" ) Ситник
       .layout_links
         .contacts
-          a( href="mailto:andrey@sitnik.ru" itemprop="email" ) andrey@sitnik.ru
-          a( href="tel:+19143123913" itemprop="telephone" ) +1 914 312 3913
-    .text
+          a.link( href="mailto:andrey@sitnik.ru" itemprop="email" ) 
+            | andrey@sitnik.ru
+          a.link( href="tel:+19143123913" itemprop="telephone" )
+            | +1 914 312 3913
     script( src="/index.js" )

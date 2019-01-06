@@ -6,9 +6,18 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
     title Andrey Sitnik
     include ../head.pug
   body
-    a( href="/ru/index.pug" hreflang="ru" rel="alternate" )
-    h1
-      span( itemprop="givenName" ) Andrey
-      = ' '
-      span( itemprop="familyName" ) Sitnik
+    .layout
+      .layout_globe
+        .layout_language
+          a.link( href="/ru/index.pug" hreflang="ru" rel="alternate" ) Русский
+        h1
+          span( itemprop="givenName" ) Andrey
+          = ' '
+          span( itemprop="familyName" ) Sitnik
+      .layout_links
+        .contacts
+          a.link( href="mailto:andrey@sitnik.ru" itemprop="email" ) 
+            | andrey@sitnik.ru
+          a.link( href="tel:+19143123913" itemprop="telephone" )
+            | +1 914 312 3913
     script( src="/index.js" )
