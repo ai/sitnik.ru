@@ -6,6 +6,9 @@
   border-radius: 0.3em
   transition: color 200ms
 
+.link:visited
+  color: rgb(124, 24, 255)
+
 .link::before
   content: ""
   position: absolute
@@ -23,9 +26,15 @@
 .link:hover::before
   transform: none
 
+.link:visited::before
+  background: rgba(124, 24, 255, 0.2)
+
 .link:focus
   color: white
 
 .link:focus::before
   transform: none
-  background: rgb(24,124,255)
+  background: rgb(24, 124, 255)
+
+.link:visited:focus::before
+  background: rgb(124, 24, 255)
