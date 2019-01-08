@@ -9,6 +9,9 @@
 .link:visited
   color: rgb(124, 24, 255)
 
+.link.is-text
+  color: black
+
 .link::before
   content: ""
   position: absolute
@@ -29,12 +32,16 @@
 .link:visited::before
   background: rgba(124, 24, 255, 0.2)
 
+.link.is-text::before
+  opacity: 0
+
 .link:focus
   color: white
 
 .link:focus::before
   transform: none
   background: rgb(24, 124, 255)
+  opacity: 1
 
 .link:visited:focus::before
   background: rgb(124, 24, 255)
