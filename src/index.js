@@ -1,1 +1,2 @@
 require('./base')
+require('./globe')
