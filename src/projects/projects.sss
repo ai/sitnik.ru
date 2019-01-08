@@ -1,12 +1,16 @@
 .projects
   display: flex
   flex-direction: column
-  min-height: calc(100vh - 30px - 180px)
+  min-height: calc(100vh - 30px - 180px - 80px)
   justify-content: center
+  padding: 40px 0
 
 .projects_item
   padding-top: 40px
   list-style: none
+
+.projects_item:first-child
+  padding-top: 0
 
 .projects_title
   font-weight: normal
