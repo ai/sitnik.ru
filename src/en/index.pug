@@ -16,6 +16,7 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
           = ' '
           span( itemprop="familyName" ) Sitnik
       .layout_links
+  
         .contacts
           div
             a.link( href="mailto:andrey@sitnik.ru" itemprop="email" )
@@ -35,4 +36,43 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
               = ' '
               a.link( href="https://t.me/sitnik" itemprop="sameAs" )
                 | Telegram
+
+        link( href="http://twitter.com/andrey_sitnik" itemprop="sameAs" )
+        link( href="https://vk.com/iskin" itemprop="sameAs" )
+        ul.projects
+          li.projects_item
+            h2.projects_title
+              | Twitter
+              .projects_links
+                a.link( href="http://twitter.com/andreysitnik" itemprop="sameAs" )
+                  | Full with NSFW
+                a.link( href="http://twitter.com/sitnikcode" itemprop="sameAs" )
+                  | code only
+            p.projects_desc
+              | My notes about sex, travels, and technologies
+          li.projects_item
+            h2.projects_title
+              a.link( href="https://github.com/ai" itemprop="sameAs" )
+                | GitHub
+            p.projects_desc
+              | I created Autoprefixer, PostCSS, Browserslist, Nano ID, and Size Limit
+          li.projects_item
+            h2.projects_title
+              a.link( href="https://www.instagram.com/sitnikandrey/" itemprop="sameAs" )
+                | Instagram
+            p.projects_desc
+              | Photos from travels and henna body paiting
+          li.projects_item
+            h2.projects_title
+              a.link( href="http://twitter.com/lostinwiki" )
+                | Lost in Wikipedia
+            p.projects_desc
+              | My Twitter account with interesting Wikipedia articles
+          li.projects_item
+            h2.projects_title
+              a.link( href="http://twitter.com/linguopunk" )
+                | Linguopunk
+            p.projects_desc
+              | My Twitter account about unusual languages
+
     script( src="/index.js" )

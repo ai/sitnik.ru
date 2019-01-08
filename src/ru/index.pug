@@ -15,6 +15,7 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
           = ' '
           span( itemprop="familyName" ) Ситник
       .layout_links
+  
         .contacts
           div
             a.link( href="mailto:andrey@sitnik.ru" itemprop="email" )
@@ -34,4 +35,51 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
 
               a.link( href="https://t.me/sitnik" itemprop="sameAs" )
                 | Телеграм
+
+        link( href="http://twitter.com/andreysitnik" itemprop="sameAs" )
+        link( href="http://twitter.com/sitnikcode" itemprop="sameAs" )
+        ul.projects
+          li.projects_item
+            h2.projects_title
+              | Моя лента
+              .projects_links
+                a.link( href="https://vk.com/iskin" itemprop="sameAs" )
+                  | ВКонтакте
+                a.link( href="http://twitter.com/andrey_sitnik" itemprop="sameAs" )
+                  | Твиттер
+            p.projects_desc
+              | Мои заметки о сексе, путешествиях и технологиях
+          li.projects_item
+            h2.projects_title
+              a.link( href="https://github.com/ai" itemprop="sameAs" )
+                | Гитхаб
+            p.projects_desc
+              | Создал Автопрефиксер, PostCSS, Браузерслист, Nano ID и Size Limit
+          li.projects_item
+            h2.projects_title
+              a.link( href="https://www.instagram.com/sitnikandrey/" itemprop="sameAs" )
+                | Инстаграм
+            p.projects_desc
+              | Фотографии с путешествий и росписи тела хной
+          li.projects_item
+            h2.projects_title
+              | Однажды в Википедии
+              .projects_links
+                a.link( href="https://vk.com/lostinwiki" )
+                  | ВКонтакте
+                a.link( href="http://twitter.com/lost_in_wiki" )
+                  | Твиттер
+            p.projects_desc
+              | Мой канал с интересными статьями из Википедии
+          li.projects_item
+            h2.projects_title
+              | Лингвопанк
+              .projects_links
+                a.link( href="https://vk.com/linguopunk" )
+                  | ВКонтакте
+                a.link( href="http://twitter.com/linguopunk_ru" )
+                  | Твиттер
+            p.projects_desc
+              | Мой канал про необычные языки
+
     script( src="/index.js" )
