@@ -1,3 +1,3 @@
-fetch('https://evilmartians.com/locations')
+fetch('https://evilmartians.com/locations/ai')
   .then(responce => responce.json())
   .then(console.log)
