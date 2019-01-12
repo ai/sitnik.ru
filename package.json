@@ -5,7 +5,7 @@
     "test": "yarn lint",
     "clean": "rimraf dist/",
     "start": "parcel serve src/index.pug --open",
-    "build": "parcel build src/index.pug --experimental-scope-hoisting"
+    "build": "yarn clean && parcel build src/index.pug --experimental-scope-hoisting"
   },
   "browserslist": [
     "last 2 versions",
