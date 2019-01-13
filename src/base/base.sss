@@ -1,10 +1,21 @@
 *
   padding: 0
   margin: 0
+  font-size: inherit
 
-body
+html
   font-family: Arial, sans-serif
   line-height: 1.4
+  font-size: 20px
+
+  @media (width >= 2200px)
+    font-size: 30px
+
+  @media (width < 1400px)
+    font-size: 16px
+
+  @media (width < 1120px)
+    font-size: 14px
 
 a:active
   transform: scale(0.9)

@@ -1,13 +1,17 @@
 .globe
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  min-height: calc(100% - 80px)
   display: flex
   flex-direction: column
-  min-height: calc(100vh - 30px - 112px - 80px)
   justify-content: center
   align-items: center
   padding: 40px 0
 
 .globe_loading
-  width: 27vw
-  height: 27vw
+  width: calc(40vw - 200px)
+  height: calc(40vw - 200px)
   background: linear-gradient(to bottom right, #f8f8f8, #ececec)
   border-radius: 50%
