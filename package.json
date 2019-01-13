@@ -58,5 +58,8 @@
       "stylelint --fix",
       "git add"
     ]
+  },
+  "dependencies": {
+    "three": "^0.100.0"
   }
 }
