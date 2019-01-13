@@ -5,7 +5,7 @@
     "test": "yarn lint",
     "clean": "rimraf dist/",
     "start": "parcel serve src/index.pug --open",
-    "build": "yarn clean && parcel build src/index.pug --experimental-scope-hoisting"
+    "build": "yarn clean && NODE_ENV=production ./build.js"
   },
   "browserslist": [
     "last 2 versions",
@@ -14,6 +14,9 @@
     "not ie_mob 11"
   ],
   "staticPath": "public",
+  "engines": {
+    "node": "^11.0.0"
+  },
   "devDependencies": {
     "@logux/eslint-config": "^27.0.0",
     "eslint": "^5.12.0",
@@ -29,6 +32,7 @@
     "lint-staged": "^8.1.0",
     "parcel-bundler": "^1.11.0",
     "parcel-plugin-static-files-copy": "^2.0.0",
+    "posthtml": "^0.11.3",
     "pug": "^2.0.3",
     "stylelint": "^9.9.0",
     "stylelint-config-recess-order": "^2.0.1",
