@@ -22,8 +22,10 @@
       "postcss-nested": {},
       "postcss-pxtorem": {
         "propList": [
-          "*",
-          "!font-size"
+          "*"
+        ],
+        "selectorBlackList": [
+          "html"
         ],
         "rootValue": 20
       },
