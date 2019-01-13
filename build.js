@@ -2,6 +2,7 @@
 
 let { promisify } = require('util')
 let posthtml = require('posthtml')
+let postcss = require('postcss')
 let Bundler = require('parcel-bundler')
 let path = require('path')
 let fs = require('fs')
@@ -9,6 +10,8 @@ let fs = require('fs')
 let writeFile = promisify(fs.writeFile)
 let readFile = promisify(fs.readFile)
 let unlink = promisify(fs.unlink)
+
+const A = 'a'.charCodeAt(0)
 
 let bundler = new Bundler(path.join(__dirname, 'src', 'index.pug'), {
   scopeHoist: true,
@@ -33,6 +36,24 @@ async function build () {
   let srcJs = (await readFile(srcJsFile)).toString()
 
   await Promise.all([unlink(cssFile), unlink(srcJsFile)])
+
+  let classes = { }
+  let lastUsed = -1
+
+  function cssPlugin (root) {
+    root.walkRules(rule => {
+      rule.selector = rule.selector.replace(/\.[\w_-]+/g, str => {
+        let kls = str.substr(1)
+        if (!classes[kls]) {
+          lastUsed += 1
+          classes[kls] = String.fromCharCode(A + lastUsed)
+        }
+        return '.' + classes[kls]
+      })
+    })
+  }
+
+  css = postcss([cssPlugin]).process(css, { from: cssFile }).css
 
   function htmlPlugin (tree) {
     tree.match({ tag: 'link', attrs: { rel: 'stylesheet' } }, () => {
@@ -60,6 +81,22 @@ async function build () {
         attrs: {
           ...i.attrs,
           href: i.attrs.href.replace('/index.html', '')
+        }
+      }
+    })
+    tree.match({ attrs: { class: true } }, i => {
+      return {
+        tag: i.tag,
+        content: i.content,
+        attrs: {
+          ...i.attrs,
+          class: i.attrs.class.split(' ').map(kls => {
+            if (!classes[kls]) {
+              process.stderr.write(`Unused class .${ kls }\n`)
+              process.exit(1)
+            }
+            return classes[kls]
+          }).join(' ')
         }
       }
     })
