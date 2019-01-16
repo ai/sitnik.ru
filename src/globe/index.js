@@ -26,7 +26,9 @@ window.onload = function () {
       '&language=' + document.documentElement.lang +
       '&result_type=locality' +
       '&key=AIzaSyDtN3EGVupACA_bqxQi-5r3iHLCzdeCfZc')
-  }).then(address => {
-    console.log(address.results[0].formatted_address)
-  })
+  }).then(geodata => {
+    let address = geodata.results[0].formatted_address.split(', ')
+    document.querySelector('[itemprop=addressLocality]').innerText = address[0]
+    document.querySelector('[itemprop=addressCountry]').innerText = address[1]
+  }).catch(e => console.error(e))
 }

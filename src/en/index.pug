@@ -20,6 +20,11 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
         .globe
           .globe_loading
 
+          .globe_location( itemprop="address" itemscope itemtype="https://schema.org/PostalAddress" )
+            span( itemprop="addressLocality" ) New York
+            = ', '
+            span( itemprop="addressCountry" ) USA
+
       .layout_links
   
         .contacts
