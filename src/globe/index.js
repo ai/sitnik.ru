@@ -19,10 +19,10 @@ window.onload = function () {
   Promise.all([
     loadEarth(),
     get('https://evilmartians.com/locations/ai')
-  ]).then(([showLocation, location]) => {
-    showLocation(location)
+  ]).then(loaded => {
+    loaded[0](loaded[1])
     return get('https://maps.googleapis.com/maps/api/geocode/json' +
-      '?latlng=' + location.latitude + ',' + location.longitude +
+      '?latlng=' + loaded[1].latitude + ',' + loaded[1].longitude +
       '&language=' + document.documentElement.lang +
       '&result_type=locality' +
       '&key=AIzaSyDtN3EGVupACA_bqxQi-5r3iHLCzdeCfZc')
