@@ -1,13 +1,18 @@
 .layout
   display: flex
 
+  @media (width <= 980px)
+    flex-direction: column
+
 .layout_globe,
 .layout_links
   position: relative
-  min-height: 100vh
-  width: 50vw
   padding: 15px 25px
   box-sizing: border-box
+
+  @media (width > 980px)
+    min-height: 100vh
+    width: 50vw
 
 .layout_language
   position: absolute
