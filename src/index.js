@@ -1,2 +1,2 @@
-require('./base')
-require('./globe')
+require('./base/base')
+require('./globe/globe')
