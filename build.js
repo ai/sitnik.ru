@@ -34,6 +34,8 @@ async function build () {
 
   let css = (await readFile(cssFile)).toString()
   let srcJs = (await readFile(srcJsFile)).toString()
+    .replace('function () ', 'function()')
+    .replace(/};}\)\(\);$/, '}})()')
 
   await Promise.all([unlink(cssFile), unlink(srcJsFile)])
 
@@ -68,7 +70,7 @@ async function build () {
       } else if (i.attrs.src && i.attrs.src.indexOf('/src.') !== -1) {
         return {
           tag: 'script',
-          content: srcJs.toString()
+          content: srcJs
         }
       } else {
         return i
