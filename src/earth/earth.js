@@ -1,4 +1,4 @@
-let WebGLRenderer = require('three/src/renderers/WebGLRenderer')
+let { WebGLRenderer } = require('three/src/renderers/WebGLRenderer')
 
 window.sL = location => {
   console.log(WebGLRenderer)
