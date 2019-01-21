@@ -1,19 +1,12 @@
-function handleError (e) {
-  throw e
-}
-
 function get (url) {
   return fetch(url).then(res => res.json())
 }
 
 function loadEarth () {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     let script = document.createElement('script')
     script.async = true
-    script.onerror = reject
-    script.onload = function () {
-      resolve()
-    }
+    script.onload = resolve
     script.src = document.querySelector('link[as="script"]').href
     document.head.appendChild(script)
   })
@@ -34,7 +27,7 @@ window.onload = function () {
     let address = geodata.results[0].formatted_address.split(', ')
     document.querySelector('[itemprop=addressLocality]').innerText = address[0]
     document.querySelector('[itemprop=addressCountry]').innerText = address[1]
-  }).catch(handleError)
+  })
 
   loadEarth().then(() => {
     if (location) window.sL(location)

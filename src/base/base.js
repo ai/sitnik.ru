@@ -6,7 +6,7 @@ document.addEventListener('mousedown', e => {
 })
 
 document.addEventListener('focusin', e => {
-  if (e.target === lastDown && Date.now() - lastDownAt < 1000) {
+  if (e.target === lastDown && Date.now() - lastDownAt < 999) {
     e.target.blur()
   }
 })
