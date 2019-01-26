@@ -115,7 +115,9 @@ async function build () {
   let earthJsFile = assets.find(i => /earth\..*\.js/.test(i))
   let earthJs = (await readFile(earthJsFile)).toString()
   for (let origin in classes) {
-    earthJs = earthJs.replace(`'.${ origin }'`, `'.${ classes[origin] }'`)
+    if (origin.indexOf('globe_') !== -1) {
+      earthJs = earthJs.replace(`".${ origin }"`, `".${ classes[origin] }"`)
+    }
   }
   await writeFile(earthJsFile, earthJs)
 }
