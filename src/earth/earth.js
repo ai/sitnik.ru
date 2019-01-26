@@ -47,7 +47,7 @@ scene.add(light)
 scene.background = new Color('white')
 
 let sphere = new Mesh(
-  new SphereGeometry(RADIUS, 45, 45),
+  new SphereGeometry(RADIUS, 64, 64),
   new MeshPhongMaterial({
     map: loader.load(mapUrl)
   })
