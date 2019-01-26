@@ -18,7 +18,7 @@ const RADIUS = 0.765
 let loading = document.querySelector('.globe_loading')
 let div = document.querySelector('.globe_earth')
 
-let mapUrl = document.querySelector('[as="image"]').href
+let mapUrl = document.querySelector('[as=image]').href
 
 // Base
 

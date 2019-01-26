@@ -6,7 +6,7 @@ function loadEarth (cb) {
   let script = document.createElement('script')
   script.async = true
   script.onload = cb
-  script.src = document.querySelector('link[as="script"]').href
+  script.src = document.querySelector('[as=script]').href
   document.head.appendChild(script)
 }
 
