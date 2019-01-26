@@ -1,10 +1,10 @@
 .projects
   display: flex
   flex-direction: column
-  min-height: calc(100vh - 30px - 180px - 80px)
   padding: 40px 0
 
   @media (width > 980px)
+    min-height: calc(100vh - 30px - 180px - 80px)
     justify-content: center
 
 .projects_item
@@ -21,11 +21,13 @@
 
 .projects_links
   font-size: 20px
-  display: inline-block
-
-.projects_links > *
-  margin-left: 15px
   vertical-align: super
 
-.projects_links > :first-child
-  margin-left: 10px
+  & > *
+    margin-left: 15px
+
+  & > :first-child
+    margin-left: 0
+
+.projects_name
+  margin-right: 10px

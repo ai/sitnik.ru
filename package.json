@@ -29,7 +29,8 @@
           "*"
         ],
         "selectorBlackList": [
-          "html"
+          "html",
+          ".photo"
         ],
         "rootValue": 20
       },

@@ -9,8 +9,6 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
   body
     .layout
       .layout_globe
-        .layout_language
-          a.link( href="/ru/index.pug" hreflang="ru" rel="alternate" ) Русский
         
         a.photo( href="/photo/andreysitnik.jpg" target="_blank" )
           picture.photo_image
@@ -34,13 +32,13 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
       .layout_links
   
         .contacts
-          div
+          .contacts_contact
             a.link( href="mailto:andrey@sitnik.ru" itemprop="email" )
               | andrey@sitnik.ru
             .contacts_notes
               a.link( href="https://keybase.io/iskin" itemprop="sameAs" title="Public key for GnuPG to verify my signature or encrypt message for me" )
                 | GPG 1F710E4D
-          div
+          .contacts_contact
             a.link.is-text( href="tel:+19143123913" itemprop="telephone" )
               | +1 914 312 3913
             .contacts_notes
@@ -58,8 +56,8 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
         ul.projects
           li.projects_item
             h2.projects_title
-              | Twitter
-              .projects_links
+              span.projects_name Twitter
+              span.projects_links
                 a.link( href="http://twitter.com/andreysitnik" itemprop="sameAs" )
                   | Full with NSFW
                 a.link( href="http://twitter.com/sitnikcode" itemprop="sameAs" )
@@ -91,4 +89,7 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
             p
               | My Twitter account about unusual languages
               
+      .layout_language
+        a.link( href="/ru/index.pug" hreflang="ru" rel="alternate" ) Русский
+
   script( src="/index.js" )

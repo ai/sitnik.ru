@@ -1,14 +1,15 @@
 .globe
-  position: absolute
-  top: 0
-  left: 0
-  width: 100%
-  min-height: calc(100% - 80px)
-  display: flex
-  flex-direction: column
-  justify-content: center
-  align-items: center
-  padding: 40px 0
+  @media (width > 980px)
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    min-height: calc(100% - 80px)
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    padding: 40px 0
 
 .globe_earth
   position: relative
@@ -26,4 +27,5 @@
   border-radius: 50%
 
 .globe_location
-  padding-top: 40px
+  @media (width > 980px)
+    padding-top: 40px
