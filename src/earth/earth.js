@@ -88,6 +88,13 @@ window.sL = l => {
   setPosition(dot.position, RADIUS, l.latitude, l.longitude)
   setPosition(camera.position, 2, l.latitude > 0 ? 20 : -20, l.longitude)
 
+  let now = new Date()
+  let solstice = new Date(now.getFullYear() + '-06-21 00:00:00')
+  let days = (now - solstice) / (1000 * 60 * 60 * 24)
+  let sunLat = 23.44 * Math.cos(2 * Math.PI * days / 365.26)
+  let sunLong = 180 - 15 * (now.getUTCHours() + now.getMinutes() / 60)
+  setPosition(light.position, 2, sunLat, sunLong)
+
   window.addEventListener('resize', resize)
   div.appendChild(renderer.domElement)
   resize()
