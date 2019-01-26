@@ -1,6 +1,5 @@
 .photo
   display: block
-  position: absolute
   top: 17px
   left: 17px
   line-height: 1
@@ -17,8 +16,8 @@
   &:focus
     box-shadow: 0 0 0 7px rgb(24, 124, 255)
 
-  @media (width <= 980px)
-    position: static
+  @media (width > 980px)
+    position: absolute
 
 .photo_image
   width: 100%
