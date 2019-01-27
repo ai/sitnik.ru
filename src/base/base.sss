@@ -19,11 +19,16 @@ html
   @media (width <= 980px)
     font-size: 16px
 
-a:active
-  transform: scale(0.9)
+body
+  -webkit-tap-highlight-color: rgb(24, 124, 255)
 
 a:focus
   outline: none
+
+a:active
+  transition: none
+  &::before
+    transition: none
 
 a::-moz-focus-inner
   border: 0
