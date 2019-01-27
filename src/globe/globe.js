@@ -2,15 +2,17 @@ function get (url) {
   return fetch(url).then(res => res.json())
 }
 
-function loadEarth (cb) {
+let location
+
+function loadEarth () {
   let script = document.createElement('script')
   script.async = true
-  script.onload = cb
+  script.onload = () => {
+    if (location) window.sL(location)
+  }
   script.src = document.querySelector('[as=script]').href
   document.head.appendChild(script)
 }
-
-let location
 
 get('https://evilmartians.com/locations/ai').then(data => {
   if (window.sL) window.sL(data)
@@ -26,10 +28,8 @@ get('https://evilmartians.com/locations/ai').then(data => {
   document.querySelector('[itemprop=addressCountry]').innerText = address[1]
 })
 
-window.onload = function () {
-  setTimeout(() => {
-    loadEarth(() => {
-      if (location) window.sL(location)
-    })
-  }, 1)
+if (window.innerWidth > 980) {
+  window.addEventListener('load', () => {
+    setTimeout(loadEarth, 1)
+  })
 }
