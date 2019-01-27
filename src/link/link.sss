@@ -33,10 +33,15 @@
 .link.is-text::before
   opacity: 0
 
-.link:focus
+.link:focus,
+.link.is-pressed
   color: white
-
-.link:focus::before
   transform: none
-  opacity: 1
-  background: rgb(24, 124, 255)
+
+  &::before
+    transform: none
+    opacity: 1
+    background: rgb(24, 124, 255)
+
+.link.is-pressed::before
+  transition: none
