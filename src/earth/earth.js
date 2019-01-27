@@ -2,23 +2,33 @@ let { MeshPhongMaterial } = require('three/src/materials/MeshPhongMaterial')
 let { PerspectiveCamera } = require('three/src/cameras/PerspectiveCamera')
 let { DirectionalLight } = require('three/src/lights/DirectionalLight')
 let { SphereGeometry } = require('three/src/geometries/SphereGeometry')
+let { SpriteMaterial } = require('three/src/materials/SpriteMaterial')
 let { WebGLRenderer } = require('three/src/renderers/WebGLRenderer')
 let { TextureLoader } = require('three/src/loaders/TextureLoader')
 let { AmbientLight } = require('three/src/lights/AmbientLight')
 let { Spherical } = require('three/src/math/Spherical')
+let { Vector3 } = require('three/src/math/Vector3')
 let { Vector2 } = require('three/src/math/Vector2')
+let { Sprite } = require('three/src/objects/Sprite')
 let { Scene } = require('three/src/scenes/Scene')
 let { Color } = require('three/src/math/Color')
 let { Mesh } = require('three/src/objects/Mesh')
 
-const RADIUS = 0.765
+const RADIUS = 0.765 * 0.88
 
 // DOM
 
 let loading = document.querySelector('.globe_loading')
 let div = document.querySelector('.globe_earth')
 
-let mapUrl = document.querySelector('[as=image]').href
+let mapUrl, hereUrl
+for (let i of document.querySelectorAll('[as=image]')) {
+  if (i.href.indexOf('/map.') !== -1) {
+    mapUrl = i.href
+  } else if (i.href.indexOf('/here.') !== -1) {
+    hereUrl = i.href
+  }
+}
 
 // Base
 
@@ -50,13 +60,15 @@ let sphere = new Mesh(
 )
 scene.add(sphere)
 
-let dot = new Mesh(
-  new SphereGeometry(0.012, 12, 12),
-  new MeshPhongMaterial({
-    color: 0x187cff
+let here = new Sprite(
+  new SpriteMaterial({
+    map: loader.load(hereUrl, render)
   })
 )
-scene.add(dot)
+here.material.depthTest = false
+here.scale.set(0.1, 0.1, 1)
+here.center.set(0.5, 0)
+scene.add(here)
 
 // Control
 
@@ -67,6 +79,8 @@ let delta = new Spherical()
 
 const PI2 = 2 * Math.PI
 
+let distanceToEdge
+
 function move () {
   delta.setFromVector3(camera.position)
 
@@ -76,8 +90,12 @@ function move () {
   rotateStart.copy(rotateEnd)
 
   delta.makeSafe()
-  camera.position.copy(camera).setFromSpherical(delta)
+  camera.position.setFromSpherical(delta)
   camera.lookAt(0, 0, 0)
+
+  let distanceToHere = camera.position.distanceTo(here.position)
+  here.material.depthTest = distanceToHere > distanceToEdge
+
   requestAnimationFrame(render)
 }
 
@@ -130,9 +148,11 @@ function setPosition (position, radius, latitude, longitude) {
 }
 
 window.sL = l => {
-  setPosition(dot.position, RADIUS, l.latitude, l.longitude)
+  setPosition(here.position, RADIUS, l.latitude, l.longitude)
   setPosition(camera.position, 2, l.latitude > 0 ? 20 : -20, l.longitude)
   camera.lookAt(0, 0, 0)
+
+  distanceToEdge = camera.position.distanceTo(new Vector3(0, RADIUS, 0))
 
   let now = new Date()
   let solstice = new Date(now.getFullYear() + '-06-21 00:00:00')

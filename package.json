@@ -63,6 +63,10 @@
     "*.css": [
       "stylelint --fix",
       "git add"
+    ],
+    "*.svg": [
+      "svgo",
+      "git add"
     ]
   },
   "devDependencies": {
@@ -90,6 +94,7 @@
     "stylelint": "^9.10.1",
     "stylelint-config-recess-order": "^2.0.1",
     "stylelint-config-standard": "^18.2.0",
-    "stylelint-order": "^2.0.0"
+    "stylelint-order": "^2.0.0",
+    "svgo": "^1.1.1"
   }
 }

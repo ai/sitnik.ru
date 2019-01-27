@@ -4,28 +4,27 @@
     top: 0
     left: 0
     width: 100%
-    min-height: calc(100% - 130px)
+    min-height: calc(100% - 100px)
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
-    padding: 65px 0
+    padding: 50px 0
 
 .globe_earth
   position: relative
-  width: calc(40vw - 250px)
-  height: calc(40vw - 250px)
+  width: calc(44vw - 250px)
+  height: calc(44vw - 250px)
 
   @media (width <= 980px)
     display: none
 
 .globe_loading
   position: absolute
-  width: 100%
-  height: 100%
+  width: 88%
+  height: 88%
+  top: 50%
+  left: 50%
+  transform: translate3D(-50%, -50%, 0)
   background: #e9e9e9
   border-radius: 50%
-
-.globe_location
-  @media (width > 980px)
-    padding-top: 20px
