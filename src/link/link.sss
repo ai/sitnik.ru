@@ -20,7 +20,8 @@
   bottom: 0
   top: 0
   border-radius: 0.3em
-  background: rgba(24, 124, 255, 0.2)
+  background: currentColor
+  opacity: 0.2
   transform: scaleY(0.06)
   transform-origin: 0 100% 0
   transition: all 200ms
@@ -28,9 +29,6 @@
 
 .link:hover::before
   transform: none
-
-.link:visited::before
-  background: rgba(124, 24, 255, 0.2)
 
 .link.is-text::before
   opacity: 0
@@ -40,8 +38,5 @@
 
 .link:focus::before
   transform: none
-  background: rgb(24, 124, 255)
   opacity: 1
-
-.link:visited:focus::before
-  background: rgb(124, 24, 255)
+  background: rgb(24, 124, 255)
