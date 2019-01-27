@@ -5,7 +5,8 @@ let { SphereGeometry } = require('three/src/geometries/SphereGeometry')
 let { WebGLRenderer } = require('three/src/renderers/WebGLRenderer')
 let { TextureLoader } = require('three/src/loaders/TextureLoader')
 let { AmbientLight } = require('three/src/lights/AmbientLight')
-let OrbitControls = require('three-orbitcontrols')
+let { Spherical } = require('three/src/math/Spherical')
+let { Vector2 } = require('three/src/math/Vector2')
 let { Scene } = require('three/src/scenes/Scene')
 let { Color } = require('three/src/math/Color')
 let { Mesh } = require('three/src/objects/Mesh')
@@ -24,12 +25,8 @@ let mapUrl = document.querySelector('[as=image]').href
 let renderer = new WebGLRenderer()
 let scene = new Scene()
 let camera = new PerspectiveCamera(45, 1, 0.01, 1000)
-let controls = new OrbitControls(camera, renderer.domElement)
 
 renderer.setPixelRatio(window.devicePixelRatio)
-
-controls.enableZoom = false
-controls.enableKeys = false
 
 let loader = new TextureLoader()
 
@@ -48,7 +45,7 @@ scene.background = new Color('white')
 let sphere = new Mesh(
   new SphereGeometry(RADIUS, 64, 64),
   new MeshPhongMaterial({
-    map: loader.load(mapUrl)
+    map: loader.load(mapUrl, render)
   })
 )
 scene.add(sphere)
@@ -61,17 +58,66 @@ let dot = new Mesh(
 )
 scene.add(dot)
 
+// Control
+
+let rotateStart = new Vector2()
+let rotateEnd = new Vector2()
+let rotateDelta = new Vector2()
+let delta = new Spherical()
+
+const PI2 = 2 * Math.PI
+
+function move () {
+  delta.setFromVector3(camera.position)
+
+  rotateDelta.subVectors(rotateEnd, rotateStart)
+  delta.theta -= PI2 * rotateDelta.x / renderer.domElement.clientHeight
+  delta.phi -= PI2 * rotateDelta.y / renderer.domElement.clientHeight
+  rotateStart.copy(rotateEnd)
+
+  delta.makeSafe()
+  camera.position.copy(camera).setFromSpherical(delta)
+  camera.lookAt(0, 0, 0)
+  requestAnimationFrame(render)
+}
+
+function mouseMove (e) {
+  rotateEnd.set(e.clientX, e.clientY)
+  move()
+}
+
+function mouseUp () {
+  document.removeEventListener('mousemove', mouseMove, false)
+  document.removeEventListener('mouseup', mouseUp, false)
+}
+
+renderer.domElement.addEventListener('mousedown', e => {
+  if (e.button === 0) { // left
+    rotateStart.set(e.clientX, e.clientY)
+    e.preventDefault()
+    document.addEventListener('mousemove', mouseMove, false)
+    document.addEventListener('mouseup', mouseUp, false)
+  }
+})
+
+renderer.domElement.addEventListener('touchstart', e => {
+  rotateStart.set(e.touches[0].pageX, e.touches[0].pageY)
+})
+
+renderer.domElement.addEventListener('touchmove', e => {
+  rotateEnd.set(e.touches[0].pageX, e.touches[0].pageY)
+  move()
+})
+
 // Methods
 
 function resize () {
   renderer.setSize(div.clientWidth, div.clientHeight)
-  render()
+  renderer.render(scene, camera)
 }
 
 function render () {
-  controls.update()
   renderer.render(scene, camera)
-  requestAnimationFrame(render)
 }
 
 function setPosition (position, radius, latitude, longitude) {
@@ -86,6 +132,7 @@ function setPosition (position, radius, latitude, longitude) {
 window.sL = l => {
   setPosition(dot.position, RADIUS, l.latitude, l.longitude)
   setPosition(camera.position, 2, l.latitude > 0 ? 20 : -20, l.longitude)
+  camera.lookAt(0, 0, 0)
 
   let now = new Date()
   let solstice = new Date(now.getFullYear() + '-06-21 00:00:00')

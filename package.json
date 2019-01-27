@@ -8,8 +8,7 @@
     "build": "yarn clean && NODE_ENV=production ./build.js"
   },
   "dependencies": {
-    "three": "^0.100.0",
-    "three-orbitcontrols": "^2.99.1"
+    "three": ">= 0.100"
   },
   "browserslist": [
     "last 2 versions",
