@@ -1,5 +1,4 @@
 let { MeshPhongMaterial } = require('three/src/materials/MeshPhongMaterial')
-let { MeshBasicMaterial } = require('three/src/materials/MeshBasicMaterial')
 let { PerspectiveCamera } = require('three/src/cameras/PerspectiveCamera')
 let { DirectionalLight } = require('three/src/lights/DirectionalLight')
 let { SphereGeometry } = require('three/src/geometries/SphereGeometry')
@@ -56,7 +55,7 @@ scene.add(sphere)
 
 let dot = new Mesh(
   new SphereGeometry(0.012, 12, 12),
-  new MeshBasicMaterial({
+  new MeshPhongMaterial({
     color: 0x187cff
   })
 )
