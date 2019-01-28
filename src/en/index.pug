@@ -1,9 +1,6 @@
 doctype html
 html( lang="en" itemtype="https://schema.org/Person" itemscope )
   head
-    if typeof mainPage !== 'undefined'
-      script( async )
-        | if(/^ru/.test(navigator.language))location.pathname='/ru/index.html'
     title Andrey Sitnik
     include ../head.pug
   body

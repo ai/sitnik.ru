@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "https://sitnikru.netlify.com/*"
+  to = "https://sitnik.ru/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/"
+  to = "/ru"
+  conditions = { Language = ["ru"] }
+  status = 302
