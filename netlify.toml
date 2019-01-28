@@ -2,9 +2,40 @@
   from = "https://sitnikru.netlify.com/*"
   to = "https://sitnik.ru/:splat"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/"
   to = "/ru"
   conditions = { Language = ["ru"] }
   status = 302
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/photo/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
