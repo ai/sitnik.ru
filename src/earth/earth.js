@@ -119,10 +119,12 @@ renderer.domElement.addEventListener('mousedown', e => {
 })
 
 renderer.domElement.addEventListener('touchstart', e => {
+  e.preventDefault()
   rotateStart.set(e.touches[0].pageX, e.touches[0].pageY)
 })
 
 renderer.domElement.addEventListener('touchmove', e => {
+  e.preventDefault()
   rotateEnd.set(e.touches[0].pageX, e.touches[0].pageY)
   move()
 })
