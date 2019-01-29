@@ -4,13 +4,18 @@ function get (url) {
 
 let location
 
+let loading
 function loadEarth () {
+  if (loading) return
+  loading = true
+
   let script = document.createElement('script')
   script.async = true
   script.onload = () => {
     if (location) window.sL(location)
   }
   script.src = document.querySelector('[as=script]').href
+
   document.head.appendChild(script)
 }
 
@@ -34,12 +39,10 @@ if (window.innerWidth > 980) {
   })
 } else {
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 980 && !window.sL) {
-      loadEarth()
-    }
+    if (window.innerWidth > 980) loadEarth()
   })
   document.querySelector('.globe_location').addEventListener('click', () => {
     document.querySelector('.globe').classList.toggle('is-open')
-    if (!window.sL) loadEarth()
+    loadEarth()
   })
 }
