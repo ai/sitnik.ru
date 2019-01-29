@@ -147,19 +147,24 @@ function setPosition (position, radius, latitude, longitude) {
   position.y = radius * Math.cos(phi)
 }
 
-window.sL = l => {
-  setPosition(here.position, RADIUS, l.latitude, l.longitude)
-  setPosition(camera.position, 2, l.latitude > 0 ? 20 : -20, l.longitude)
-  camera.lookAt(0, 0, 0)
-
-  distanceToEdge = camera.position.distanceTo(new Vector3(0, RADIUS, 0))
-
+function moveSun () {
   let now = new Date()
   let solstice = new Date(now.getFullYear() + '-06-21 00:00:00')
   let days = (now - solstice) / (1000 * 60 * 60 * 24)
   let sunLat = 23.44 * Math.cos(2 * Math.PI * days / 365.26)
   let sunLong = 180 - 15 * (now.getUTCHours() + now.getMinutes() / 60)
   setPosition(light.position, 2, sunLat, sunLong)
+}
+
+setTimeout(moveSun, 30 * 60 * 1000)
+
+window.sL = l => {
+  moveSun()
+  setPosition(here.position, RADIUS, l.latitude, l.longitude)
+  setPosition(camera.position, 2, l.latitude > 0 ? 20 : -20, l.longitude)
+  camera.lookAt(0, 0, 0)
+
+  distanceToEdge = camera.position.distanceTo(new Vector3(0, RADIUS, 0))
 
   window.addEventListener('resize', resize)
   div.appendChild(renderer.domElement)
