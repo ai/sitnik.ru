@@ -67,6 +67,17 @@ async function build () {
 
   css = postcss([cssPlugin]).process(css, { from: cssFile }).css
 
+  let earthJsFile = assets.find(i => /earth\..*\.js/.test(i))
+  let earthJs = (await readFile(earthJsFile)).toString()
+  for (let origin in classes) {
+    if (origin.indexOf('globe') === 0) {
+      earthJs = earthJs.replace(`".${ origin }"`, `".${ classes[origin] }"`)
+      js = js.replace(`".${ origin }"`, `".${ classes[origin] }"`)
+    }
+    js = js.replace(`"is-open"`, `"${ classes['is-open'] }"`)
+  }
+  await writeFile(earthJsFile, earthJs)
+
   function htmlPlugin (tree) {
     tree.match({ tag: 'link', attrs: { rel: 'stylesheet' } }, () => {
       return { tag: 'style', content: css.toString() }
@@ -121,15 +132,6 @@ async function build () {
       .process(html, { sync: true })
       .html)
   })
-
-  let earthJsFile = assets.find(i => /earth\..*\.js/.test(i))
-  let earthJs = (await readFile(earthJsFile)).toString()
-  for (let origin in classes) {
-    if (origin.indexOf('globe') !== -1 || origin === 'is-open') {
-      earthJs = earthJs.replace(`".${ origin }"`, `".${ classes[origin] }"`)
-    }
-  }
-  await writeFile(earthJsFile, earthJs)
 }
 
 build().catch(e => {
