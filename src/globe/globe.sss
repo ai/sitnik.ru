@@ -62,11 +62,30 @@
 .globe_location
   background: none
   border: none
+  font-size: inherit
 
   @media (width <= 980px)
-    font-size: inherit
+    position: relative
     color: #006efe
     border-bottom: 1px dashed
+    cursor: pointer
+    margin-left: 17px
 
     &:active
       background: rgba(#006efe, 0.2)
+
+.globe_location::before
+  @media (width <= 980px)
+    position: absolute
+    left: -17px
+    top: 7px
+    display: inline-block
+    content: ""
+    border: 6px solid
+    border-right-width: 0
+    border-color: transparent transparent transparent #006efe
+    transition: transform 400ms
+    margin: 0 6px 0 3px
+
+    .globe.is-open &
+      transform: rotate(90deg)
