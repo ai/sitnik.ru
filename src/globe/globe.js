@@ -14,10 +14,10 @@ function loadEarth () {
   document.head.appendChild(script)
 }
 
-get('https://evilmartians.com/locations/ai').then(data => {
+get('//evilmartians.com/locations/ai').then(data => {
   if (window.sL) window.sL(data)
   location = data
-  return get('https://maps.googleapis.com/maps/api/geocode/json' +
+  return get('//maps.googleapis.com/maps/api/geocode/json' +
     '?latlng=' + data.latitude + ',' + data.longitude +
     '&language=' + document.documentElement.lang +
     '&result_type=locality' +
