@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "lint": "eslint *.js src/**/*.js && stylelint src/**/*.css",
-    "test": "yarn lint",
+    "test": "yarn lint && yarn build",
     "clean": "rimraf dist/",
     "start": "parcel serve src/index.pug --open",
     "build": "yarn clean && NODE_ENV=production ./build.js"
@@ -72,10 +72,10 @@
   },
   "devDependencies": {
     "@logux/eslint-config": "^27.0.0",
-    "autoprefixer": "^9.4.6",
+    "autoprefixer": "^9.4.7",
     "eslint": "^5.12.1",
     "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.15.0",
+    "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jest": "^22.1.3",
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-prefer-let": "^1.0.1",
@@ -83,7 +83,7 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.0",
     "husky": "^1.3.1",
-    "lint-staged": "^8.1.0",
+    "lint-staged": "^8.1.1",
     "parcel-bundler": "^1.11.0",
     "parcel-plugin-static-files-copy": "^2.0.0",
     "postcss": "^7.0.14",
