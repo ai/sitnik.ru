@@ -14,6 +14,10 @@ let unlink = promisify(fs.unlink)
 const A = 'a'.charCodeAt(0)
 
 let bundler = new Bundler(path.join(__dirname, 'src', 'index.pug'), {
+  sourceMaps: false
+})
+
+let bundlerJs = new Bundler(path.join(__dirname, 'src', 'index.js'), {
   scopeHoist: true,
   sourceMaps: false
 })
@@ -25,19 +29,25 @@ function findAssets (bundle) {
 }
 
 async function build () {
+  await bundlerJs.bundle()
   let bundle = await bundler.bundle()
 
   let assets = findAssets(bundle)
 
+  let jsFile = path.join(__dirname, 'dist', 'index.js')
   let cssFile = assets.find(i => path.extname(i) === '.css')
   let srcJsFile = assets.find(i => /src\..*\.js/.test(i))
 
   let css = (await readFile(cssFile)).toString()
-  let srcJs = (await readFile(srcJsFile)).toString()
+  let js = (await readFile(jsFile)).toString()
     .replace('function () ', 'function()')
     .replace(/};}\)\(\);$/, '}})()')
 
-  await Promise.all([unlink(cssFile), unlink(srcJsFile)])
+  await Promise.all([
+    unlink(cssFile),
+    unlink(srcJsFile),
+    unlink(jsFile)
+  ])
 
   let classes = { }
   let lastUsed = -1
@@ -70,7 +80,7 @@ async function build () {
       } else if (i.attrs.src && i.attrs.src.indexOf('/src.') !== -1) {
         return {
           tag: 'script',
-          content: srcJs
+          content: js
         }
       } else {
         return i
