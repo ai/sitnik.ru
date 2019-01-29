@@ -32,4 +32,9 @@ if (window.innerWidth > 980) {
   window.addEventListener('load', () => {
     setTimeout(loadEarth, 1)
   })
+} else {
+  document.querySelector('.globe_location').addEventListener('click', () => {
+    document.querySelector('.globe').classList.toggle('is-open')
+    if (!window.sL) loadEarth()
+  })
 }

@@ -11,13 +11,26 @@
     align-items: center
     padding: 60px 0
 
+  @media (width <= 980px)
+    overflow: hidden
+    transition: padding-bottom 400ms
+    position: relative
+
+    &.is-open
+      padding-bottom: calc(80vw + 40px)
+
 .globe_earth
-  position: relative
-  width: calc(44vw - 250px)
-  height: calc(44vw - 250px)
+  @media (width > 980px)
+    position: relative
+    width: calc(44vw - 250px)
+    height: calc(44vw - 250px)
 
   @media (width <= 980px)
-    display: none
+    position: absolute
+    left: calc(50% - 40vw)
+    top: 43px
+    width: 80vw
+    height: 80vw
 
 .globe_loading
   position: absolute
@@ -28,3 +41,14 @@
   transform: translate3D(-50%, -50%, 0)
   background: #e9e9e9
   border-radius: 50%
+
+.globe_location
+  background: none
+  border: none
+
+  @media (width <= 980px)
+    color: #006efe
+    border-bottom: 1px dashed
+
+    &:active
+      background: rgba(#006efe, 0.2)
