@@ -55,14 +55,14 @@ scene.background = new Color('white')
 let sphere = new Mesh(
   new SphereGeometry(RADIUS, 64, 64),
   new MeshPhongMaterial({
-    map: loader.load(mapUrl, render)
+    map: loader.load(mapUrl, load)
   })
 )
 scene.add(sphere)
 
 let here = new Sprite(
   new SpriteMaterial({
-    map: loader.load(hereUrl, render)
+    map: loader.load(hereUrl, load)
   })
 )
 here.material.depthTest = false
@@ -136,6 +136,9 @@ function resize () {
   renderer.render(scene, camera)
 }
 
+window.addEventListener('resize', resize)
+resize()
+
 function render () {
   renderer.render(scene, camera)
 }
@@ -158,18 +161,24 @@ function moveSun () {
   setPosition(light.position, 2, sunLat, sunLong)
 }
 
+moveSun()
 setTimeout(moveSun, 30 * 60 * 1000)
 
 window.sL = l => {
-  moveSun()
   setPosition(here.position, RADIUS, l.latitude, l.longitude)
   setPosition(camera.position, 2, l.latitude > 0 ? 20 : -20, l.longitude)
   camera.lookAt(0, 0, 0)
-
   distanceToEdge = camera.position.distanceTo(new Vector3(0, RADIUS, 0))
+  load()
+}
 
-  window.addEventListener('resize', resize)
-  div.appendChild(renderer.domElement)
-  resize()
-  loading.remove()
+let loaded = 0
+
+function load () {
+  loaded += 1
+  if (loaded === 3) {
+    div.appendChild(renderer.domElement)
+    loading.remove()
+    render()
+  }
 }
