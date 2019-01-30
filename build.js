@@ -2,7 +2,7 @@
 
 let { promisify } = require('util')
 let posthtml = require('posthtml')
-let mqPacker = require('css-mqpacker')
+let mqpacker = require('css-mqpacker')
 let postcss = require('postcss')
 let Bundler = require('parcel-bundler')
 let path = require('path')
@@ -66,7 +66,7 @@ async function build () {
     })
   }
 
-  css = postcss([cssPlugin, mqPacker]).process(css, { from: cssFile }).css
+  css = postcss([cssPlugin, mqpacker]).process(css, { from: cssFile }).css
 
   let earthJsFile = assets.find(i => /earth\..*\.js/.test(i))
   let earthJs = (await readFile(earthJsFile)).toString()
