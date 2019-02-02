@@ -56,11 +56,13 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
           li.projects_item
             h2.projects_title
               span.projects_name Twitter
-              span.projects_links
-                a.link( href="https://twitter.com/andreysitnik" itemprop="sameAs" )
-                  | Full with NSFW
-                a.link( href="https://twitter.com/sitnikcode" itemprop="sameAs" )
-                  | code only
+              ul.projects_links
+                li.projects_link
+                  a.link( href="https://twitter.com/andreysitnik" itemprop="sameAs" )
+                    | Full with NSFW
+                li.projects_link
+                  a.link( href="https://twitter.com/sitnikcode" itemprop="sameAs" )
+                    | code only
             p
               | My notes about sex, travels, and technologies
           li.projects_item
