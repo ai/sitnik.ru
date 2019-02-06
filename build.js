@@ -13,6 +13,7 @@ let readFile = promisify(fs.readFile)
 let unlink = promisify(fs.unlink)
 
 const A = 'a'.charCodeAt(0)
+const ROOT_INDEX = path.join(__dirname, 'dist', 'index.html')
 
 let bundler = new Bundler(path.join(__dirname, 'src', 'index.pug'), {
   sourceMaps: false
@@ -32,6 +33,7 @@ function findAssets (bundle) {
 async function build () {
   await bundlerJs.bundle()
   let bundle = await bundler.bundle()
+  await unlink(ROOT_INDEX)
 
   let assets = findAssets(bundle)
 
@@ -126,13 +128,15 @@ async function build () {
     })
   }
 
-  assets.filter(i => path.extname(i) === '.html').forEach(async i => {
-    let html = await readFile(i)
-    await writeFile(i, posthtml()
-      .use(htmlPlugin)
-      .process(html, { sync: true })
-      .html)
-  })
+  assets
+    .filter(i => path.extname(i) === '.html' && i !== ROOT_INDEX)
+    .forEach(async i => {
+      let html = await readFile(i)
+      await writeFile(i, posthtml()
+        .use(htmlPlugin)
+        .process(html, { sync: true })
+        .html)
+    })
 }
 
 build().catch(e => {
