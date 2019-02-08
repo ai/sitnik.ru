@@ -1,4 +1,5 @@
 let { MeshPhongMaterial } = require('three/src/materials/MeshPhongMaterial')
+let { MeshBasicMaterial } = require('three/src/materials/MeshBasicMaterial')
 let { PerspectiveCamera } = require('three/src/cameras/PerspectiveCamera')
 let { DirectionalLight } = require('three/src/lights/DirectionalLight')
 let { SphereGeometry } = require('three/src/geometries/SphereGeometry')
@@ -13,6 +14,8 @@ let { Sprite } = require('three/src/objects/Sprite')
 let { Scene } = require('three/src/scenes/Scene')
 let { Color } = require('three/src/math/Color')
 let { Mesh } = require('three/src/objects/Mesh')
+
+let visited = require('../../cities/dots.js')
 
 const RADIUS = 0.765 * 0.88
 
@@ -48,9 +51,38 @@ let light = new DirectionalLight(0x606060, 1)
 light.position.set(1, 0, 1)
 scene.add(light)
 
+// Methods
+
+function resize () {
+  renderer.setSize(div.clientWidth, div.clientHeight)
+  renderer.render(scene, camera)
+}
+
+function render () {
+  renderer.render(scene, camera)
+}
+
+function setPosition (position, radius, latitude, longitude) {
+  let phi = (90 - latitude) * (Math.PI / 180)
+  let theta = (longitude + 180) * (Math.PI / 180)
+
+  position.x = -radius * Math.sin(phi) * Math.cos(theta)
+  position.z = radius * Math.sin(phi) * Math.sin(theta)
+  position.y = radius * Math.cos(phi)
+}
+
+function moveSun () {
+  let now = new Date()
+  let solstice = new Date(now.getFullYear() + '-06-21 00:00:00')
+  let days = (now - solstice) / (1000 * 60 * 60 * 24)
+  let sunLat = 23.44 * Math.cos(2 * Math.PI * days / 365.26)
+  let sunLong = 180 - 15 * (now.getUTCHours() + now.getMinutes() / 60)
+  setPosition(light.position, 2, sunLat, sunLong)
+}
+
 // Scene
 
-scene.background = new Color('white')
+scene.background = new Color(0xffffff)
 
 let sphere = new Mesh(
   new SphereGeometry(RADIUS, 64, 64),
@@ -69,6 +101,17 @@ here.material.depthTest = false
 here.scale.set(0.1, 0.1, 1)
 here.center.set(0.5, 0)
 scene.add(here)
+
+visited.forEach(i => {
+  let dot = new Mesh(
+    new SphereGeometry(0.003, 8),
+    new MeshBasicMaterial({
+      color: new Color(0xffffff)
+    })
+  )
+  setPosition(dot.position, RADIUS, i[0], i[1])
+  scene.add(dot)
+})
 
 // Control
 
@@ -129,37 +172,10 @@ renderer.domElement.addEventListener('touchmove', e => {
   move()
 })
 
-// Methods
-
-function resize () {
-  renderer.setSize(div.clientWidth, div.clientHeight)
-  renderer.render(scene, camera)
-}
+// Init
 
 window.addEventListener('resize', resize)
 resize()
-
-function render () {
-  renderer.render(scene, camera)
-}
-
-function setPosition (position, radius, latitude, longitude) {
-  let phi = (90 - latitude) * (Math.PI / 180)
-  let theta = (longitude + 180) * (Math.PI / 180)
-
-  position.x = -radius * Math.sin(phi) * Math.cos(theta)
-  position.z = radius * Math.sin(phi) * Math.sin(theta)
-  position.y = radius * Math.cos(phi)
-}
-
-function moveSun () {
-  let now = new Date()
-  let solstice = new Date(now.getFullYear() + '-06-21 00:00:00')
-  let days = (now - solstice) / (1000 * 60 * 60 * 24)
-  let sunLat = 23.44 * Math.cos(2 * Math.PI * days / 365.26)
-  let sunLong = 180 - 15 * (now.getUTCHours() + now.getMinutes() / 60)
-  setPosition(light.position, 2, sunLat, sunLong)
-}
 
 moveSun()
 setTimeout(moveSun, 30 * 60 * 1000)

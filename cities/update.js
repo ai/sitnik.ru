@@ -17,7 +17,7 @@ let BOOKMARKS_FILE = path.join(__dirname, 'bookmarks.xml')
 let PROCESSED_FILE = path.join(__dirname, 'processed.json')
 let CITIES_FILE = path.join(__dirname, 'cities.json')
 let TOKEN_FILE = path.join(__dirname, 'token.txt')
-let DOTS_FILE = path.join(__dirname, 'dots.json')
+let DOTS_FILE = path.join(__dirname, 'dots.js')
 
 // Helpers
 
@@ -195,7 +195,7 @@ async function saveFiles (data) {
   await Promise.all([
     writeFile(PROCESSED_FILE, prettyStringify(data.processed.sort())),
     writeFile(CITIES_FILE, prettyStringify(data.cities)),
-    writeFile(DOTS_FILE, prettyStringify(dots))
+    writeFile(DOTS_FILE, 'module.exports = ' + prettyStringify(dots))
   ])
   return data
 }
