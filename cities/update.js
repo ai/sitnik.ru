@@ -115,6 +115,10 @@ function prettyStringify (data) {
   return JSON.stringify(data, null, '  ') + '\n'
 }
 
+function diff (a1, b1, a2, b2) {
+  return Math.max(Math.abs(a1 - b1), Math.abs(a2 - b2))
+}
+
 // Steps
 
 async function loadToken () {
@@ -191,7 +195,19 @@ async function findCities (data) {
 
 async function saveFiles (data) {
   let dots = Object.values(data.cities)
-  process.stderr.write(`\nTotal cities: ${ dots.length }\n`)
+
+  dots = dots.reverse().filter((i, index) => {
+    for (let j of dots.slice(index + 1)) {
+      if (diff(i[0], j[0], i[1], j[1]) < 1.5) {
+        return false
+      }
+    }
+    return true
+  })
+
+  process.stderr.write(
+    `\nTotal cities: ${ Object.values(data.cities).length }\n`
+  )
   await Promise.all([
     writeFile(PROCESSED_FILE, prettyStringify(data.processed.sort())),
     writeFile(CITIES_FILE, prettyStringify(data.cities)),
