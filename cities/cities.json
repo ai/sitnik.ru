@@ -1,0 +1,1138 @@
+{
+  "Tbilisi, Georgia": [
+    41.7151377,
+    44.827096
+  ],
+  "Marrakech, Morocco": [
+    31.6294723,
+    -7.981084500000001
+  ],
+  "Shehyni, Ukraine": [
+    49.8007959,
+    22.9823133
+  ],
+  "Long Island City, United States": [
+    40.744679,
+    -73.9485424
+  ],
+  "Kuta, Indonesia": [
+    -8.7223957,
+    115.1767095
+  ],
+  "DongDan, China": [
+    39.909741,
+    116.414514
+  ],
+  "Seoul, South Korea": [
+    37.566535,
+    126.9779692
+  ],
+  "Ullensaker, Norway": [
+    60.1349136,
+    11.1637891
+  ],
+  "Torino, Italy": [
+    45.0703393,
+    7.686864
+  ],
+  "Napoli, Italy": [
+    40.8517983,
+    14.26812
+  ],
+  "Chaoyang, China": [
+    41.57365,
+    120.4493879
+  ],
+  "Bar, Montenegro": [
+    42.0912106,
+    19.089904
+  ],
+  "Benoa, Indonesia": [
+    -8.7586798,
+    115.2143892
+  ],
+  "Chaoyang Qu, China": [
+    39.921469,
+    116.443107
+  ],
+  "Padangsambian, Indonesia": [
+    -8.6546221,
+    115.1859517
+  ],
+  "Bari, Italy": [
+    41.1171432,
+    16.8718715
+  ],
+  "Bangkok, Thailand": [
+    13.7563309,
+    100.5017651
+  ],
+  "Legian, Indonesia": [
+    -8.700997,
+    115.1740942
+  ],
+  "Singapore, Singapore": [
+    1.352083,
+    103.819836
+  ],
+  "Muang Pattaya, Thailand": [
+    12.9235557,
+    100.8824551
+  ],
+  "Friedrichsdorf, Germany": [
+    50.2538496,
+    8.6417409
+  ],
+  "Helsinki, Finland": [
+    60.16985569999999,
+    24.9383791
+  ],
+  "Veleslavín, Czechia": [
+    50.09332029999999,
+    14.349947
+  ],
+  "Pohlheim, Germany": [
+    50.50832150000001,
+    8.7246052
+  ],
+  "Frankfurt am Main, Germany": [
+    50.1109221,
+    8.6821267
+  ],
+  "Staré Město, Czechia": [
+    50.0894377,
+    14.4194074
+  ],
+  "Nové Město, Czechia": [
+    49.5614432,
+    16.0741877
+  ],
+  "Kyiv, Ukraine": [
+    50.4501,
+    30.5234
+  ],
+  "Moskva, Russia": [
+    55.755826,
+    37.6172999
+  ],
+  "Almaty, Kazakhstan": [
+    43.2220146,
+    76.8512485
+  ],
+  "Samara, Russia": [
+    53.2415041,
+    50.2212463
+  ],
+  "Morjim, India": [
+    15.6316233,
+    73.7389596
+  ],
+  "Davie, United States": [
+    26.0764783,
+    -80.25211569999999
+  ],
+  "Mumbai, India": [
+    19.0759837,
+    72.8776559
+  ],
+  "Denpasar Barat, Indonesia": [
+    -8.666646400000001,
+    115.1948445
+  ],
+  "Thane, India": [
+    19.2183307,
+    72.9780897
+  ],
+  "Tibubeneng, Indonesia": [
+    -8.6469901,
+    115.150378
+  ],
+  "Kerobokan Kelod, Indonesia": [
+    -8.6719954,
+    115.1649273
+  ],
+  "Bozkurt Mahallesi, Turkey": [
+    41.0489703,
+    28.9841561
+  ],
+  "Russia, Russia": [
+    61.52401,
+    105.318756
+  ],
+  "Turkey, Turkey": [
+    38.963745,
+    35.243322
+  ],
+  "Teşvikiye Mahallesi, Turkey": [
+    41.0527023,
+    28.99798049999999
+  ],
+  "Cankurtaran Mahallesi, Turkey": [
+    41.0103672,
+    28.9834284
+  ],
+  "Caferağa Mahallesi, Turkey": [
+    40.9837196,
+    29.0256257
+  ],
+  "Asmalı Mescit Mahallesi, Turkey": [
+    41.0309085,
+    28.9750603
+  ],
+  "Sultantepe Mahallesi, Turkey": [
+    41.0292993,
+    29.0241708
+  ],
+  "Şahkulu Mahallesi, Turkey": [
+    41.0274432,
+    28.9739688
+  ],
+  "Altınşehir Mahallesi, Turkey": [
+    40.2205094,
+    28.9324853
+  ],
+  "Aydın, Turkey": [
+    37.8380162,
+    27.8455601
+  ],
+  "New Delhi, India": [
+    28.6139391,
+    77.2090212
+  ],
+  "İsmet Kaptan Mahallesi, Turkey": [
+    38.4265655,
+    27.139711
+  ],
+  "Georgia, Georgia": [
+    32.1656221,
+    -82.9000751
+  ],
+  "Ba Đình, Vietnam": [
+    21.0337815,
+    105.8140539
+  ],
+  "Khwaeng Chatuchak, Thailand": [
+    13.8167455,
+    100.5493011
+  ],
+  "Tambon Hua Hin, Thailand": [
+    12.5683747,
+    99.9576888
+  ],
+  "Khwaeng Chom Phon, Thailand": [
+    13.8073166,
+    100.5689948
+  ],
+  "Hua Hin, Thailand": [
+    12.568452,
+    99.9577223
+  ],
+  "Hoàn Kiếm, Vietnam": [
+    21.027964,
+    105.8510132
+  ],
+  "Ngọc Khánh, Vietnam": [
+    21.0301393,
+    105.8099499
+  ],
+  "Thành phố Hạ Long, Vietnam": [
+    20.9711977,
+    107.0448069
+  ],
+  "Odesa, Ukraine": [
+    46.482526,
+    30.7233095
+  ],
+  "Hongkou Qu, China": [
+    31.2646,
+    121.505132
+  ],
+  "Minsk, Belarus": [
+    53.90453979999999,
+    27.5615244
+  ],
+  "Barcelona, Spain": [
+    41.3850639,
+    2.1734035
+  ],
+  "L'viv, Ukraine": [
+    49.839683,
+    24.029717
+  ],
+  "Kraków, Poland": [
+    50.06465009999999,
+    19.9449799
+  ],
+  "Mukacheve, Ukraine": [
+    48.4493055,
+    22.7117106
+  ],
+  "Uzhhorod, Ukraine": [
+    48.6208,
+    22.287883
+  ],
+  "Drohobych, Ukraine": [
+    49.3580116,
+    23.5123193
+  ],
+  "Roma, Italy": [
+    41.9027835,
+    12.4963655
+  ],
+  "Lucca, Italy": [
+    43.8429197,
+    10.5026977
+  ],
+  "Livorno, Italy": [
+    43.548473,
+    10.3105674
+  ],
+  "Orbetello, Italy": [
+    42.4868131,
+    11.2297105
+  ],
+  "València, Spain": [
+    39.4699075,
+    -0.3762881
+  ],
+  "Stockholms län, Sweden": [
+    59.60249579999999,
+    18.1384383
+  ],
+  "Örebro SO, Sweden": [
+    59.2362228,
+    15.5328852
+  ],
+  "Nyköping NV, Sweden": [
+    58.8046776,
+    16.8746487
+  ],
+  "Östermalm, Sweden": [
+    59.33668449999999,
+    18.0852924
+  ],
+  "Sigtuna N, Sweden": [
+    59.6939926,
+    17.9986841
+  ],
+  "Södermalm, Sweden": [
+    59.31252679999999,
+    18.0616188
+  ],
+  "Nikolai, Sweden": [
+    59.2682707,
+    15.2155815
+  ],
+  "Norrmalm, Sweden": [
+    59.3346342,
+    18.060526
+  ],
+  "Phuket, Thailand": [
+    7.9519331,
+    98.33808839999999
+  ],
+  "Patong, Thailand": [
+    7.8965763,
+    98.30210439999999
+  ],
+  "Cherepovets, Russia": [
+    59.132333,
+    37.9091811
+  ],
+  "Suriya Wong, Thailand": [
+    13.726984,
+    100.526096
+  ],
+  "Kamer Hatun Mahallesi, Turkey": [
+    41.03496250000001,
+    28.9750603
+  ],
+  "Ao Nang, Thailand": [
+    8.0414921,
+    98.8366162
+  ],
+  "Beruwala, Sri Lanka": [
+    6.473837899999999,
+    79.99199949999999
+  ],
+  "Colombo, Sri Lanka": [
+    6.9270786,
+    79.861243
+  ],
+  "Canggu, Indonesia": [
+    -8.6478175,
+    115.1385192
+  ],
+  "Hüseyinağa Mahallesi, Turkey": [
+    41.035123,
+    28.9786987
+  ],
+  "Yekaterinburg, Russia": [
+    56.83892609999999,
+    60.6057025
+  ],
+  "Şehit Muhtar Mahallesi, Turkey": [
+    41.036641,
+    28.9816093
+  ],
+  "Muang, Thailand": [
+    13.8649215,
+    99.58960429999999
+  ],
+  "Adachi, Japan": [
+    35.7756644,
+    139.8044788
+  ],
+  "Shinagawa, Japan": [
+    35.6092261,
+    139.7301861
+  ],
+  "Samseong-dong, South Korea": [
+    37.5139848,
+    127.0565207
+  ],
+  "Wattala, Sri Lanka": [
+    7.002513,
+    79.9098925
+  ],
+  "Kandy, Sri Lanka": [
+    7.2905715,
+    80.6337262
+  ],
+  "Kelaniya, Sri Lanka": [
+    6.951784600000001,
+    79.9132991
+  ],
+  "Tambon Karon, Thailand": [
+    7.8287744,
+    98.3012857
+  ],
+  "ตาก, Thailand": [
+    16.8839901,
+    99.1258498
+  ],
+  "Kuta Utara, Indonesia": [
+    -8.6488988,
+    115.1592718
+  ],
+  "Kerobokan, Indonesia": [
+    -8.6512212,
+    115.1622363
+  ],
+  "Pemecutan Kaja, Indonesia": [
+    -8.6389439,
+    115.2075208
+  ],
+  "Chiyoda, Japan": [
+    35.6940027,
+    139.7535951
+  ],
+  "Toshima, Japan": [
+    35.7261178,
+    139.7166049
+  ],
+  "Kokubunji, Japan": [
+    35.7103347,
+    139.4631912
+  ],
+  "Kyoto Prefecture, Japan": [
+    35.0212466,
+    135.7555968
+  ],
+  "Mitaka, Japan": [
+    35.683513,
+    139.5595842
+  ],
+  "Seolleung-ro, South Korea": [
+    37.5070339,
+    127.047777
+  ],
+  "Itaewon-dong, South Korea": [
+    37.5400456,
+    126.9921017
+  ],
+  "Koto, Japan": [
+    35.6728535,
+    139.8174097
+  ],
+  "Gwanghui-dong, South Korea": [
+    37.5644798,
+    127.0052446
+  ],
+  "Samseong-ro 104-gil, South Korea": [
+    37.5109496,
+    127.0560181
+  ],
+  "Sankt-Peterburg, Russia": [
+    59.9342802,
+    30.3350986
+  ],
+  "Yongdap-dong, South Korea": [
+    37.5640647,
+    127.0554067
+  ],
+  "Olympic-ro, South Korea": [
+    37.5213517,
+    127.1026097
+  ],
+  "Sosnovy Bor, Russia": [
+    59.8696729,
+    29.0856479
+  ],
+  "Losevo, Russia": [
+    60.6794024,
+    29.9951179
+  ],
+  "Bereketzade Mh., Turkey": [
+    41.0251263,
+    28.9739688
+  ],
+  "Alemdar Mahallesi, Turkey": [
+    41.0096655,
+    28.9754242
+  ],
+  "Süleymaniye Mahallesi, Turkey": [
+    41.0136361,
+    28.9630532
+  ],
+  "Beyoğlu, Turkey": [
+    41.0382864,
+    28.9703304
+  ],
+  "Keszthely, Hungary": [
+    46.7654716,
+    17.2479554
+  ],
+  "Budapest, Hungary": [
+    47.497912,
+    19.040235
+  ],
+  "Florenc, Czechia": [
+    50.09116969999999,
+    14.4387111
+  ],
+  "Dresden, Germany": [
+    51.0504088,
+    13.7372621
+  ],
+  "Žižkov, Czechia": [
+    50.0806463,
+    14.4563903
+  ],
+  "Czechia, Czechia": [
+    49.81749199999999,
+    15.472962
+  ],
+  "Praha 3, Czechia": [
+    50.0854115,
+    14.4543504
+  ],
+  "Abakan, Russia": [
+    53.7175644,
+    91.4293172
+  ],
+  "Ulyanovsk, Russia": [
+    54.3181598,
+    48.3837915
+  ],
+  "Bedford-Stuyvesant, United States": [
+    40.6872176,
+    -73.9417735
+  ],
+  "Veliky Novgorod, Russia": [
+    58.52556980000001,
+    31.2741929
+  ],
+  "New York, United States": [
+    40.7127753,
+    -74.0059728
+  ],
+  "Lisboa, Portugal": [
+    38.7222524,
+    -9.1393366
+  ],
+  "Málaga, Spain": [
+    36.7212737,
+    -4.4213988
+  ],
+  "Hürriyet Mahallesi, Turkey": [
+    41.0744182,
+    28.986339
+  ],
+  "Cascais, Portugal": [
+    38.6967571,
+    -9.4207438
+  ],
+  "Rota, Spain": [
+    36.6236874,
+    -6.3601441
+  ],
+  "Gibraltar, Gibraltar": [
+    36.140751,
+    -5.353585
+  ],
+  "Paris, France": [
+    48.856614,
+    2.3522219
+  ],
+  "Rīga, Latvia": [
+    56.9496487,
+    24.1051865
+  ],
+  "Wien, Austria": [
+    48.2081743,
+    16.3738189
+  ],
+  "Bratislava, Slovakia": [
+    48.1485965,
+    17.1077478
+  ],
+  "Krasnogorsk, Russia": [
+    55.8263313,
+    37.326297
+  ],
+  "Vladivostok, Russia": [
+    43.1198091,
+    131.8869243
+  ],
+  "Novosibirsk, Russia": [
+    55.00835259999999,
+    82.9357327
+  ],
+  "ChaoWai, China": [
+    39.923174,
+    116.441428
+  ],
+  "Huangpu Qu, China": [
+    31.231763,
+    121.484443
+  ],
+  "Hangzhou Shi, China": [
+    30.274084,
+    120.15507
+  ],
+  "Minhang Qu, China": [
+    31.112818,
+    121.381716
+  ],
+  "Khlong Tan Nuea, Thailand": [
+    13.7352523,
+    100.5830644
+  ],
+  "Pudong, China": [
+    31.221517,
+    121.544379
+  ],
+  "Tehran, Iran": [
+    35.6891975,
+    51.3889736
+  ],
+  "Iran, Iran": [
+    37.0253573,
+    -95.7104708
+  ],
+  "Kocatepe Mahallesi, Turkey": [
+    41.0401055,
+    28.9827008
+  ],
+  "Hungary, Hungary": [
+    47.162494,
+    19.5033041
+  ],
+  "Warszawa, Poland": [
+    52.2296756,
+    21.0122287
+  ],
+  "Astana, Kazakhstan": [
+    51.16052269999999,
+    71.4703558
+  ],
+  "Kyzylorda, Kazakhstan": [
+    44.84883139999999,
+    65.4822686
+  ],
+  "Болашақ аулды аймақ, Kazakhstan": [
+    51.1858559,
+    51.3081142
+  ],
+  "Baikonur, Kazakhstan": [
+    45.6232258,
+    63.31398289999999
+  ],
+  "Kharkiv, Ukraine": [
+    49.9935,
+    36.230383
+  ],
+  "Nizhnij Novgorod, Russia": [
+    56.2965039,
+    43.93605900000001
+  ],
+  "Rostov, Russia": [
+    57.195623,
+    39.4131527
+  ],
+  "Nakhichevan-on-Don, Russia": [
+    47.231389,
+    39.7569441
+  ],
+  "Tomtom Mahallesi, Turkey": [
+    41.0301201,
+    28.9768795
+  ],
+  "Vnukovo, Russia": [
+    55.59964799999999,
+    37.2712341
+  ],
+  "Guangzhou Shi, China": [
+    23.12911,
+    113.264385
+  ],
+  "Katunayake, Sri Lanka": [
+    7.172484899999999,
+    79.8853484
+  ],
+  "Khwaeng Khlong Toei Nuea, Thailand": [
+    13.7419367,
+    100.5605541
+  ],
+  "Ussuriysk, Russia": [
+    43.8023134,
+    131.963089
+  ],
+  "Khwaeng Phra Khanong Nuea, Thailand": [
+    13.7173814,
+    100.5999507
+  ],
+  "Weligama, Sri Lanka": [
+    5.9773782,
+    80.4288487
+  ],
+  "Matara, Sri Lanka": [
+    5.95492,
+    80.5549561
+  ],
+  "South Bank, United Kingdom": [
+    51.5071591,
+    -0.1154858
+  ],
+  "Ahangama, Sri Lanka": [
+    5.973974699999999,
+    80.36215949999999
+  ],
+  "Dubai, United Arab Emirates": [
+    25.2048493,
+    55.2707828
+  ],
+  "Bakı, Azerbaijan": [
+    40.40926169999999,
+    49.8670924
+  ],
+  "Westminster, United Kingdom": [
+    51.5001754,
+    -0.1332326
+  ],
+  "Kensington, United Kingdom": [
+    51.5010095,
+    -0.1932794
+  ],
+  "Church End & Roundwood, United Kingdom": [
+    51.54497,
+    -0.2516548
+  ],
+  "Khimki, Russia": [
+    55.8940553,
+    37.44394870000001
+  ],
+  "Greater London, United Kingdom": [
+    51.4309209,
+    -0.0936496
+  ],
+  "Petropavlovsk-Kamchatskiy, Russia": [
+    53.0409109,
+    158.677726
+  ],
+  "Zaozernyy, Russia": [
+    55.9742134,
+    94.7096333
+  ],
+  "Georgiyevsk, Russia": [
+    44.1497667,
+    43.4577689
+  ],
+  "Berlin, Germany": [
+    52.52000659999999,
+    13.404954
+  ],
+  "København, Denmark": [
+    55.6760968,
+    12.5683372
+  ],
+  "Düsseldorf, Germany": [
+    51.2277411,
+    6.7734556
+  ],
+  "Hägersten-Liljeholmen, Sweden": [
+    59.3035659,
+    18.0065044
+  ],
+  "Sweden, Sweden": [
+    60.12816100000001,
+    18.643501
+  ],
+  "Copacabana, Brazil": [
+    -22.9697777,
+    -43.1868592
+  ],
+  "Palermo, Argentina": [
+    -34.5711496,
+    -58.42329659999999
+  ],
+  "La Habana, Cuba": [
+    23.1135925,
+    -82.3665956
+  ],
+  "Varadero, Cuba": [
+    23.179858,
+    -81.1885293
+  ],
+  "Ipanema, Brazil": [
+    -22.984667,
+    -43.1985932
+  ],
+  "Praca da Bandeira, Brazil": [
+    -22.9102021,
+    -43.2122385
+  ],
+  "Lagoa, Brazil": [
+    -22.9621372,
+    -43.2076913
+  ],
+  "Centro, Brazil": [
+    -22.9070828,
+    -43.18191480000001
+  ],
+  "Alto da Boa Vista, Brazil": [
+    -22.972707,
+    -43.284099
+  ],
+  "Botafogo, Brazil": [
+    -22.9511149,
+    -43.1809269
+  ],
+  "Leme, Brazil": [
+    -22.9615018,
+    -43.1662396
+  ],
+  "Dongcheng Qu, China": [
+    39.92835300000001,
+    116.416357
+  ],
+  "Vidigal, Brazil": [
+    -22.9939022,
+    -43.2358343
+  ],
+  "San Nicolas, Argentina": [
+    -33.3334669,
+    -60.2110494
+  ],
+  "Buenos Aires, Argentina": [
+    -34.6036844,
+    -58.3815591
+  ],
+  "Recoleta, Argentina": [
+    -34.5895459,
+    -58.3973636
+  ],
+  "Retiro, Argentina": [
+    -34.5896061,
+    -58.3802473
+  ],
+  "Saavedra, Argentina": [
+    -34.554242,
+    -58.4915489
+  ],
+  "Belgrano, Argentina": [
+    -34.5620844,
+    -58.4566864
+  ],
+  "Balvanera, Argentina": [
+    -34.6101223,
+    -58.40594059999999
+  ],
+  "Orlando, United States": [
+    28.5383355,
+    -81.3792365
+  ],
+  "Caballito, Argentina": [
+    -34.6209278,
+    -58.44587359999999
+  ],
+  "AAD, Argentina": [
+    -34.6157088,
+    -58.3906247
+  ],
+  "La Boca, Argentina": [
+    -34.6344961,
+    -58.36313370000001
+  ],
+  "AAJ, Argentina": [
+    -38.416097,
+    -63.61667199999999
+  ],
+  "San Francisco, United States": [
+    37.7749295,
+    -122.4194155
+  ],
+  "Panama, Panama": [
+    8.9823792,
+    -79.51986959999999
+  ],
+  "Panamá, Panama": [
+    8.537981,
+    -80.782127
+  ],
+  "Ciudad de México, Mexico": [
+    19.4326077,
+    -99.133208
+  ],
+  "Coyoacán, Mexico": [
+    19.3437444,
+    -99.1561883
+  ],
+  "Salt Lake City, United States": [
+    40.7607793,
+    -111.8910474
+  ],
+  "Idaho Falls, United States": [
+    43.49266069999999,
+    -112.0407584
+  ],
+  "Amsterdam, Netherlands": [
+    52.3679843,
+    4.9035614
+  ],
+  "Karlova Ves, Slovakia": [
+    48.1591643,
+    17.0518442
+  ],
+  "Bratislava-Staré Mesto, Slovakia": [
+    48.148598,
+    17.1077474
+  ],
+  "Thailand, Thailand": [
+    15.870032,
+    100.992541
+  ],
+  "Mstinskiy Most, Russia": [
+    58.6910782,
+    32.576013
+  ],
+  "Kravtsovka, Russia": [
+    43.3588517,
+    131.6433663
+  ],
+  "Akıncı Mahallesi, Turkey": [
+    40.7674445,
+    30.4033521
+  ],
+  "Samos, Greece": [
+    37.7547857,
+    26.9777701
+  ],
+  "Djibouti, Djibouti": [
+    11.825138,
+    42.590275
+  ],
+  "Khwaeng Bang Phlat, Thailand": [
+    13.7905721,
+    100.4930564
+  ],
+  "Khwaeng Silom, Thailand": [
+    13.7246299,
+    100.5310178
+  ],
+  "Khwaeng Ban Chang Lo, Thailand": [
+    13.7512686,
+    100.4761897
+  ],
+  "Khwaeng Samphanthawong, Thailand": [
+    13.7390777,
+    100.5106291
+  ],
+  "Williamsburg, United States": [
+    37.2707022,
+    -76.7074571
+  ],
+  "Downtown Brooklyn, United States": [
+    40.6960191,
+    -73.984518
+  ],
+  "Porto, Portugal": [
+    41.1579438,
+    -8.629105299999999
+  ],
+  "Larnaka, Cyprus": [
+    34.9002535,
+    33.6231723
+  ],
+  "Limassol center, Cyprus": [
+    34.687118,
+    33.0537752
+  ],
+  "Limassol, Cyprus": [
+    34.7071301,
+    33.0226174
+  ],
+  "Monagroulli, Cyprus": [
+    34.7503751,
+    33.2194699
+  ],
+  "Khwaeng Wang Burapha Phirom, Thailand": [
+    13.7459598,
+    100.5000851
+  ],
+  "Dipkarpaz": [
+    35.6176824,
+    34.4087307
+  ],
+  "Nicosia, Cyprus": [
+    35.1855659,
+    33.38227639999999
+  ],
+  "Gazi Mağusa, Turkey": [
+    35.131846,
+    33.939889
+  ],
+  "Cairo Governorate, Egypt": [
+    30.1197986,
+    31.5370003
+  ],
+  "Maspeth, United States": [
+    40.7294018,
+    -73.9065883
+  ],
+  "Las Vegas, United States": [
+    36.1699412,
+    -115.1398296
+  ],
+  "Seattle, United States": [
+    47.6062095,
+    -122.3320708
+  ],
+  "Redmond, United States": [
+    47.6739881,
+    -122.121512
+  ],
+  "Vancouver, Canada": [
+    49.2827291,
+    -123.1207375
+  ],
+  "Omaha, United States": [
+    41.2565369,
+    -95.9345034
+  ],
+  "Novosrednenskoye, Russia": [
+    44.0914051,
+    43.8248864
+  ],
+  "Vyazemsky, Russia": [
+    47.5335139,
+    134.7528664
+  ],
+  "Park Slope, United States": [
+    40.6681038,
+    -73.9805817
+  ],
+  "Khabarovsk, Russia": [
+    48.5157837,
+    135.1011706
+  ],
+  "Merritt Island, United States": [
+    28.3180688,
+    -80.6659842
+  ],
+  "Danbury, United States": [
+    41.394817,
+    -73.4540111
+  ],
+  "Freiburg im Breisgau, Germany": [
+    47.9990077,
+    7.842104299999999
+  ],
+  "Al Hudaydah, Yemen": [
+    14.7909118,
+    42.9708838
+  ],
+  "Boston, United States": [
+    42.3600825,
+    -71.0588801
+  ],
+  "Cambridge, United States": [
+    42.3736158,
+    -71.10973349999999
+  ],
+  "Oklahoma City, United States": [
+    35.4675602,
+    -97.5164276
+  ],
+  "Madrid, Spain": [
+    40.4167754,
+    -3.7037902
+  ],
+  "Pisa, Italy": [
+    43.7228386,
+    10.4016888
+  ],
+  "Rego Park, United States": [
+    40.72557219999999,
+    -73.8624893
+  ],
+  "Washington, United States": [
+    47.7510741,
+    -120.7401385
+  ],
+  "Brighton Beach, United States": [
+    40.5780706,
+    -73.9596565
+  ],
+  "Boerum Hill, United States": [
+    40.6848689,
+    -73.9844722
+  ],
+  "Minato, Japan": [
+    35.6580681,
+    139.7515992
+  ],
+  "Taitō, Japan": [
+    35.712607,
+    139.7799956
+  ],
+  "Tokyo, Japan": [
+    35.6894875,
+    139.6917064
+  ],
+  "Woodland Park, United States": [
+    38.9938808,
+    -105.0569301
+  ],
+  "Greenpoint, United States": [
+    40.7245448,
+    -73.9418603
+  ],
+  "Oslo, Norway": [
+    59.9138688,
+    10.7522454
+  ],
+  "Tromsø, Norway": [
+    69.6492047,
+    18.9553239
+  ],
+  "Gamle Oslo, Norway": [
+    59.9064725,
+    10.7814201
+  ],
+  "Grünerløkka, Norway": [
+    59.9238678,
+    10.7578424
+  ]
+}
