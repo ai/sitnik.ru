@@ -112,7 +112,7 @@ function saveLatLng (cities, city, responce) {
 }
 
 function prettyStringify (data) {
-  return JSON.stringify(data, null, '  ')
+  return JSON.stringify(data, null, '  ') + '\n'
 }
 
 // Steps
