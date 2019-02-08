@@ -161,16 +161,25 @@ renderer.domElement.addEventListener('mousedown', e => {
   }
 })
 
-renderer.domElement.addEventListener('touchstart', e => {
-  e.preventDefault()
-  rotateStart.set(e.touches[0].pageX, e.touches[0].pageY)
-})
-
-renderer.domElement.addEventListener('touchmove', e => {
-  e.preventDefault()
-  rotateEnd.set(e.touches[0].pageX, e.touches[0].pageY)
-  move()
-})
+if (window.innerWidth > 980) {
+  renderer.domElement.addEventListener('touchstart', e => {
+    rotateStart.set(e.touches[0].pageX, e.touches[0].pageY)
+  }, { passive: true })
+  renderer.domElement.addEventListener('touchmove', e => {
+    rotateEnd.set(e.touches[0].pageX, e.touches[0].pageY)
+    move()
+  }, { passive: true })
+} else {
+  renderer.domElement.addEventListener('touchstart', e => {
+    e.preventDefault()
+    rotateStart.set(e.touches[0].pageX, e.touches[0].pageY)
+  })
+  renderer.domElement.addEventListener('touchmove', e => {
+    e.preventDefault()
+    rotateEnd.set(e.touches[0].pageX, e.touches[0].pageY)
+    move()
+  })
+}
 
 // Init
 
