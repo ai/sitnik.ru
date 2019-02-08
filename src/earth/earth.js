@@ -104,7 +104,7 @@ scene.add(here)
 
 visited.forEach(i => {
   let dot = new Mesh(
-    new SphereGeometry(0.003, 8),
+    new SphereGeometry(0.004, 8),
     new MeshBasicMaterial({
       color: new Color(0xffffff)
     })
