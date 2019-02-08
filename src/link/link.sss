@@ -6,11 +6,8 @@
   border-radius: 0.3em
   transition: color 200ms
 
-.link:visited
-  color: #6e00fe
-
-.link.is-text
-  color: black
+  &:visited
+    color: #6e00fe
 
 .link::before
   content: ""
@@ -27,11 +24,14 @@
   transition: all 200ms
   z-index: -1
 
-.link:hover::before
-  transform: none
+  :hover&
+    transform: none
 
-.link.is-text::before
-  opacity: 0
+.link.is-text
+  color: black
+
+  &::before
+    opacity: 0
 
 .link:focus
   color: white
