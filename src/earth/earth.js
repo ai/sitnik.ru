@@ -45,9 +45,9 @@ let loader = new TextureLoader()
 
 // Light
 
-scene.add(new AmbientLight(0xafafaf))
+scene.add(new AmbientLight(0x606060))
 
-let light = new DirectionalLight(0x606060, 1)
+let light = new DirectionalLight(0x7f7f7f, 1)
 light.position.set(1, 0, 1)
 scene.add(light)
 
@@ -78,6 +78,17 @@ function moveSun () {
   let sunLat = 23.44 * Math.cos(2 * Math.PI * days / 365.26)
   let sunLong = 180 - 15 * (now.getUTCHours() + now.getMinutes() / 60)
   setPosition(light.position, 2, sunLat, sunLong)
+}
+
+let loaded = 0
+
+function load () {
+  loaded += 1
+  if (loaded === 3) {
+    div.appendChild(renderer.domElement)
+    loading.remove()
+    render()
+  }
 }
 
 // Scene
@@ -195,15 +206,4 @@ window.sL = l => {
   camera.lookAt(0, 0, 0)
   distanceToEdge = camera.position.distanceTo(new Vector3(0, RADIUS, 0))
   load()
-}
-
-let loaded = 0
-
-function load () {
-  loaded += 1
-  if (loaded === 3) {
-    div.appendChild(renderer.domElement)
-    loading.remove()
-    render()
-  }
 }
