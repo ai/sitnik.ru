@@ -45,9 +45,9 @@ let loader = new TextureLoader()
 
 // Light
 
-scene.add(new AmbientLight(0x606060))
+scene.add(new AmbientLight(0x909090))
 
-let light = new DirectionalLight(0x7f7f7f, 1)
+let light = new DirectionalLight(0x4f4f4f, 1)
 light.position.set(1, 0, 1)
 scene.add(light)
 
