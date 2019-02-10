@@ -1,8 +1,9 @@
 {
   "private": true,
   "scripts": {
+    "spell": "yaspeller dist/**/*.html",
     "lint": "eslint *.js src/**/*.js && stylelint src/**/*.css",
-    "test": "yarn lint && yarn build",
+    "test": "yarn lint & yarn build && yarn spell",
     "clean": "rimraf dist/",
     "start": "parcel serve src/index.pug --open",
     "build": "yarn clean && NODE_ENV=production ./build.js"
@@ -103,6 +104,34 @@
     "stylelint-config-recess-order": "^2.0.1",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-order": "^2.0.0",
-    "svgo": "^1.1.1"
-  }
+    "svgo": "^1.1.1",
+    "yaspeller": "^5.0.1"
+  },
+   "yaspeller": {
+     "ignoreCapitalization": true,
+     "dictionary": [
+       "GPG",
+       "1F710E4D",
+       "WhatsApp",
+       "WeChat",
+       "NSFW",
+       "GitHub",
+       "Autoprefixer",
+       "PostCSS",
+       "Browserslist",
+       "Instagram",
+       "Linguopunk",
+       "ru",
+       "sitnik",
+       "Телеграм",
+       "ВКонтакте",
+       "Твиттер",
+       "Гитхаб",
+       "Автопрефиксер",
+       "Браузерслист",
+       "фронтенд",
+       "Инстаграм",
+       "Лингвопанк"
+     ]
+   }
 }
