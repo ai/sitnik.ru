@@ -179,6 +179,17 @@ async function init () {
 
 function filterBookmarks (data) {
   data.processed = { }
+  let cities = Object.keys(data.prevProcessed).map(i => {
+    return [i, data.prevProcessed[i]]
+  })
+  for (let id in data.prevProcessed) {
+    if (!data.bookmarks.find(i => String(i.id) === id)) {
+      let city = data.prevProcessed[id]
+      if (!cities.find(i => i[0] !== id && i[1] === city)) {
+        delete data.cities[city]
+      }
+    }
+  }
   data.newBookmarks = data.bookmarks.filter(({ id }) => {
     if (data.prevProcessed[id]) {
       data.processed[id] = data.prevProcessed[id]
