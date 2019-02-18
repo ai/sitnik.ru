@@ -70,16 +70,12 @@ async function build () {
 
   css = postcss([cssPlugin, mqpacker]).process(css, { from: cssFile }).css
 
-  let earthJsFile = assets.find(i => /earth\..*\.js/.test(i))
-  let earthJs = (await readFile(earthJsFile)).toString()
   for (let origin in classes) {
-    if (origin.indexOf('globe') === 0) {
-      earthJs = earthJs.replace(`".${ origin }"`, `".${ classes[origin] }"`)
+    if (origin.indexOf('earth') === 0 || origin.indexOf('globe') === 0) {
       js = js.replace(`".${ origin }"`, `".${ classes[origin] }"`)
     }
     js = js.replace(`"is-open"`, `"${ classes['is-open'] }"`)
   }
-  await writeFile(earthJsFile, earthJs)
 
   function htmlPlugin (tree) {
     tree.match({ tag: 'link', attrs: { rel: 'stylesheet' } }, () => {

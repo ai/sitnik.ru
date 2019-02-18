@@ -1,28 +1,12 @@
+let earth = require('../earth/earth.js')
+
 function get (url) {
   return fetch(url).then(res => res.json())
 }
 
-let location
-
-let loading
-function loadEarth () {
-  if (loading) return
-  loading = true
-
-  let script = document.createElement('script')
-  script.async = true
-  script.onload = () => {
-    if (location) window.sL(location)
-  }
-  script.src = document.querySelector('[as=script]').href
-
-  document.head.appendChild(script)
-}
-
-get('//evilmartians.com/locations/ai').then(data => {
-  if (window.sL) window.sL(data)
-  location = data
-  return get('//maps.googleapis.com/maps/api/geocode/json' +
+get('https://evilmartians.com/locations/ai').then(data => {
+  earth[1](data)
+  return get('https://maps.googleapis.com/maps/api/geocode/json' +
     '?latlng=' + data.latitude + ',' + data.longitude +
     '&language=' + document.documentElement.lang +
     '&result_type=locality' +
@@ -34,15 +18,13 @@ get('//evilmartians.com/locations/ai').then(data => {
 })
 
 if (window.innerWidth > 980) {
-  window.addEventListener('load', () => {
-    setTimeout(loadEarth, 1)
-  })
+  earth[0]()
 } else {
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 980) loadEarth()
+    if (window.innerWidth > 980) earth[0]()
   })
   document.querySelector('.globe_location').addEventListener('click', () => {
     document.querySelector('.globe').classList.toggle('is-open')
-    loadEarth()
+    earth[0]()
   })
 }

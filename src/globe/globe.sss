@@ -32,33 +32,6 @@
     width: 90vw
     height: 90vw
 
-.globe_loading
-  position: absolute
-  width: 88%
-  height: 88%
-  top: 50%
-  left: 50%
-  background: #e9e9e9
-  border-radius: 50%
-  animation: rotation 1.8s infinite linear
-
-  @keyframes rotation
-    from
-      transform: translate3D(-50%, -50%, 0) rotate(0)
-    to
-      transform: translate3D(-50%, -50%, 0) rotate(360deg)
-
-.globe_loading::before
-  content: ""
-  position: absolute
-  top: 0
-  left: 0
-  right: 0
-  bottom: 0
-  border-radius: 50%
-  border: 6px solid
-  border-color: #999 transparent transparent transparent
-
 .globe_location
   background: none
   border: none
