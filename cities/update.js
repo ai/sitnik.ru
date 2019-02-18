@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
+let { red, gray, bold, green } = require('chalk')
 let { promisify } = require('util')
-let { red, gray } = require('chalk')
 let { get } = require('https')
 let parser = require('fast-xml-parser')
 let path = require('path')
@@ -20,6 +20,12 @@ let TOKEN_FILE = path.join(__dirname, 'token.txt')
 let DOTS_FILE = path.join(__dirname, 'dots.js')
 
 // Helpers
+
+function print (message, number) {
+  process.stderr.write(message)
+  if (number) process.stderr.write(': ' + bold(green(number)))
+  process.stderr.write('\n')
+}
 
 function error (message) {
   let e = new Error(message)
@@ -112,6 +118,13 @@ function saveLatLng (cities, city, responce) {
 }
 
 function prettyStringify (data) {
+  if (!Array.isArray(data)) {
+    let prev = data
+    data = { }
+    for (let i of Object.keys(prev).sort()) {
+      data[i] = prev[i]
+    }
+  }
   return JSON.stringify(data, null, '  ') + '\n'
 }
 
@@ -134,14 +147,15 @@ async function initBookmarks () {
     throw error(`Save ${ BOOKMARKS_URL } as cities/bookmarks.xml`)
   }
   let xml = await readFile(BOOKMARKS_FILE)
-  return parser.parse(xml.toString()).xml_api_reply.bookmarks.bookmark
+  let ast = parser.parse(xml.toString(), { parseTrueNumberOnly: true })
+  return ast.xml_api_reply.bookmarks.bookmark
 }
 
 async function initProcessed () {
   if (fs.existsSync(PROCESSED_FILE)) {
     return JSON.parse(await readFile(PROCESSED_FILE))
   } else {
-    return []
+    return { }
   }
 }
 
@@ -164,17 +178,27 @@ async function init () {
 }
 
 function filterBookmarks (data) {
-  data.processed = []
-  data.newBookmarks = data.bookmarks.filter(i => {
-    data.processed.push(i.id)
-    return data.prevProcessed.indexOf(i.id) === -1
+  data.processed = { }
+  data.newBookmarks = data.bookmarks.filter(({ id }) => {
+    if (data.prevProcessed[id]) {
+      data.processed[id] = data.prevProcessed[id]
+      return false
+    } else {
+      return true
+    }
   })
+  if (data.newBookmarks.length === 0) {
+    print('No new bookmarks')
+    print(`Download update from ${ BOOKMARKS_URL }`)
+  } else {
+    print('New bookmarks', data.newBookmarks.length)
+  }
   return data
 }
 
 async function findCities (data) {
   let requesting = { }
-  await Promise.all(data.newBookmarks.map(async ({ url, title }) => {
+  await Promise.all(data.newBookmarks.map(async ({ url, title, id }) => {
     let res
     if (url.indexOf('?cid=') !== -1) {
       let cid = url.match(/\?cid=(\d+)/)[1]
@@ -182,14 +206,21 @@ async function findCities (data) {
     } else {
       res = await gmap('geocode/json', { address: title, key: data.token })
     }
-    if (res === '404') return
+    if (res === '404') {
+      data.processed[id] = false
+      return
+    }
     let city = cityName(res)
+    data.processed[id] = city
     if (!data.cities[city] && !requesting[city]) {
       requesting[city] = true
       res = await gmap('geocode/json', { address: city, key: data.token })
       if (res !== '404') saveLatLng(data.cities, city, res)
     }
   }))
+  if (data.newBookmarks.length > 0) {
+    process.stderr.write('\n')
+  }
   return data
 }
 
@@ -205,11 +236,9 @@ async function saveFiles (data) {
     return true
   })
 
-  process.stderr.write(
-    `\nTotal cities: ${ Object.values(data.cities).length }\n`
-  )
+  print('Total cities', Object.values(data.cities).length)
   await Promise.all([
-    writeFile(PROCESSED_FILE, prettyStringify(data.processed.sort())),
+    writeFile(PROCESSED_FILE, prettyStringify(data.processed)),
     writeFile(CITIES_FILE, prettyStringify(data.cities)),
     writeFile(DOTS_FILE, 'module.exports = ' + prettyStringify(dots))
   ])
