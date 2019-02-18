@@ -206,7 +206,7 @@ window.addEventListener('resize', resize)
 resize()
 
 moveSun()
-setTimeout(moveSun, 30 * 60 * 1000)
+setInterval(moveSun, 30 * 60 * 1000)
 
 window.sL = l => {
   setPosition(here.position, RADIUS, l.latitude, l.longitude)
