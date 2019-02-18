@@ -236,16 +236,18 @@ async function findCities (data) {
 }
 
 async function saveFiles (data) {
-  let dots = Object.values(data.cities)
-
-  dots = dots.reverse().filter((i, index) => {
-    for (let j of dots.slice(index + 1)) {
-      if (diff(i[0], j[0], i[1], j[1]) < 1.5) {
-        return false
+  let locations = Object.values(data.cities)
+  let dots = locations
+    .reverse()
+    .filter((i, index) => {
+      for (let j of locations.slice(index + 1)) {
+        if (diff(i[0], j[0], i[1], j[1]) < 1.5) {
+          return false
+        }
       }
-    }
-    return true
-  })
+      return true
+    })
+    .sort((a, b) => a[0] + a[1] - b[0] - b[1])
 
   print('Total cities', Object.values(data.cities).length)
   await Promise.all([
