@@ -152,7 +152,7 @@ function diff (a1, b1, a2, b2) {
 }
 
 function round (num) {
-  return Math.round(num * 1000000) / 1000000
+  return Math.round(num * 10) / 10
 }
 
 // Steps
