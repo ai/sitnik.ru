@@ -132,6 +132,10 @@ function diff (a1, b1, a2, b2) {
   return Math.max(Math.abs(a1 - b1), Math.abs(a2 - b2))
 }
 
+function round (num) {
+  return Math.round(num * 1000000) / 1000000
+}
+
 // Steps
 
 async function loadToken () {
@@ -247,6 +251,7 @@ async function saveFiles (data) {
       }
       return true
     })
+    .map(i => [round(i[0]), round([i[1]])])
     .sort((a, b) => a[0] + a[1] - b[0] - b[1])
 
   print('Total cities', Object.values(data.cities).length)
