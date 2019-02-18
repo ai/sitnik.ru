@@ -95,11 +95,30 @@ function gmap (name, params) {
   })
 }
 
+function inside (address, ...value) {
+  return address.some(i => value.indexOf(i.long_name) !== -1)
+}
+
 function cityName (responce) {
   let address = (responce.result || responce.results[0]).address_components
   let country = address.find(i => i.types.indexOf('country') !== -1)
   let city = address.find(i => i.types.indexOf('locality') !== -1)
-  if (!city) city = address.find(i => i.types.indexOf('political') !== -1)
+  let inUS = country && country.short_name === 'US'
+  if (!city) {
+    if (inUS && inside(address, 'Brooklyn', 'Queens')) {
+      city = { long_name: 'New York' }
+    } else if (inside(address, 'İstanbul')) {
+      city = { long_name: 'İstanbul' }
+    } else {
+      city = address.find(i => i.types.indexOf('political') !== -1)
+    }
+  }
+  if (inUS && city.long_name === 'Washington') {
+    city.long_name += ', DC'
+  }
+  if (city.long_name === 'Rostov') {
+    city.long_name = 'Rostov-na-Donu'
+  }
   if (!country) {
     return city.long_name
   } else {
@@ -187,9 +206,9 @@ function filterBookmarks (data) {
     return [i, data.prevProcessed[i]]
   })
   for (let id in data.prevProcessed) {
-    if (!data.bookmarks.find(i => String(i.id) === id)) {
+    if (data.bookmarks.every(i => String(i.id) !== id)) {
       let city = data.prevProcessed[id]
-      if (!cities.find(i => i[0] !== id && i[1] === city)) {
+      if (cities.every(i => i[0] === id || i[1] !== city)) {
         delete data.cities[city]
       }
     }
@@ -245,7 +264,7 @@ async function saveFiles (data) {
     .reverse()
     .filter((i, index) => {
       for (let j of locations.slice(index + 1)) {
-        if (diff(i[0], j[0], i[1], j[1]) < 1.5) {
+        if (diff(i[0], j[0], i[1], j[1]) < 1) {
           return false
         }
       }

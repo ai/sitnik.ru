@@ -1,12 +1,4 @@
 {
-  "AAD, Argentina": [
-    -34.6157088,
-    -58.3906247
-  ],
-  "AAJ, Argentina": [
-    -38.416097,
-    -63.61667199999999
-  ],
   "Abakan, Russia": [
     53.7175644,
     91.4293172
@@ -27,10 +19,6 @@
     14.7909118,
     42.9708838
   ],
-  "Alemdar Mahallesi, Turkey": [
-    41.0096655,
-    28.9754242
-  ],
   "Almaty, Kazakhstan": [
     43.2220146,
     76.8512485
@@ -39,10 +27,6 @@
     -22.972707,
     -43.284099
   ],
-  "Altınşehir Mahallesi, Turkey": [
-    40.2205094,
-    28.9324853
-  ],
   "Amsterdam, Netherlands": [
     52.3679843,
     4.9035614
@@ -50,10 +34,6 @@
   "Ao Nang, Thailand": [
     8.0414921,
     98.8366162
-  ],
-  "Asmalı Mescit Mahallesi, Turkey": [
-    41.0309085,
-    28.9750603
   ],
   "Astana, Kazakhstan": [
     51.16052269999999,
@@ -75,10 +55,6 @@
     40.40926169999999,
     49.8670924
   ],
-  "Balvanera, Argentina": [
-    -34.6101223,
-    -58.40594059999999
-  ],
   "Bar, Montenegro": [
     42.0912106,
     19.089904
@@ -91,21 +67,9 @@
     41.1171432,
     16.8718715
   ],
-  "Bedford-Stuyvesant, United States": [
-    40.6872176,
-    -73.9417735
-  ],
-  "Belgrano, Argentina": [
-    -34.5620844,
-    -58.4566864
-  ],
   "Benoa, Indonesia": [
     -8.7586798,
     115.2143892
-  ],
-  "Bereketzade Mh., Turkey": [
-    41.0251263,
-    28.9739688
   ],
   "Berlin, Germany": [
     52.52000659999999,
@@ -115,10 +79,6 @@
     6.473837899999999,
     79.99199949999999
   ],
-  "Beyoğlu, Turkey": [
-    41.0382864,
-    28.9703304
-  ],
   "Boston, United States": [
     42.3600825,
     -71.0588801
@@ -126,10 +86,6 @@
   "Botafogo, Brazil": [
     -22.9511149,
     -43.1809269
-  ],
-  "Bozkurt Mahallesi, Turkey": [
-    41.0489703,
-    28.9841561
   ],
   "Bratislava, Slovakia": [
     48.1485965,
@@ -139,41 +95,17 @@
     48.148598,
     17.1077474
   ],
-  "Brighton Beach, United States": [
-    40.5780706,
-    -73.9596565
-  ],
   "Budapest, Hungary": [
     47.497912,
     19.040235
-  ],
-  "Buenos Aires, Argentina": [
-    -34.6036844,
-    -58.3815591
-  ],
-  "Caballito, Argentina": [
-    -34.6209278,
-    -58.44587359999999
-  ],
-  "Caferağa Mahallesi, Turkey": [
-    40.9837196,
-    29.0256257
   ],
   "Cairo Governorate, Egypt": [
     30.1197986,
     31.5370003
   ],
-  "Cambridge, United States": [
-    42.3736158,
-    -71.10973349999999
-  ],
   "Canggu, Indonesia": [
     -8.6478175,
     115.1385192
-  ],
-  "Cankurtaran Mahallesi, Turkey": [
-    41.0103672,
-    28.9834284
   ],
   "Cascais, Portugal": [
     38.6967571,
@@ -190,10 +122,6 @@
   "Chaoyang Qu, China": [
     39.921469,
     116.443107
-  ],
-  "Chaoyang, China": [
-    41.57365,
-    120.4493879
   ],
   "Cherepovets, Russia": [
     59.132333,
@@ -231,14 +159,6 @@
     49.81749199999999,
     15.472962
   ],
-  "Danbury, United States": [
-    41.394817,
-    -73.4540111
-  ],
-  "Davie, United States": [
-    26.0764783,
-    -80.25211569999999
-  ],
   "Denpasar Barat, Indonesia": [
     -8.666646400000001,
     115.1948445
@@ -259,10 +179,6 @@
     39.92835300000001,
     116.416357
   ],
-  "Downtown Brooklyn, United States": [
-    40.6960191,
-    -73.984518
-  ],
   "Dresden, Germany": [
     51.0504088,
     13.7372621
@@ -278,10 +194,6 @@
   "Düsseldorf, Germany": [
     51.2277411,
     6.7734556
-  ],
-  "Ekaterinburg, Russia": [
-    56.83892609999999,
-    60.6057025
   ],
   "Florenc, Czechia": [
     50.09116969999999,
@@ -306,10 +218,6 @@
   "Gazi Mağusa, Turkey": [
     35.131846,
     33.939889
-  ],
-  "Georgia, Georgia": [
-    32.1656221,
-    -82.9000751
   ],
   "Georgiyevsk, Russia": [
     44.1497667,
@@ -352,8 +260,8 @@
     105.8510132
   ],
   "Hua Hin, Thailand": [
-    12.5683747,
-    99.9576888
+    12.568452,
+    99.9577223
   ],
   "Huangpu Qu, China": [
     31.231763,
@@ -367,14 +275,6 @@
     59.3035659,
     18.0065044
   ],
-  "Hürriyet Mahallesi, Turkey": [
-    36.97717470000001,
-    35.3253629
-  ],
-  "Hüseyinağa Mahallesi, Turkey": [
-    41.035123,
-    28.9786987
-  ],
   "Idaho Falls, United States": [
     43.49266069999999,
     -112.0407584
@@ -383,17 +283,9 @@
     -22.984667,
     -43.1985932
   ],
-  "Iran, Iran": [
-    37.0253573,
-    -95.7104708
-  ],
   "Itaewon-dong, South Korea": [
     37.5400456,
     126.9921017
-  ],
-  "Kamer Hatun Mahallesi, Turkey": [
-    41.03496250000001,
-    28.9750603
   ],
   "Kandy, Sri Lanka": [
     7.2905715,
@@ -479,10 +371,6 @@
     13.7459598,
     100.5000851
   ],
-  "Kocatepe Mahallesi, Turkey": [
-    41.0401055,
-    28.9827008
-  ],
   "Kokubunji, Japan": [
     35.7103347,
     139.4631912
@@ -527,10 +415,6 @@
     49.839683,
     24.029717
   ],
-  "La Boca, Argentina": [
-    -34.6344961,
-    -58.36313370000001
-  ],
   "La Habana, Cuba": [
     23.1135925,
     -82.3665956
@@ -570,10 +454,6 @@
   "Livorno, Italy": [
     43.548473,
     10.3105674
-  ],
-  "Long Island City, United States": [
-    40.744679,
-    -73.9485424
   ],
   "Losevo, Russia": [
     60.6794024,
@@ -650,10 +530,6 @@
   "Málaga, Spain": [
     36.7212737,
     -4.4213988
-  ],
-  "Nakhichevan-on-Don, Russia": [
-    47.231389,
-    39.7569441
   ],
   "Napoli, Italy": [
     40.8517983,
@@ -739,13 +615,9 @@
     -34.5711496,
     -58.42329659999999
   ],
-  "Panama, Panama": [
+  "Panama City, Panama": [
     8.9823792,
     -79.51986959999999
-  ],
-  "Panamá, Panama": [
-    8.537981,
-    -80.782127
   ],
   "Paris, France": [
     48.856614,
@@ -791,25 +663,13 @@
     31.221517,
     121.544379
   ],
-  "Recoleta, Argentina": [
-    -34.5895459,
-    -58.3973636
-  ],
-  "Redmond, United States": [
-    47.6739881,
-    -122.121512
-  ],
-  "Retiro, Argentina": [
-    -34.5896061,
-    -58.3802473
-  ],
   "Roma, Italy": [
     41.9027835,
     12.4963655
   ],
-  "Rostov, Russia": [
-    57.195623,
-    39.4131527
+  "Rostov-na-Donu, Russia": [
+    47.2357137,
+    39.701505
   ],
   "Rota, Spain": [
     36.6236874,
@@ -846,10 +706,6 @@
   "San Francisco, United States": [
     37.7749295,
     -122.4194155
-  ],
-  "San Nicolas, Argentina": [
-    -33.3334669,
-    -60.2110494
   ],
   "Sankt-Peterburg, Russia": [
     59.9342802,
@@ -899,10 +755,6 @@
     59.60249579999999,
     18.1384383
   ],
-  "Sultantepe Mahallesi, Turkey": [
-    41.0292993,
-    29.0241708
-  ],
   "Suriya Wong, Thailand": [
     13.726984,
     100.526096
@@ -915,13 +767,13 @@
     59.31252679999999,
     18.0616188
   ],
-  "Süleymaniye Mahallesi, Turkey": [
-    41.0136361,
-    28.9630532
-  ],
   "Taitō, Japan": [
     35.712607,
     139.7799956
+  ],
+  "Tambon Hua Hin, Thailand": [
+    12.5683747,
+    99.9576888
   ],
   "Tambon Karon, Thailand": [
     7.8287744,
@@ -934,14 +786,6 @@
   "Tehran, Iran": [
     35.6891975,
     51.3889736
-  ],
-  "Teşvikiye Mahallesi, Turkey": [
-    41.0527023,
-    28.99798049999999
-  ],
-  "Thailand, Thailand": [
-    15.870032,
-    100.992541
   ],
   "Thane, India": [
     19.2183307,
@@ -959,10 +803,6 @@
     35.6894875,
     139.6917064
   ],
-  "Tomtom Mahallesi, Turkey": [
-    41.0301201,
-    28.9768795
-  ],
   "Torino, Italy": [
     45.0703393,
     7.686864
@@ -974,10 +814,6 @@
   "Tromsø, Norway": [
     69.6492047,
     18.9553239
-  ],
-  "Turkey, Turkey": [
-    36.0648752,
-    -95.9929468
   ],
   "Ullensaker, Norway": [
     60.1349136,
@@ -1035,9 +871,9 @@
     52.2296756,
     21.0122287
   ],
-  "Washington, United States": [
-    47.7510741,
-    -120.7401385
+  "Washington, DC, United States": [
+    38.9071923,
+    -77.0368707
   ],
   "Wattala, Sri Lanka": [
     7.002513,
@@ -1055,13 +891,9 @@
     48.2081743,
     16.3738189
   ],
-  "Williamsburg, United States": [
-    37.2707022,
-    -76.7074571
-  ],
-  "Woodland Park, United States": [
-    38.9938808,
-    -105.0569301
+  "Yekaterinburg, Russia": [
+    56.83892609999999,
+    60.6057025
   ],
   "Yeoksam 1(il)-dong, South Korea": [
     37.4952107,
@@ -1070,10 +902,6 @@
   "Yongdap-dong, South Korea": [
     37.5640647,
     127.0554067
-  ],
-  "Zaozernyy, Russia": [
-    55.9742134,
-    94.7096333
   ],
   "Örebro SO, Sweden": [
     59.2362228,
@@ -1087,28 +915,16 @@
     38.4265655,
     27.139711
   ],
-  "Şahkulu Mahallesi, Turkey": [
-    41.0274432,
-    28.9739688
-  ],
-  "Şehit Muhtar Mahallesi, Turkey": [
-    41.036641,
-    28.9816093
+  "İstanbul, Turkey": [
+    41.0082376,
+    28.9783589
   ],
   "Žižkov, Czechia": [
     50.0806463,
     14.4563903
   ],
-  "Болашақ аулды аймақ, Kazakhstan": [
-    51.1858559,
-    51.3081142
-  ],
   "กรุงเทพมหานคร, Thailand": [
     13.7563309,
     100.5017651
-  ],
-  "ตาก, Thailand": [
-    16.8839901,
-    99.1258498
   ]
 }
