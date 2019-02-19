@@ -44,18 +44,28 @@ async function build () {
   let mapFile = assets.find(i => /map\..*\.webp/.test(i))
   let hereFile = assets.find(i => /here\..*\.webp/.test(i))
   let srcJsFile = assets.find(i => /src\..*\.js/.test(i))
+  let workerFile = assets.find(i => /worker\..*\.js/.test(i))
 
-  let [css, js] = await Promise.all([
+  let [css, js, worker] = await Promise.all([
     readFile(cssFile).then(i => i.toString()),
     readFile(jsFile).then(i => i.toString()),
+    readFile(workerFile).then(i => i.toString()),
     copyFile(join(EARTH, 'here.png'), hereFile.replace('webp', 'png')),
     copyFile(join(EARTH, 'map.png'), mapFile.replace('webp', 'png')),
     unlink(srcJsFile)
   ])
 
-  js = js.replace('function () ', '()=>').replace(/};}\)\(\);$/, '}})()')
+  js = js
+    .replace('function () ', '()=>')
+    .replace(/};}\)\(\);$/, '}})()')
+  worker = worker
+    .replace(/\/\/.*?\\n/g, '\\n')
+    .replace(/((\\t)+\\n)+/g, '')
+    .replace(/(\\n)+/g, '\\n')
+    .replace(/(\n)+/g, '\n')
 
   await Promise.all([
+    writeFile(workerFile, worker),
     unlink(cssFile),
     unlink(jsFile)
   ])
