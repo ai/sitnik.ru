@@ -63,6 +63,7 @@ async function build () {
     .replace(/((\\t)+\\n)+/g, '')
     .replace(/(\\n)+/g, '\\n')
     .replace(/(\n)+/g, '\n')
+    .replace(/\{aliceblue[^}]\}/, '{}')
 
   await Promise.all([
     writeFile(workerFile, worker),
