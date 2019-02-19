@@ -67,6 +67,7 @@ async function build () {
     .replace(/\{aliceblue[^}]+\}/, '{}')
     .replace(/Object.\w+\(\w+,"__esModule",{value:!0}\)(,?)/g, 'exports._E=1$1')
     .replace(/(\w).__esModule/, '$1._E')
+    .replace(/"use strict";/g, '')
   worker = stripDebug(worker)
 
   await Promise.all([
