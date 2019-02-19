@@ -53,7 +53,7 @@ async function build () {
     unlink(srcJsFile)
   ])
 
-  js = js.replace('function () ', 'function()').replace(/};}\)\(\);$/, '}})()')
+  js = js.replace('function () ', '()=>').replace(/};}\)\(\);$/, '}})()')
 
   await Promise.all([
     unlink(cssFile),
