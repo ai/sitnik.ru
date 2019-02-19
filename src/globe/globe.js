@@ -4,6 +4,10 @@ function get (url) {
   return fetch(url).then(res => res.json())
 }
 
+function query (selector) {
+  return document.querySelector(selector)
+}
+
 get('https://evilmartians.com/locations/ai').then(data => {
   earth[1](data)
   return get('https://maps.googleapis.com/maps/api/geocode/json' +
@@ -12,9 +16,9 @@ get('https://evilmartians.com/locations/ai').then(data => {
     '&result_type=locality' +
     '&key=AIzaSyDtN3EGVupACA_bqxQi-5r3iHLCzdeCfZc')
 }).then(geodata => {
-  let address = geodata.results[0].formatted_address.split(', ')
-  document.querySelector('[itemprop=addressLocality]').innerText = address[0]
-  document.querySelector('[itemprop=addressCountry]').innerText = address[1]
+  let parts = geodata.results[0].formatted_address.split(', ')
+  query('[itemprop=addressLocality]').innerText = parts[0]
+  query('[itemprop=addressCountry]').innerText = parts[parts.length - 1]
 })
 
 if (window.innerWidth > 980) {
@@ -23,8 +27,8 @@ if (window.innerWidth > 980) {
   window.addEventListener('resize', () => {
     if (window.innerWidth > 980) earth[0]()
   })
-  document.querySelector('.globe_location').addEventListener('click', () => {
-    document.querySelector('.globe').classList.toggle('is-open')
+  query('.globe_location').addEventListener('click', () => {
+    query('.globe').classList.toggle('is-open')
     earth[0]()
   })
 }
