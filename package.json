@@ -101,6 +101,7 @@
     "postcss-pxtorem": "^4.0.1",
     "posthtml": "^0.11.3",
     "pug": "^2.0.3",
+    "strip-debug": "^4.0.0",
     "stylelint": "^9.10.1",
     "stylelint-config-recess-order": "^2.0.1",
     "stylelint-config-standard": "^18.2.0",

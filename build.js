@@ -2,6 +2,7 @@
 
 let { extname, join } = require('path')
 let { promisify } = require('util')
+let stripDebug = require('strip-debug')
 let posthtml = require('posthtml')
 let mqpacker = require('css-mqpacker')
 let postcss = require('postcss')
@@ -63,7 +64,10 @@ async function build () {
     .replace(/((\\t)+\\n)+/g, '')
     .replace(/(\\n)+/g, '\\n')
     .replace(/(\n)+/g, '\n')
-    .replace(/\{aliceblue[^}]\}/, '{}')
+    .replace(/\{aliceblue[^}]+\}/, '{}')
+    .replace(/Object.\w+\(\w+,"__esModule",{value:!0}\)(,?)/g, 'exports._E=1$1')
+    .replace(/(\w).__esModule/, '$1._E')
+  worker = stripDebug(worker)
 
   await Promise.all([
     writeFile(workerFile, worker),

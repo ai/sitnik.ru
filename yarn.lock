@@ -818,7 +818,7 @@ acorn@^5.0.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.3.tgz#67aa231bf8812974b85235a96771eb6bd07ea279"
   integrity sha512-T/zvzYRfbVojPWahDsE5evJdHb3oJoQfFbsrKM7w5Zcs++Tr257tia3BmMP8XYVjp1S9RZXQMh7gao96BlqZOw==
 
-acorn@^6.0.7:
+acorn@^6.0.2, acorn@^6.0.7:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.1.0.tgz#b0a3be31752c97a0f7013c5f4903b71a05db6818"
   integrity sha512-MW/FjM+IvU9CgBzjO3UIPCE2pyEwUsoFl+VGdczOPEdxfGFjuKny/gN54mOuX7Qxmb9Rg9MCn2oKiSUeW+pjrw==
@@ -2626,6 +2626,15 @@ eslint@^5.14.0:
     table "^5.2.3"
     text-table "^0.2.0"
 
+espree@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/espree/-/espree-4.1.0.tgz#728d5451e0fd156c04384a7ad89ed51ff54eb25f"
+  integrity sha512-I5BycZW6FCVIub93TeVY1s7vjhP9CY6cXCznIRfiig7nRviKZYdRnj/sHEWC6A7WE9RDWOFq9+7OsWSYz8qv2w==
+  dependencies:
+    acorn "^6.0.2"
+    acorn-jsx "^5.0.0"
+    eslint-visitor-keys "^1.0.0"
+
 espree@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/espree/-/espree-5.0.1.tgz#5d6526fa4fc7f0788a5cf75b15f30323e2f81f7a"
@@ -2635,7 +2644,7 @@ espree@^5.0.1:
     acorn-jsx "^5.0.0"
     eslint-visitor-keys "^1.0.0"
 
-esprima@^2.6.0:
+esprima@^2.1, esprima@^2.6.0:
   version "2.7.3"
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-2.7.3.tgz#96e3b70d5779f6ad49cd032673d1c312767ba581"
   integrity sha1-luO3DVd59q1JzQMmc9HDEnZ7pYE=
@@ -6497,6 +6506,60 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+rocambole-node-remove@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/rocambole-node-remove/-/rocambole-node-remove-1.0.0.tgz#bd49b13dbe6122758374ffd247d8a739e821486f"
+  integrity sha1-vUmxPb5hInWDdP/SR9inOeghSG8=
+  dependencies:
+    rocambole-token "^1.1.0"
+
+rocambole-node-update@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/rocambole-node-update/-/rocambole-node-update-1.0.2.tgz#5f1bdc629b5da3986a509d639133eb8c4cffe700"
+  integrity sha512-kaOi0zb+Nm9hAclA0AZIoxblzAJ04J+HnWeG7+PJZYaf12atAAZavgxRjKcnGdidYNA8oQnZl8aoCt3nhFRbQg==
+  dependencies:
+    rocambole-token "^1.2.1"
+
+rocambole-node-update@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/rocambole-node-update/-/rocambole-node-update-2.0.0.tgz#5a4595fb058e8ffaec77e8678f506c046c230bb5"
+  integrity sha512-/4JYrGR1DjJbS9AVO9iL0/nD8S5sxRBB8FOVE1FG6BwNu3ZSFjgAarN5da4XDLoOZz1tOMkKDccpcx3y6uBl/Q==
+  dependencies:
+    rocambole-token "^1.2.1"
+
+rocambole-strip-alert@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/rocambole-strip-alert/-/rocambole-strip-alert-1.0.0.tgz#3b255fe6f18d6301f805a14e570b1f1f2dba857f"
+  integrity sha1-OyVf5vGNYwH4BaFOVwsfHy26hX8=
+  dependencies:
+    rocambole-node-update "^1.0.1"
+
+rocambole-strip-console@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/rocambole-strip-console/-/rocambole-strip-console-2.0.0.tgz#941e3f45c240f889b20fe425659f5c2d8c4519a7"
+  integrity sha512-XtdAUZPw7iZ7bcs8J+JIL5lsCuYPOt8mnm+G0ybJh3E6RZpLdaSIiYHpqfaQMeLB+E7L0gKyK3U5ugENKZ+8cQ==
+  dependencies:
+    rocambole-node-update "^2.0.0"
+
+rocambole-strip-debugger@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/rocambole-strip-debugger/-/rocambole-strip-debugger-1.0.1.tgz#bd3e500de967a94228098c118d8a387fc4591bd8"
+  integrity sha512-yBnd7R2/HUmVvhjdTnYC6R573hMizzmLaWUObxRKTGBlFT7aIFx+aMqreI6t10X508S740uz7iyCn6YjzLvrFg==
+  dependencies:
+    rocambole-node-remove "^1.0.0"
+
+rocambole-token@^1.1.0, rocambole-token@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/rocambole-token/-/rocambole-token-1.2.1.tgz#c785df7428dc3cb27ad7897047bd5238cc070d35"
+  integrity sha1-x4XfdCjcPLJ614lwR71SOMwHDTU=
+
+rocambole@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/rocambole/-/rocambole-0.7.0.tgz#f6c79505517dc42b6fb840842b8b953b0f968585"
+  integrity sha1-9seVBVF9xCtvuECEK4uVOw+WhYU=
+  dependencies:
+    esprima "^2.1"
+
 run-async@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-2.3.0.tgz#0371ab4ae0bdd720d4166d7dfda64ff7a445a6c0"
@@ -7004,6 +7067,17 @@ strip-bom@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/strip-bom/-/strip-bom-3.0.0.tgz#2334c18e9c759f7bdd56fdef7e9ae3d588e68ed3"
   integrity sha1-IzTBjpx1n3vdVv3vfprj1YjmjtM=
+
+strip-debug@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/strip-debug/-/strip-debug-4.0.0.tgz#7b28e38a51475b481cdcddc3566bf7417bba5745"
+  integrity sha512-NjwTyc19/jnqhfvEYw4gkeIhlYAPfd9B31/HrEl4JJ/UnzUbPCWFJwkX1j62OjOb5sbd8fFzm1j88kKoXU4UXg==
+  dependencies:
+    espree "^4.1.0"
+    rocambole "^0.7.0"
+    rocambole-strip-alert "^1.0.0"
+    rocambole-strip-console "^2.0.0"
+    rocambole-strip-debugger "^1.0.0"
 
 strip-eof@^1.0.0:
   version "1.0.0"
