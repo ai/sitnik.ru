@@ -38,11 +38,7 @@ if (IS_WORKER) {
 let canvasHeight, finishLoading, distanceToEdge
 let delta = new Spherical()
 
-// Methods
-
-function render () {
-  renderer.render(scene, camera)
-}
+// Helpers
 
 function setPosition (position, radius, latitude, longitude) {
   let phi = (90 - latitude) * (Math.PI / 180)
@@ -58,7 +54,7 @@ let loaded = 0
 function load () {
   loaded += 1
   if (loaded === 3) {
-    render()
+    renderer.render(scene, camera)
     finishLoading(1)
   }
 }
@@ -124,8 +120,8 @@ let commands = {
     canvasHeight = height
 
     if (!isWebP) {
-      mapUrl = mapUrl.replace(/webp/, 'png')
-      hereUrl = hereUrl.replace(/webp/, 'png')
+      mapUrl = mapUrl.replace('webp', 'png')
+      hereUrl = hereUrl.replace('webp', 'png')
     }
 
     loader.load(mapUrl, mapImage => {
@@ -160,7 +156,7 @@ let commands = {
     let distanceToHere = camera.position.distanceTo(here.position)
     here.material.depthTest = distanceToHere > distanceToEdge
 
-    render()
+    renderer.render(scene, camera)
   },
 
   here (latitude, longitude) {
