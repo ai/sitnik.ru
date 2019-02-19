@@ -19,7 +19,8 @@ function initEarth (canvas, offscreen) {
     canvas.clientHeight,
     window.devicePixelRatio,
     mapUrl,
-    hereUrl
+    hereUrl,
+    /webp/.test(document.querySelector('img').currentSrc)
   ], [offscreen])
 
   window.addEventListener('resize', () => {

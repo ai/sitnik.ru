@@ -65,6 +65,8 @@ function load () {
 
 // Scene
 
+scene.background = new Color(0xffffff)
+
 let sphere = new Mesh(
   new SphereGeometry(RADIUS, 64, 64),
   new MeshPhongMaterial()
@@ -78,6 +80,17 @@ here.material.depthTest = false
 here.scale.set(0.1, 0.1, 1)
 here.center.set(0.5, 0)
 scene.add(here)
+
+visited.forEach(i => {
+  let dot = new Mesh(
+    new SphereGeometry(0.004, 8),
+    new MeshBasicMaterial({
+      color: new Color(0xffffff)
+    })
+  )
+  setPosition(dot.position, RADIUS, i[0], i[1])
+  scene.add(dot)
+})
 
 // Light
 
@@ -102,7 +115,7 @@ setInterval(moveSun, 30 * 60 * 1000)
 // Messages
 
 let commands = {
-  init (canvas, width, height, pixelRatio, mapUrl, hereUrl) {
+  init (canvas, width, height, pixelRatio, mapUrl, hereUrl, isWebP) {
     if (!canvas.style) canvas.style = { width, height }
 
     renderer = new WebGLRenderer({ canvas, antialias: true })
@@ -110,7 +123,10 @@ let commands = {
     renderer.setSize(width, height)
     canvasHeight = height
 
-    scene.background = new Color(0xffffff)
+    if (!isWebP) {
+      mapUrl = mapUrl.replace(/webp/, 'png')
+      hereUrl = hereUrl.replace(/webp/, 'png')
+    }
 
     loader.load(mapUrl, mapImage => {
       sphere.material.map = new CanvasTexture(mapImage)
@@ -122,17 +138,6 @@ let commands = {
       here.material.map = new CanvasTexture(hereImage)
       here.material.map.flipY = false
       load()
-    })
-
-    visited.forEach(i => {
-      let dot = new Mesh(
-        new SphereGeometry(0.004, 8),
-        new MeshBasicMaterial({
-          color: new Color(0xffffff)
-        })
-      )
-      setPosition(dot.position, RADIUS, i[0], i[1])
-      scene.add(dot)
     })
   },
 

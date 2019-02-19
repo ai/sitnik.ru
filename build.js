@@ -1,25 +1,27 @@
 #!/usr/bin/env node
 
+let { extname, join } = require('path')
 let { promisify } = require('util')
 let posthtml = require('posthtml')
 let mqpacker = require('css-mqpacker')
 let postcss = require('postcss')
 let Bundler = require('parcel-bundler')
-let path = require('path')
 let fs = require('fs')
 
 let writeFile = promisify(fs.writeFile)
 let readFile = promisify(fs.readFile)
+let copyFile = promisify(fs.copyFile)
 let unlink = promisify(fs.unlink)
 
 const A = 'a'.charCodeAt(0)
-const ROOT_INDEX = path.join(__dirname, 'dist', 'index.html')
+const EARTH = join(__dirname, 'src', 'earth')
+const ROOT_INDEX = join(__dirname, 'dist', 'index.html')
 
-let bundler = new Bundler(path.join(__dirname, 'src', 'index.pug'), {
+let bundler = new Bundler(join(__dirname, 'src', 'index.pug'), {
   sourceMaps: false
 })
 
-let bundlerJs = new Bundler(path.join(__dirname, 'src', 'index.js'), {
+let bundlerJs = new Bundler(join(__dirname, 'src', 'index.js'), {
   scopeHoist: true,
   sourceMaps: false
 })
@@ -37,18 +39,24 @@ async function build () {
 
   let assets = findAssets(bundle)
 
-  let jsFile = path.join(__dirname, 'dist', 'index.js')
-  let cssFile = assets.find(i => path.extname(i) === '.css')
+  let jsFile = join(__dirname, 'dist', 'index.js')
+  let cssFile = assets.find(i => extname(i) === '.css')
+  let mapFile = assets.find(i => /map\..*\.webp/.test(i))
+  let hereFile = assets.find(i => /here\..*\.webp/.test(i))
   let srcJsFile = assets.find(i => /src\..*\.js/.test(i))
 
-  let css = (await readFile(cssFile)).toString()
-  let js = (await readFile(jsFile)).toString()
-    .replace('function () ', 'function()')
-    .replace(/};}\)\(\);$/, '}})()')
+  let [css, js] = await Promise.all([
+    readFile(cssFile).then(i => i.toString()),
+    readFile(jsFile).then(i => i.toString()),
+    copyFile(join(EARTH, 'here.png'), hereFile.replace('webp', 'png')),
+    copyFile(join(EARTH, 'map.png'), mapFile.replace('webp', 'png')),
+    unlink(srcJsFile)
+  ])
+
+  js = js.replace('function () ', 'function()').replace(/};}\)\(\);$/, '}})()')
 
   await Promise.all([
     unlink(cssFile),
-    unlink(srcJsFile),
     unlink(jsFile)
   ])
 
@@ -125,7 +133,7 @@ async function build () {
   }
 
   assets
-    .filter(i => path.extname(i) === '.html' && i !== ROOT_INDEX)
+    .filter(i => extname(i) === '.html' && i !== ROOT_INDEX)
     .forEach(async i => {
       let html = await readFile(i)
       await writeFile(i, posthtml()
