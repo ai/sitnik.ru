@@ -18,7 +18,16 @@ function mouseUp () {
   document.removeEventListener('mouseup', mouseUp, false)
 }
 
-function initEarth (offscreen) {
+function detectAndStartEarth (offscreen) {
+  let webP = new Image()
+  webP.src = 'data:image/webp;base64,' +
+             'UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA=='
+  webP.onload = webP.onerror = () => {
+    startEarth(offscreen, !!webP.height)
+  }
+}
+
+function startEarth (offscreen, isWebP) {
   earthLoaded = true
 
   postMessage([
@@ -29,7 +38,7 @@ function initEarth (offscreen) {
     window.devicePixelRatio,
     query('[as=image][href*=map]').href,
     query('[as=image][href*=here]').href,
-    /webp/.test(query('img').currentSrc)
+    isWebP
   ], [offscreen])
 
   window.addEventListener('resize', () => {
@@ -88,14 +97,14 @@ function init () {
     let worker = new Worker(workerUrl)
     postMessage = (data, transfer) => worker.postMessage(data, transfer)
     worker.onmessage = stopLoading
-    initEarth(canvas.transferControlToOffscreen())
+    detectAndStartEarth(canvas.transferControlToOffscreen())
   } else {
     let script = document.createElement('script')
     script.src = workerUrl
     script.async = true
     script.onload = () => {
       postMessage = window.wS
-      initEarth(canvas)
+      detectAndStartEarth(canvas)
     }
     window.wM = stopLoading
     document.head.appendChild(script)
