@@ -101,7 +101,7 @@ function moveSun () {
   let solstice = new Date(now.getFullYear() + '-06-21 00:00:00')
   let days = (now - solstice) / (1000 * 60 * 60 * 24)
   let sunLat = 23.44 * Math.cos(2 * Math.PI * days / 365.26)
-  let sunLong = 180 - 15 * (now.getUTCHours() + 11 + now.getMinutes() / 60)
+  let sunLong = 180 - 15 * (now.getUTCHours() + now.getMinutes() / 60)
   setPosition(light.position, 2, sunLat, sunLong)
 }
 
