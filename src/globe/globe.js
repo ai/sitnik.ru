@@ -1,11 +1,8 @@
 let earth = require('../earth/earth.js')
+let query = require('../query.js')
 
 function get (url) {
   return fetch(url).then(res => res.json())
-}
-
-function query (selector) {
-  return document.querySelector(selector)
 }
 
 get('https://evilmartians.com/locations/ai').then(data => {
