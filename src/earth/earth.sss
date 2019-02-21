@@ -1,7 +1,18 @@
+.earth
+  @media (width > 980px)
+    position: relative
+    width: calc(44vw - 250px)
+    height: calc(44vw - 250px)
+
+  @media (width <= 980px)
+    position: absolute
+    left: calc(50% - 45vw)
+    top: 43px
+    width: 90vw
+    height: 90vw
+
 .earth_canvas
   opacity: 0
-  width: 100%
-  height: 100%
 
 .earth_loading
   position: absolute
