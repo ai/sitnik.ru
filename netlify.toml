@@ -18,8 +18,8 @@
 [[headers]]
   for = "*"
   [headers.values]
-    X-Frame-Options = deny
-    X-Content-Type-Options = nosniff
+    X-Frame-Options = "deny"
+    X-Content-Type-Options = "nosniff"
 
 [[headers]]
   for = "/*.js"
