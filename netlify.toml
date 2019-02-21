@@ -18,9 +18,8 @@
 [[headers]]
   for = "*"
   [headers.values]
-    X-Frame-Options = "deny"
     X-Content-Type-Options = "nosniff"
-    Content-Security-Policy = "connect-src https://evilmartians.com/ https://maps.googleapis.com/; child-src 'self'; img-src 'self'; object-src 'none'; font-src 'none'; frame-ancestors 'none'; media-src 'none'; style-src 'unsafe-inline'; script-src 'self' 'unsafe-inline'"
+    Content-Security-Policy = "connect-src 'self' https://evilmartians.com/ https://maps.googleapis.com/; worker-src 'self'; img-src 'self'; object-src 'none'; font-src 'none'; frame-ancestors 'none'; media-src 'none'; style-src 'unsafe-inline'; script-src 'self' 'unsafe-inline'"
 
 [[headers]]
   for = "/*.js"
