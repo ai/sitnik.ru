@@ -5,8 +5,9 @@ let { promisify } = require('util')
 let stripDebug = require('strip-debug')
 let posthtml = require('posthtml')
 let mqpacker = require('css-mqpacker')
-let postcss = require('postcss')
 let Bundler = require('parcel-bundler')
+let postcss = require('postcss')
+let crypto = require('crypto')
 let fs = require('fs')
 
 let writeFile = promisify(fs.writeFile)
@@ -16,7 +17,18 @@ let unlink = promisify(fs.unlink)
 
 const A = 'a'.charCodeAt(0)
 const EARTH = join(__dirname, 'src', 'earth')
+const NETLIFY = join(__dirname, 'netlify.toml')
 const ROOT_INDEX = join(__dirname, 'dist', 'index.html')
+
+function findAssets (bundle) {
+  return Array.from(bundle.childBundles).reduce((all, i) => {
+    return all.concat(findAssets(i))
+  }, [bundle.name])
+}
+
+function sha256 (string) {
+  return crypto.createHash('sha256').update(string, 'utf8').digest('base64')
+}
 
 let bundler = new Bundler(join(__dirname, 'src', 'index.pug'), {
   sourceMaps: false
@@ -26,12 +38,6 @@ let bundlerJs = new Bundler(join(__dirname, 'src', 'index.js'), {
   scopeHoist: true,
   sourceMaps: false
 })
-
-function findAssets (bundle) {
-  return Array.from(bundle.childBundles).reduce((all, i) => {
-    return all.concat(findAssets(i))
-  }, [bundle.name])
-}
 
 async function build () {
   await bundlerJs.bundle()
@@ -47,10 +53,11 @@ async function build () {
   let srcJsFile = assets.find(i => /src\..*\.js/.test(i))
   let workerFile = assets.find(i => /worker\..*\.js/.test(i))
 
-  let [css, js, worker] = await Promise.all([
+  let [css, js, worker, netlify] = await Promise.all([
     readFile(cssFile).then(i => i.toString()),
     readFile(jsFile).then(i => i.toString()),
     readFile(workerFile).then(i => i.toString()),
+    readFile(NETLIFY).then(i => i.toString()),
     copyFile(join(EARTH, 'here.png'), hereFile.replace('webp', 'png')),
     copyFile(join(EARTH, 'map.png'), mapFile.replace('webp', 'png')),
     unlink(srcJsFile)
@@ -100,6 +107,12 @@ async function build () {
     }
     js = js.replace(`"is-open"`, `"${ classes['is-open'] }"`)
   }
+
+  netlify = netlify
+    .replace(/(style-src 'sha256-)[^']+'/, `$1${ sha256(css) }'`)
+    .replace(/(script-src 'sha256-)[^']+'/, `$1${ sha256(js) }'`)
+
+  await writeFile(NETLIFY, netlify)
 
   function htmlPlugin (tree) {
     tree.match({ tag: 'link', attrs: { rel: 'stylesheet' } }, () => {
