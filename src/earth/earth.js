@@ -95,7 +95,7 @@ function init () {
   initializing = true
 
   let test = document.createElement('canvas')
-  if (test.getContext('webgl')) {
+  if (!test.getContext('webgl')) {
     earth.classList.add('is-disabled')
     return
   }
