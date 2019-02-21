@@ -19,7 +19,7 @@
   for = "*"
   [headers.values]
     X-Content-Type-Options = "nosniff"
-    Content-Security-Policy = "connect-src 'self' https://evilmartians.com/ https://maps.googleapis.com/; object-src 'none'; frame-ancestors 'none'; style-src 'sha256-O1H2GX2SLVjSIPVmVxF9DcrEyp4bJipVptwEC/vgH08='; script-src 'sha256-SjOn3J9Kx108O4aeGw1vTu+Gdk4buz+2HBqIwDpDWf4=' 'self'"
+    Content-Security-Policy = "connect-src 'self' https://evilmartians.com/ https://maps.googleapis.com/; object-src 'none'; frame-ancestors 'none'; form-action 'none'; base-uri 'none'; style-src 'sha256-O1H2GX2SLVjSIPVmVxF9DcrEyp4bJipVptwEC/vgH08='; script-src 'sha256-SjOn3J9Kx108O4aeGw1vTu+Gdk4buz+2HBqIwDpDWf4=' 'self'"
 
 [[headers]]
   for = "/*.js"
