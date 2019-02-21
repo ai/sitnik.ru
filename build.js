@@ -105,7 +105,9 @@ async function build () {
     if (origin.indexOf('earth') === 0 || origin.indexOf('globe') === 0) {
       js = js.replace(`".${ origin }"`, `".${ classes[origin] }"`)
     }
-    js = js.replace(`"is-open"`, `"${ classes['is-open'] }"`)
+    if (origin.indexOf('is-') === 0) {
+      js = js.replace(`"${ origin }"`, `"${ classes[origin] }"`)
+    }
   }
 
   netlify = netlify

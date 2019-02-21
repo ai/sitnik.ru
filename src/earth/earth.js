@@ -4,6 +4,7 @@ let initializing, location, earthLoaded, postMessage, rotateStart
 
 let earth = query('.earth')
 let canvas = query('.earth_canvas')
+let workerUrl = query('[as=script]').href
 
 function move (x, y) {
   postMessage(['move', rotateStart, [x, y]])
@@ -92,7 +93,12 @@ function stopLoading () {
 function init () {
   if (initializing) return
   initializing = true
-  let workerUrl = query('[as=script]').href
+
+  let test = document.createElement('canvas')
+  if (test.getContext('webgl')) {
+    earth.classList.add('is-disabled')
+    return
+  }
 
   if (canvas.transferControlToOffscreen) {
     let worker = new Worker(workerUrl)
