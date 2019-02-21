@@ -24,8 +24,9 @@ if (window.innerWidth > 980) {
   window.addEventListener('resize', () => {
     if (window.innerWidth > 980) earth[0]()
   })
-  query('.globe_location').addEventListener('click', () => {
-    query('.globe').classList.toggle('is-open')
-    earth[0]()
-  })
 }
+
+query('.globe_location').addEventListener('click', () => {
+  query('.globe').classList.toggle('is-open')
+  earth[0]()
+})
