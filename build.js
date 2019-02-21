@@ -116,7 +116,7 @@ async function build () {
 
   function htmlPlugin (tree) {
     tree.match({ tag: 'link', attrs: { rel: 'stylesheet' } }, () => {
-      return { tag: 'style', content: css.toString() }
+      return { tag: 'style', content: css }
     })
     tree.match({ tag: 'script' }, i => {
       if (i.content && i.content[0].indexOf('navigator.language') !== -1) {
