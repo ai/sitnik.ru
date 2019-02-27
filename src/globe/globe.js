@@ -18,7 +18,9 @@ get('https://evilmartians.com/locations/ai').then(data => {
   query('[itemprop=addressCountry]').innerText = parts[parts.length - 1]
 })
 
-if (window.innerWidth > 980) {
+let saveData = navigator.connection && navigator.connection.saveData
+
+if (window.innerWidth > 980 || !saveData) {
   earth[0]()
 } else {
   window.addEventListener('resize', () => {
