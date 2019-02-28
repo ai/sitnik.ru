@@ -23,8 +23,10 @@ let saveData = navigator.connection && navigator.connection.saveData
 if (window.innerWidth > 980 || !saveData) {
   earth[0]()
 } else {
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 980) earth[0]()
+  window.matchMedia("(min-width: 981px)").addListener((event) => {
+    if (event.matches) {
+      earth[0]()
+    }
   })
 }
 
