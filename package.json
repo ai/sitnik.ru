@@ -9,7 +9,7 @@
     "build": "yarn clean && NODE_ENV=production ./build.js"
   },
   "dependencies": {
-    "three": "^0.101.1"
+    "three": "^0.102.0"
   },
   "browserslist": [
     "last 2 versions",
@@ -77,7 +77,7 @@
   },
   "devDependencies": {
     "@logux/eslint-config": "^27.0.0",
-    "autoprefixer": "^9.4.8",
+    "autoprefixer": "^9.4.9",
     "chalk": "^2.4.2",
     "css-mqpacker": "^7.0.0",
     "eslint": "^5.14.1",
@@ -97,7 +97,7 @@
     "postcss": "^7.0.14",
     "postcss-hexrgba": "^1.0.1",
     "postcss-media-minmax": "^4.0.0",
-    "postcss-nested": "^4.1.1",
+    "postcss-nested": "^4.1.2",
     "postcss-pxtorem": "^4.0.1",
     "posthtml": "^0.11.3",
     "pug": "^2.0.3",
@@ -106,7 +106,7 @@
     "stylelint-config-recess-order": "^2.0.1",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-order": "^2.0.0",
-    "svgo": "^1.1.1",
+    "svgo": "^1.2.0",
     "yaspeller": "^5.0.1"
   },
   "yaspeller": {
