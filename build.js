@@ -121,12 +121,7 @@ async function build () {
       return { tag: 'style', content: css }
     })
     tree.match({ tag: 'script' }, i => {
-      if (i.content && i.content[0].indexOf('navigator.language') !== -1) {
-        return {
-          tag: 'script',
-          content: i.content[0].replace('/index.html', '')
-        }
-      } else if (i.attrs.src && i.attrs.src.indexOf('/src.') !== -1) {
+      if (i.attrs.src && i.attrs.src.indexOf('/src.') !== -1) {
         return {
           tag: 'script',
           content: js
@@ -141,7 +136,7 @@ async function build () {
         content: i.content,
         attrs: {
           ...i.attrs,
-          href: i.attrs.href.replace('/index.html', '')
+          href: i.attrs.href.replace('index.html', '')
         }
       }
     })
