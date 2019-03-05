@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-let { extname, join } = require('path')
+let { basename, extname, join } = require('path')
 let { promisify } = require('util')
 let stripDebug = require('strip-debug')
 let posthtml = require('posthtml')
@@ -66,6 +66,9 @@ async function build () {
   js = js
     .replace('function () ', '()=>')
     .replace(/};}\)\(\);$/, '}})()')
+    .replace(/\w+\("\[as=script]"\)\.href/, `"/${ basename(workerFile) }"`)
+    .replace(/\w+\("[^"]+\[href\*=map]"\)\.href/, `"/${ basename(mapFile) }"`)
+    .replace(/\w+\("[^"]+\[href\*=here]"\)\.href/, `"/${ basename(hereFile) }"`)
   worker = worker
     .replace(/\/\/.*?\\n/g, '\\n')
     .replace(/((\\t)+\\n)+/g, '')
@@ -119,6 +122,13 @@ async function build () {
   function htmlPlugin (tree) {
     tree.match({ tag: 'link', attrs: { rel: 'stylesheet' } }, () => {
       return { tag: 'style', content: css }
+    })
+    tree.match({ tag: 'link', attrs: { rel: 'preload' } }, i => {
+      if (i.attrs.as === 'script' || i.attrs.as === 'image') {
+        return false
+      } else {
+        return i
+      }
     })
     tree.match({ tag: 'script' }, i => {
       if (i.attrs.src && i.attrs.src.indexOf('/src.') !== -1) {
