@@ -9,11 +9,15 @@
   to = "/ru/"
   conditions = { Language = ["ru"] }
   status = 302
+  [redirects.headers]
+    Link = "</ru/>; rel=preload; as=document"
 
 [[redirects]]
   from = "/"
   to = "/en/"
   status = 302
+  [redirects.headers]
+    Link = "</en/>; rel=preload; as=document"
 
 [[headers]]
   for = "*"
