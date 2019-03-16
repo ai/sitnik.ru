@@ -106,11 +106,12 @@ async function build () {
   css = postcss([cssPlugin, mqpacker]).process(css, { from: cssFile }).css
 
   for (let origin in classes) {
+    let converted = classes[origin]
     if (origin.indexOf('earth') === 0 || origin.indexOf('globe') === 0) {
-      js = js.replace(`".${ origin }"`, `".${ classes[origin] }"`)
+      js = js.replace(`".${ origin }"`, `".${ converted }"`)
     }
     if (origin.indexOf('is-') === 0) {
-      js = js.replace(`"${ origin }"`, `"${ classes[origin] }"`)
+      js = js.replace(new RegExp(`"${ origin }"`, 'g'), `"${ converted }"`)
     }
   }
 
