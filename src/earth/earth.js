@@ -16,6 +16,7 @@ function mouseMove (e) {
 }
 
 function mouseUp () {
+  earth.classList.remove('is-grabbing')
   document.removeEventListener('mousemove', mouseMove, false)
   document.removeEventListener('mouseup', mouseUp, false)
 }
@@ -55,6 +56,7 @@ function startEarth (offscreen, isWebP) {
       e.preventDefault()
       document.addEventListener('mousemove', mouseMove, false)
       document.addEventListener('mouseup', mouseUp, false)
+      earth.classList.add('is-grabbing')
     }
   })
 
