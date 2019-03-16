@@ -95,6 +95,7 @@ async function build () {
         let kls = str.substr(1)
         if (!classes[kls]) {
           lastUsed += 1
+          if (lastUsed === 26) lastUsed -= 26 + 7 + 25
           classes[kls] = String.fromCharCode(A + lastUsed)
         }
         return '.' + classes[kls]
