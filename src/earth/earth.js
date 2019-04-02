@@ -102,7 +102,7 @@ function init () {
     return
   }
 
-  if (canvas.transferControlToOffscreen2) {
+  if (canvas.transferControlToOffscreen) {
     let worker = new Worker(workerUrl)
     postMessage = (data, transfer) => worker.postMessage(data, transfer)
     worker.onmessage = stopLoading
