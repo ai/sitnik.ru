@@ -20,7 +20,7 @@
   [headers.values]
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     X-Content-Type-Options = "nosniff"
-    Content-Security-Policy = "connect-src 'self' https://evilmartians.com/ https://maps.googleapis.com/; object-src 'none'; frame-ancestors 'none'; form-action 'none'; base-uri 'none'; style-src 'sha256-Cw1rqeTmWnxByN8uvtEeTVNigFhmuHn+pOXXJiaxLIY='; script-src 'sha256-qUpGX81q2qr5S5wV/0/kcNelGqLj5a1wYQmQgedxuRw=' 'self'"
+    Content-Security-Policy = "connect-src 'self' https://evilmartians.com/ https://maps.googleapis.com/; object-src 'none'; frame-ancestors 'none'; form-action 'none'; base-uri 'none'; style-src 'sha256-PUPMPFNwro5J/ihg6jHI4idOvAdo5Dx29JM1MrzoQPs='; script-src 'sha256-6ATDnXs9kAcgo8FYO24J2SLoYBiel73UuRvP03yx/jw=' 'self'"
 
 [[headers]]
   for = "/*.js"
