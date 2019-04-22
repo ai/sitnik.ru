@@ -116,8 +116,8 @@ async function build () {
   }
 
   netlify = netlify
-    .replace(/(style-src 'sha256-)[^']+'/, `$1${ sha256(css) }'`)
-    .replace(/(script-src 'sha256-)[^']+'/, `$1${ sha256(js) }'`)
+    .replace(/(style-src 'sha256-)[^']+'/g, `$1${ sha256(css) }'`)
+    .replace(/(script-src 'sha256-)[^']+'/g, `$1${ sha256(js) }'`)
 
   await writeFile(NETLIFY, netlify)
 
