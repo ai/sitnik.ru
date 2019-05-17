@@ -41,7 +41,7 @@
   },
   "staticPath": "public",
   "engines": {
-    "node": "^11.0.0"
+    "node": "^12.0.0"
   },
   "browser": {
     "node_modules/three/src/renderers/webvr/*": "./empty.js"
