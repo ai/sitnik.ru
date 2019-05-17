@@ -4,8 +4,8 @@
 
 html
   font-family: Arial, sans-serif
-  line-height: 1.4
   font-size: 20px
+  line-height: 1.4
 
   @media (width >= 2200px)
     font-size: 30px
@@ -25,15 +25,17 @@ body
   &.is-grabbing
     cursor: grabbing
 
-a, button
-  &:focus
-    outline: none
-
+a,
+button
   &::-moz-focus-inner
     border: 0
 
+  &:focus
+    outline: none
+
 a:active
   transition: none
+
   &::before
     transition: none
 
@@ -47,5 +49,5 @@ a:active
 
 @media (prefers-color-scheme: dark)
   body
-    background: black
     color: white
+    background: black

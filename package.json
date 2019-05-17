@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "spell": "yaspeller dist/**/*.html",
-    "lint": "eslint *.js src/**/*.js && stylelint src/**/*.css",
+    "lint": "eslint *.js src/**/*.js && stylelint src/**/*.sss",
     "test": "yarn lint & yarn build && yarn spell",
     "clean": "rimraf dist/",
     "start": "parcel serve src/index.pug --open",
@@ -58,7 +58,12 @@
     "extends": [
       "stylelint-config-standard",
       "stylelint-config-recess-order"
-    ]
+    ],
+    "rules": {
+      "declaration-block-trailing-semicolon": null,
+      "block-closing-brace-newline-before": null,
+      "block-opening-brace-space-before": null
+    }
   },
   "husky": {
     "hooks": {

@@ -3,34 +3,34 @@
     position: absolute
     top: 60px
     left: 0
-    width: 100%
-    min-height: calc(100% - 120px)
     display: flex
     flex-direction: column
-    justify-content: center
     align-items: center
+    justify-content: center
+    width: 100%
+    min-height: calc(100% - 120px)
 
   @media (width <= 980px)
+    position: relative
     overflow: hidden
     transition: padding-bottom 400ms
-    position: relative
 
     &.is-open
       padding-bottom: calc(90vw + 20px)
 
 .globe_location
+  font-size: inherit
+  cursor: text
+  user-select: text
   background: none
   border: none
-  font-size: inherit
-  user-select: text
-  cursor: text
 
   @media (width <= 980px)
     position: relative
-    color: #006efe
-    border-bottom: 1px dashed
-    cursor: pointer
     margin-left: 17px
+    color: #006efe
+    cursor: pointer
+    border-bottom: 1px dashed
     -webkit-tap-highlight-color: rgba(#006efe, 0.3)
 
     &:active
@@ -39,15 +39,15 @@
 .globe_location::before
   @media (width <= 980px)
     position: absolute
-    left: -17px
     top: 7px
+    left: -17px
     display: inline-block
+    margin: 0 6px 0 3px
     content: ""
     border: 6px solid
-    border-right-width: 0
     border-color: transparent transparent transparent #006efe
+    border-right-width: 0
     transition: transform 400ms
-    margin: 0 6px 0 3px
 
     .globe.is-open &
       transform: rotate(90deg)
