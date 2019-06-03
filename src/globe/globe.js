@@ -13,7 +13,9 @@ get('https://evilmartians.com/locations/ai').then(data => {
     '&result_type=locality' +
     '&key=AIzaSyDtN3EGVupACA_bqxQi-5r3iHLCzdeCfZc')
 }).then(geodata => {
-  let parts = geodata.results[0].formatted_address.split(', ')
+  let parts = geodata.results[0].formatted_address
+    .replace(/,\s+\d+/, '')
+    .split(', ')
   query('[itemprop=addressLocality]').innerText = parts[0]
   query('[itemprop=addressCountry]').innerText = parts[parts.length - 1]
 })
