@@ -35,8 +35,11 @@ if (IS_WORKER) {
   loader = new ImageLoader()
 }
 
-let canvasHeight, finishLoading, distanceToEdge
+let canvasHeight, finishLoading
 let delta = new Spherical()
+
+setPosition(camera.position, 2, 20, 0)
+let distanceToEdge = camera.position.distanceTo(new Vector3(0, RADIUS, 0))
 
 // Helpers
 
@@ -167,7 +170,6 @@ let commands = {
     setPosition(here.position, RADIUS, latitude, longitude)
     setPosition(camera.position, 2, latitude > 0 ? 20 : -20, longitude)
     camera.lookAt(0, 0, 0)
-    distanceToEdge = camera.position.distanceTo(new Vector3(0, RADIUS, 0))
     load()
   }
 }
