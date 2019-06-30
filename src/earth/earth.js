@@ -41,7 +41,8 @@ function startEarth (offscreen, isWebP) {
     window.devicePixelRatio,
     query('[as=image][href*=map]').href,
     query('[as=image][href*=here]').href,
-    isWebP
+    isWebP,
+    window.matchMedia('(prefers-color-scheme: dark)').matches
   ], [offscreen])
 
   window.addEventListener('resize', () => {

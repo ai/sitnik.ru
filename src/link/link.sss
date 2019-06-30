@@ -24,11 +24,17 @@
   transform: scaleY(0.06)
   transform-origin: 0 100% 0
 
+  @media (prefers-color-scheme: dark)
+    opacity: 0.4
+
   :hover&
     transform: none
 
 .link.is-text
   color: black
+
+  @media (prefers-color-scheme: dark)
+    color: white
 
   &::before
     opacity: 0

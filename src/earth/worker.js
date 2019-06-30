@@ -111,7 +111,7 @@ setInterval(moveSun, 30 * 60 * 1000)
 // Messages
 
 let commands = {
-  init (canvas, width, height, pixelRatio, mapUrl, hereUrl, isWebP) {
+  init (canvas, width, height, pixelRatio, mapUrl, hereUrl, isWebP, isDark) {
     if (!canvas.style) canvas.style = { width, height }
 
     renderer = new WebGLRenderer({ canvas, antialias: true })
@@ -122,6 +122,10 @@ let commands = {
     if (!isWebP) {
       mapUrl = mapUrl.replace('webp', 'png')
       hereUrl = hereUrl.replace('webp', 'png')
+    }
+
+    if (isDark) {
+      scene.background = new Color(0x333333)
     }
 
     loader.load(mapUrl, mapImage => {
