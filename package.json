@@ -44,7 +44,6 @@
     "stylelint-config-recess-order": "^2.0.2",
     "stylelint-config-standard": "^18.3.0",
     "stylelint-order": "^3.0.0",
-    "svgo": "^1.2.2",
     "yaspeller": "^5.1.0"
   },
   "browserslist": [
@@ -107,13 +106,9 @@
     }
   },
   "lint-staged": {
-    "*.js": "eslint --fix",
+    "*.js": "eslint",
     "*.css": [
       "stylelint --fix",
-      "git add"
-    ],
-    "*.svg": [
-      "svgo",
       "git add"
     ]
   },
