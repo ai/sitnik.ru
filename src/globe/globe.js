@@ -6,18 +6,24 @@ function get (url) {
 }
 
 get('https://evilmartians.com/locations/ai').then(data => {
-  earth[1](data)
-  return get('https://maps.googleapis.com/maps/api/geocode/json' +
+  get(
+    'https://maps.googleapis.com/maps/api/geocode/json' +
     '?latlng=' + data.latitude + ',' + data.longitude +
     '&language=' + document.documentElement.lang +
     '&result_type=locality' +
-    '&key=AIzaSyDtN3EGVupACA_bqxQi-5r3iHLCzdeCfZc')
-}).then(geodata => {
-  let parts = geodata.results[0].formatted_address
-    .replace(/,\s+\d+/, '')
-    .split(', ')
-  query('[itemprop=addressLocality]').innerText = parts[0]
-  query('[itemprop=addressCountry]').innerText = parts[parts.length - 1]
+    '&key=AIzaSyDtN3EGVupACA_bqxQi-5r3iHLCzdeCfZc'
+  ).then(geodata => {
+    earth[1](data)
+    if (geodata.results[0]) {
+      let parts = geodata.results[0].formatted_address
+        .replace(/,\s+\d+/, '')
+        .split(', ')
+      query('[itemprop=addressLocality]').innerText = parts[0]
+      query('[itemprop=addressCountry]').innerText = parts[parts.length - 1]
+    } else {
+      query('.globe_location').innerText = ' '
+    }
+  })
 })
 
 let saveData = navigator.connection && navigator.connection.saveData
