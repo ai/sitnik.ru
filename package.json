@@ -116,7 +116,7 @@
     {
       "name": "Critical",
       "path": "dist/en/index.html",
-      "limit": "3.8 KB",
+      "limit": "4 KB",
       "running": false,
       "webpack": false
     },
@@ -128,7 +128,7 @@
         "dist/here.*.webp",
         "dist/photo.*.webp"
       ],
-      "limit": "8 s"
+      "limit": "9 s"
     }
   ],
   "yaspeller": {
