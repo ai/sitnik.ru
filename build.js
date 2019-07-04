@@ -107,10 +107,10 @@ async function build () {
 
   for (let origin in classes) {
     let converted = classes[origin]
-    if (origin.indexOf('earth') === 0 || origin.indexOf('globe') === 0) {
+    if (origin.startsWith('earth') || origin.startsWith('globe')) {
       js = js.replace(`".${ origin }"`, `".${ converted }"`)
     }
-    if (origin.indexOf('is-') === 0) {
+    if (origin.startsWith('is-')) {
       js = js.replace(new RegExp(`"${ origin }"`, 'g'), `"${ converted }"`)
     }
   }
@@ -133,7 +133,7 @@ async function build () {
       }
     })
     tree.match({ tag: 'script' }, i => {
-      if (i.attrs.src && i.attrs.src.indexOf('/src.') !== -1) {
+      if (i.attrs.src && i.attrs.src.includes('/src.')) {
         return {
           tag: 'script',
           content: js
