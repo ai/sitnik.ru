@@ -30,6 +30,10 @@ function sha256 (string) {
   return crypto.createHash('sha256').update(string, 'utf8').digest('base64')
 }
 
+function replaceAll (str, from, to) {
+  return str.replace(new RegExp(from, 'g'), to)
+}
+
 let bundler = new Bundler(join(__dirname, 'src', 'index.pug'), {
   sourceMaps: false
 })
@@ -108,10 +112,10 @@ async function build () {
   for (let origin in classes) {
     let converted = classes[origin]
     if (origin.startsWith('earth') || origin.startsWith('globe')) {
-      js = js.replace(`".${ origin }"`, `".${ converted }"`)
+      js = replaceAll(js, `".${ origin }"`, `".${ converted }"`)
     }
     if (origin.startsWith('is-')) {
-      js = js.replace(new RegExp(`"${ origin }"`, 'g'), `"${ converted }"`)
+      js = replaceAll(js, `"${ origin }"`, `"${ converted }"`)
     }
   }
 
