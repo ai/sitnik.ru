@@ -6,8 +6,14 @@
   border-radius: 0.3em
   transition: color 200ms
 
+  @media (prefers-color-scheme: dark)
+    color: #529cfd
+
   &:visited
     color: #6e00fe
+
+    @media (prefers-color-scheme: dark)
+      color: #9c52fd
 
 .link::before
   position: absolute
@@ -23,9 +29,6 @@
   transition: all 200ms
   transform: scaleY(0.06)
   transform-origin: 0 100% 0
-
-  @media (prefers-color-scheme: dark)
-    opacity: 0.4
 
   :hover&
     transform: none
