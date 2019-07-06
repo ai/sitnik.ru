@@ -13,13 +13,13 @@
   },
   "devDependencies": {
     "@logux/eslint-config": "^28.2.3",
-    "autoprefixer": "^9.6.0",
+    "autoprefixer": "^9.6.1",
     "chalk": "^2.4.2",
     "css-mqpacker": "^7.0.0",
     "eslint": "^6.0.1",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-import-helpers": "^1.0.1",
+    "eslint-plugin-import-helpers": "^1.0.2",
     "eslint-plugin-jest": "^22.7.2",
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-prefer-let": "^1.0.1",
@@ -28,7 +28,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "fast-xml-parser": "^3.12.16",
     "husky": "^3.0.0",
-    "lint-staged": "^9.0.2",
+    "lint-staged": "^9.1.0",
     "parcel-bundler": "^1.12.3",
     "parcel-plugin-static-files-copy": "^2.1.2",
     "postcss": "^7.0.17",
@@ -44,7 +44,7 @@
     "stylelint-config-recess-order": "^2.0.2",
     "stylelint-config-standard": "^18.3.0",
     "stylelint-order": "^3.0.0",
-    "yaspeller": "^5.1.0"
+    "yaspeller": "^6.0.0"
   },
   "browserslist": [
     "last 2 versions",
