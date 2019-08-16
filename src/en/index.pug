@@ -35,39 +35,39 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
             a.link( href="mailto:andrey@sitnik.ru" itemprop="email" )
               | andrey@sitnik.ru
             .contacts_notes
-              a.link( href="https://keybase.io/iskin" itemprop="sameAs" title="Public key for GnuPG to verify my signature or encrypt message for me" )
+              a.link( href="https://keybase.io/iskin" itemprop="sameAs" rel="me" title="Public key for GnuPG to verify my signature or encrypt message for me" )
                 | GPG 1F710E4D
           .contacts_contact
             a.link.is-text( href="tel:+19143123913" itemprop="telephone" )
               | +1 914 312 3913
             .contacts_notes
-              a.link( href="https://wa.me/19143123913" itemprop="sameAs" )
+              a.link( href="https://wa.me/19143123913" itemprop="sameAs" rel="me" )
                 | WhatsApp
               = ' '
-              a.link( href="weixin://dl/chat?andrey_sitnik" itemprop="sameAs" )
+              a.link( href="weixin://dl/chat?andrey_sitnik" itemprop="sameAs" rel="me" )
                 | WeChat
               = ' '
-              a.link( href="https://t.me/sitnik" itemprop="sameAs" )
+              a.link( href="https://t.me/sitnik" itemprop="sameAs" rel="me" )
                 | Telegram
 
-        link( href="https://twitter.com/andrey_sitnik" itemprop="sameAs" )
-        link( href="https://vk.com/iskin" itemprop="sameAs" )
+        link( href="https://twitter.com/andrey_sitnik" itemprop="sameAs" rel="me" )
+        link( href="https://vk.com/iskin" itemprop="sameAs" rel="me" )
         ul.projects
           li.projects_item
             h2.projects_title
               span.projects_name Twitter
               ul.projects_links
                 li.projects_link
-                  a.link( href="https://twitter.com/andreysitnik" itemprop="sameAs" )
+                  a.link( href="https://twitter.com/andreysitnik" itemprop="sameAs" rel="me" )
                     | Full with NSFW
                 li.projects_link
-                  a.link( href="https://twitter.com/sitnikcode" itemprop="sameAs" )
+                  a.link( href="https://twitter.com/sitnikcode" itemprop="sameAs" rel="me" )
                     | code only
             p
               | My notes about sex, travels, and technologies
           li.projects_item
             h2.projects_title
-              a.link( href="https://github.com/ai" itemprop="sameAs" )
+              a.link( href="https://github.com/ai" itemprop="sameAs" rel="me" )
                 | GitHub
             p
               | I created Autoprefixer, PostCSS, Browserslist, Nano ID, and Size Limit
@@ -80,7 +80,7 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
               span( itemprop="name" ) Evil Martians
           li.projects_item
             h2.projects_title
-              a.link( href="https://www.instagram.com/sitnikandrey/" itemprop="sameAs" )
+              a.link( href="https://www.instagram.com/sitnikandrey/" itemprop="sameAs" rel="me" )
                 | Instagram
             p
               | Photos from travels and henna body painting
