@@ -3,6 +3,5 @@ yarn-error.log
 
 dist/
 .cache
-
 cities/bookmarks.xml
 cities/token.txt

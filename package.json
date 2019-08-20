@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "spell": "yaspeller dist/**/*.html",
-    "lint": "eslint *.js src/**/*.js && stylelint src/**/*.sss",
+    "lint": "eslint . && stylelint src/**/*.sss",
     "test": "yarn lint & yarn build && size-limit && yarn spell",
     "clean": "rimraf dist/",
     "start": "parcel serve src/index.pug --open",
@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@logux/eslint-config": "^31.0.0",
+    "@logux/sharec-config": "^0.4.1",
     "@size-limit/preset-app": "^2.1.1",
     "autoprefixer": "^9.6.1",
     "chalk": "^2.4.2",
@@ -39,6 +40,7 @@
     "postcss-pxtorem": "^4.0.1",
     "posthtml": "^0.11.4",
     "pug": "^2.0.4",
+    "rimraf": "^3.0.0",
     "strip-debug": "^4.0.0",
     "stylelint": "^10.1.0",
     "stylelint-config-recess-order": "^2.0.3",
@@ -89,6 +91,11 @@
       "node/no-unpublished-require": "off"
     }
   },
+  "eslintIgnore": [
+    "node_modules",
+    "dist",
+    ".cache"
+  ],
   "stylelint": {
     "extends": [
       "stylelint-config-standard",
@@ -156,5 +163,8 @@
       "Инстаграм",
       "Лингвопанк"
     ]
+  },
+  "sharec": {
+    "version": "0.4.1"
   }
 }
