@@ -6,7 +6,8 @@
     "test": "yarn lint & yarn build && size-limit && yarn spell",
     "clean": "rimraf dist/",
     "start": "parcel serve src/index.pug --open",
-    "build": "yarn clean && NODE_ENV=production ./build.js"
+    "build": "yarn clean && NODE_ENV=production ./build.js",
+    "image:start": "podman run --rm -p 8000:80 $(buildah bud .)"
   },
   "dependencies": {
     "three": "^0.107.0"
