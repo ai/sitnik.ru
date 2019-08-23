@@ -1,4 +1,0 @@
-#!/bin/env bash
-
-gcloud builds submit --ignore-file=deploy/ignore --tag gcr.io/sitnikru-1547645703906/sitnikru
-gcloud beta run deploy sitnikru --image gcr.io/sitnikru-1547645703906/sitnikru --platform managed
