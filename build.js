@@ -18,7 +18,6 @@ let unlink = promisify(fs.unlink)
 const A = 'a'.charCodeAt(0)
 const NGINX = join(__dirname, 'nginx.conf')
 const EARTH = join(__dirname, 'src', 'earth')
-const NETLIFY = join(__dirname, 'netlify.toml')
 const ROOT_INDEX = join(__dirname, 'dist', 'index.html')
 
 function findAssets (bundle) {
@@ -58,11 +57,10 @@ async function build () {
   let srcJsFile = assets.find(i => /src\..*\.js/.test(i))
   let workerFile = assets.find(i => /worker\..*\.js/.test(i))
 
-  let [css, js, worker, netlify, nginx] = await Promise.all([
+  let [css, js, worker, nginx] = await Promise.all([
     readFile(cssFile).then(i => i.toString()),
     readFile(jsFile).then(i => i.toString()),
     readFile(workerFile).then(i => i.toString()),
-    readFile(NETLIFY).then(i => i.toString()),
     readFile(NGINX).then(i => i.toString()),
     copyFile(join(EARTH, 'here.png'), hereFile.replace('webp', 'png')),
     copyFile(join(EARTH, 'map.png'), mapFile.replace('webp', 'png')),
@@ -120,11 +118,6 @@ async function build () {
       js = replaceAll(js, `"${ origin }"`, `"${ converted }"`)
     }
   }
-
-  netlify = netlify
-    .replace(/(style-src 'sha256-)[^']+'/g, `$1${ sha256(css) }'`)
-    .replace(/(script-src 'sha256-)[^']+'/g, `$1${ sha256(js) }'`)
-  await writeFile(NETLIFY, netlify)
 
   nginx = nginx
     .replace(/(style-src 'sha256-)[^']+'/g, `$1${ sha256(css) }'`)
