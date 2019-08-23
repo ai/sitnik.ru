@@ -1,0 +1,15 @@
+steps:
+  - name: node:12
+    entrypoint: yarn
+    args: ['install']
+  - name: node:12
+    entrypoint: yarn
+    args: ['test']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/sitnikru-1547645703906/sitnikru', '-f', 'deploy/Dockerfile', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/sitnikru-1547645703906/sitnikru']
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['beta', 'run', 'deploy', 'sitnikru', '--image', 'gcr.io/sitnikru-1547645703906/sitnikru', '--region', 'us-east1', '--platform', 'managed', '--quiet']
+images:
+  - gcr.io/sitnikru-1547645703906/sitnikru

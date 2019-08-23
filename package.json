@@ -7,7 +7,7 @@
     "clean": "rimraf dist/",
     "start": "parcel serve src/index.pug --open",
     "build": "yarn clean && NODE_ENV=production ./build.js",
-    "nginx": "podman run --rm -p 8000:80 -e PORT=80 $(buildah bud .)"
+    "nginx": "podman run --rm -p 8000:80 -e PORT=80 $(buildah bud -f ./deploy/Dockerfile .)"
   },
   "dependencies": {
     "three": "^0.107.0"
@@ -15,7 +15,7 @@
   "devDependencies": {
     "@logux/eslint-config": "^31.0.0",
     "@logux/sharec-config": "^0.4.1",
-    "@size-limit/preset-app": "^2.1.1",
+    "@size-limit/file": "^2.1.1",
     "autoprefixer": "^9.6.1",
     "chalk": "^2.4.2",
     "css-mqpacker": "^7.0.0",
@@ -124,8 +124,7 @@
     {
       "name": "Critical",
       "path": "dist/en/index.html",
-      "limit": "4 KB",
-      "running": false
+      "limit": "4 KB"
     },
     {
       "name": "Full",
@@ -135,7 +134,7 @@
         "dist/here.*.webp",
         "dist/photo.*.webp"
       ],
-      "limit": "6 s"
+      "limit": "185 KB"
     }
   ],
   "yaspeller": {
