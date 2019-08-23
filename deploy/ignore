@@ -1,0 +1,10 @@
+.git
+.cache
+node_modules
+src/
+public/
+.gitignore
+build.js
+package.json
+README.md
+yarn.lock
