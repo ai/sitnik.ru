@@ -7,7 +7,7 @@
     "clean": "rimraf dist/",
     "start": "parcel serve src/index.pug --open",
     "build": "yarn clean && NODE_ENV=production ./build.js",
-    "image:start": "podman run --rm -p 8000:80 -e PORT=80 $(buildah bud .)"
+    "nginx": "podman run --rm -p 8000:80 -e PORT=80 $(buildah bud .)"
   },
   "dependencies": {
     "three": "^0.107.0"
@@ -82,7 +82,7 @@
     "node": "^12.0.0"
   },
   "browser": {
-    "node_modules/three/src/renderers/webvr/*": "./empty.js"
+    "node_modules/three/src/renderers/webvr/*": "./src/empty.js"
   },
   "eslintConfig": {
     "extends": "@logux/eslint-config/node",
