@@ -20,7 +20,7 @@
     "chalk": "^2.4.2",
     "css-mqpacker": "^7.0.0",
     "eslint": "^6.2.1",
-    "eslint-config-standard": "^14.0.0",
+    "eslint-config-standard": "^14.0.1",
     "eslint-plugin-es5": "^1.4.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^22.15.2",
