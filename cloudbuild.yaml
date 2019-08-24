@@ -6,7 +6,7 @@ steps:
     entrypoint: yarn
     args: ['test']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/sitnikru-1547645703906/sitnikru', '-f', 'deploy/Dockerfile', '.']
+    args: ['build', '-t', 'gcr.io/sitnikru-1547645703906/sitnikru', '.']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/sitnikru-1547645703906/sitnikru']
   - name: 'gcr.io/cloud-builders/gcloud'

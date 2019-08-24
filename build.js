@@ -16,7 +16,7 @@ let copyFile = promisify(fs.copyFile)
 let unlink = promisify(fs.unlink)
 
 const A = 'a'.charCodeAt(0)
-const NGINX = join(__dirname, 'deploy', 'nginx.conf')
+const NGINX = join(__dirname, 'nginx.conf')
 const EARTH = join(__dirname, 'src', 'earth')
 const ROOT_INDEX = join(__dirname, 'dist', 'index.html')
 
