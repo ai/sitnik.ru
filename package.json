@@ -10,7 +10,7 @@
     "nginx": "podman run --rm -p 8000:80 -e PORT=80 $(buildah bud .)"
   },
   "dependencies": {
-    "three": "^0.107.0"
+    "three": "^0.108.0"
   },
   "devDependencies": {
     "@logux/eslint-config": "^31.0.0",
@@ -20,7 +20,7 @@
     "chalk": "^2.4.2",
     "css-mqpacker": "^7.0.0",
     "eslint": "^6.2.2",
-    "eslint-config-standard": "^14.0.1",
+    "eslint-config-standard": "^14.1.0",
     "eslint-plugin-es5": "^1.4.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^22.15.2",
@@ -31,7 +31,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "fast-xml-parser": "^3.12.20",
     "husky": "^3.0.4",
-    "lint-staged": "^9.2.4",
+    "lint-staged": "^9.2.5",
     "parcel-bundler": "^1.12.3",
     "parcel-plugin-static-files-copy": "^2.2.1",
     "postcss": "^7.0.17",
@@ -39,7 +39,7 @@
     "postcss-media-minmax": "^4.0.0",
     "postcss-nested": "^4.1.2",
     "postcss-pxtorem": "^4.0.1",
-    "posthtml": "^0.11.4",
+    "posthtml": "^0.11.5",
     "pug": "^2.0.4",
     "rimraf": "^3.0.0",
     "strip-debug": "^4.0.0",
