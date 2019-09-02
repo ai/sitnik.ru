@@ -14,12 +14,12 @@
   },
   "devDependencies": {
     "@logux/eslint-config": "^31.0.0",
-    "@logux/sharec-config": "^0.4.1",
+    "@logux/sharec-config": "^0.4.3",
     "@size-limit/file": "^2.1.1",
     "autoprefixer": "^9.6.1",
     "chalk": "^2.4.2",
     "css-mqpacker": "^7.0.0",
-    "eslint": "^6.2.2",
+    "eslint": "^6.3.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-es5": "^1.4.1",
     "eslint-plugin-import": "^2.18.2",
@@ -30,7 +30,7 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
     "fast-xml-parser": "^3.12.20",
-    "husky": "^3.0.4",
+    "husky": "^3.0.5",
     "lint-staged": "^9.2.5",
     "parcel-bundler": "^1.12.3",
     "parcel-plugin-static-files-copy": "^2.2.1",
@@ -165,6 +165,6 @@
     ]
   },
   "sharec": {
-    "version": "0.4.1"
+    "version": "0.4.3"
   }
 }
