@@ -10,6 +10,6 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/sitnikru']
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['beta', 'run', 'deploy', 'sitnikru', '--image', 'gcr.io/$PROJECT_ID/sitnikru', '--region', 'us-east1', '--platform', 'managed', '--quiet']
+    args: ['beta', 'run', 'deploy', 'sitnikru', '--image', 'gcr.io/$PROJECT_ID/sitnikru', '--region', 'us-east1', '--platform', 'managed']
 images:
   - gcr.io/$PROJECT_ID/sitnikru
