@@ -5,7 +5,6 @@ dist
 .git
 README.md
 .gitignore
-cities/*.js
 cities/cities.json
 cities/processed.json
 cities/update
