@@ -1,8 +1,8 @@
-node_modules
-.cache
-dist
+node_modules/
+.cache/
+dist/
 
-.git
+.git/
 README.md
 .gitignore
 cities/cities.json
