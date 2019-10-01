@@ -53,8 +53,8 @@
     border-right-width: 0
     transition: transform 400ms
 
-    @media (prefers-color-scheme: dark)
-      border-color: transparent transparent transparent #529cfd
-
     .globe.is-open &
       transform: rotate(90deg)
+
+  @media (width <= 980px) and (prefers-color-scheme: dark)
+    border-color: transparent transparent transparent #529cfd
