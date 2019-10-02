@@ -223,7 +223,7 @@ async function saveFiles (data) {
     .reverse()
     .filter((i, index) => {
       for (let j of locations.slice(index + 1)) {
-        if (diff(i[0], j[0], i[1], j[1]) < 1) {
+        if (diff(i[0], j[0], i[1], j[1]) < 0.7) {
           return false
         }
       }
