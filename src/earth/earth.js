@@ -1,6 +1,6 @@
 let query = require('../query.js')
 
-let initializing, location, earthLoaded, postMessage, rotateStart
+let initializing, postMessage, rotateStart
 
 let earth = query('.earth')
 let canvas = query('.earth_canvas')
@@ -31,8 +31,6 @@ function detectAndStartEarth (offscreen) {
 }
 
 function startEarth (offscreen, isWebP) {
-  earthLoaded = true
-
   postMessage([
     'init',
     offscreen,
@@ -42,14 +40,14 @@ function startEarth (offscreen, isWebP) {
     query('[as=image][href*=map]').href,
     query('[as=image][href*=here]').href,
     isWebP,
-    window.matchMedia('(prefers-color-scheme: dark)').matches
+    window.matchMedia('(prefers-color-scheme: dark)').matches,
+    parseFloat(earth.dataset.lat),
+    parseFloat(earth.dataset.lng)
   ], [offscreen])
 
   window.addEventListener('resize', () => {
     postMessage(['resize', earth.clientWidth, earth.clientHeight])
   })
-
-  if (location) setLocation(location)
 
   canvas.addEventListener('mousedown', e => {
     if (e.button === 0) { // left
@@ -121,12 +119,4 @@ function init () {
   }
 }
 
-function setLocation (l) {
-  if (earthLoaded) {
-    postMessage(['here', l.latitude, l.longitude])
-  } else {
-    location = l
-  }
-}
-
-module.exports = [init, setLocation]
+module.exports = init

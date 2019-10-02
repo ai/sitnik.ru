@@ -56,7 +56,7 @@ let loaded = 0
 
 function load () {
   loaded += 1
-  if (loaded === 3) {
+  if (loaded === 2) {
     renderer.render(scene, camera)
     finishLoading(1)
   }
@@ -114,7 +114,10 @@ setInterval(moveSun, 30 * 60 * 1000)
 // Messages
 
 let commands = {
-  init (canvas, width, height, pixelRatio, mapUrl, hereUrl, isWebP, isDark) {
+  init (
+    canvas, width, height, pixelRatio, mapUrl, hereUrl,
+    isWebP, isDark, latitude, longitude
+  ) {
     if (!canvas.style) canvas.style = { width, height }
 
     renderer = new WebGLRenderer({ canvas, antialias: true })
@@ -142,6 +145,10 @@ let commands = {
       here.material.map.flipY = false
       load()
     })
+
+    setPosition(here.position, RADIUS, latitude, longitude)
+    setPosition(camera.position, 2, latitude > 0 ? 20 : -20, longitude)
+    camera.lookAt(0, 0, 0)
   },
 
   resize (width, height) {
@@ -164,13 +171,6 @@ let commands = {
     here.material.depthTest = distanceToHere > distanceToEdge
 
     renderer.render(scene, camera)
-  },
-
-  here (latitude, longitude) {
-    setPosition(here.position, RADIUS, latitude, longitude)
-    setPosition(camera.position, 2, latitude > 0 ? 20 : -20, longitude)
-    camera.lookAt(0, 0, 0)
-    load()
   }
 }
 

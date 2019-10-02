@@ -44,6 +44,8 @@ async function processCity (token, html, location) {
       /<([^>]+) itemprop="addressCountry"([^>]?)>[^.]+<\/([^>]+)>/,
       `<$1 itemprop="addressLocality"$2>${ country.long_name }</$3>`
     )
+    .replace(/ data-lat="([^"])+"/, ` data-lat="${ location.latitude }"`)
+    .replace(/ data-lng="([^"])+"/, ` data-lat="${ location.longitude }"`)
 
   await write(lang === 'ru' ? RU : EN, html)
 }
