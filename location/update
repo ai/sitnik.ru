@@ -1,0 +1,58 @@
+#!/usr/bin/env node
+
+let { join } = require('path')
+
+let loadToken = require('../utils/token')
+let MyError = require('../utils/my-error')
+let request = require('../utils/request')
+let write = require('../utils/write')
+let read = require('../utils/read')
+
+const RU = join(__dirname, '..', 'dist', 'ru', 'index.html')
+const EN = join(__dirname, '..', 'dist', 'en', 'index.html')
+
+async function loadLocation () {
+  return request('https://evilmartians.com/locations/ai')
+}
+
+async function processCity (token, html, location) {
+  let lang = html.includes(' lang="ru"') ? 'ru' : 'en'
+
+  let geodata = await request(
+    'https://maps.googleapis.com/maps/api/geocode/json' +
+    `?latlng=${ location.latitude },${ location.longitude }` +
+    `&language=${ lang }` +
+    `&key=${ token }`
+  )
+  let address = geodata.results[0].address_components
+  let country = address.find(i => i.types.includes('country'))
+  let city = address.find(i => i.types.includes('locality'))
+  if (country.short_name === 'JP') {
+    if (address.find(i => i.short_name === 'Tōkyō-to')) {
+      city = { long_name: lang === 'ru' ? 'Токио' : 'Tokyo' }
+    }
+  }
+
+  process.stdout.write(`${ city.long_name }, ${ country.long_name }\n`)
+
+  html = html
+    .replace(
+      /<([^>]+) itemprop="addressLocality"([^>]?)>[^.]+<\/([^>]+)>/,
+      `<$1 itemprop="addressLocality"$2>${ city.long_name }</$3>`
+    )
+    .replace(
+      /<([^>]+) itemprop="addressCountry"([^>]?)>[^.]+<\/([^>]+)>/,
+      `<$1 itemprop="addressLocality"$2>${ country.long_name }</$3>`
+    )
+
+  await write(lang === 'ru' ? RU : EN, html)
+}
+
+Promise.all([loadToken(), read(RU), read(EN), loadLocation()])
+  .then(([token, htmlRu, htmlEn, location]) => {
+    return Promise.all([
+      processCity(token, htmlRu, location),
+      processCity(token, htmlEn, location)
+    ])
+  })
+  .catch(MyError.print)

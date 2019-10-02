@@ -1,9 +1,7 @@
-let { red, gray } = require('chalk')
+let { red } = require('chalk')
 let { get } = require('https')
 
-let { error } = require('../utils/error')
-
-function request (url, attempt = 1) {
+function request (url, maxAttempts = 1, attempt = 1) {
   return new Promise((resolve, reject) => {
     get(url, res => {
       let buffer = ''
@@ -11,21 +9,13 @@ function request (url, attempt = 1) {
         buffer += i
       })
       res.on('end', () => {
-        let answer = JSON.parse(buffer)
-        if (answer.status === 'ZERO_RESULTS' || answer.status === 'NOT_FOUND') {
-          reject(error('404'))
-        } else if (answer.status === 'OK') {
-          process.stderr.write(gray('#'))
-          resolve(answer)
-        } else {
-          reject(error(answer.error_message))
-        }
+        resolve(JSON.parse(buffer))
       })
     }).on('error', reject)
   }).catch(e => {
-    if (attempt < 3 && !e.local) {
+    if (attempt < maxAttempts) {
       process.stderr.write(red('E'))
-      return request(url, attempt + 1)
+      return request(url, maxAttempts, attempt + 1)
     } else {
       throw e
     }
