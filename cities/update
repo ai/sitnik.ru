@@ -96,13 +96,13 @@ function gmap (name, params) {
 }
 
 function inside (address, ...value) {
-  return address.some(i => value.indexOf(i.long_name) !== -1)
+  return address.some(i => value.includes(i.long_name))
 }
 
 function cityName (responce) {
   let address = (responce.result || responce.results[0]).address_components
-  let country = address.find(i => i.types.indexOf('country') !== -1)
-  let city = address.find(i => i.types.indexOf('locality') !== -1)
+  let country = address.find(i => i.types.includes('country'))
+  let city = address.find(i => i.types.includes('locality'))
   let inUS = country && country.short_name === 'US'
   if (!city) {
     if (inUS && inside(address, 'Brooklyn', 'Queens')) {
@@ -110,7 +110,7 @@ function cityName (responce) {
     } else if (inside(address, 'İstanbul')) {
       city = { long_name: 'İstanbul' }
     } else {
-      city = address.find(i => i.types.indexOf('political') !== -1)
+      city = address.find(i => i.types.includes('political'))
     }
   }
   if (inUS && city.long_name === 'Washington') {
@@ -234,7 +234,7 @@ async function findCities (data) {
   let requesting = { }
   await Promise.all(data.newBookmarks.map(async ({ url, title, id }) => {
     let res
-    if (url.indexOf('?cid=') !== -1) {
+    if (url.includes('?cid=')) {
       let cid = url.match(/\?cid=(\d+)/)[1]
       res = await gmap('place/details/json', { cid, key: data.token })
     } else {

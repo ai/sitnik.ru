@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "spell": "yaspeller dist/**/*.html",
-    "lint": "eslint . && stylelint src/**/*.sss",
+    "lint": "eslint . */update && stylelint src/**/*.sss",
     "test": "yarn lint & yarn build && size-limit && yarn spell",
     "clean": "rimraf dist/",
     "start": "parcel serve src/index.pug --open",
