@@ -110,7 +110,9 @@ function cityName (responce) {
     } else if (inside(address, 'İstanbul')) {
       city = { long_name: 'İstanbul' }
     } else {
-      city = address.find(i => i.types.includes('political'))
+      city = address.find(i => {
+        return i.types.includes('political') && !i.short_name.includes('Krai')
+      })
     }
   }
   if (inUS && city.long_name === 'Washington') {
