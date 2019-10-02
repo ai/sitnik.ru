@@ -37,15 +37,15 @@ async function processCity (token, html, location) {
 
   html = html
     .replace(
-      /<([^>]+) itemprop="addressLocality"([^>]?)>[^.]+<\/([^>]+)>/,
+      /<([^>]+) itemprop="addressLocality"([^>]?)>[^<]+<\/([^>]+)>/,
       `<$1 itemprop="addressLocality"$2>${ city.long_name }</$3>`
     )
     .replace(
-      /<([^>]+) itemprop="addressCountry"([^>]?)>[^.]+<\/([^>]+)>/,
+      /<([^>]+) itemprop="addressCountry"([^>]?)>[^<]+<\/([^>]+)>/,
       `<$1 itemprop="addressLocality"$2>${ country.long_name }</$3>`
     )
     .replace(/ data-lat="([^"])+"/, ` data-lat="${ location.latitude }"`)
-    .replace(/ data-lng="([^"])+"/, ` data-lat="${ location.longitude }"`)
+    .replace(/ data-lng="([^"])+"/, ` data-lng="${ location.longitude }"`)
 
   await write(lang === 'ru' ? RU : EN, html)
 }
