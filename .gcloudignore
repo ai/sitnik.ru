@@ -8,3 +8,5 @@ README.md
 cities/cities.json
 cities/processed.json
 cities/update
+token.js
+.editorconfig
