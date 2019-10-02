@@ -1,13 +1,15 @@
 {
   "private": true,
   "scripts": {
+    "decrypt": "gcloud kms decrypt --plaintext-file=token.txt --ciphertext-file=token.txt.enc --location=global --keyring=secrets --key=password",
     "spell": "yaspeller dist/**/*.html",
     "lint": "eslint . */update && stylelint src/**/*.sss",
     "test": "yarn lint & yarn build && size-limit && yarn spell",
     "clean": "rimraf dist/",
     "start": "parcel serve src/index.pug --open",
     "build": "yarn clean && NODE_ENV=production ./build.js",
-    "nginx": "podman run --rm -p 8000:80 -e PORT=80 $(buildah bud .)"
+    "nginx": "podman run --rm -p 8000:80 -e PORT=80 $(buildah bud .)",
+    "deploy": "gcloud builds submit"
   },
   "dependencies": {
     "three": "^0.109.0"

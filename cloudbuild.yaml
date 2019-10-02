@@ -2,14 +2,32 @@ steps:
   - name: node:12
     entrypoint: yarn
     args: ['install']
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - kms
+      - decrypt
+      - --plaintext-file=token.txt
+      - --ciphertext-file=token.txt.enc
+      - --location=global
+      - --keyring=secrets
+      - --key=password
   - name: node:12
     entrypoint: yarn
-    args: ['test']
+    args: ['build']
+  - name: node:12
+    entrypoint: ./location/update
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/sitnikru', '.']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/sitnikru']
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['beta', 'run', 'deploy', 'sitnikru', '--image', 'gcr.io/$PROJECT_ID/sitnikru', '--region', 'us-east1', '--platform', 'managed']
+    args:
+      - beta
+      - run
+      - deploy
+      - sitnikru
+      - --image=gcr.io/$PROJECT_ID/sitnikru
+      - --region=us-east1
+      - --platform=managed
 images:
   - gcr.io/$PROJECT_ID/sitnikru
