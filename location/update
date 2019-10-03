@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+let { existsSync } = require('fs')
 let { join } = require('path')
 
 let loadToken = require('../utils/token')
@@ -8,11 +9,27 @@ let request = require('../utils/request')
 let write = require('../utils/write')
 let read = require('../utils/read')
 
+const LAST = join(__dirname, 'last.json')
 const RU = join(__dirname, '..', 'dist', 'ru', 'index.html')
 const EN = join(__dirname, '..', 'dist', 'en', 'index.html')
 
 async function loadLocation () {
   return request('https://evilmartians.com/locations/ai')
+}
+
+async function wasNotChanged (cur) {
+  if (!existsSync(LAST)) return false
+  let last = JSON.parse(await read(LAST))
+  if (cur.latitude === last.latitude && cur.longitude === last.longitude) {
+    process.stdout.write('Location was not changed\n')
+    return true
+  } else {
+    return false
+  }
+}
+
+async function saveLast (location) {
+  await write(LAST, JSON.stringify(location))
 }
 
 async function processCity (token, html, location) {
@@ -51,10 +68,12 @@ async function processCity (token, html, location) {
 }
 
 Promise.all([loadToken(), read(RU), read(EN), loadLocation()])
-  .then(([token, htmlRu, htmlEn, location]) => {
-    return Promise.all([
+  .then(async ([token, htmlRu, htmlEn, location]) => {
+    if (await wasNotChanged(location)) return
+    await Promise.all([
       processCity(token, htmlRu, location),
       processCity(token, htmlEn, location)
     ])
+    saveLast(location)
   })
   .catch(MyError.print)

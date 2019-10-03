@@ -1,6 +1,8 @@
 node_modules/
 .cache/
 dist/
+location/last.json
+token.txt
 
 .git/
 README.md
@@ -8,5 +10,4 @@ README.md
 cities/cities.json
 cities/processed.json
 cities/update
-token.txt
 .editorconfig
