@@ -1,4 +1,4 @@
-let { red } = require('chalk')
+let red = require('./red')
 
 class MyError extends Error {
   constructor (message) {

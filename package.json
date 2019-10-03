@@ -9,6 +9,7 @@
     "start": "parcel serve src/index.pug --open",
     "build": "yarn clean && NODE_ENV=production ./build.js",
     "nginx": "podman run --rm -p 8000:80 -e PORT=80 $(buildah bud .)",
+    "shell": "podman run --rm -i $(buildah bud .) sh",
     "deploy": "gcloud builds submit"
   },
   "dependencies": {
@@ -93,7 +94,8 @@
     "rules": {
       "security/detect-non-literal-regexp": "off",
       "security/detect-unsafe-regex": "off",
-      "node/no-unpublished-require": "off"
+      "node/no-unpublished-require": "off",
+      "global-require": "off"
     }
   },
   "eslintIgnore": [

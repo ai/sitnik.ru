@@ -1,5 +1,6 @@
-let { red } = require('chalk')
 let { get } = require('https')
+
+let red = require('./red')
 
 function request (url, maxAttempts = 1, attempt = 1) {
   return new Promise((resolve, reject) => {
