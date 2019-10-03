@@ -1,6 +1,7 @@
 doctype html
 html( lang="ru" itemtype="https://schema.org/Person" itemscope )
   head
+    meta( charset="UTF-8" )
     title Андрей Ситник
     meta( name="description" content="Контакты и проекты Андрея Ситника" )
     include ../head.pug
@@ -23,7 +24,7 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
             .earth_loading
             canvas.earth_canvas
 
-          button.globe_location( itemprop="address" itemscope itemtype="https://schema.org/PostalAddress" tabindex="-1" )
+          button.globe_location( type="button" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress" tabindex="-1" )
             span( itemprop="addressLocality" ) Нью-Йорк
             = ', '
             span( itemprop="addressCountry" ) США
