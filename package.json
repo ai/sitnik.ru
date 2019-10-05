@@ -19,7 +19,7 @@
     "@logux/eslint-config": "^32.2.0",
     "@logux/sharec-config": "^0.5.2",
     "@size-limit/file": "^2.1.6",
-    "autoprefixer": "^9.6.1",
+    "autoprefixer": "^9.6.2",
     "chalk": "^2.4.2",
     "css-mqpacker": "^7.0.0",
     "eslint": "^6.5.1",
