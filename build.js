@@ -16,9 +16,11 @@ let copyFile = promisify(fs.copyFile)
 let unlink = promisify(fs.unlink)
 
 const A = 'a'.charCodeAt(0)
+const DIST = join(__dirname, 'dist')
 const NGINX = join(__dirname, 'nginx.conf')
 const EARTH = join(__dirname, 'src', 'earth')
-const ROOT_INDEX = join(__dirname, 'dist', 'index.html')
+const FAVICON = join(__dirname, 'src', 'base', 'favicon.ico')
+const ROOT_INDEX = join(DIST, 'index.html')
 
 function findAssets (bundle) {
   return Array.from(bundle.childBundles).reduce((all, i) => {
@@ -50,7 +52,7 @@ async function build () {
 
   let assets = findAssets(bundle)
 
-  let jsFile = join(__dirname, 'dist', 'index.js')
+  let jsFile = join(DIST, 'index.js')
   let cssFile = assets.find(i => extname(i) === '.css')
   let mapFile = assets.find(i => /map\..*\.webp/.test(i))
   let hereFile = assets.find(i => /here\..*\.webp/.test(i))
@@ -64,6 +66,7 @@ async function build () {
     readFile(NGINX).then(i => i.toString()),
     copyFile(join(EARTH, 'here.png'), hereFile.replace('webp', 'png')),
     copyFile(join(EARTH, 'map.png'), mapFile.replace('webp', 'png')),
+    copyFile(FAVICON, join(DIST, 'favicon.ico')),
     unlink(srcJsFile)
   ])
 
