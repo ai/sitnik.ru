@@ -1,19 +1,13 @@
 #!/usr/bin/env node
 
+let { writeFile, readFile, copyFile, unlink } = require('fs').promises
 let { basename, extname, join } = require('path')
-let { promisify } = require('util')
 let stripDebug = require('strip-debug')
 let posthtml = require('posthtml')
 let mqpacker = require('css-mqpacker')
 let Bundler = require('parcel-bundler')
 let postcss = require('postcss')
 let crypto = require('crypto')
-let fs = require('fs')
-
-let writeFile = promisify(fs.writeFile)
-let readFile = promisify(fs.readFile)
-let copyFile = promisify(fs.copyFile)
-let unlink = promisify(fs.unlink)
 
 const A = 'a'.charCodeAt(0)
 const DIST = join(__dirname, 'dist')
