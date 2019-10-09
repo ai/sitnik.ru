@@ -10,7 +10,7 @@
     "build": "rimraf dist/ && NODE_ENV=production ./build",
     "nginx": "podman run --rm -p 8000:80 -e PORT=80 $(buildah bud .)",
     "shell": "podman run --rm -i $(buildah bud .) sh",
-    "deploy": "gcloud builds submit"
+    "deploy": "gcloud builds --project sitnikru-1547645703906 submit"
   },
   "dependencies": {
     "three": "^0.109.0"
