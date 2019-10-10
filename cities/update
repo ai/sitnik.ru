@@ -8,7 +8,7 @@ let parser = require('fast-xml-parser')
 let loadToken = require('../utils/token')
 let MyError = require('../utils/my-error')
 let request = require('../utils/request')
-let write = require('../utils/read')
+let write = require('../utils/write')
 let read = require('../utils/read')
 
 let BOOKMARKS_URL = 'https://www.google.com/bookmarks/lookup?output=xml'
