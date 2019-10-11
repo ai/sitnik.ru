@@ -1,11 +1,8 @@
-let { promisify } = require('util')
-let { readFile } = require('fs')
-
-let readFilePromise = promisify(readFile)
+let { readFile } = require('fs').promises
 
 async function read (file) {
-  let content = await readFilePromise(file)
-  return content.toString()
+  let buffer = await readFile(file)
+  return buffer.toString()
 }
 
 module.exports = read

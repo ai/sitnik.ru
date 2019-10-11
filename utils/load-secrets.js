@@ -1,7 +1,6 @@
 let { existsSync } = require('fs')
-let { promisify } = require('util')
+let { readFile } = require('fs').promises
 let { join } = require('path')
-let readFile = promisify(require('fs').readFile)
 
 let MyError = require('./my-error')
 

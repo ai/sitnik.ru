@@ -2,12 +2,12 @@
 
 let { red, gray, bold, green } = require('chalk')
 let { existsSync } = require('fs')
+let { writeFile } = require('fs').promises
 let { join } = require('path')
 let parser = require('fast-xml-parser')
 
 let loadSecrets = require('../utils/load-secrets')
 let MyError = require('../utils/my-error')
-let write = require('../utils/write')
 let read = require('../utils/read')
 let get = require('../utils/get')
 
@@ -243,9 +243,9 @@ async function saveFiles (data) {
 
   print('Total cities', Object.values(data.cities).length)
   await Promise.all([
-    write(PROCESSED_FILE, prettyStringify(data.processed)),
-    write(CITIES_FILE, prettyStringify(data.cities)),
-    write(DOTS_FILE, 'module.exports = ' + prettyStringify(dots))
+    writeFile(PROCESSED_FILE, prettyStringify(data.processed)),
+    writeFile(CITIES_FILE, prettyStringify(data.cities)),
+    writeFile(DOTS_FILE, 'module.exports = ' + prettyStringify(dots))
   ])
   return data
 }
