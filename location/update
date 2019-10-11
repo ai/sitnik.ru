@@ -53,13 +53,15 @@ async function processCity (token, html, location) {
   let address = geodata.results[0].address_components
   let country = address.find(i => i.types.includes('country'))
   let city = address.find(i => i.types.includes('locality'))
+
   if (country.short_name === 'JP') {
     if (address.find(i => i.short_name === 'Tōkyō-to')) {
       city = { long_name: lang === 'ru' ? 'Токио' : 'Tokyo' }
+    } else if (city.long_name === 'Nara' && lang === 'ru') {
+      city.long_name = 'Нара'
     }
-  }
-  if (city.long_name === 'Nara' && lang === 'ru') {
-    city.long_name = 'Нара'
+  } else if (country.short_name === 'US') {
+    country = { long_name: lang === 'ru' ? 'США' : 'USA' }
   }
 
   process.stdout.write(`${ city.long_name }, ${ country.long_name }\n`)
