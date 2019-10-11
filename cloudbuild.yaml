@@ -2,7 +2,8 @@ steps:
   - name: node:12
     entrypoint: yarn
     args:
-      - 'install'
+      - install
+      - --production
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - kms
@@ -15,7 +16,7 @@ steps:
   - name: node:12
     entrypoint: yarn
     args:
-      - 'build'
+      - build
   - name: node:12
     entrypoint: ./location/update
     args:
