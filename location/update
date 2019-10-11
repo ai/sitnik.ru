@@ -36,7 +36,7 @@ async function saveLast (location) {
 async function cleanCache (token) {
   let zone = 'b907f2f99f46af59bf282e3d97a654bc'
   await callCloudflare(zone, token, 'purge_cache', {
-    files: ['https://sitnik.ru/ru', 'https://sitnik.ru/en']
+    files: ['https://sitnik.ru/ru/', 'https://sitnik.ru/en/']
   })
 }
 
