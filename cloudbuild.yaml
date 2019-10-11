@@ -41,7 +41,7 @@ steps:
       - --region=us-east1
       - --platform=managed
   - name: node:12
-    entrypoint: ./location/update --clean-cdn
+    entrypoint: ./location/update
     args:
       - --clean-cdn
 images:
