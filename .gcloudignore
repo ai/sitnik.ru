@@ -2,7 +2,7 @@ node_modules/
 .cache/
 dist/
 location/last.json
-token.txt
+secrets.json
 
 .git/
 README.md

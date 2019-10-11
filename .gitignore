@@ -5,4 +5,4 @@ dist/
 .cache
 cities/bookmarks.xml
 location/last.json
-token.txt
+secrets.json

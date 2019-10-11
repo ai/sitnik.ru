@@ -5,14 +5,13 @@ let readFile = promisify(require('fs').readFile)
 
 let MyError = require('./my-error')
 
-let TOKEN_FILE = join(__dirname, '..', 'token.txt')
+let SECRETS_FILE = join(__dirname, '..', 'secrets.json')
 
-async function loadToken () {
-  if (!existsSync(TOKEN_FILE)) {
+async function loadSecrets () {
+  if (!existsSync(SECRETS_FILE)) {
     throw new MyError('Decrypt token file with `yarn decrypt`')
   }
-  let token = await readFile(TOKEN_FILE)
-  return token.toString().trim()
+  return JSON.parse(await readFile(SECRETS_FILE))
 }
 
-module.exports = loadToken
+module.exports = loadSecrets

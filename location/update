@@ -3,7 +3,7 @@
 let { existsSync } = require('fs')
 let { join } = require('path')
 
-let loadToken = require('../utils/token')
+let loadSecrets = require('../utils/secrets')
 let MyError = require('../utils/my-error')
 let request = require('../utils/request')
 let write = require('../utils/write')
@@ -67,12 +67,12 @@ async function processCity (token, html, location) {
   await write(lang === 'ru' ? RU : EN, html)
 }
 
-Promise.all([loadToken(), read(RU), read(EN), loadLocation()])
-  .then(async ([token, htmlRu, htmlEn, location]) => {
+Promise.all([loadSecrets(), read(RU), read(EN), loadLocation()])
+  .then(async ([secrets, htmlRu, htmlEn, location]) => {
     if (await wasNotChanged(location)) return
     await Promise.all([
-      processCity(token, htmlRu, location),
-      processCity(token, htmlEn, location)
+      processCity(secrets.gmaps, htmlRu, location),
+      processCity(secrets.gmaps, htmlEn, location)
     ])
     saveLast(location)
   })
