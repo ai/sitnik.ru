@@ -51,7 +51,6 @@ async function processCity (token, html, location) {
     `&key=${ token }`
   )
   let address = geodata.results[0].address_components
-  console.log(address)
   let country = address.find(i => i.types.includes('country'))
   let city = address.find(i => i.types.includes('locality'))
 
