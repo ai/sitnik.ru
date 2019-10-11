@@ -23,14 +23,14 @@ steps:
       - --no-cdn
   - name: 'gcr.io/cloud-builders/docker'
     args:
-      -- build
-      -- -t
-      -- gcr.io/$PROJECT_ID/sitnikru
-      -- .
+      - build
+      - -t
+      - gcr.io/$PROJECT_ID/sitnikru
+      - .
   - name: 'gcr.io/cloud-builders/docker'
     args:
-      -- push
-      -- gcr.io/$PROJECT_ID/sitnikru
+      - push
+      - gcr.io/$PROJECT_ID/sitnikru
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - beta
