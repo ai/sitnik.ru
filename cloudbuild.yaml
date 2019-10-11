@@ -6,8 +6,8 @@ steps:
     args:
       - kms
       - decrypt
-      - --plaintext-file=token.txt
-      - --ciphertext-file=token.txt.enc
+      - --plaintext-file=secrets.json
+      - --ciphertext-file=secrets.json.enc
       - --location=global
       - --keyring=secrets
       - --key=password
