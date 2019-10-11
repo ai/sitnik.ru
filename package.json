@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "decrypt": "gcloud kms decrypt --plaintext-file=secrets.json --ciphertext-file=secrets.json.enc --location=global --keyring=secrets --key=password",
+    "decrypt": "gcloud kms --project sitnikru-1547645703906 decrypt --plaintext-file=secrets.json --ciphertext-file=secrets.json.enc --location=global --keyring=secrets --key=password",
     "spell": "yaspeller dist/**/*.html",
     "lint": "eslint . */update && stylelint src/**/*.sss",
     "test": "yarn lint & yarn build && size-limit && yarn spell",
