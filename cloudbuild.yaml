@@ -15,7 +15,7 @@ steps:
     entrypoint: yarn
     args: ['build']
   - name: node:12
-    entrypoint: ./location/update
+    entrypoint: ./location/update --no-cdn
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/sitnikru', '.']
   - name: 'gcr.io/cloud-builders/docker'
@@ -29,5 +29,7 @@ steps:
       - --image=gcr.io/$PROJECT_ID/sitnikru
       - --region=us-east1
       - --platform=managed
+  - name: node:12
+    entrypoint: ./location/update --clean-cdn
 images:
   - gcr.io/$PROJECT_ID/sitnikru

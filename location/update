@@ -34,6 +34,7 @@ async function saveLast (location) {
 }
 
 async function cleanCache (token) {
+  if (process.argv.includes('--no-cdn')) return
   let zone = 'b907f2f99f46af59bf282e3d97a654bc'
   await callCloudflare(zone, token, 'purge_cache', {
     files: ['https://sitnik.ru/ru/', 'https://sitnik.ru/en/']
@@ -78,14 +79,23 @@ async function processCity (token, html, location) {
   await write(lang === 'ru' ? RU : EN, html)
 }
 
-Promise.all([loadSecrets(), read(RU), read(EN), loadLocation()])
-  .then(async ([secrets, htmlRu, htmlEn, location]) => {
-    if (await wasNotChanged(location)) return
-    await Promise.all([
-      processCity(secrets.gmaps, htmlRu, location),
-      processCity(secrets.gmaps, htmlEn, location)
-    ])
-    await cleanCache(secrets.cloudflare)
-    await saveLast(location)
-  })
-  .catch(MyError.print)
+if (process.argv.includes('--clean-cdn')) {
+  loadSecrets()
+    .then(async secrets => {
+      await cleanCache(secrets.cloudflare)
+    })
+    .catch(MyError.print)
+} else {
+  Promise
+    .all([loadSecrets(), read(RU), read(EN), loadLocation()])
+    .then(async ([secrets, htmlRu, htmlEn, location]) => {
+      if (await wasNotChanged(location)) return
+      await Promise.all([
+        processCity(secrets.gmaps, htmlRu, location),
+        processCity(secrets.gmaps, htmlEn, location)
+      ])
+      await cleanCache(secrets.cloudflare)
+      await saveLast(location)
+    })
+    .catch(MyError.print)
+}
