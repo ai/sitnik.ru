@@ -49,6 +49,9 @@ async function processCity (token, html, location) {
       city = { long_name: lang === 'ru' ? 'Токио' : 'Tokyo' }
     }
   }
+  if (city.long_name === 'Nara' && lang === 'ru') {
+    city.long_name = 'Нара'
+  }
 
   process.stdout.write(`${ city.long_name }, ${ country.long_name }\n`)
 
