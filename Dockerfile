@@ -6,5 +6,5 @@ COPY ./dist/ /var/www/dist/
 COPY ./utils/ /var/www/utils/
 COPY ./nginx.conf /etc/nginx/nginx.template
 RUN apk add --update nodejs
-RUN ln -s /var/www/location/update /etc/periodic/15min/update-location
+RUN ln -s /var/www/location/update /etc/periodic/hourly/update-location
 CMD crond && envsubst \$PORT < /etc/nginx/nginx.template > /etc/nginx/nginx.conf && nginx
