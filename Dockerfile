@@ -1,6 +1,6 @@
 FROM nginx:alpine
 RUN rm -R /etc/nginx/conf.d
-COPY ./token.txt /var/www/
+COPY ./secrets.json /var/www/
 COPY ./location/ /var/www/location/
 COPY ./dist/ /var/www/dist/
 COPY ./utils/ /var/www/utils/
