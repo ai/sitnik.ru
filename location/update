@@ -35,7 +35,7 @@ async function saveLast (location) {
 async function processCity (token, html, location) {
   let lang = html.includes(' lang="ru"') ? 'ru' : 'en'
 
-  let geodata = await request(
+  let geodata = await get(
     'https://maps.googleapis.com/maps/api/geocode/json' +
     `?latlng=${ location.latitude },${ location.longitude }` +
     `&language=${ lang }` +
