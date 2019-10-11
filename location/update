@@ -3,7 +3,7 @@
 let { existsSync } = require('fs')
 let { join } = require('path')
 
-let loadSecrets = require('../utils/secrets')
+let loadSecrets = require('../utils/load-secrets')
 let MyError = require('../utils/my-error')
 let write = require('../utils/write')
 let read = require('../utils/read')
