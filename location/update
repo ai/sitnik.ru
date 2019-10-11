@@ -5,16 +5,16 @@ let { join } = require('path')
 
 let loadSecrets = require('../utils/secrets')
 let MyError = require('../utils/my-error')
-let request = require('../utils/request')
 let write = require('../utils/write')
 let read = require('../utils/read')
+let get = require('../utils/get')
 
 const LAST = join(__dirname, 'last.json')
 const RU = join(__dirname, '..', 'dist', 'ru', 'index.html')
 const EN = join(__dirname, '..', 'dist', 'en', 'index.html')
 
 async function loadLocation () {
-  return request('https://evilmartians.com/locations/ai')
+  return get('https://evilmartians.com/locations/ai')
 }
 
 async function wasNotChanged (cur) {

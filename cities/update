@@ -7,9 +7,9 @@ let parser = require('fast-xml-parser')
 
 let loadSecrets = require('../utils/secrets')
 let MyError = require('../utils/my-error')
-let request = require('../utils/request')
 let write = require('../utils/write')
 let read = require('../utils/read')
+let get = require('../utils/get')
 
 let BOOKMARKS_URL = 'https://www.google.com/bookmarks/lookup?output=xml'
 
@@ -34,7 +34,7 @@ function nextTick () {
   if (!tick) return
 
   requests += 1
-  request(tick[0], 3).then(answer => {
+  get(tick[0], 3).then(answer => {
     if (answer.status === 'ZERO_RESULTS' || answer.status === 'NOT_FOUND') {
       throw new MyError('404')
     } else if (answer.status === 'OK') {
