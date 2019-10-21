@@ -176,11 +176,11 @@ async function build () {
   }
 
   let uncompressable = { '.png': true, '.webp': true, '.jpg': true }
-  assets
+  await Promise.all(assets
     .concat([join(DIST, 'favicon.ico')])
     .filter(i => !uncompressable[extname(i)] && i !== ROOT_INDEX)
     .filter(i => existsSync(i))
-    .forEach(async path => {
+    .map(async path => {
       let file = await readFile(path)
       if (extname(path) === '.html') {
         file = posthtml().use(htmlPlugin).process(file, { sync: true }).html
@@ -189,6 +189,7 @@ async function build () {
       let compressed = await gzip(file, { level: 9 })
       await writeFile(path + '.gz', compressed)
     })
+  )
 }
 
 build().catch(e => {
