@@ -2,12 +2,17 @@
 
 let { writeFile, readFile, copyFile, unlink } = require('fs').promises
 let { basename, extname, join } = require('path')
+let { existsSync } = require('fs')
+let { promisify } = require('util')
 let stripDebug = require('strip-debug')
 let posthtml = require('posthtml')
 let mqpacker = require('css-mqpacker')
 let Bundler = require('parcel-bundler')
 let postcss = require('postcss')
 let crypto = require('crypto')
+let zlib = require('zlib')
+
+let brotliCompress = promisify(zlib.brotliCompress)
 
 const A = 'a'.charCodeAt(0)
 const DIST = join(__dirname, 'dist')
@@ -170,14 +175,19 @@ async function build () {
     })
   }
 
+  let uncompressable = { '.png': true, '.webp': true, '.jpg': true }
   assets
-    .filter(i => extname(i) === '.html' && i !== ROOT_INDEX)
-    .forEach(async i => {
-      let html = await readFile(i)
-      await writeFile(i, posthtml()
-        .use(htmlPlugin)
-        .process(html, { sync: true })
-        .html)
+    .concat([join(DIST, 'favicon.ico')])
+    .filter(i => !uncompressable[extname(i)] && i !== ROOT_INDEX)
+    .filter(i => existsSync(i))
+    .forEach(async path => {
+      let file = await readFile(path)
+      if (extname(path) === '.html') {
+        file = posthtml().use(htmlPlugin).process(file, { sync: true }).html
+        await writeFile(path, file)
+      }
+      let compressed = await brotliCompress(file, { level: 9 })
+      await writeFile(path + '.br', compressed)
     })
 }
 

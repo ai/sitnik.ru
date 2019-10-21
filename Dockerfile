@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM localcool/nginx-brotli:latest
 RUN rm -R /etc/nginx/conf.d
 COPY ./secrets.json /var/www/
 COPY ./location/ /var/www/location/
