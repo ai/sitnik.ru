@@ -12,7 +12,7 @@ let postcss = require('postcss')
 let crypto = require('crypto')
 let zlib = require('zlib')
 
-let brotliCompress = promisify(zlib.brotliCompress)
+let gzip = promisify(zlib.gzip)
 
 const A = 'a'.charCodeAt(0)
 const DIST = join(__dirname, 'dist')
@@ -186,8 +186,8 @@ async function build () {
         file = posthtml().use(htmlPlugin).process(file, { sync: true }).html
         await writeFile(path, file)
       }
-      let compressed = await brotliCompress(file, { level: 9 })
-      await writeFile(path + '.br', compressed)
+      let compressed = await gzip(file, { level: 9 })
+      await writeFile(path + '.gz', compressed)
     })
 }
 
