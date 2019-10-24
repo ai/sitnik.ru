@@ -1,5 +1,5 @@
 steps:
-  - name: node:12
+  - name: node:13
     entrypoint: yarn
     args:
       - install
@@ -13,11 +13,11 @@ steps:
       - --location=global
       - --keyring=secrets
       - --key=password
-  - name: node:12
+  - name: node:13
     entrypoint: yarn
     args:
       - build
-  - name: node:12
+  - name: node:13
     entrypoint: ./location/update
     args:
       - --no-cdn
@@ -40,7 +40,7 @@ steps:
       - --image=gcr.io/$PROJECT_ID/sitnikru
       - --region=us-east1
       - --platform=managed
-  - name: node:12
+  - name: node:13
     entrypoint: ./location/update
     args:
       - --clean-cdn
