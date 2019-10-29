@@ -61,6 +61,12 @@ async function processCity (token, html, location) {
   } else if (country.short_name === 'US') {
     country = { long_name: lang === 'ru' ? 'США' : 'USA' }
   }
+  if (!city) {
+    city = address.find(i => i.types.includes('administrative_area_level_1'))
+  }
+  if (city.long_name === 'New York' && lang === 'ru') {
+    city.long_name = 'Нью-Йорк'
+  }
 
   process.stdout.write(`${ city.long_name }, ${ country.long_name }\n`)
 
