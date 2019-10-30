@@ -4,9 +4,9 @@ let { writeFile, readFile, copyFile, unlink } = require('fs').promises
 let { basename, extname, join } = require('path')
 let { existsSync } = require('fs')
 let { promisify } = require('util')
+let combineMedia = require('postcss-combine-media-query')
 let stripDebug = require('strip-debug')
 let posthtml = require('posthtml')
-let mqpacker = require('css-mqpacker')
 let Bundler = require('parcel-bundler')
 let postcss = require('postcss')
 let crypto = require('crypto')
@@ -109,7 +109,7 @@ async function build () {
     })
   }
 
-  css = postcss([cssPlugin, mqpacker]).process(css, { from: cssFile }).css
+  css = postcss([cssPlugin, combineMedia]).process(css, { from: cssFile }).css
 
   for (let origin in classes) {
     let converted = classes[origin]
