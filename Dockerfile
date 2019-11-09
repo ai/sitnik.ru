@@ -1,11 +1,11 @@
 FROM nginx:alpine
 RUN rm -R /etc/nginx/conf.d
 COPY ./secrets.json /var/www/
-COPY ./scripts/lib/ /var/www/scripts/lib/
-COPY ./scripts/location/last.json /var/www/scripts/location/last.json
-COPY ./scripts/update-location /var/www/scripts/update-location
+COPY ./scripts/ /var/www/scripts/
 COPY ./dist/ /var/www/dist/
 COPY ./nginx.conf /etc/nginx/nginx.template
+RUN rm -R /var/www/scripts/cities/
+RUN rm /var/www/scripts/update-cities
 RUN apk add --update nodejs
-RUN ln -s /var/www/scripts/update-location /etc/periodic/hourly/update-location
+RUN echo "#!/bin/sh\n/var/www/scripts/update-location\n/var/www/scripts/clean-cache" > /etc/periodic/hourly/update-location-and-cache
 CMD crond && envsubst \$PORT < /etc/nginx/nginx.template > /etc/nginx/nginx.conf && nginx

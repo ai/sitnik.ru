@@ -19,8 +19,6 @@ steps:
       - ./scripts/build
   - name: node:13
     entrypoint: ./scripts/update-location
-    args:
-      - --no-cdn
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - build
@@ -41,8 +39,6 @@ steps:
       - --region=us-east1
       - --platform=managed
   - name: node:13
-    entrypoint: ./scripts/update-location
-    args:
-      - --clean-cdn
+    entrypoint: ./scripts/clean-cdn
 images:
   - gcr.io/$PROJECT_ID/sitnikru

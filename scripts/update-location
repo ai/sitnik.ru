@@ -4,7 +4,6 @@ let { existsSync } = require('fs')
 let { writeFile } = require('fs').promises
 let { join } = require('path')
 
-let callCloudflare = require('./lib/call-cloudflare')
 let loadSecrets = require('./lib/load-secrets')
 let MyError = require('./lib/my-error')
 let read = require('./lib/read')
@@ -31,14 +30,6 @@ async function wasNotChanged (cur) {
 
 async function saveLast (location) {
   await writeFile(LAST, JSON.stringify(location))
-}
-
-async function cleanCache (token) {
-  if (process.argv.includes('--no-cdn')) return
-  let zone = 'b907f2f99f46af59bf282e3d97a654bc'
-  await callCloudflare(zone, token, 'purge_cache', {
-    files: ['https://sitnik.ru/ru/', 'https://sitnik.ru/en/']
-  })
 }
 
 async function processCity (token, html, location) {
@@ -85,23 +76,14 @@ async function processCity (token, html, location) {
   await writeFile(lang === 'ru' ? RU : EN, html)
 }
 
-if (process.argv.includes('--clean-cdn')) {
-  loadSecrets()
-    .then(async secrets => {
-      await cleanCache(secrets.cloudflare)
-    })
-    .catch(MyError.print)
-} else {
-  Promise
-    .all([loadSecrets(), read(RU), read(EN), loadLocation()])
-    .then(async ([secrets, htmlRu, htmlEn, location]) => {
-      if (await wasNotChanged(location)) return
-      await Promise.all([
-        processCity(secrets.gmaps, htmlRu, location),
-        processCity(secrets.gmaps, htmlEn, location)
-      ])
-      await cleanCache(secrets.cloudflare)
-      await saveLast(location)
-    })
-    .catch(MyError.print)
-}
+Promise
+  .all([loadSecrets(), read(RU), read(EN), loadLocation()])
+  .then(async ([secrets, htmlRu, htmlEn, location]) => {
+    if (await wasNotChanged(location)) return
+    await Promise.all([
+      processCity(secrets.gmaps, htmlRu, location),
+      processCity(secrets.gmaps, htmlEn, location)
+    ])
+    await saveLast(location)
+  })
+  .catch(MyError.print)

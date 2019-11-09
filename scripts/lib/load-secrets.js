@@ -4,7 +4,7 @@ let { join } = require('path')
 
 let MyError = require('./my-error')
 
-let SECRETS_FILE = join(__dirname, '..', 'secrets.json')
+let SECRETS_FILE = join(__dirname, '..', '..', 'secrets.json')
 
 async function loadSecrets () {
   if (!existsSync(SECRETS_FILE)) {
