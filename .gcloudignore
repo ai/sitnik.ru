@@ -11,3 +11,4 @@ cities/cities.json
 cities/processed.json
 cities/update
 .editorconfig
+.travis.yml
