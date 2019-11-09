@@ -10,7 +10,7 @@ let MyError = require('../utils/my-error')
 let read = require('../utils/read')
 let get = require('../utils/get')
 
-const LAST = join(__dirname, 'last.json')
+const LAST = join(__dirname, 'location', 'last.json')
 const RU = join(__dirname, '..', 'dist', 'ru', 'index.html')
 const EN = join(__dirname, '..', 'dist', 'en', 'index.html')
 

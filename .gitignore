@@ -4,5 +4,5 @@ yarn-error.log
 dist/
 .cache
 cities/bookmarks.xml
-location/last.json
+scripts/location/last.json
 secrets.json
