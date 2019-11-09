@@ -19,10 +19,11 @@ let zlib = require('zlib')
 let gzip = promisify(zlib.gzip)
 
 const A = 'a'.charCodeAt(0)
-const DIST = join(__dirname, 'dist')
-const NGINX = join(__dirname, 'nginx.conf')
-const EARTH = join(__dirname, 'src', 'earth')
-const FAVICON = join(__dirname, 'src', 'base', 'favicon.ico')
+const SRC = join(__dirname, '..', 'src')
+const DIST = join(__dirname, '..', 'dist')
+const NGINX = join(__dirname, '..', 'nginx.conf')
+const EARTH = join(SRC, 'earth')
+const FAVICON = join(SRC, 'base', 'favicon.ico')
 const ROOT_INDEX = join(DIST, 'index.html')
 
 function findAssets (bundle) {
@@ -39,16 +40,14 @@ function replaceAll (str, from, to) {
   return str.replace(new RegExp(from, 'g'), to)
 }
 
-let bundler = new Bundler(join(__dirname, 'src', 'index.pug'), {
-  sourceMaps: false
-})
+let bundler = new Bundler(join(SRC, 'index.pug'), { sourceMaps: false })
 
 async function build () {
   let plugins = [rollupNode(), rollupCommonJS(), terser()]
   let [bundle, indexBundle, workerBundle] = await Promise.all([
     bundler.bundle(),
-    rollup({ input: join(__dirname, 'src', 'index.js'), plugins }),
-    rollup({ input: join(__dirname, 'src', 'earth', 'worker.js'), plugins })
+    rollup({ input: join(SRC, 'index.js'), plugins }),
+    rollup({ input: join(SRC, 'earth', 'worker.js'), plugins })
   ])
   await unlink(ROOT_INDEX)
 

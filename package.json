@@ -7,7 +7,7 @@
     "test": "yarn lint & yarn build && size-limit && yarn spell",
     "clean": "rimraf dist/ .cache location/last.json",
     "start": "parcel serve src/index.pug --open",
-    "build": "rimraf dist/ && NODE_ENV=production ./build",
+    "build": "rimraf dist/ && NODE_ENV=production ./scripts/build",
     "nginx": "podman run --rm -p 8000:80 -e PORT=80 $(buildah bud .)",
     "shell": "podman run --rm -i $(buildah bud .) sh",
     "deploy": "gcloud builds --project sitnikru-1547645703906 submit"

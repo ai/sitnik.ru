@@ -16,7 +16,7 @@ steps:
   - name: node:13
     entrypoint: yarn
     args:
-      - build
+      - ./scripts/build
   - name: node:13
     entrypoint: ./location/update
     args:
