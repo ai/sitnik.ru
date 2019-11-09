@@ -6,10 +6,10 @@ let { writeFile } = require('fs').promises
 let { join } = require('path')
 let parser = require('fast-xml-parser')
 
-let loadSecrets = require('../utils/load-secrets')
-let MyError = require('../utils/my-error')
-let read = require('../utils/read')
-let get = require('../utils/get')
+let loadSecrets = require('./lib/load-secrets')
+let MyError = require('./lib/my-error')
+let read = require('./lib/read')
+let get = require('./lib/get')
 
 let BOOKMARKS_URL = 'https://www.google.com/bookmarks/lookup?output=xml'
 

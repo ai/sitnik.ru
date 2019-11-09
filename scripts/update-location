@@ -4,11 +4,11 @@ let { existsSync } = require('fs')
 let { writeFile } = require('fs').promises
 let { join } = require('path')
 
-let callCloudflare = require('../utils/call-cloudflare')
-let loadSecrets = require('../utils/load-secrets')
-let MyError = require('../utils/my-error')
-let read = require('../utils/read')
-let get = require('../utils/get')
+let callCloudflare = require('./lib/call-cloudflare')
+let loadSecrets = require('./lib/load-secrets')
+let MyError = require('./lib/my-error')
+let read = require('./lib/read')
+let get = require('./lib/get')
 
 const LAST = join(__dirname, 'location', 'last.json')
 const RU = join(__dirname, '..', 'dist', 'ru', 'index.html')
