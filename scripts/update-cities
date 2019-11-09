@@ -13,10 +13,10 @@ let get = require('../utils/get')
 
 let BOOKMARKS_URL = 'https://www.google.com/bookmarks/lookup?output=xml'
 
-let BOOKMARKS_FILE = join(__dirname, 'bookmarks.xml')
-let PROCESSED_FILE = join(__dirname, 'processed.json')
-let CITIES_FILE = join(__dirname, 'cities.json')
-let DOTS_FILE = join(__dirname, 'dots.js')
+let BOOKMARKS_FILE = join(__dirname, 'cities', 'bookmarks.xml')
+let PROCESSED_FILE = join(__dirname, 'cities', 'processed.json')
+let CITIES_FILE = join(__dirname, 'cities', 'cities.json')
+let DOTS_FILE = join(__dirname, '..', 'src', 'earth', 'dots.js')
 
 // Helpers
 
@@ -135,7 +135,7 @@ function round (num) {
 
 async function initBookmarks () {
   if (!existsSync(BOOKMARKS_FILE)) {
-    throw new MyError(`Save ${ BOOKMARKS_URL } as cities/bookmarks.xml`)
+    throw new MyError(`Save ${ BOOKMARKS_URL } as scripts/cities/bookmarks.xml`)
   }
   let xml = await read(BOOKMARKS_FILE)
   let ast = parser.parse(xml, { parseTrueNumberOnly: true })

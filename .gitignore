@@ -3,6 +3,6 @@ yarn-error.log
 
 dist/
 .cache
-cities/bookmarks.xml
+scripts/cities/bookmarks.xml
 scripts/location/last.json
 secrets.json

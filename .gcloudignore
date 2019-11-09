@@ -7,8 +7,7 @@ secrets.json
 .git/
 README.md
 .gitignore
-cities/cities.json
-cities/processed.json
-cities/update
+scripts/cities/
+scripts/update-cities
 .editorconfig
 .travis.yml
