@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
+let { writeFile, mkdir } = require('fs').promises
+let { join, dirname } = require('path')
 let { existsSync } = require('fs')
-let { writeFile } = require('fs').promises
-let { join } = require('path')
 
 let loadSecrets = require('./lib/load-secrets')
 let MyError = require('./lib/my-error')
@@ -29,6 +29,9 @@ async function wasNotChanged (cur) {
 }
 
 async function saveLast (location) {
+  if (!existsSync(dirname(LAST))) {
+    await mkdir(dirname(LAST))
+  }
   await writeFile(LAST, JSON.stringify(location))
 }
 
