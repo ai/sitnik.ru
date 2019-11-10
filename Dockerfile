@@ -7,5 +7,5 @@ COPY ./nginx.conf /etc/nginx/nginx.template
 RUN rm -R /var/www/scripts/cities/
 RUN rm /var/www/scripts/update-cities
 RUN apk add --update nodejs
-RUN echo "#!/bin/sh\n/var/www/scripts/update-location\n/var/www/scripts/clean-cache" > /etc/periodic/hourly/update-location-and-cache
+RUN echo "#\!/bin/sh\n/var/www/scripts/update-location\n/var/www/scripts/clean-cdn" > /etc/periodic/hourly/update-location-and-cache
 CMD crond && envsubst \$PORT < /etc/nginx/nginx.template > /etc/nginx/nginx.conf && nginx
