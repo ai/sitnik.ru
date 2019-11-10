@@ -16,7 +16,7 @@ steps:
   - name: node:13
     entrypoint: yarn
     args:
-      - ./scripts/build
+      - build
   - name: node:13
     entrypoint: ./scripts/update-location
   - name: 'gcr.io/cloud-builders/docker'
