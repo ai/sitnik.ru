@@ -16,7 +16,7 @@ let { Scene } = require('three/src/scenes/Scene')
 let { Color } = require('three/src/math/Color')
 let { Mesh } = require('three/src/objects/Mesh')
 
-let visited = require('../../cities/dots.js')
+let visited = require('./dots.js')
 
 const IS_WORKER = typeof window !== 'object'
 const RADIUS = 0.765 * 0.88
