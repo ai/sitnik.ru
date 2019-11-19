@@ -4,7 +4,7 @@ COPY ./secrets.json /var/www/
 COPY ./scripts/ /var/www/scripts/
 COPY ./dist/ /var/www/dist/
 COPY ./nginx.conf /etc/nginx/nginx.template
-RUN rm -R /var/www/scripts/cities/
+RUN rm -Rf /var/www/scripts/cities/
 RUN rm /var/www/scripts/update-location
 RUN apk add --update nodejs
 RUN echo "#\!/bin/sh\n/var/www/scripts/update-location\n/var/www/scripts/clean-cdn" > /etc/periodic/hourly/update-location-and-cache
