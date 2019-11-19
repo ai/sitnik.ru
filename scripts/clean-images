@@ -13,3 +13,5 @@ main () {
   done
   echo "Deleted ${DELETED} images in ${IMAGE}"
 }
+
+main
