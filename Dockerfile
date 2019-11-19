@@ -8,4 +8,5 @@ RUN rm -R /var/www/scripts/cities/
 RUN rm /var/www/scripts/update-location
 RUN apk add --update nodejs
 RUN echo "#\!/bin/sh\n/var/www/scripts/update-location\n/var/www/scripts/clean-cdn" > /etc/periodic/hourly/update-location-and-cache
+RUN chmod a+x /etc/periodic/hourly/update-location-and-cache
 CMD crond && envsubst \$PORT < /etc/nginx/nginx.template > /etc/nginx/nginx.conf && nginx
