@@ -1,0 +1,15 @@
+#!/bin/bash
+
+IMAGE=gcr.io/sitnikru-1547645703906/sitnikru
+
+main () {
+  local DELETED=0
+  for digest in $(
+    gcloud container images list-tags $IMAGE \
+      --filter='-tags:*' --format='get(digest)'
+  ); do
+    gcloud container images delete -q "${IMAGE}@${digest}"
+    let DELETED=DELETED+1
+  done
+  echo "Deleted ${DELETED} images in ${IMAGE}"
+}
