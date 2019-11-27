@@ -46,6 +46,10 @@ async function processCity (token, html, location) {
     `&language=${ lang }` +
     `&key=${ token }`
   )
+  if (!geodata.results[0]) {
+    console.error(geodata)
+    throw new Error('Bad responce from Google')
+  }
   let address = geodata.results[0].address_components
   let country = address.find(i => i.types.includes('country'))
   let city = address.find(i => i.types.includes('locality'))
