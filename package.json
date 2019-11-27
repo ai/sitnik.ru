@@ -1,5 +1,7 @@
 {
   "private": true,
+  "homepage": "https://sitnik.ru/",
+  "license": "MIT",
   "scripts": {
     "decrypt": "gcloud kms --project sitnikru-1547645703906 decrypt --plaintext-file=secrets.json --ciphertext-file=secrets.json.enc --location=global --keyring=secrets --key=password",
     "spell": "yaspeller dist/**/*.html",
