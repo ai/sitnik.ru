@@ -1,0 +1,60 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@master
+      - name: Install Node.js
+        uses: actions/setup-node@master
+        with:
+          node-version: '>=13.0'
+      - name: Get Yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Cache Yarn
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: yarn-production-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            yarn-production-
+      - name: Install build dependencies
+        run: yarn install --production
+      - name: Build static files
+        run: yarn build
+      - name: Update location
+        run: ./scripts/update-location
+        env:
+          GMAPS_TOKEN: ${{ secrets.GMAPS_TOKEN }}
+      - name: Build image
+        run: docker build -t gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP }} .
+      - name: Setup Google Cloud
+        run: |
+          curl https://sdk.cloud.google.com | bash && exec -l $SHELL
+          gcloud components install beta --quiet
+      - name: Authenticate Google Cloud
+        run: |
+          echo "$GCLOUD_AUTH" | base64 --decode > "$HOME"/service-account-key.json
+          gcloud auth activate-service-account --key-file=$HOME/service-account-key.json
+        env:
+          GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
+      - name: Configure Docker to use Google Cloud
+        run: gcloud auth configure-docker
+      - name: Push image to registry
+        run: docker push gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP }}
+      - name: Deploy image to the server
+        run: gcloud beta run deploy ${{ secrets.GCLOUD_APP }} --quiet --image gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP }} --project ${{ secrets.GCLOUD_PROJECT }} --region=us-east1 --platform managed
+      - name: Clean CDN
+        run: ./scripts/clean-cdn
+        env:
+          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+      - name: Clean previous images from registry
+        run: ./scripts/clean-images
