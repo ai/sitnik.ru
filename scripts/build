@@ -16,6 +16,7 @@ let postcss = require('postcss')
 let crypto = require('crypto')
 let dotenv = require('dotenv')
 let zlib = require('zlib')
+let del = require('del')
 
 let gzip = promisify(zlib.gzip)
 
@@ -28,6 +29,10 @@ const NGINX = join(__dirname, '..', 'nginx.conf')
 const EARTH = join(SRC, 'earth')
 const FAVICON = join(SRC, 'base', 'favicon.ico')
 const ROOT_INDEX = join(DIST, 'index.html')
+
+async function cleanBuildDir () {
+  await del(join(DIST, '*'))
+}
 
 function findAssets (bundle) {
   return Array.from(bundle.childBundles).reduce((all, i) => {
@@ -46,6 +51,7 @@ function replaceAll (str, from, to) {
 let bundler = new Bundler(join(SRC, 'index.pug'), { sourceMaps: false })
 
 async function build () {
+  await cleanBuildDir()
   let plugins = [rollupNode(), rollupCommonJS(), terser()]
   let [bundle, indexBundle, workerBundle] = await Promise.all([
     bundler.bundle(),
