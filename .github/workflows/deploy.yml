@@ -29,10 +29,14 @@ jobs:
         run: yarn install --production
       - name: Build static files
         run: yarn build
-      - name: Update location
-        run: ./scripts/update-location
+      - name: Copy tokens to image
+        run: echo "GMAPS_TOKEN=$GMAPS_TOKEN\nCLOUDFLARE_ZONE=$CLOUDFLARE_ZONE\nCLOUDFLARE_TOKEN=CLOUDFLARE_TOKEN" > .env
         env:
           GMAPS_TOKEN: ${{ secrets.GMAPS_TOKEN }}
+          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+      - name: Update location
+        run: ./scripts/update-location
       - name: Build image
         run: docker build -t gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP }} .
       - name: Setup Google Cloud
