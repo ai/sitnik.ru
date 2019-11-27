@@ -1,0 +1,12 @@
+node_modules/
+.github/
+scripts/cities/
+scripts/build
+src/
+.cache/
+.git/
+.editorconfig
+LICENSE
+package.json
+README.md
+yarn.lock
