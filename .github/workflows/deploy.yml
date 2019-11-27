@@ -30,7 +30,10 @@ jobs:
       - name: Build static files
         run: yarn build
       - name: Copy tokens to image
-        run: echo "GMAPS_TOKEN=${{ secrets.GMAPS_TOKEN }}\nCLOUDFLARE_ZONE=${{ secrets.CLOUDFLARE_ZONE }}\nCLOUDFLARE_TOKEN=${{ secrets.CLOUDFLARE_TOKEN }}" > .env
+        run: |
+          echo "GMAPS_TOKEN=${{ secrets.GMAPS_TOKEN }}" >> .env
+          echo "CLOUDFLARE_ZONE=${{ secrets.CLOUDFLARE_ZONE }}" >> .env
+          echo "CLOUDFLARE_TOKEN=${{ secrets.CLOUDFLARE_TOKEN }}" >> .env
       - name: Update location
         run: ./scripts/update-location
       - name: Build image
