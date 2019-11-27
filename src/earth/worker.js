@@ -175,7 +175,7 @@ let commands = {
 }
 
 function onMessage (e) {
-  commands[e.data[0]].apply(this, e.data.slice(1))
+  commands[e.data[0]].apply(null, e.data.slice(1))
 }
 
 if (IS_WORKER) {
