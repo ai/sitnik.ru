@@ -1,6 +1,6 @@
 FROM nginx:alpine
 RUN rm -R /etc/nginx/conf.d
-COPY ./secrets.json /var/www/
+COPY ./.env /var/www/
 COPY ./scripts/ /var/www/scripts/
 COPY ./dist/ /var/www/dist/
 COPY ./nginx.conf /etc/nginx/nginx.template

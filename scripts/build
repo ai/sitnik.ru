@@ -14,9 +14,12 @@ let posthtml = require('posthtml')
 let Bundler = require('parcel-bundler')
 let postcss = require('postcss')
 let crypto = require('crypto')
+let dotenv = require('dotenv')
 let zlib = require('zlib')
 
 let gzip = promisify(zlib.gzip)
+
+dotenv.config()
 
 const A = 'a'.charCodeAt(0)
 const SRC = join(__dirname, '..', 'src')

@@ -2,14 +2,14 @@ let { request } = require('https')
 
 let MyError = require('./my-error')
 
-function callCloudflare (zone, token, command, opts) {
+function callCloudflare (command, opts) {
   return new Promise((resolve, reject) => {
     let req = request({
       method: 'POST',
       hostname: 'api.cloudflare.com',
-      path: `/client/v4/zones/${ zone }/${ command }`,
+      path: `/client/v4/zones/${ process.env.CLOUDFLARE_ZONE }/${ command }`,
       headers: {
-        'Authorization': `Bearer ${ token }`,
+        'Authorization': `Bearer ${ process.env.CLOUDFLARE_TOKEN }`,
         'Content-Type': 'application/json'
       }
     }, res => {

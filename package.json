@@ -3,18 +3,17 @@
   "homepage": "https://sitnik.ru/",
   "license": "MIT",
   "scripts": {
-    "decrypt": "gcloud kms --project sitnikru-1547645703906 decrypt --plaintext-file=secrets.json --ciphertext-file=secrets.json.enc --location=global --keyring=secrets --key=password",
     "spell": "yaspeller dist/**/*.html",
     "lint": "eslint . scripts/{build,clean-cdn,update-*} && stylelint src/**/*.sss",
     "test": "yarn lint & yarn build && size-limit && yarn spell",
     "clean": "rimraf dist/ .cache location/last.json",
     "start": "parcel serve src/index.pug --open",
     "build": "rimraf dist/ && NODE_ENV=production ./scripts/build",
-    "nginx": "podman build -t sitnikru . && podman run -v ./dist/:/var/www/dist/ --privileged --rm -p 8000:80 -e PORT=80 -it sitnikru",
-    "deploy": "gcloud builds --project sitnikru-1547645703906 submit"
+    "nginx": "podman build -t sitnikru . && podman run -v ./dist/:/var/www/dist/ --privileged --rm -p 8000:80 -e PORT=80 -it sitnikru"
   },
   "dependencies": {
     "autoprefixer": "^9.7.2",
+    "dotenv": "^8.2.0",
     "parcel-bundler": "^1.12.4",
     "postcss": "^7.0.23",
     "postcss-combine-media-query": "^1.0.0",

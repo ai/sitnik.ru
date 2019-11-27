@@ -5,4 +5,4 @@ dist/
 .cache
 scripts/cities/bookmarks.xml
 scripts/location/last.json
-secrets.json
+.env

@@ -1,18 +1,16 @@
 #!/usr/bin/env node
 
+let dotenv = require('dotenv')
+
 let callCloudflare = require('./lib/call-cloudflare')
-let loadSecrets = require('./lib/load-secrets')
 let MyError = require('./lib/my-error')
 
-async function cleanCache (token) {
-  let zone = 'b907f2f99f46af59bf282e3d97a654bc'
-  await callCloudflare(zone, token, 'purge_cache', {
+dotenv.config()
+
+async function cleanCache () {
+  await callCloudflare('purge_cache', {
     files: ['https://sitnik.ru/ru/', 'https://sitnik.ru/en/']
   })
 }
 
-loadSecrets()
-  .then(async secrets => {
-    await cleanCache(secrets.cloudflare)
-  })
-  .catch(MyError.print)
+cleanCache().catch(MyError.print)

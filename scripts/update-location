@@ -3,11 +3,13 @@
 let { writeFile, mkdir } = require('fs').promises
 let { join, dirname } = require('path')
 let { existsSync } = require('fs')
+let dotenv = require('dotenv')
 
-let loadSecrets = require('./lib/load-secrets')
 let MyError = require('./lib/my-error')
 let read = require('./lib/read')
 let get = require('./lib/get')
+
+dotenv.config()
 
 const LAST = join(__dirname, 'location', 'last.json')
 const RU = join(__dirname, '..', 'dist', 'ru', 'index.html')
@@ -80,12 +82,12 @@ async function processCity (token, html, location) {
 }
 
 Promise
-  .all([loadSecrets(), read(RU), read(EN), loadLocation()])
-  .then(async ([secrets, htmlRu, htmlEn, location]) => {
+  .all([read(RU), read(EN), loadLocation()])
+  .then(async ([htmlRu, htmlEn, location]) => {
     if (await wasNotChanged(location)) return
     await Promise.all([
-      processCity(secrets.gmaps, htmlRu, location),
-      processCity(secrets.gmaps, htmlEn, location)
+      processCity(process.env.GMAPS_TOKEN, htmlRu, location),
+      processCity(process.env.GMAPS_TOKEN, htmlEn, location)
     ])
     await saveLast(location)
   })

@@ -4,12 +4,14 @@ let { red, gray, bold, green } = require('chalk')
 let { existsSync } = require('fs')
 let { writeFile } = require('fs').promises
 let { join } = require('path')
+let dotenv = require('dotenv')
 let parser = require('fast-xml-parser')
 
-let loadSecrets = require('./lib/load-secrets')
 let MyError = require('./lib/my-error')
 let read = require('./lib/read')
 let get = require('./lib/get')
+
+dotenv.config()
 
 let BOOKMARKS_URL = 'https://www.google.com/bookmarks/lookup?output=xml'
 
@@ -159,13 +161,12 @@ async function initCities () {
 }
 
 async function init () {
-  let [secrets, bookmarks, prevProcessed, cities] = await Promise.all([
-    loadSecrets(),
+  let [bookmarks, prevProcessed, cities] = await Promise.all([
     initBookmarks(),
     initProcessed(),
     initCities()
   ])
-  return { secrets, bookmarks, prevProcessed, cities }
+  return { bookmarks, prevProcessed, cities }
 }
 
 function filterBookmarks (data) {
@@ -202,11 +203,12 @@ async function findCities (data) {
   let requesting = { }
   await Promise.all(data.newBookmarks.map(async ({ url, title, id }) => {
     let res
+    let gmapsToken = process.env.GMAPS_TOKEN
     if (url.includes('?cid=')) {
       let cid = url.match(/\?cid=(\d+)/)[1]
-      res = await gmap('place/details/json', data.secrets.gmaps, { cid })
+      res = await gmap('place/details/json', gmapsToken, { cid })
     } else {
-      res = await gmap('geocode/json', data.secrets.gmaps, { address: title })
+      res = await gmap('geocode/json', gmapsToken, { address: title })
     }
     if (res === '404') {
       data.processed[id] = false
@@ -216,7 +218,7 @@ async function findCities (data) {
     data.processed[id] = city
     if (!data.cities[city] && !requesting[city]) {
       requesting[city] = true
-      res = await gmap('geocode/json', data.secrets.gmaps, { address: city })
+      res = await gmap('geocode/json', gmapsToken, { address: city })
       if (res !== '404') saveLatLng(data.cities, city, res)
     }
   }))
