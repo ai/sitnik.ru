@@ -98,7 +98,7 @@ async function build () {
     .replace(/(\\n)+/g, '\\n')
     .replace(/TypeError("[^"]+")/g, 'TypeError("TypeError")')
     .replace(/(\n)+/g, '\n')
-    .replace(/\{aliceblue[^}]+\}/, '{}')
+    .replace(/{aliceblue[^}]+}/, '{}')
   worker = stripDebug(worker)
 
   await Promise.all([
@@ -111,7 +111,7 @@ async function build () {
 
   function cssPlugin (root) {
     root.walkRules(rule => {
-      rule.selector = rule.selector.replace(/\.[\w_-]+/g, str => {
+      rule.selector = rule.selector.replace(/\.[\w-]+/g, str => {
         let kls = str.substr(1)
         if (!classes[kls]) {
           lastUsed += 1
