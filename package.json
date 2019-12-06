@@ -124,7 +124,7 @@
   },
   "lint-staged": {
     "*.js": "eslint",
-    "*.css": [
+    "*.sss": [
       "stylelint --fix",
       "git add"
     ]
