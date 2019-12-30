@@ -4,11 +4,11 @@
   "license": "MIT",
   "scripts": {
     "spell": "yaspeller *.md dist/**/*.html",
-    "lint": "eslint . scripts/{build,clean-cdn,update-*} && stylelint src/**/*.sss",
+    "lint": "eslint . && stylelint src/**/*.sss",
     "test": "yarn lint & yarn build && size-limit && yarn spell",
     "clean": "del-cli dist/ .cache location/last.json",
     "start": "parcel serve src/index.pug --open",
-    "build": "NODE_ENV=production ./scripts/build",
+    "build": "NODE_ENV=production ./scripts/build.js",
     "nginx": "podman build -t sitnikru . && podman run -v ./dist/:/var/www/dist/ --privileged --rm -p 8000:80 -e PORT=80 -it sitnikru"
   },
   "dependencies": {

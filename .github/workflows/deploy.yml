@@ -37,7 +37,7 @@ jobs:
           echo "CLOUDFLARE_ZONE=${{ secrets.CLOUDFLARE_ZONE }}" >> .env
           echo "CLOUDFLARE_TOKEN=${{ secrets.CLOUDFLARE_TOKEN }}" >> .env
       - name: Update location
-        run: ./scripts/update-location
+        run: ./scripts/update-location.js
       - name: Build image
         run: docker build -t gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP }} .
       - name: Setup Google Cloud
@@ -57,7 +57,7 @@ jobs:
       - name: Deploy image to the server
         run: gcloud beta run deploy ${{ secrets.GCLOUD_APP }} --quiet --image gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP }} --project ${{ secrets.GCLOUD_PROJECT }} --region=us-east1 --platform managed
       - name: Clean CDN
-        run: ./scripts/clean-cdn
+        run: ./scripts/clean-cdn.js
         env:
           CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
