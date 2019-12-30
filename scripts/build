@@ -31,7 +31,7 @@ const FAVICON = join(SRC, 'base', 'favicon.ico')
 const ROOT_INDEX = join(DIST, 'index.html')
 
 async function cleanBuildDir () {
-  await del(join(DIST, '*'))
+  await del(join(DIST, '*'), { dot: true })
 }
 
 function findAssets (bundle) {
