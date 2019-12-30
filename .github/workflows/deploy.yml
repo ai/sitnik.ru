@@ -39,7 +39,7 @@ jobs:
       - name: Update location
         run: ./scripts/update-location.js
       - name: Build image
-        run: docker build -t gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP }} .
+        run: docker build -f ./scripts/deploy/Dockerfile -t gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP }} .
       - name: Setup Google Cloud
         run: |
           curl https://sdk.cloud.google.com | bash && exec -l $SHELL

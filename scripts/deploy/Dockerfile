@@ -3,7 +3,7 @@ RUN rm -R /etc/nginx/conf.d
 COPY ./.env /var/www/
 COPY ./scripts/ /var/www/scripts/
 COPY ./dist/ /var/www/dist/
-COPY ./nginx.conf /etc/nginx/nginx.template
+COPY ./scripts/deploy/nginx.conf /etc/nginx/nginx.template
 RUN rm -Rf /var/www/scripts/build
 RUN rm -Rf /var/www/scripts/cities/
 RUN rm /var/www/scripts/update-location.js

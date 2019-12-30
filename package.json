@@ -9,7 +9,7 @@
     "clean": "del-cli dist/ .cache location/last.json",
     "start": "parcel serve src/index.pug --open",
     "build": "NODE_ENV=production ./scripts/build.js",
-    "nginx": "podman build -t sitnikru . && podman run -v ./dist/:/var/www/dist/ --privileged --rm -p 8000:80 -e PORT=80 -it sitnikru"
+    "nginx": "podman build -f ./scripts/deploy/Dockerfile -t sitnikru . && podman run -v ./dist/:/var/www/dist/ --privileged --rm -p 8000:80 -e PORT=80 -it sitnikru"
   },
   "dependencies": {
     "autoprefixer": "^9.7.3",
