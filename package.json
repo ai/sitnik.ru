@@ -3,7 +3,7 @@
   "homepage": "https://sitnik.ru/",
   "license": "MIT",
   "scripts": {
-    "spell": "yaspeller dist/**/*.html",
+    "spell": "yaspeller *.md dist/**/*.html",
     "lint": "eslint . scripts/{build,clean-cdn,update-*} && stylelint src/**/*.sss",
     "test": "yarn lint & yarn build && size-limit && yarn spell",
     "clean": "del-cli dist/ .cache location/last.json",
