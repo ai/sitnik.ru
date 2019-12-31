@@ -1,12 +1,12 @@
 node_modules/
+!node_modules/ssdeploy/nginx.conf
 .github/
-scripts/cities/
-scripts/build.js
-src/
 .cache/
 .git/
+src/
+.gitignore
 .editorconfig
+README.md
 LICENSE
 package.json
-README.md
 yarn.lock

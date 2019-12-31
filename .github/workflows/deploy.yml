@@ -38,28 +38,16 @@ jobs:
           echo "CLOUDFLARE_TOKEN=${{ secrets.CLOUDFLARE_TOKEN }}" >> .env
       - name: Update location
         run: ./scripts/update-location.js
-      - name: Build image
-        run: docker build -f ./scripts/deploy/Dockerfile -t gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP }} .
-      - name: Setup Google Cloud
-        run: |
-          curl https://sdk.cloud.google.com | bash && exec -l $SHELL
-          gcloud components install beta --quiet
-      - name: Authenticate Google Cloud
-        run: |
-          echo "$GCLOUD_AUTH" | base64 --decode > "$HOME"/service-account-key.json
-          gcloud auth activate-service-account --key-file=$HOME/service-account-key.json
+      - name: Install Google Cloud
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          version: '274.0.1'
+          service_account_key: ${{ secrets.GCLOUD_AUTH }}
+      - name: Deploy files
+        run: yarn run ssdeploy deploy
         env:
-          GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
-      - name: Configure Docker to use Google Cloud
-        run: gcloud auth configure-docker
-      - name: Push image to registry
-        run: docker push gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP }}
-      - name: Deploy image to the server
-        run: gcloud beta run deploy ${{ secrets.GCLOUD_APP }} --quiet --image gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP }} --project ${{ secrets.GCLOUD_PROJECT }} --region=us-east1 --platform managed
-      - name: Clean CDN
-        run: ./scripts/clean-cdn.js
-        env:
+          FORCE_COLOR: 2
+          GCLOUD_APP: ${{ secrets.GCLOUD_APP }}
+          GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
           CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
-      - name: Clean previous images from registry
-        run: ./scripts/clean-images
