@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-let { existsSync, dirname } = require('fs')
 let { writeFile, mkdir } = require('fs').promises
-let { join } = require('path')
+let { join, dirname } = require('path')
+let { existsSync } = require('fs')
 let dotenv = require('dotenv')
 
 let MyError = require('./lib/my-error')
