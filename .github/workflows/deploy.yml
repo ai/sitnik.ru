@@ -27,14 +27,19 @@ jobs:
           key: yarn-production-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             yarn-production-
+      - name: Cache location
+        uses: actions/cache@v1
+        with:
+          path: ./src/globe/location.json
+          key: location
       - name: Install build dependencies
         run: yarn install --production
-      - name: Build static files
-        run: yarn build
       - name: Update location
         run: ./scripts/update-location.js
         env:
           GMAPS_TOKEN: ${{ secrets.GMAPS_TOKEN }}
+      - name: Build static files
+        run: yarn build
       - name: Install Google Cloud
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:

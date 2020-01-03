@@ -20,14 +20,14 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
           span( itemprop="familyName" ) Ситник
 
         .globe
-          .earth( data-lat="40.7128" data-lng="-74.0060" )
+          .earth( data-lat=location.latitude data-lng=location.longitude )
             .earth_loading
             canvas.earth_canvas
 
           button.globe_location( type="button" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress" tabindex="-1" )
-            span( itemprop="addressLocality" ) Нью-Йорк
+            span( itemprop="addressLocality" )= location.ru.city
             = ', '
-            span( itemprop="addressCountry" ) США
+            span( itemprop="addressCountry" )= location.ru.country
 
       .layout_links
 

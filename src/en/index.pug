@@ -20,14 +20,14 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
           span( itemprop="familyName" ) Sitnik
 
         .globe
-          .earth( data-lat="40.7128" data-lng="-74.0060" )
+          .earth( data-lat=location.latitude data-lng=location.longitude )
             .earth_loading
             canvas.earth_canvas
 
-          button.globe_location( itemprop="address" itemscope itemtype="https://schema.org/PostalAddress" tabindex="-1" )
-            span( itemprop="addressLocality" ) New York
+          button.globe_location( type="button" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress" tabindex="-1" )
+            span( itemprop="addressLocality" )= location.en.city
             = ', '
-            span( itemprop="addressCountry" ) USA
+            span( itemprop="addressCountry" )= location.en.country
 
       .layout_links
 
