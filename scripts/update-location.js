@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-let { existsSync } = require('fs')
-let { writeFile } = require('fs').promises
+let { existsSync, dirname } = require('fs')
+let { writeFile, mkdir } = require('fs').promises
 let { join } = require('path')
 let dotenv = require('dotenv')
 
@@ -11,7 +11,7 @@ let get = require('./lib/get')
 
 dotenv.config()
 
-const FILE = join(__dirname, '..', 'src', 'globe', 'location.json')
+const FILE = join(__dirname, 'location', 'last.json')
 
 async function loadLatLng () {
   return get('https://evilmartians.com/locations/ai')
@@ -68,6 +68,9 @@ async function wasNotChanged (cur) {
 }
 
 async function save (location) {
+  if (!existsSync(dirname(FILE))) {
+    await mkdir(dirname(FILE))
+  }
   await writeFile(FILE, JSON.stringify(location, null, 2))
 }
 

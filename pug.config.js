@@ -1,7 +1,7 @@
 let { readFileSync, existsSync } = require('fs')
 let { join } = require('path')
 
-let FILE = join(__dirname, 'src', 'globe', 'location.json')
+let FILE = join(__dirname, 'scripts', 'location', 'last.json')
 
 let location = {
   latitude: 40.7128,

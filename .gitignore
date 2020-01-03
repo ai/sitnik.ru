@@ -4,5 +4,5 @@ yarn-error.log
 dist/
 .cache
 scripts/cities/bookmarks.xml
-src/globe/location.json
+scripts/location/
 .env
