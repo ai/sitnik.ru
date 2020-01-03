@@ -85,9 +85,6 @@ async function build () {
     unlink(srcJsFile)
   ])
 
-  let location = { }
-  if (existsSync(LOCATION)) location = readFile(LOCATION)
-
   js = js
     .replace(/var /g, 'let ')
     .replace(/function\s*\((\w+)\)/g, '$1=>')
@@ -105,7 +102,10 @@ async function build () {
     .replace(/{aliceblue[^}]+}/, '{}')
   worker = stripDebug(worker)
 
-  location = JSON.parse(location)
+  let location = { }
+  if (existsSync(LOCATION)) {
+    location = JSON.parse(readFile(LOCATION))
+  }
   let simpleLocation = JSON.stringify({
     latitude: location.latitude,
     longitude: location.longitude
