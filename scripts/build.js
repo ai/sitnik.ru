@@ -28,6 +28,7 @@ const DIST = join(__dirname, '..', 'dist')
 const NGINX = join(__dirname, '..', 'nginx.conf')
 const EARTH = join(SRC, 'earth')
 const FAVICON = join(SRC, 'base', 'favicon.ico')
+const LOCATION = join(__dirname, 'location', 'last.json')
 const ROOT_INDEX = join(DIST, 'index.html')
 
 async function cleanBuildDir () {
@@ -75,9 +76,10 @@ async function build () {
   let js = indexOutput.output[0].code.trim()
   let worker = workerOutput.output[0].code.trim()
 
-  let [css, nginx] = await Promise.all([
+  let [css, nginx, location] = await Promise.all([
     readFile(cssFile).then(i => i.toString()),
     readFile(NGINX).then(i => i.toString()),
+    readFile(LOCATION),
     copyFile(join(EARTH, 'here.png'), hereFile.replace('webp', 'png')),
     copyFile(join(EARTH, 'map.png'), mapFile.replace('webp', 'png')),
     copyFile(FAVICON, join(DIST, 'favicon.ico')),
@@ -101,7 +103,14 @@ async function build () {
     .replace(/{aliceblue[^}]+}/, '{}')
   worker = stripDebug(worker)
 
+  location = JSON.parse(location)
+  let simpleLocation = JSON.stringify({
+    latitude: location.latitude,
+    longitude: location.longitude
+  })
+
   await Promise.all([
+    writeFile(join(DIST, 'location.json'), simpleLocation),
     writeFile(workerFile, worker),
     unlink(cssFile)
   ])
@@ -191,7 +200,10 @@ async function build () {
 
   let uncompressable = { '.png': true, '.webp': true, '.jpg': true }
   await Promise.all(assets
-    .concat([join(DIST, 'favicon.ico')])
+    .concat([
+      join(DIST, 'favicon.ico'),
+      join(DIST, 'location.json')
+    ])
     .filter(i => !uncompressable[extname(i)] && i !== ROOT_INDEX)
     .filter(i => existsSync(i))
     .map(async path => {
