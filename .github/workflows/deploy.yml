@@ -27,7 +27,8 @@ jobs:
           key: yarn-production-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             yarn-production-
-      - name: Cache location
+      - name: Load location cache
+        continue-on-error: true
         uses: actions/download-artifact@v1
         with:
           name: location
@@ -52,7 +53,7 @@ jobs:
           GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
           CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
-      - name: Save location
+      - name: Save location cache
         uses: actions/upload-artifact@v1
         with:
           name: location
