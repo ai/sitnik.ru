@@ -2,8 +2,8 @@
 
 let { writeFile, readFile, copyFile, unlink } = require('fs').promises
 let { basename, extname, join } = require('path')
-let { existsSync } = require('fs')
 let rollupCommonJS = require('rollup-plugin-commonjs')
+let { existsSync } = require('fs')
 let { promisify } = require('util')
 let combineMedia = require('postcss-combine-media-query')
 let stripDebug = require('strip-debug')
@@ -76,15 +76,17 @@ async function build () {
   let js = indexOutput.output[0].code.trim()
   let worker = workerOutput.output[0].code.trim()
 
-  let [css, nginx, location] = await Promise.all([
+  let [css, nginx] = await Promise.all([
     readFile(cssFile).then(i => i.toString()),
     readFile(NGINX).then(i => i.toString()),
-    readFile(LOCATION),
     copyFile(join(EARTH, 'here.png'), hereFile.replace('webp', 'png')),
     copyFile(join(EARTH, 'map.png'), mapFile.replace('webp', 'png')),
     copyFile(FAVICON, join(DIST, 'favicon.ico')),
     unlink(srcJsFile)
   ])
+
+  let location = { }
+  if (existsSync(LOCATION)) location = readFile(LOCATION)
 
   js = js
     .replace(/var /g, 'let ')
