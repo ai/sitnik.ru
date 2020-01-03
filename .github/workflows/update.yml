@@ -33,6 +33,8 @@ jobs:
         with:
           path: ./scripts/location/
           key: location
+      - name: Install build dependencies
+        run: yarn install --production --offline
       - name: Update location
         id: location
         run: ./scripts/update-location.js
