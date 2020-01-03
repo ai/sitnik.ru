@@ -1,6 +1,5 @@
 let https = require('https')
-
-let red = require('./red')
+let chalk = require('chalk')
 
 function get (url, maxAttempts = 1, attempt = 1) {
   return new Promise((resolve, reject) => {
@@ -15,7 +14,7 @@ function get (url, maxAttempts = 1, attempt = 1) {
     }).on('error', reject)
   }).catch(e => {
     if (attempt < maxAttempts) {
-      process.stderr.write(red('E'))
+      process.stderr.write(chalk.red('E'))
       return get(url, maxAttempts, attempt + 1)
     } else {
       throw e
