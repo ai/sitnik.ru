@@ -6,7 +6,7 @@
     "spell": "yaspeller *.md dist/**/*.html",
     "lint": "eslint . && stylelint src/**/*.sss",
     "test": "yarn lint & yarn build && size-limit && yarn spell",
-    "clean": "del-cli dist/ .cache location/last.json",
+    "clean": "del-cli dist/ .cache src/globe/location.json",
     "start": "parcel serve src/index.pug --open",
     "build": "NODE_ENV=production ./scripts/build.js"
   },
