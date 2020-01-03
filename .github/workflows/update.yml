@@ -2,7 +2,7 @@ name: Update location
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/5 * * * *'
 
 jobs:
   update:
@@ -21,7 +21,7 @@ jobs:
         run: ./scripts/check-location.js
       - name: Install build dependencies
         if: steps.location.outputs.updated
-        run: yarn install --production --offline
+        run: yarn install --production
       - name: Update location
         if: steps.location.outputs.updated
         run: ./scripts/update-location.js
