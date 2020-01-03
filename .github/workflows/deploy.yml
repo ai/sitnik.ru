@@ -33,6 +33,8 @@ jobs:
         run: yarn build
       - name: Update location
         run: ./scripts/update-location.js
+        env:
+          GMAPS_TOKEN: ${{ secrets.GMAPS_TOKEN }}
       - name: Install Google Cloud
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
