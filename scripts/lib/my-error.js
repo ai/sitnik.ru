@@ -1,4 +1,4 @@
-let chalk = require('chalk')
+let red = require('./red')
 
 class MyError extends Error {
   constructor (message) {
@@ -11,9 +11,9 @@ class MyError extends Error {
 MyError.print = e => {
   process.stderr.write('\n')
   if (e.name === 'MyError' && e.message) {
-    process.stderr.write(chalk.red(e.message))
+    process.stderr.write(red(e.message))
   } else {
-    process.stderr.write(chalk.red(e.stack))
+    process.stderr.write(red(e.stack))
   }
   process.stderr.write('\n')
   process.exit(1)
