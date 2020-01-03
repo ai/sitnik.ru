@@ -80,6 +80,9 @@ loadLatLng()
     let location = await loadNames(latLng)
     process.stdout.write(`${ location.en.city }, ${ location.en.country }\n`)
     process.stdout.write(`${ location.ru.city }, ${ location.ru.country }\n`)
+    if (process.env.GITHUB_ACTIONS) {
+      process.stdout.write('::set-output name=updated::1\n')
+    }
     await save(location)
   })
   .catch(MyError.print)

@@ -1,0 +1,49 @@
+name: Update location
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '>=13.0'
+      - name: Get Yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Cache Yarn
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: yarn-production-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            yarn-production-
+      - name: Cache location
+        continue-on-error: true
+        uses: actions/cache@v1
+        with:
+          path: ./scripts/location/
+          key: location
+      - name: Update location
+        id: location
+        run: ./scripts/update-location.js
+        env:
+          GMAPS_TOKEN: ${{ secrets.GMAPS_TOKEN }}
+      - name: Build static files
+        if: steps.location.outputs.updated
+        run: yarn build
+      - name: Install Google Cloud
+        if: steps.location.outputs.updated
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          version: '274.0.1'
+          service_account_key: ${{ secrets.GCLOUD_AUTH }}
