@@ -199,10 +199,9 @@ async function build () {
       if (extname(path) === '.html') {
         file = posthtml().use(htmlPlugin).process(file, { sync: true }).html
         await writeFile(path, file)
-      } else {
-        let compressed = await gzip(file, { level: 9 })
-        await writeFile(path + '.gz', compressed)
       }
+      let compressed = await gzip(file, { level: 9 })
+      await writeFile(path + '.gz', compressed)
     })
   )
 }
