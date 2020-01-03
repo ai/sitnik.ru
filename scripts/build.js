@@ -104,7 +104,7 @@ async function build () {
 
   let location = { }
   if (existsSync(LOCATION)) {
-    location = JSON.parse(readFile(LOCATION))
+    location = JSON.parse(await readFile(LOCATION))
   }
   let simpleLocation = JSON.stringify({
     latitude: location.latitude,
