@@ -3600,6 +3600,14 @@ hash.js@^1.0.0, hash.js@^1.0.3:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
 
+hasha@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/hasha/-/hasha-5.1.0.tgz#dd05ccdfcfe7dab626247ce2a58efe461922f4ca"
+  integrity sha512-OFPDWmzPN1l7atOV1TgBVmNtBxaIysToK6Ve9DK+vT6pYuklw/nPNT+HJbZi0KDcI6vWB+9tgvZ5YD7fA3CXcA==
+  dependencies:
+    is-stream "^2.0.0"
+    type-fest "^0.8.0"
+
 hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
@@ -7271,15 +7279,16 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-ssdeploy@^0.6.5:
-  version "0.6.5"
-  resolved "https://registry.yarnpkg.com/ssdeploy/-/ssdeploy-0.6.5.tgz#00cba8e6e5ed25e20f05f3f8fd9fd261b5246a1a"
-  integrity sha512-CbhX3hW6z9fB/usxCLnkKAwno0zzc0b2sZCzX3G+ITky7o8qOTLbf1fsB70ycUseV37V7bMpc1hqHISufVzWAQ==
+ssdeploy@^0.6.6:
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/ssdeploy/-/ssdeploy-0.6.6.tgz#752ca45bf8c6d2ba2fb48af8967e4c70cdac20e2"
+  integrity sha512-rfFZhjqK5VFfzfkA9BU4YZOSzkTGduZ8QDUgFtehIZ5I90ev2V5rRyk8TOlQEqwU03JRHhYYAEUfNIzGgBh/3w==
   dependencies:
     bytes "^3.1.0"
     chalk "^3.0.0"
     dotenv "^8.2.0"
     folder-hash "^3.3.0"
+    hasha "^5.1.0"
     make-dir "^3.0.0"
     open "^7.0.0"
     ora "^4.0.3"
@@ -7934,7 +7943,7 @@ type-fest@^0.6.0:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.6.0.tgz#8d2a2370d3df886eb5c90ada1c5bf6188acf838b"
   integrity sha512-q+MB8nYR1KDLrgr4G5yemftpMC7/QLqVndBmEEdqzmNj5dcFOO4Oo8qlwZE3ULT3+Zim1F8Kq4cBnikNhlCMlg==
 
-type-fest@^0.8.1:
+type-fest@^0.8.0, type-fest@^0.8.1:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.8.1.tgz#09e249ebde851d3b1e48d27c105444667f17b83d"
   integrity sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==
