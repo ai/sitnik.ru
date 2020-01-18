@@ -7279,10 +7279,10 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-ssdeploy@^0.6.7:
-  version "0.6.7"
-  resolved "https://registry.yarnpkg.com/ssdeploy/-/ssdeploy-0.6.7.tgz#907c8815688e96f8fb72bde3a8c0bf5fa1b33a82"
-  integrity sha512-7EIP2loZ7yRM+7AI+6Cw4wIFrrB09VkQ19Qjzmla2r5F5ixiUxRTWBZCUDkdYDarRO6jBezKR/Blbppf0uzlVQ==
+ssdeploy@^0.6.8:
+  version "0.6.8"
+  resolved "https://registry.yarnpkg.com/ssdeploy/-/ssdeploy-0.6.8.tgz#61f6c22c14323603589ba89db988bb8d8a5fb30f"
+  integrity sha512-K6d+K0+kCOmYsmykPrzu8nH0WzAGLLnfW+L1u3jZYYX9WnW0bkWCPY5KB5v4PQ9GiWF22MAAA1Dse70W87ovKA==
   dependencies:
     bytes "^3.1.0"
     chalk "^3.0.0"
