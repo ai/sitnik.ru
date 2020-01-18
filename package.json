@@ -11,7 +11,7 @@
     "build": "NODE_ENV=production ./scripts/build.js"
   },
   "dependencies": {
-    "autoprefixer": "^9.7.3",
+    "autoprefixer": "^9.7.4",
     "del": "^5.1.0",
     "dotenv": "^8.2.0",
     "parcel-bundler": "^1.12.4",
@@ -27,7 +27,7 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.2.0",
-    "ssdeploy": "^0.5.1",
+    "ssdeploy": "^0.6.1",
     "strip-debug": "^4.0.0",
     "sugarss": "^2.0.0",
     "three": "^0.112.1"
@@ -51,7 +51,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-unicorn": "^15.0.1",
     "fast-xml-parser": "^3.16.0",
-    "husky": "^4.0.7",
+    "husky": "^4.0.10",
     "lint-staged": "^9.5.0",
     "stylelint": "^13.0.0",
     "stylelint-config-recess-order": "^2.0.3",
