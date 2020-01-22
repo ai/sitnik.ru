@@ -7300,7 +7300,7 @@ sprintf-js@~1.0.2:
 
 ssdeploy@ai/ssdeploy:
   version "0.6.9"
-  resolved "https://codeload.github.com/ai/ssdeploy/tar.gz/64b2aa10a4f0eca66523ca9ace2580c7a6db6af4"
+  resolved "https://codeload.github.com/ai/ssdeploy/tar.gz/e713c2c9d222120ccadb751b5df2889802a1f40b"
   dependencies:
     bytes "^3.1.0"
     chalk "^3.0.0"
