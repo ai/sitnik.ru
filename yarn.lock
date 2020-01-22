@@ -7308,9 +7308,10 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-ssdeploy@ai/ssdeploy:
-  version "0.6.9"
-  resolved "https://codeload.github.com/ai/ssdeploy/tar.gz/e713c2c9d222120ccadb751b5df2889802a1f40b"
+ssdeploy@^0.6.10:
+  version "0.6.10"
+  resolved "https://registry.yarnpkg.com/ssdeploy/-/ssdeploy-0.6.10.tgz#6d5a12ba1214208f7039f4b925c500195b1341b9"
+  integrity sha512-y6+7qp94iqeEr8lRaQGe3nvLB+lXBgRBOm71aWcIjDqhia4PEWINs1h2+HF047RHNky/6H1Sgez5A1XIgw90nA==
   dependencies:
     bytes "^3.1.0"
     chalk "^3.0.0"

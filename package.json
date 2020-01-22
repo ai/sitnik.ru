@@ -27,7 +27,7 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.2.0",
-    "ssdeploy": "ai/ssdeploy",
+    "ssdeploy": "^0.6.10",
     "strip-debug": "^4.0.0",
     "sugarss": "^2.0.0",
     "three": "^0.112.1"
