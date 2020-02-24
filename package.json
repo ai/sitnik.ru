@@ -15,7 +15,7 @@
     "del": "^5.1.0",
     "dotenv": "^8.2.0",
     "parcel-bundler": "^1.12.4",
-    "postcss": "^7.0.26",
+    "postcss": "^7.0.27",
     "postcss-combine-media-query": "^1.0.0",
     "postcss-hexrgba": "^2.0.0",
     "postcss-media-minmax": "^4.0.0",
@@ -23,39 +23,40 @@
     "postcss-pxtorem": "^4.0.1",
     "posthtml": "^0.12.0",
     "pug": "^2.0.4",
-    "rollup": "^1.29.1",
+    "rollup": "^1.31.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.2.0",
     "ssdeploy": "^0.6.10",
     "strip-debug": "^4.0.0",
     "sugarss": "^2.0.0",
-    "three": "^0.112.1"
+    "three": "^0.113.2"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^35.0.3",
-    "@logux/sharec-config": "^0.5.6",
-    "@logux/stylelint-config": "^0.1.2",
-    "@size-limit/file": "^3.0.0",
+    "@logux/eslint-config": "^36.0.0",
+    "@logux/sharec-config": "^0.5.7",
+    "@logux/stylelint-config": "^0.1.3",
+    "@size-limit/file": "^4.0.2",
     "chalk": "^3.0.0",
     "del-cli": "^3.0.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-es5": "^1.4.1",
-    "eslint-plugin-import": "^2.20.0",
-    "eslint-plugin-jest": "^23.6.0",
+    "eslint-plugin-es5": "^1.5.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.8.0",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-prefer-let": "^1.0.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-unicorn": "^15.0.1",
+    "eslint-plugin-unicorn": "^16.1.1",
     "fast-xml-parser": "^3.16.0",
-    "husky": "^4.2.0",
-    "lint-staged": "^10.0.2",
-    "stylelint": "^13.0.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.7",
+    "size-limit": "^4.0.2",
+    "stylelint": "^13.2.0",
     "stylelint-config-recess-order": "^2.0.3",
-    "stylelint-config-standard": "^19.0.0",
+    "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.0.0",
     "yaspeller": "^6.0.2"
   },
@@ -94,7 +95,7 @@
     "node_modules/three/src/renderers/webvr/*": "./src/empty.js"
   },
   "eslintConfig": {
-    "extends": "@logux/eslint-config/node",
+    "extends": "@logux/eslint-config",
     "rules": {
       "security/detect-non-literal-regexp": "off",
       "security/detect-unsafe-regex": "off",
@@ -117,7 +118,8 @@
   },
   "lint-staged": {
     "*.js": "eslint",
-    "*.sss": "stylelint --fix"
+    "*.sss": "stylelint --fix",
+    "*.md": "yaspeller"
   },
   "size-limit": [
     {
@@ -167,6 +169,6 @@
   },
   "sharec": {
     "config": "@logux/sharec-config",
-    "version": "0.5.6"
+    "version": "0.5.7"
   }
 }
