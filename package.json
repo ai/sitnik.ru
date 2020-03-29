@@ -11,7 +11,7 @@
     "build": "NODE_ENV=production ./scripts/build.js"
   },
   "dependencies": {
-    "autoprefixer": "^9.7.4",
+    "autoprefixer": "^9.7.5",
     "del": "^5.1.0",
     "dotenv": "^8.2.0",
     "parcel-bundler": "^1.12.4",
@@ -23,42 +23,42 @@
     "postcss-pxtorem": "^5.1.1",
     "posthtml": "^0.12.0",
     "pug": "^2.0.4",
-    "rollup": "^2.0.5",
+    "rollup": "^2.3.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.3.0",
     "ssdeploy": "^0.6.10",
     "strip-debug": "^4.0.0",
     "sugarss": "^2.0.0",
-    "three": "^0.114.0"
+    "three": "^0.115.0"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^36.1.1",
-    "@logux/sharec-config": "^0.5.7",
+    "@logux/eslint-config": "^36.1.2",
+    "@logux/sharec-config": "^0.6.2",
     "@logux/stylelint-config": "^0.1.3",
-    "@size-limit/file": "^4.3.1",
+    "@size-limit/file": "^4.4.2",
     "chalk": "^3.0.0",
     "del-cli": "^3.0.0",
     "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.0",
+    "eslint-config-standard": "^14.1.1",
     "eslint-plugin-es5": "^1.5.0",
-    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jest": "^23.8.2",
-    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-let": "^1.0.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-unicorn": "^17.2.0",
+    "eslint-plugin-unicorn": "^18.0.1",
     "fast-xml-parser": "^3.16.0",
     "husky": "^4.2.3",
-    "lint-staged": "^10.0.8",
-    "size-limit": "^4.3.1",
+    "lint-staged": "^10.0.10",
+    "size-limit": "^4.4.2",
     "stylelint": "^13.2.1",
-    "stylelint-config-recess-order": "^2.0.3",
+    "stylelint-config-recess-order": "^2.0.4",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.0.0",
-    "yaspeller": "^6.0.3"
+    "yaspeller": "^6.0.4"
   },
   "browserslist": [
     "last 2 versions",
@@ -117,9 +117,9 @@
     }
   },
   "lint-staged": {
+    "*.md": "yaspeller",
     "*.js": "eslint",
-    "*.sss": "stylelint --fix",
-    "*.md": "yaspeller"
+    "*.sss": "stylelint --fix"
   },
   "size-limit": [
     {
@@ -169,6 +169,6 @@
   },
   "sharec": {
     "config": "@logux/sharec-config",
-    "version": "0.5.7"
+    "version": "0.6.2"
   }
 }
