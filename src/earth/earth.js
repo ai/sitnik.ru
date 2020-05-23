@@ -23,34 +23,39 @@ function mouseUp () {
 
 function detectAndStartEarth (offscreen) {
   let webP = new Image()
-  webP.src = 'data:image/webp;base64,' +
-             'UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA=='
+  webP.src =
+    'data:image/webp;base64,' +
+    'UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA=='
   webP.onload = webP.onerror = () => {
     startEarth(offscreen, !!webP.height)
   }
 }
 
 function startEarth (offscreen, isWebP) {
-  postMessage([
-    'init',
-    offscreen,
-    earth.clientWidth,
-    earth.clientHeight,
-    window.devicePixelRatio,
-    query('[as=image][href*=map]').href,
-    query('[as=image][href*=here]').href,
-    isWebP,
-    window.matchMedia('(prefers-color-scheme: dark)').matches,
-    parseFloat(earth.dataset.lat),
-    parseFloat(earth.dataset.lng)
-  ], [offscreen])
+  postMessage(
+    [
+      'init',
+      offscreen,
+      earth.clientWidth,
+      earth.clientHeight,
+      window.devicePixelRatio,
+      query('[as=image][href*=map]').href,
+      query('[as=image][href*=here]').href,
+      isWebP,
+      window.matchMedia('(prefers-color-scheme: dark)').matches,
+      parseFloat(earth.dataset.lat),
+      parseFloat(earth.dataset.lng)
+    ],
+    [offscreen]
+  )
 
   window.addEventListener('resize', () => {
     postMessage(['resize', earth.clientWidth, earth.clientHeight])
   })
 
   canvas.addEventListener('mousedown', e => {
-    if (e.button === 0) { // left
+    if (e.button === 0) {
+      // left
       rotateStart = [e.clientX, e.clientY]
       e.preventDefault()
       document.addEventListener('mousemove', mouseMove, false)
@@ -60,16 +65,24 @@ function startEarth (offscreen, isWebP) {
   })
 
   if (window.innerWidth > 980) {
-    canvas.addEventListener('touchstart', e => {
-      if (e.touches.length === 1) {
-        rotateStart = [e.touches[0].pageX, e.touches[0].pageY]
-      }
-    }, { passive: true })
-    canvas.addEventListener('touchmove', e => {
-      if (e.touches.length === 1) {
-        move(e.touches[0].pageX, e.touches[0].pageY)
-      }
-    }, { passive: true })
+    canvas.addEventListener(
+      'touchstart',
+      e => {
+        if (e.touches.length === 1) {
+          rotateStart = [e.touches[0].pageX, e.touches[0].pageY]
+        }
+      },
+      { passive: true }
+    )
+    canvas.addEventListener(
+      'touchmove',
+      e => {
+        if (e.touches.length === 1) {
+          move(e.touches[0].pageX, e.touches[0].pageY)
+        }
+      },
+      { passive: true }
+    )
   } else {
     canvas.addEventListener('touchstart', e => {
       if (e.touches.length === 1) {

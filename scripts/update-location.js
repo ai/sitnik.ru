@@ -20,9 +20,9 @@ async function loadLatLng () {
 async function loadName (latLng, lang) {
   let geodata = await get(
     'https://maps.googleapis.com/maps/api/geocode/json' +
-    `?latlng=${ latLng.latitude },${ latLng.longitude }` +
-    `&language=${ lang }` +
-    `&key=${ process.env.GMAPS_TOKEN }`
+      `?latlng=${latLng.latitude},${latLng.longitude}` +
+      `&language=${lang}` +
+      `&key=${process.env.GMAPS_TOKEN}`
   )
   if (!geodata.results[0]) {
     console.error(geodata)
@@ -78,8 +78,8 @@ loadLatLng()
   .then(async latLng => {
     if (await wasNotChanged(latLng)) return
     let location = await loadNames(latLng)
-    process.stdout.write(`${ location.en.city }, ${ location.en.country }\n`)
-    process.stdout.write(`${ location.ru.city }, ${ location.ru.country }\n`)
+    process.stdout.write(`${location.en.city}, ${location.en.country}\n`)
+    process.stdout.write(`${location.ru.city}, ${location.ru.country}\n`)
     await save(location)
   })
   .catch(MyError.print)

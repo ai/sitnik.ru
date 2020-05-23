@@ -72,9 +72,7 @@ let sphere = new Mesh(
 )
 scene.add(sphere)
 
-let here = new Sprite(
-  new SpriteMaterial()
-)
+let here = new Sprite(new SpriteMaterial())
 here.material.depthTest = false
 here.scale.set(0.1, 0.1, 1)
 here.center.set(0.5, 0)
@@ -103,7 +101,7 @@ function moveSun () {
   let now = new Date()
   let solstice = new Date(now.getFullYear() + '-06-21 00:00:00')
   let days = (now - solstice) / (1000 * 60 * 60 * 24)
-  let sunLat = 23.44 * Math.cos(2 * Math.PI * days / 365.26)
+  let sunLat = 23.44 * Math.cos((2 * Math.PI * days) / 365.26)
   let sunLong = 180 - 15 * (now.getUTCHours() + now.getMinutes() / 60)
   setPosition(light.position, 2, sunLat, sunLong)
 }
@@ -115,8 +113,16 @@ setInterval(moveSun, 30 * 60 * 1000)
 
 let commands = {
   init (
-    canvas, width, height, pixelRatio, mapUrl, hereUrl,
-    isWebP, isDark, latitude, longitude
+    canvas,
+    width,
+    height,
+    pixelRatio,
+    mapUrl,
+    hereUrl,
+    isWebP,
+    isDark,
+    latitude,
+    longitude
   ) {
     if (!canvas.style) canvas.style = { width, height }
 
@@ -160,8 +166,8 @@ let commands = {
   move (start, end) {
     delta.setFromVector3(camera.position)
 
-    delta.theta -= PI2 * (end[0] - start[0]) / canvasHeight
-    delta.phi -= PI2 * (end[1] - start[1]) / canvasHeight
+    delta.theta -= (PI2 * (end[0] - start[0])) / canvasHeight
+    delta.phi -= (PI2 * (end[1] - start[1])) / canvasHeight
 
     delta.makeSafe()
     camera.position.setFromSpherical(delta)

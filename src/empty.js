@@ -1,5 +1,5 @@
 class WebVRManager {
-  isPresenting () { }
+  isPresenting () {}
 }
 
 module.exports = {

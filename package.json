@@ -11,50 +11,51 @@
     "build": "NODE_ENV=production ./scripts/build.js"
   },
   "dependencies": {
-    "autoprefixer": "^9.7.6",
+    "@rollup/plugin-commonjs": "^12.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "autoprefixer": "^9.8.0",
     "del": "^5.1.0",
     "dotenv": "^8.2.0",
     "parcel-bundler": "^1.12.4",
-    "postcss": "^7.0.27",
+    "postcss": "^7.0.30",
     "postcss-combine-media-query": "^1.0.1",
     "postcss-hexrgba": "^2.0.0",
     "postcss-media-minmax": "^4.0.0",
     "postcss-nested": "^4.2.1",
     "postcss-pxtorem": "^5.1.1",
-    "posthtml": "^0.12.2",
+    "posthtml": "^0.13.0",
     "pug": "^2.0.4",
-    "rollup": "^2.6.1",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^5.3.0",
+    "rollup": "^2.10.8",
+    "rollup-plugin-terser": "^6.0.1",
     "ssdeploy": "^0.6.11",
     "strip-debug": "^4.0.0",
     "sugarss": "^2.0.0",
-    "three": "^0.115.0"
+    "three": "^0.116.1"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^36.1.2",
-    "@logux/sharec-config": "^0.6.2",
+    "@logux/eslint-config": "^39.0.3",
+    "@logux/sharec-config": "^0.7.3",
     "@logux/stylelint-config": "^0.1.3",
-    "@size-limit/file": "^4.4.5",
+    "@size-limit/file": "^4.5.0",
     "chalk": "^4.0.0",
-    "del-cli": "^3.0.0",
-    "eslint": "^6.8.0",
+    "del-cli": "^3.0.1",
+    "eslint": "^7.0.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-es5": "^1.5.0",
     "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-jest": "^23.13.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-let": "^1.0.1",
+    "eslint-plugin-prettierx": "^0.12.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-unicorn": "^18.0.1",
-    "fast-xml-parser": "^3.16.0",
+    "eslint-plugin-unicorn": "^20.0.0",
+    "fast-xml-parser": "^3.17.2",
     "husky": "^4.2.5",
-    "lint-staged": "^10.1.6",
-    "size-limit": "^4.4.5",
-    "stylelint": "^13.3.2",
+    "lint-staged": "^10.2.6",
+    "size-limit": "^4.5.0",
+    "stylelint": "^13.5.0",
     "stylelint-config-recess-order": "^2.0.4",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.0.0",
@@ -100,11 +101,10 @@
       "security/detect-non-literal-regexp": "off",
       "security/detect-unsafe-regex": "off",
       "node/no-unpublished-require": "off",
-      "global-require": "off"
+      "node/global-require": "off"
     }
   },
   "eslintIgnore": [
-    "node_modules",
     "dist",
     ".cache"
   ],
@@ -118,7 +118,7 @@
   },
   "lint-staged": {
     "*.md": "yaspeller",
-    "*.js": "eslint",
+    "*.js": "eslint --fix",
     "*.sss": "stylelint --fix"
   },
   "size-limit": [
@@ -169,6 +169,6 @@
   },
   "sharec": {
     "config": "@logux/sharec-config",
-    "version": "0.6.2"
+    "version": "0.7.3"
   }
 }

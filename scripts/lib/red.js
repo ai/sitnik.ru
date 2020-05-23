@@ -1,7 +1,7 @@
 let chalk
 try {
   chalk = require('chalk')
-} catch (e) { }
+} catch {}
 
 if (chalk) {
   module.exports = chalk.red

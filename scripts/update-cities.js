@@ -36,20 +36,23 @@ function nextTick () {
   if (!tick) return
 
   requests += 1
-  get(tick[0], 3).then(answer => {
-    if (answer.status === 'ZERO_RESULTS' || answer.status === 'NOT_FOUND') {
-      throw new MyError('404')
-    } else if (answer.status === 'OK') {
-      process.stderr.write(gray('#'))
-      return answer
-    } else {
-      throw new MyError(answer.error_message)
-    }
-  }).then(data => {
-    requests -= 1
-    tick[1](data)
-    nextTick()
-  }).catch(tick[2])
+  get(tick[0], 3)
+    .then(answer => {
+      if (answer.status === 'ZERO_RESULTS' || answer.status === 'NOT_FOUND') {
+        throw new MyError('404')
+      } else if (answer.status === 'OK') {
+        process.stderr.write(gray('#'))
+        return answer
+      } else {
+        throw new MyError(answer.error_message)
+      }
+    })
+    .then(data => {
+      requests -= 1
+      tick[1](data)
+      nextTick()
+    })
+    .catch(tick[2])
 }
 
 function gmap (name, token, params) {
@@ -57,7 +60,7 @@ function gmap (name, token, params) {
   let query = Object.keys(params)
     .map(i => i + '=' + encodeURIComponent(params[i]))
     .join('&')
-  let url = `https://maps.googleapis.com/maps/api/${ name }?${ query }`
+  let url = `https://maps.googleapis.com/maps/api/${name}?${query}`
   return new Promise((resolve, reject) => {
     pool.push([url, resolve, reject])
     if (requests < 10) nextTick()
@@ -117,7 +120,7 @@ function saveLatLng (cities, city, responce) {
 function prettyStringify (data) {
   if (!Array.isArray(data)) {
     let prev = data
-    data = { }
+    data = {}
     for (let i of Object.keys(prev).sort()) {
       data[i] = prev[i]
     }
@@ -137,7 +140,7 @@ function round (num) {
 
 async function initBookmarks () {
   if (!existsSync(BOOKMARKS_FILE)) {
-    throw new MyError(`Save ${ BOOKMARKS_URL } as scripts/cities/bookmarks.xml`)
+    throw new MyError(`Save ${BOOKMARKS_URL} as scripts/cities/bookmarks.xml`)
   }
   let xml = await read(BOOKMARKS_FILE)
   let ast = parser.parse(xml, { parseTrueNumberOnly: true })
@@ -148,7 +151,7 @@ async function initProcessed () {
   if (existsSync(PROCESSED_FILE)) {
     return JSON.parse(await read(PROCESSED_FILE))
   } else {
-    return { }
+    return {}
   }
 }
 
@@ -156,7 +159,7 @@ async function initCities () {
   if (existsSync(CITIES_FILE)) {
     return JSON.parse(await read(CITIES_FILE))
   } else {
-    return { }
+    return {}
   }
 }
 
@@ -170,7 +173,7 @@ async function init () {
 }
 
 function filterBookmarks (data) {
-  data.processed = { }
+  data.processed = {}
   let cities = Object.keys(data.prevProcessed).map(i => {
     return [i, data.prevProcessed[i]]
   })
@@ -192,7 +195,7 @@ function filterBookmarks (data) {
   })
   if (data.newBookmarks.length === 0) {
     print('No new bookmarks')
-    print(`Download update from ${ BOOKMARKS_URL }`)
+    print(`Download update from ${BOOKMARKS_URL}`)
   } else {
     print('New bookmarks', data.newBookmarks.length)
   }
@@ -200,28 +203,30 @@ function filterBookmarks (data) {
 }
 
 async function findCities (data) {
-  let requesting = { }
-  await Promise.all(data.newBookmarks.map(async ({ url, title, id }) => {
-    let res
-    let gmapsToken = process.env.GMAPS_TOKEN
-    if (url.includes('?cid=')) {
-      let cid = url.match(/\?cid=(\d+)/)[1]
-      res = await gmap('place/details/json', gmapsToken, { cid })
-    } else {
-      res = await gmap('geocode/json', gmapsToken, { address: title })
-    }
-    if (res === '404') {
-      data.processed[id] = false
-      return
-    }
-    let city = cityName(res)
-    data.processed[id] = city
-    if (!data.cities[city] && !requesting[city]) {
-      requesting[city] = true
-      res = await gmap('geocode/json', gmapsToken, { address: city })
-      if (res !== '404') saveLatLng(data.cities, city, res)
-    }
-  }))
+  let requesting = {}
+  await Promise.all(
+    data.newBookmarks.map(async ({ url, title, id }) => {
+      let res
+      let gmapsToken = process.env.GMAPS_TOKEN
+      if (url.includes('?cid=')) {
+        let cid = url.match(/\?cid=(\d+)/)[1]
+        res = await gmap('place/details/json', gmapsToken, { cid })
+      } else {
+        res = await gmap('geocode/json', gmapsToken, { address: title })
+      }
+      if (res === '404') {
+        data.processed[id] = false
+        return
+      }
+      let city = cityName(res)
+      data.processed[id] = city
+      if (!data.cities[city] && !requesting[city]) {
+        requesting[city] = true
+        res = await gmap('geocode/json', gmapsToken, { address: city })
+        if (res !== '404') saveLatLng(data.cities, city, res)
+      }
+    })
+  )
   if (data.newBookmarks.length > 0) {
     process.stderr.write('\n')
   }

@@ -5,7 +5,7 @@ let FILE = join(__dirname, 'scripts', 'location', 'last.json')
 
 let location = {
   latitude: 40.7128,
-  longitude: -74.0060,
+  longitude: -74.006,
   en: { country: 'USA', city: 'New York' },
   ru: { country: 'США', city: 'Нью-Йорк' }
 }

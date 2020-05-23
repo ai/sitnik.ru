@@ -2,13 +2,13 @@
 
 let { writeFile, readFile, copyFile, unlink } = require('fs').promises
 let { basename, extname, join } = require('path')
-let rollupCommonJS = require('rollup-plugin-commonjs')
+let { nodeResolve } = require('@rollup/plugin-node-resolve')
+let rollupCommonJS = require('@rollup/plugin-commonjs')
 let { existsSync } = require('fs')
 let { promisify } = require('util')
 let combineMedia = require('postcss-combine-media-query')
 let stripDebug = require('strip-debug')
 let { terser } = require('rollup-plugin-terser')
-let rollupNode = require('rollup-plugin-node-resolve')
 let { rollup } = require('rollup')
 let posthtml = require('posthtml')
 let Bundler = require('parcel-bundler')
@@ -36,13 +36,19 @@ async function cleanBuildDir () {
 }
 
 function findAssets (bundle) {
-  return Array.from(bundle.childBundles).reduce((all, i) => {
-    return all.concat(findAssets(i))
-  }, [bundle.name])
+  return Array.from(bundle.childBundles).reduce(
+    (all, i) => {
+      return all.concat(findAssets(i))
+    },
+    [bundle.name]
+  )
 }
 
 function sha256 (string) {
-  return crypto.createHash('sha256').update(string, 'utf8').digest('base64')
+  return crypto
+    .createHash('sha256')
+    .update(string, 'utf8')
+    .digest('base64')
 }
 
 function replaceAll (str, from, to) {
@@ -53,7 +59,7 @@ let bundler = new Bundler(join(SRC, 'index.pug'), { sourceMaps: false })
 
 async function build () {
   await cleanBuildDir()
-  let plugins = [rollupNode(), rollupCommonJS(), terser()]
+  let plugins = [nodeResolve(), rollupCommonJS(), terser()]
   let [bundle, indexBundle, workerBundle] = await Promise.all([
     bundler.bundle(),
     rollup({ input: join(SRC, 'index.js'), plugins }),
@@ -89,9 +95,9 @@ async function build () {
     .replace(/var /g, 'let ')
     .replace(/function\s*\((\w+)\)/g, '$1=>')
     .replace(/}\(\);$/, '}()')
-    .replace(/\w+\("\[as=script]"\)\.href/, `"/${ basename(workerFile) }"`)
-    .replace(/\w+\("[^"]+\[href\*=map]"\)\.href/, `"/${ basename(mapFile) }"`)
-    .replace(/\w+\("[^"]+\[href\*=here]"\)\.href/, `"/${ basename(hereFile) }"`)
+    .replace(/\w+\("\[as=script]"\)\.href/, `"/${basename(workerFile)}"`)
+    .replace(/\w+\("[^"]+\[href\*=map]"\)\.href/, `"/${basename(mapFile)}"`)
+    .replace(/\w+\("[^"]+\[href\*=here]"\)\.href/, `"/${basename(hereFile)}"`)
   worker = worker
     .replace(/\/\/ .*?\\n/g, '\\n')
     .replace(/\s\/\/.*?\\n/g, '\\n')
@@ -100,9 +106,9 @@ async function build () {
     .replace(/TypeError("[^"]+")/g, 'TypeError("TypeError")')
     .replace(/(\n)+/g, '\n')
     .replace(/{aliceblue[^}]+}/, '{}')
-  worker = stripDebug(worker)
+  worker = stripDebug(worker).toString()
 
-  let location = { }
+  let location = {}
   if (existsSync(LOCATION)) {
     location = JSON.parse(await readFile(LOCATION))
   }
@@ -117,7 +123,7 @@ async function build () {
     unlink(cssFile)
   ])
 
-  let classes = { }
+  let classes = {}
   let lastUsed = -1
 
   function cssPlugin (root) {
@@ -139,16 +145,16 @@ async function build () {
   for (let origin in classes) {
     let converted = classes[origin]
     if (origin.startsWith('earth') || origin.startsWith('globe')) {
-      js = replaceAll(js, `".${ origin }"`, `".${ converted }"`)
+      js = replaceAll(js, `".${origin}"`, `".${converted}"`)
     }
     if (origin.startsWith('is-')) {
-      js = replaceAll(js, `"${ origin }"`, `"${ converted }"`)
+      js = replaceAll(js, `"${origin}"`, `"${converted}"`)
     }
   }
 
   nginx = nginx
-    .replace(/(style-src 'sha256-)[^']+'/g, `$1${ sha256(css) }'`)
-    .replace(/(script-src 'sha256-)[^']+'/g, `$1${ sha256(js) }'`)
+    .replace(/(style-src 'sha256-)[^']+'/g, `$1${sha256(css)}'`)
+    .replace(/(script-src 'sha256-)[^']+'/g, `$1${sha256(js)}'`)
   await writeFile(NGINX, nginx)
 
   function htmlPlugin (tree) {
@@ -188,35 +194,38 @@ async function build () {
         content: i.content,
         attrs: {
           ...i.attrs,
-          class: i.attrs.class.split(' ').map(kls => {
-            if (!classes[kls]) {
-              process.stderr.write(`Unused class .${ kls }\n`)
-              process.exit(1)
-            }
-            return classes[kls]
-          }).join(' ')
+          class: i.attrs.class
+            .split(' ')
+            .map(kls => {
+              if (!classes[kls]) {
+                process.stderr.write(`Unused class .${kls}\n`)
+                process.exit(1)
+              }
+              return classes[kls]
+            })
+            .join(' ')
         }
       }
     })
   }
 
   let uncompressable = { '.png': true, '.webp': true, '.jpg': true }
-  await Promise.all(assets
-    .concat([
-      join(DIST, 'favicon.ico'),
-      join(DIST, 'location.json')
-    ])
-    .filter(i => !uncompressable[extname(i)] && i !== ROOT_INDEX)
-    .filter(i => existsSync(i))
-    .map(async path => {
-      let file = await readFile(path)
-      if (extname(path) === '.html') {
-        file = posthtml().use(htmlPlugin).process(file, { sync: true }).html
-        await writeFile(path, file)
-      }
-      let compressed = await gzip(file, { level: 9 })
-      await writeFile(path + '.gz', compressed)
-    })
+  await Promise.all(
+    assets
+      .concat([join(DIST, 'favicon.ico'), join(DIST, 'location.json')])
+      .filter(i => !uncompressable[extname(i)] && i !== ROOT_INDEX)
+      .filter(i => existsSync(i))
+      .map(async path => {
+        let file = await readFile(path)
+        if (extname(path) === '.html') {
+          file = posthtml()
+            .use(htmlPlugin)
+            .process(file, { sync: true }).html
+          await writeFile(path, file)
+        }
+        let compressed = await gzip(file, { level: 9 })
+        await writeFile(path + '.gz', compressed)
+      })
   )
 }
 
