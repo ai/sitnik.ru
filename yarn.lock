@@ -3501,7 +3501,7 @@ flow-parser@0.111.3:
   resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.111.3.tgz#4c256aa21a5dbb53d5305e3512cc120659ca08f3"
   integrity sha512-iEjGZ94OBMcESxnLorXNjJmtd/JtQYXUVrQpfwvtAKkuyawRmv+2LM6nqyOsOJkISEYbyY6ziudRE0u4VyPSVA==
 
-folder-hash@^3.3.0:
+folder-hash@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/folder-hash/-/folder-hash-3.3.1.tgz#72ca3593a43c3873e27a8edce2423f30f8ee6096"
   integrity sha512-M5Rxur/jgIWfr0gbJBRY9aMLXCieM6Gy1xB/KqC2Nd4ZvxZJAccWvg+7SmbfALntmYj51wHWzcE4cqgXQPWaBA==
@@ -4977,7 +4977,7 @@ magic-string@^0.25.2:
   dependencies:
     sourcemap-codec "^1.4.4"
 
-make-dir@^3.0.2:
+make-dir@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-3.1.0.tgz#415e967046b3a7f1d185277d84aa58203726a13f"
   integrity sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==
@@ -5537,7 +5537,7 @@ onetime@^5.1.0:
   dependencies:
     mimic-fn "^2.1.0"
 
-open@^7.0.3:
+open@^7.0.4:
   version "7.0.4"
   resolved "https://registry.yarnpkg.com/open/-/open-7.0.4.tgz#c28a9d315e5c98340bf979fdcb2e58664aa10d83"
   integrity sha512-brSA+/yq+b08Hsr4c8fsEW2CRzk1BmfN3SAK/5VCHQ9bdoZJ4qa/+AfR0xHjlbbZUyPkUHs1b8x1RqdyZdkVqQ==
@@ -5605,7 +5605,7 @@ ora@^3.4.0:
     strip-ansi "^5.2.0"
     wcwidth "^1.0.1"
 
-ora@^4.0.3, ora@^4.0.4:
+ora@^4.0.4:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/ora/-/ora-4.0.4.tgz#e8da697cc5b6a47266655bf68e0fb588d29a545d"
   integrity sha512-77iGeVU1cIdRhgFzCK8aw1fbtT1B/iZAvWjS+l/o1x0RShMgxHUZaD2yDpWsNCPwXg9z1ZA78Kbdvr8kBmG/Ww==
@@ -7740,19 +7740,19 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-ssdeploy@^0.6.11:
-  version "0.6.11"
-  resolved "https://registry.yarnpkg.com/ssdeploy/-/ssdeploy-0.6.11.tgz#c2caf7bab745a814df51f9fc2abcd52212a17eff"
-  integrity sha512-0/GHDPgRANJ5oIfAcyG8Y5/5s5RyEgPMTF1J/ExlDR0Pb+YBX+wuuJNQebGauC5RBw7hzpKcWeRW0GeaYaXTBA==
+ssdeploy@^0.6.12:
+  version "0.6.12"
+  resolved "https://registry.yarnpkg.com/ssdeploy/-/ssdeploy-0.6.12.tgz#dd01fd527ed158161ea58bfd41521bac759a15cf"
+  integrity sha512-Nts5rQkJQEcfduxekPsWK8qiO5qGhkUO29/jMN1e4s7+D++mJteWZP6fgFm4P+4aw3oNxpEpgcdX8IlstknIPQ==
   dependencies:
     bytes "^3.1.0"
     chalk "^4.0.0"
     dotenv "^8.2.0"
-    folder-hash "^3.3.0"
+    folder-hash "^3.3.1"
     hasha "^5.2.0"
-    make-dir "^3.0.2"
-    open "^7.0.3"
-    ora "^4.0.3"
+    make-dir "^3.1.0"
+    open "^7.0.4"
+    ora "^4.0.4"
     pkg-up "^3.1.0"
 
 sshpk@^1.7.0:
