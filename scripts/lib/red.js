@@ -1,10 +1,10 @@
-let chalk
+let kleur
 try {
-  chalk = require('chalk')
+  kleur = require('kleur')
 } catch {}
 
-if (chalk) {
-  module.exports = chalk.red
+if (kleur) {
+  module.exports = kleur.red
 } else {
   module.exports = str => str
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-let { red, gray, bold, green } = require('chalk')
+let { red, gray, bold, green } = require('kleur')
 let { existsSync } = require('fs')
 let { writeFile } = require('fs').promises
 let { join } = require('path')
