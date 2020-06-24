@@ -1,10 +1,10 @@
-let kleur
+let red
 try {
-  kleur = require('kleur')
+  red = require('colorette').red
 } catch {}
 
-if (kleur) {
-  module.exports = kleur.red
+if (red) {
+  module.exports = red
 } else {
   module.exports = str => str
 }
