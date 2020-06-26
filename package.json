@@ -25,12 +25,12 @@
     "postcss-pxtorem": "^5.1.1",
     "posthtml": "^0.13.1",
     "pug": "^3.0.0",
-    "rollup": "^2.18.0",
+    "rollup": "^2.18.1",
     "rollup-plugin-terser": "^6.1.0",
     "ssdeploy": "^0.6.14",
     "strip-debug": "^4.0.0",
     "sugarss": "^2.0.0",
-    "three": "^0.117.1"
+    "three": "^0.118.1"
   },
   "devDependencies": {
     "@logux/eslint-config": "^39.0.3",
