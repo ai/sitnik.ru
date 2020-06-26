@@ -136,7 +136,7 @@
         "dist/here.*.webp",
         "dist/photo.*.webp"
       ],
-      "limit": "176 KB"
+      "limit": "180 KB"
     }
   ],
   "yaspeller": {
