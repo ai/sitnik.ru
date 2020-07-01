@@ -141,7 +141,17 @@ let commands = {
     }
 
     loader.load(mapUrl, mapImage => {
-      sphere.material.map = new CanvasTexture(mapImage)
+      sphere.material.map = new CanvasTexture(
+        mapImage,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        8
+      )
       sphere.material.map.flipY = false
       load()
     })
