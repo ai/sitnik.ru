@@ -30,7 +30,7 @@
     "ssdeploy": "^0.6.14",
     "strip-debug": "^4.0.0",
     "sugarss": "^2.0.0",
-    "three": "^0.118.1"
+    "three": "^0.118.3"
   },
   "devDependencies": {
     "@logux/eslint-config": "^39.0.3",
@@ -42,7 +42,7 @@
     "eslint": "^7.3.1",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-es5": "^1.5.0",
-    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jest": "^23.17.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-let": "^1.0.1",
