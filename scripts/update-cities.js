@@ -128,6 +128,14 @@ function prettyStringify (data) {
   return JSON.stringify(data, null, '  ') + '\n'
 }
 
+function prettyDots (dots) {
+  return (
+    'module.exports = [\n' +
+    dots.map(i => `  [${i[0]}, ${i[1]}]`).join(',\n') +
+    '\n]\n'
+  )
+}
+
 function diff (a1, b1, a2, b2) {
   return Math.max(Math.abs(a1 - b1), Math.abs(a2 - b2))
 }
@@ -252,7 +260,7 @@ async function saveFiles (data) {
   await Promise.all([
     writeFile(PROCESSED_FILE, prettyStringify(data.processed)),
     writeFile(CITIES_FILE, prettyStringify(data.cities)),
-    writeFile(DOTS_FILE, 'module.exports = ' + prettyStringify(dots))
+    writeFile(DOTS_FILE, prettyDots(dots))
   ])
   return data
 }
