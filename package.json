@@ -27,7 +27,7 @@
     "pug": "^3.0.0",
     "rollup": "^2.23.1",
     "rollup-plugin-terser": "^7.0.0",
-    "ssdeploy": "^0.6.15",
+    "ssdeploy": "^0.6.16",
     "strip-debug": "^4.0.0",
     "sugarss": "^2.0.0",
     "three": "^0.119.1"
