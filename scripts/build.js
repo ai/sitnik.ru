@@ -45,10 +45,7 @@ function findAssets (bundle) {
 }
 
 function sha256 (string) {
-  return crypto
-    .createHash('sha256')
-    .update(string, 'utf8')
-    .digest('base64')
+  return crypto.createHash('sha256').update(string, 'utf8').digest('base64')
 }
 
 function replaceAll (str, from, to) {
@@ -218,9 +215,7 @@ async function build () {
       .map(async path => {
         let file = await readFile(path)
         if (extname(path) === '.html') {
-          file = posthtml()
-            .use(htmlPlugin)
-            .process(file, { sync: true }).html
+          file = posthtml().use(htmlPlugin).process(file, { sync: true }).html
           await writeFile(path, file)
         }
         let compressed = await gzip(file, { level: 9 })
