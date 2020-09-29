@@ -7,6 +7,8 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    env:
+      FORCE_COLOR: 2
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
@@ -40,7 +42,6 @@ jobs:
         if: steps.location.outputs.updated
         run: yarn run ssdeploy deploy
         env:
-          FORCE_COLOR: 2
           GCLOUD_APP: ${{ secrets.GCLOUD_APP }}
           GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
           CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
