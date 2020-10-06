@@ -60,18 +60,20 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
               ul.projects_links
                 li.projects_link
                   a.link( href="https://twitter.com/andreysitnik" itemprop="sameAs" rel="me" )
-                    | Full with NSFW
+                    | Personal
                 li.projects_link
                   a.link( href="https://twitter.com/sitnikcode" itemprop="sameAs" rel="me" )
-                    | code only
+                    | Development
             p
               | My notes about sex, travels, and technologies
+
           li.projects_item
             h2.projects_title
               a.link( href="https://github.com/ai" itemprop="sameAs" rel="me" )
                 | GitHub
             p
               | I created Autoprefixer, PostCSS, Browserslist, Logux, and Nano ID
+
           li.projects_item( itemprop="worksFor" itemscope itemtype="http://schema.org/Organization" )
             h2.projects_title
               a.link( href="https://evilmartians.com/" itemprop="url" )
@@ -79,24 +81,40 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
             p
               = 'I am lead front-end developer in '
               span( itemprop="name" ) Evil Martians
+
           li.projects_item
             h2.projects_title
-              a.link( href="https://www.instagram.com/sitnikandrey/" itemprop="sameAs" rel="me" )
-                | Instagram
+              span.projects_name sitnikfriday
+              ul.projects_links
+                li.projects_link
+                  a.link( href="https://twitter.com/hashtag/sitnikfriday" )
+                    | Twitter
+                li.projects_link
+                  a.link( href="https://t.me/sitnikfriday" )
+                    | Telegram
             p
-              | Photos from travels and henna body painting
+              | My sex-positive project
+
           li.projects_item
             h2.projects_title
               a.link( href="https://twitter.com/linguopunk" )
                 | Linguopunk
             p
               | My Twitter account about language diversity
+
           li.projects_item
             h2.projects_title
               a.link( href="https://twitter.com/lostinwiki" )
                 | Lost in Wikipedia
             p
               | My Twitter account with strange facts from Wikipedia
+
+          li.projects_item
+            h2.projects_title
+              a.link( href="https://www.instagram.com/sitnikandrey/" itemprop="sameAs" rel="me" )
+                | Instagram
+            p
+              | Photos from travels and henna body painting
 
       .layout_language
         a.link( href="/ru/index.pug" hreflang="ru" rel="alternate" ) Русский

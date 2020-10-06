@@ -66,12 +66,14 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
                     | Твиттер
             p
               | Мои заметки о сексе, путешествиях и технологиях
+
           li.projects_item
             h2.projects_title
               a.link( href="https://github.com/ai" itemprop="sameAs" rel="me" )
                 | Гитхаб
             p
               | Создал Автопрефиксер, PostCSS, Браузерслист, Логакс и Nano ID
+
           li.projects_item( itemprop="worksFor" itemscope itemtype="http://schema.org/Organization" )
             h2.projects_title
               a.link( href="https://evilmartians.com/" itemprop="url" )
@@ -79,16 +81,27 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
             p
               | Работаю ведущим фронтенд-разработчиком в Злых марсианах
             meta( itemprop="name" content="Злые марсиане" )
+
           li.projects_item
             h2.projects_title
-              a.link( href="https://www.instagram.com/sitnikandrey/" itemprop="sameAs" rel="me" )
-                | Инстаграм
+              span.projects_name Ситникфрайдей
+              ul.projects_links
+                li.projects_link
+                  a.link( href="https://t.me/sitnikfriday" )
+                    | Телеграм
+                li.projects_link
+                  a.link( href="https://twitter.com/hashtag/sitnikfriday" )
+                    | Твиттер
             p
-              | Фотографии с путешествий и росписи тела хной
+              | Мой проект про секс-позитивизм
+
           li.projects_item
             h2.projects_title
               span.projects_name Лингвопанк
               ul.projects_links
+                li.projects_link
+                  a.link( href="https://t.me/linguopunk" )
+                    | Телеграм
                 li.projects_link
                   a.link( href="https://vk.com/linguopunk" )
                     | ВКонтакте
@@ -97,10 +110,14 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
                     | Твиттер
             p
               | Мой канал про языковое разнообразие
+
           li.projects_item
             h2.projects_title
               span.projects_name Однажды в Википедии
               ul.projects_links
+                li.projects_link
+                  a.link( href="https://t.me/lostinwiki" )
+                    | Телеграм
                 li.projects_link
                   a.link( href="https://vk.com/lostinwiki" )
                     | ВКонтакте
@@ -109,6 +126,13 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
                     | Твиттер
             p
               | Мой канал с странными фактами из Википедии
+
+          li.projects_item
+            h2.projects_title
+              a.link( href="https://www.instagram.com/sitnikandrey/" itemprop="sameAs" rel="me" )
+                | Инстаграм
+            p
+              | Фотографии с путешествий и росписи тела хной
 
       .layout_language
         a.link( href="/en/index.pug" hreflang="en" rel="alternate" ) English
