@@ -4,11 +4,12 @@ on:
   schedule:
     - cron: '0 * * * *'
 
+env:
+  FORCE_COLOR: 2
+
 jobs:
   update:
     runs-on: ubuntu-latest
-    env:
-      FORCE_COLOR: 2
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
