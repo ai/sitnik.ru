@@ -1,13 +1,10 @@
 name: Deploy
-
 on:
   push:
     branches:
       - master
-
 env:
   FORCE_COLOR: 2
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
