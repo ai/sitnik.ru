@@ -33,8 +33,8 @@
     "three": "^0.122.0"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^42.2.0",
-    "@logux/sharec-config": "^0.8.3",
+    "@logux/eslint-config": "^42.2.1",
+    "@logux/sharec-config": "^0.8.4",
     "@logux/stylelint-config": "^0.1.3",
     "@size-limit/file": "^4.7.0",
     "colorette": "^1.2.1",
@@ -49,7 +49,6 @@
     "eslint-plugin-prettierx": "^0.14.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-standard": "^4.0.2",
     "eslint-plugin-unicorn": "^23.0.0",
     "fast-xml-parser": "^3.17.4",
     "husky": "^4.3.0",
@@ -176,6 +175,6 @@
   },
   "sharec": {
     "config": "@logux/sharec-config",
-    "version": "0.8.3"
+    "version": "0.8.4"
   }
 }
