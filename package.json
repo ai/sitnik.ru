@@ -11,8 +11,8 @@
     "build": "NODE_ENV=production ./scripts/build.js"
   },
   "dependencies": {
-    "@rollup/plugin-commonjs": "^16.0.0",
-    "@rollup/plugin-node-resolve": "^10.0.0",
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-node-resolve": "^11.0.0",
     "autoprefixer": "^9.8.6",
     "del": "^6.0.0",
     "dotenv": "^8.2.0",
@@ -25,9 +25,9 @@
     "postcss-pxtorem": "^5.1.1",
     "posthtml": "^0.15.1",
     "pug": "^3.0.0",
-    "rollup": "^2.33.3",
+    "rollup": "^2.34.0",
     "rollup-plugin-terser": "^7.0.2",
-    "ssdeploy": "^0.6.17",
+    "ssdeploy": "^0.6.18",
     "strip-debug": "^4.0.0",
     "sugarss": "^2.0.0",
     "three": "^0.123.0"
