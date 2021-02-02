@@ -33,7 +33,7 @@ async function loadName (latLng, lang) {
   let city = address.find(i => i.types.includes('locality'))
 
   if (country.short_name === 'JP') {
-    if (address.find(i => i.short_name === 'Tōkyō-to')) {
+    if (address.some(i => i.short_name === 'Tōkyō-to')) {
       city = { long_name: lang === 'ru' ? 'Токио' : 'Tokyo' }
     }
   } else if (country.short_name === 'US') {
