@@ -22,7 +22,9 @@ jobs:
           path: ./scripts/location/
           key: location
       - name: Install build dependencies
-        run: yarn install --production
+        uses: bahmutov/npm-install@v1
+        env:
+          NODE_ENV: production
       - name: Update location
         run: ./scripts/update-location.js
         env:

@@ -19,7 +19,9 @@ jobs:
         run: ./scripts/check-location.js
       - name: Install build dependencies
         if: steps.location.outputs.updated
-        run: yarn install --production
+        uses: bahmutov/npm-install@v1
+        env:
+          NODE_ENV: production
       - name: Update location
         if: steps.location.outputs.updated
         run: ./scripts/update-location.js
