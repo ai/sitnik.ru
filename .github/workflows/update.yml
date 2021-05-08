@@ -1,7 +1,7 @@
 name: Update location
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '28 14 * * *'
 env:
   FORCE_COLOR: 2
 jobs:
