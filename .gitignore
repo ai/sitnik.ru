@@ -6,3 +6,4 @@ dist/
 scripts/cities/bookmarks.xml
 scripts/location/
 .env
+coverage/
