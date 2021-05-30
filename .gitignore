@@ -2,7 +2,7 @@ node_modules/
 yarn-error.log
 
 dist/
-.cache
+.parcel-cache/
 scripts/cities/bookmarks.xml
 scripts/location/
 .env

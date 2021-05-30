@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 let { writeFile, readFile, copyFile, unlink } = require('fs').promises
-let { basename, extname, join } = require('path')
+let { basename, join } = require('path')
 let { nodeResolve } = require('@rollup/plugin-node-resolve')
 let rollupCommonJS = require('@rollup/plugin-commonjs')
 let { existsSync } = require('fs')
@@ -10,83 +10,84 @@ let combineMedia = require('postcss-combine-media-query')
 let stripDebug = require('strip-debug')
 let { terser } = require('rollup-plugin-terser')
 let { rollup } = require('rollup')
+let parcelCore = require('@parcel/core')
 let posthtml = require('posthtml')
-let Bundler = require('parcel-bundler')
 let postcss = require('postcss')
+let globby = require('globby')
 let crypto = require('crypto')
 let dotenv = require('dotenv')
 let zlib = require('zlib')
 let del = require('del')
 
+let Parcel = parcelCore.default
 let gzip = promisify(zlib.gzip)
 
 dotenv.config()
 
+// Helpers
+
 const A = 'a'.charCodeAt(0)
-const SRC = join(__dirname, '..', 'src')
-const DIST = join(__dirname, '..', 'dist')
-const NGINX = join(__dirname, '..', 'nginx.conf')
+const ROOT = join(__dirname, '..')
+const SRC = join(ROOT, 'src')
+const DIST = join(ROOT, 'dist')
+const NGINX = join(ROOT, 'nginx.conf')
 const EARTH = join(SRC, 'earth')
 const FAVICON = join(SRC, 'base', 'favicon.ico')
 const LOCATION = join(__dirname, 'location', 'last.json')
-const ROOT_INDEX = join(DIST, 'index.html')
 
-async function cleanBuildDir () {
-  await del(join(DIST, '*'), { dot: true })
-}
-
-function findAssets (bundle) {
-  return Array.from(bundle.childBundles).reduce(
-    (all, i) => {
-      return all.concat(findAssets(i))
-    },
-    [bundle.name]
-  )
-}
-
-function sha256 (string) {
+function sha256(string) {
   return crypto.createHash('sha256').update(string, 'utf8').digest('base64')
 }
 
-function replaceAll (str, from, to) {
+function replaceAll(str, from, to) {
   return str.replace(new RegExp(from, 'g'), to)
 }
 
-let bundler = new Bundler(join(SRC, 'index.pug'), { sourceMaps: false })
+async function findAsset(pattern) {
+  let files = await globby(join(DIST, '**', pattern))
+  return files[0]
+}
 
-async function build () {
-  await cleanBuildDir()
+// Steps
+
+async function cleanDist() {
+  await del(join(DIST, '*'))
+}
+
+async function buildAssets() {
+  let options = {
+    shouldPatchConsole: false,
+    defaultConfig: join(ROOT, 'node_modules', '@parcel', 'config-default'),
+    mode: 'production',
+    defaultTargetOptions: {
+      sourceMaps: false
+    }
+  }
+  let bundler = new Parcel({
+    ...options,
+    entries: [join(SRC, 'en', 'index.pug'), join(SRC, 'ru', 'index.pug')]
+  })
+  await bundler.run()
+  await unlink(await findAsset('en/index*.js'))
+}
+
+async function repackScripts() {
   let plugins = [nodeResolve(), rollupCommonJS(), terser()]
-  let [bundle, indexBundle, workerBundle] = await Promise.all([
-    bundler.bundle(),
-    rollup({ input: join(SRC, 'index.js'), plugins }),
-    rollup({ input: join(SRC, 'earth', 'worker.js'), plugins })
-  ])
-  await unlink(ROOT_INDEX)
-
-  let assets = findAssets(bundle)
-
-  let cssFile = assets.find(i => extname(i) === '.css')
-  let mapFile = assets.find(i => /map\..*\.webp/.test(i))
-  let hereFile = assets.find(i => /here\..*\.webp/.test(i))
-  let srcJsFile = assets.find(i => /src\..*\.js/.test(i))
-  let workerFile = assets.find(i => /worker\..*\.js/.test(i))
-
+  let [indexBundle, workerBundle, workerFile, mapFile, hereFile] =
+    await Promise.all([
+      rollup({ input: join(SRC, 'index.js'), plugins }),
+      rollup({ input: join(SRC, 'earth', 'worker.js'), plugins }),
+      findAsset('worker*.js'),
+      findAsset('map*.webp'),
+      findAsset('here*.webp')
+    ])
   let [indexOutput, workerOutput] = await Promise.all([
     indexBundle.generate({ format: 'iife', strict: false }),
     workerBundle.generate({ format: 'iife', strict: false })
   ])
+
   let js = indexOutput.output[0].code.trim()
   let worker = workerOutput.output[0].code.trim()
-
-  let [css, nginx] = await Promise.all([
-    readFile(cssFile).then(i => i.toString()),
-    readFile(NGINX).then(i => i.toString()),
-    copyFile(join(EARTH, 'here.png'), hereFile.replace('webp', 'png')),
-    copyFile(join(EARTH, 'map.png'), mapFile.replace('webp', 'png')),
-    copyFile(FAVICON, join(DIST, 'favicon.ico')),
-    unlink(srcJsFile)
-  ])
 
   js = js
     .replace(/var /g, 'let ')
@@ -105,25 +106,19 @@ async function build () {
     .replace(/{aliceblue[^}]+}/, '{}')
   worker = stripDebug(worker).toString()
 
-  let location = {}
-  if (existsSync(LOCATION)) {
-    location = JSON.parse(await readFile(LOCATION))
-  }
-  let simpleLocation = JSON.stringify({
-    latitude: location.latitude,
-    longitude: location.longitude
-  })
+  await writeFile(workerFile, worker)
+  return js
+}
 
-  await Promise.all([
-    writeFile(join(DIST, 'location.json'), simpleLocation),
-    writeFile(workerFile, worker),
-    unlink(cssFile)
-  ])
+async function repackStyles() {
+  let cssFile = await findAsset('index*.css')
+  let css = await readFile(cssFile).then(i => i.toString())
+  await unlink(cssFile)
 
   let classes = {}
   let lastUsed = -1
 
-  function cssPlugin (root) {
+  function cssPlugin(root) {
     root.walkRules(rule => {
       rule.selector = rule.selector.replace(/\.[\w-]+/g, str => {
         let kls = str.substr(1)
@@ -138,7 +133,35 @@ async function build () {
   }
 
   css = postcss([cssPlugin, combineMedia]).process(css, { from: cssFile }).css
+  return [css, classes]
+}
 
+async function copyImages() {
+  let [mapFile, hereFile] = await Promise.all([
+    findAsset('map*.webp'),
+    findAsset('here*.webp')
+  ])
+  await Promise.all([
+    copyFile(join(EARTH, 'here.png'), hereFile.replace('webp', 'png')),
+    copyFile(join(EARTH, 'map.png'), mapFile.replace('webp', 'png')),
+    copyFile(FAVICON, join(DIST, 'favicon.ico'))
+  ])
+}
+
+async function prepareLocation() {
+  let location = {}
+  if (existsSync(LOCATION)) {
+    location = JSON.parse(await readFile(LOCATION))
+  }
+  let simpleLocation = JSON.stringify({
+    latitude: location.latitude,
+    longitude: location.longitude
+  })
+
+  await Promise.all([writeFile(join(DIST, 'location.json'), simpleLocation)])
+}
+
+function updateClasses(js, classes) {
   for (let origin in classes) {
     let converted = classes[origin]
     if (origin.startsWith('earth') || origin.startsWith('globe')) {
@@ -148,13 +171,19 @@ async function build () {
       js = replaceAll(js, `"${origin}"`, `"${converted}"`)
     }
   }
+  return js
+}
 
+async function updateCSP(js, css) {
+  let nginx = await readFile(NGINX).then(i => i.toString())
   nginx = nginx
     .replace(/(style-src 'sha256-)[^']+'/g, `$1${sha256(css)}'`)
     .replace(/(script-src 'sha256-)[^']+'/g, `$1${sha256(js)}'`)
   await writeFile(NGINX, nginx)
+}
 
-  function htmlPlugin (tree) {
+async function updateHtml(js, css, classes) {
+  function htmlPlugin(tree) {
     tree.match({ tag: 'link', attrs: { rel: 'stylesheet' } }, () => {
       return { tag: 'style', content: css }
     })
@@ -165,14 +194,10 @@ async function build () {
         return i
       }
     })
-    tree.match({ tag: 'script' }, i => {
-      if (i.attrs.src && i.attrs.src.includes('/src.')) {
-        return {
-          tag: 'script',
-          content: js
-        }
-      } else {
-        return i
+    tree.match({ tag: 'script' }, () => {
+      return {
+        tag: 'script',
+        content: js
       }
     })
     tree.match({ tag: 'a', attrs: { href: /^\/\w\w\/index.html$/ } }, i => {
@@ -206,25 +231,53 @@ async function build () {
     })
   }
 
-  let uncompressable = { '.png': true, '.webp': true, '.jpg': true }
+  async function processFile(lang) {
+    let file = join(DIST, lang, 'index.html')
+    let html = await readFile(file)
+    html = posthtml().use(htmlPlugin).process(html, { sync: true }).html
+    await writeFile(file, html)
+    let compressed = await gzip(html, { level: 9 })
+    await writeFile(file + '.gz', compressed)
+  }
+
+  await Promise.all([processFile('ru'), processFile('en')])
+}
+
+async function compressAssets() {
+  let files = await globby(join(DIST, '*.{js,ico,json}'))
   await Promise.all(
-    assets
-      .concat([join(DIST, 'favicon.ico'), join(DIST, 'location.json')])
-      .filter(i => !uncompressable[extname(i)] && i !== ROOT_INDEX)
+    files
       .filter(i => existsSync(i))
-      .map(async path => {
-        let file = await readFile(path)
-        if (extname(path) === '.html') {
-          file = posthtml().use(htmlPlugin).process(file, { sync: true }).html
-          await writeFile(path, file)
-        }
-        let compressed = await gzip(file, { level: 9 })
-        await writeFile(path + '.gz', compressed)
+      .map(async file => {
+        let content = await readFile(file)
+        let compressed = await gzip(content, { level: 9 })
+        await writeFile(file + '.gz', compressed)
       })
   )
 }
 
+async function build() {
+  await cleanDist()
+  await buildAssets()
+  let [js, [css, classes]] = await Promise.all([
+    repackScripts(),
+    repackStyles(),
+    copyImages(),
+    prepareLocation()
+  ])
+  js = updateClasses(js, classes)
+  await Promise.all([
+    updateCSP(js, css),
+    updateHtml(js, css, classes),
+    compressAssets()
+  ])
+}
+
 build().catch(e => {
-  process.stderr.write(e.stack + '\n')
+  if (e.stack) {
+    process.stderr.write(e.stack + '\n')
+  } else {
+    process.stderr.write(e + '\n')
+  }
   process.exit(1)
 })

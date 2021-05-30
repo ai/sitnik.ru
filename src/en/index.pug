@@ -4,15 +4,15 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
     meta( charset="UTF-8" )
     title Andrey Sitnik
     meta( name="description" content="Contacts and projects of Andrey Sitnik" )
-    include ../head.pug
+    include ../base/head.pug
   body
     .layout
       .layout_globe
 
-        a.photo( href="/photo/andreysitnik.jpg" target="_blank" )
+        a.photo( href="../photo/andreysitnik.jpg" target="_blank" )
           picture.photo_image
-            source( srcset="/photo/photo.avif" type="image/avif" )
-            img.photo_image( src="/photo/photo.jpg" alt="Andrey Sitnik photo" itemprop="image" )
+            source( srcset="../photo/photo.avif" type="image/avif" )
+            img.photo_image( src="../photo/photo.jpg" alt="Andrey Sitnik photo" itemprop="image" )
 
         h1.layout_title
           span( itemprop="givenName" ) Andrey
@@ -117,6 +117,6 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
               | Photos from travels and henna body painting
 
       .layout_language
-        a.link( href="/ru/index.pug" hreflang="ru" rel="alternate" ) Русский
+        a.link( href="/ru/" hreflang="ru" rel="alternate" ) Русский
 
-    script( src="/index.js" )
+    script( src="../index.js" )

@@ -4,15 +4,15 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
     meta( charset="UTF-8" )
     title Андрей Ситник
     meta( name="description" content="Контакты и проекты Андрея Ситника" )
-    include ../head.pug
+    include ../base/head.pug
   body
     .layout
       .layout_globe
 
-        a.photo( href="/photo/andreysitnik.jpg" target="_blank" )
+        a.photo( href="../photo/andreysitnik.jpg" target="_blank" )
           picture.photo_image
-            source( srcset="/photo/photo.avif" type="image/avif" )
-            img.photo_image( src="/photo/photo.jpg" alt="Фотография Андрея Ситника" itemprop="image" )
+            source( srcset="../photo/photo.avif" type="image/avif" )
+            img.photo_image( src="../photo/photo.jpg" alt="Фотография Андрея Ситника" itemprop="image" )
 
         h1.layout_title
           span( itemprop="givenName" ) Андрей
@@ -135,6 +135,6 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
               | Фотографии с путешествий и росписи тела хной
 
       .layout_language
-        a.link( href="/en/index.pug" hreflang="en" rel="alternate" ) English
+        a.link( href="/en/" hreflang="en" rel="alternate" ) English
 
-    script( src="/index.js" )
+    script( src="../index.js" )
