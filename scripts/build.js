@@ -183,50 +183,39 @@ async function updateCSP(js, css) {
 }
 
 async function updateHtml(js, css, classes) {
+  let ignorePreload = { script: true, image: true }
+
   function htmlPlugin(tree) {
-    tree.match({ tag: 'link', attrs: { rel: 'stylesheet' } }, () => {
-      return { tag: 'style', content: css }
-    })
-    tree.match({ tag: 'link', attrs: { rel: 'preload' } }, i => {
-      if (i.attrs.as === 'script' || i.attrs.as === 'image') {
-        return false
+    tree.walk(i => {
+      if (i.tag === 'link' && i.attrs.rel === 'stylesheet') {
+        return [{ tag: 'style', content: [css] }]
+      } else if (i.tag === 'link' && ignorePreload[i.attrs.as]) {
+        return []
+      } else if (i.tag === 'script') {
+        return {
+          tag: 'script',
+          content: js
+        }
+      } else if (i.attrs && i.attrs.class) {
+        return {
+          tag: i.tag,
+          content: i.content,
+          attrs: {
+            ...i.attrs,
+            class: i.attrs.class
+              .split(' ')
+              .map(kls => {
+                if (!classes[kls]) {
+                  process.stderr.write(`Unused class .${kls}\n`)
+                  process.exit(1)
+                }
+                return classes[kls]
+              })
+              .join(' ')
+          }
+        }
       } else {
         return i
-      }
-    })
-    tree.match({ tag: 'script' }, () => {
-      return {
-        tag: 'script',
-        content: js
-      }
-    })
-    tree.match({ tag: 'a', attrs: { href: /^\/\w\w\/index.html$/ } }, i => {
-      return {
-        tag: 'a',
-        content: i.content,
-        attrs: {
-          ...i.attrs,
-          href: i.attrs.href.replace('index.html', '')
-        }
-      }
-    })
-    tree.match({ attrs: { class: true } }, i => {
-      return {
-        tag: i.tag,
-        content: i.content,
-        attrs: {
-          ...i.attrs,
-          class: i.attrs.class
-            .split(' ')
-            .map(kls => {
-              if (!classes[kls]) {
-                process.stderr.write(`Unused class .${kls}\n`)
-                process.exit(1)
-              }
-              return classes[kls]
-            })
-            .join(' ')
-        }
       }
     })
   }
@@ -234,7 +223,9 @@ async function updateHtml(js, css, classes) {
   async function processFile(lang) {
     let file = join(DIST, lang, 'index.html')
     let html = await readFile(file)
-    html = posthtml().use(htmlPlugin).process(html, { sync: true }).html
+    html = posthtml()
+      .use(htmlPlugin)
+      .process(html.toString(), { sync: true }).html
     await writeFile(file, html)
     let compressed = await gzip(html, { level: 9 })
     await writeFile(file + '.gz', compressed)
