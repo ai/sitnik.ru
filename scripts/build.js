@@ -4,26 +4,28 @@ import { writeFile, readFile, copyFile, rm, mkdir } from 'fs/promises'
 import { basename, join, dirname, extname } from 'path'
 import { existsSync, ReadStream } from 'fs'
 import { fileURLToPath } from 'url'
+import { transformSync } from '@babel/core'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import rollupCommonJS from '@rollup/plugin-commonjs'
 import { createHash } from 'crypto'
 import { promisify } from 'util'
+import postcssImport from 'postcss-import'
 import combineMedia from 'postcss-combine-media-query'
+import autoprefixer from 'autoprefixer'
+import mediaMinMax from 'postcss-media-minmax'
 import stripDebug from 'strip-debug'
+import { minify } from 'terser'
 import { terser } from 'rollup-plugin-terser'
 import { rollup } from 'rollup'
 import nested from 'postcss-nested'
-import autoprefixer from 'autoprefixer'
-import mediaMinMax from 'postcss-media-minmax'
-import postcssImport from 'postcss-import'
 import posthtml from 'posthtml'
 import postcss from 'postcss'
 import sugarss from 'sugarss'
-import globby from 'globby'
 import hexrgba from 'postcss-hexrgba'
 import pxtorem from 'postcss-pxtorem'
-import dotenv from 'dotenv'
 import cssnano from 'cssnano'
+import dotenv from 'dotenv'
+import globby from 'globby'
 import zlib from 'zlib'
 import pug from 'pug'
 
@@ -184,7 +186,8 @@ async function compileScripts(classes, images) {
     .replace(/TypeError("[^"]+")/g, 'TypeError("TypeError")')
     .replace(/(\n)+/g, '\n')
     .replace(/{aliceblue[^}]+}/, '{}')
-  worker = stripDebug(worker).toString()
+  worker = transformSync(worker, { plugins: [stripDebug] }).code
+  worker = (await minify(worker, { sourceMap: false })).code
 
   for (let origin in classes) {
     let converted = classes[origin]

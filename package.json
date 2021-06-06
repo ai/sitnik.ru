@@ -12,6 +12,7 @@
     "build": "NODE_ENV=production ./scripts/build.js"
   },
   "dependencies": {
+    "@babel/core": "^7.14.3",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "autoprefixer": "^10.2.6",
@@ -30,8 +31,9 @@
     "rollup": "^2.50.6",
     "rollup-plugin-terser": "^7.0.2",
     "ssdeploy": "^0.6.20",
-    "strip-debug": "^4.0.0",
+    "strip-debug": "^6.0.0",
     "sugarss": "^3.0.3",
+    "terser": "^5.7.0",
     "three": "^0.129.0"
   },
   "devDependencies": {
@@ -40,7 +42,7 @@
     "@logux/stylelint-config": "^0.3.1",
     "@size-limit/file": "^4.11.0",
     "colorette": "^1.2.2",
-    "eslint": "^7.27.0",
+    "eslint": "^7.28.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-es5": "^1.5.0",
     "eslint-plugin-import": "^2.23.4",
@@ -52,7 +54,7 @@
     "eslint-plugin-unicorn": "^33.0.1",
     "fast-xml-parser": "^3.19.0",
     "lint-staged": "^11.0.0",
-    "prettier": "^2.3.0",
+    "prettier": "^2.3.1",
     "serve": "^11.3.2",
     "simple-git-hooks": "^2.4.1",
     "size-limit": "^4.11.0",
@@ -71,7 +73,7 @@
     "not android > 0"
   ],
   "engines": {
-    "node": ">=13.2.0"
+    "node": ">=14.0.0"
   },
   "browser": {
     "node_modules/three/src/renderers/webvr/*": "./src/empty.js"
@@ -116,18 +118,21 @@
   "size-limit": [
     {
       "name": "Critical",
-      "path": "dist/en/index.html",
+      "path": "dist/en/index.html.gz",
+      "gzip": false,
       "limit": "4 KB"
     },
     {
       "name": "Full",
       "path": [
-        "dist/worker.*.js",
+        "dist/en/index.html.gz",
+        "dist/worker.*.js.gz",
         "dist/map.*.webp",
         "dist/here.*.webp",
-        "dist/photo.*.webp"
+        "dist/photo.*.avif"
       ],
-      "limit": "180 KB"
+      "gzip": false,
+      "limit": "185 KB"
     }
   ],
   "yaspeller": {
