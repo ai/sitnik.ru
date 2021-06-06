@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-let MyError = require('./lib/my-error')
-let get = require('./lib/get')
+import { MyError } from './lib/my-error.js'
+import { get } from './lib/get.js'
 
-async function check () {
+async function check() {
   let [last, cur] = await Promise.all([
     get('https://evilmartians.com/locations/ai'),
     get('https://sitnik.ru/location.json')

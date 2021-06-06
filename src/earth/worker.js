@@ -1,22 +1,22 @@
-let { MeshPhongMaterial } = require('three/src/materials/MeshPhongMaterial')
-let { MeshBasicMaterial } = require('three/src/materials/MeshBasicMaterial')
-let { PerspectiveCamera } = require('three/src/cameras/PerspectiveCamera')
-let { ImageBitmapLoader } = require('three/src/loaders/ImageBitmapLoader')
-let { DirectionalLight } = require('three/src/lights/DirectionalLight')
-let { SphereGeometry } = require('three/src/geometries/SphereGeometry')
-let { SpriteMaterial } = require('three/src/materials/SpriteMaterial')
-let { WebGLRenderer } = require('three/src/renderers/WebGLRenderer')
-let { CanvasTexture } = require('three/src/textures/CanvasTexture')
-let { AmbientLight } = require('three/src/lights/AmbientLight')
-let { ImageLoader } = require('three/src/loaders/ImageLoader')
-let { Spherical } = require('three/src/math/Spherical')
-let { Vector3 } = require('three/src/math/Vector3')
-let { Sprite } = require('three/src/objects/Sprite')
-let { Scene } = require('three/src/scenes/Scene')
-let { Color } = require('three/src/math/Color')
-let { Mesh } = require('three/src/objects/Mesh')
+import { MeshPhongMaterial } from 'three/src/materials/MeshPhongMaterial'
+import { MeshBasicMaterial } from 'three/src/materials/MeshBasicMaterial'
+import { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera'
+import { ImageBitmapLoader } from 'three/src/loaders/ImageBitmapLoader'
+import { DirectionalLight } from 'three/src/lights/DirectionalLight'
+import { SphereGeometry } from 'three/src/geometries/SphereGeometry'
+import { SpriteMaterial } from 'three/src/materials/SpriteMaterial'
+import { WebGLRenderer } from 'three/src/renderers/WebGLRenderer'
+import { CanvasTexture } from 'three/src/textures/CanvasTexture'
+import { AmbientLight } from 'three/src/lights/AmbientLight'
+import { ImageLoader } from 'three/src/loaders/ImageLoader'
+import { Spherical } from 'three/src/math/Spherical'
+import { Vector3 } from 'three/src/math/Vector3'
+import { Sprite } from 'three/src/objects/Sprite'
+import { Scene } from 'three/src/scenes/Scene'
+import { Color } from 'three/src/math/Color'
+import { Mesh } from 'three/src/objects/Mesh'
 
-let visited = require('./dots.js')
+import visited from './dots.js'
 
 const IS_WORKER = typeof window !== 'object'
 const RADIUS = 0.765 * 0.88
@@ -43,7 +43,7 @@ let distanceToEdge = camera.position.distanceTo(new Vector3(0, RADIUS, 0))
 
 // Helpers
 
-function setPosition (position, radius, latitude, longitude) {
+function setPosition(position, radius, latitude, longitude) {
   let phi = (90 - latitude) * (Math.PI / 180)
   let theta = (longitude + 180) * (Math.PI / 180)
 
@@ -54,7 +54,7 @@ function setPosition (position, radius, latitude, longitude) {
 
 let loaded = 0
 
-function load () {
+function load() {
   loaded += 1
   if (loaded === 2) {
     renderer.render(scene, camera)
@@ -97,7 +97,7 @@ let light = new DirectionalLight(0x4f4f4f, 1)
 light.position.set(1, 0, 1)
 scene.add(light)
 
-function moveSun () {
+function moveSun() {
   let now = new Date()
   let solstice = new Date(now.getFullYear() + '-06-21 00:00:00')
   let days = (now - solstice) / (1000 * 60 * 60 * 24)
@@ -112,7 +112,7 @@ setInterval(moveSun, 30 * 60 * 1000)
 // Messages
 
 let commands = {
-  init (
+  init(
     canvas,
     width,
     height,
@@ -167,13 +167,13 @@ let commands = {
     camera.lookAt(0, 0, 0)
   },
 
-  resize (width, height) {
+  resize(width, height) {
     renderer.setSize(width, height)
     canvasHeight = height
     renderer.render(scene, camera)
   },
 
-  move (start, end) {
+  move(start, end) {
     delta.setFromVector3(camera.position)
 
     delta.theta -= (PI2 * (end[0] - start[0])) / canvasHeight
@@ -190,7 +190,7 @@ let commands = {
   }
 }
 
-function onMessage (e) {
+function onMessage(e) {
   commands[e.data[0]].apply(null, e.data.slice(1))
 }
 

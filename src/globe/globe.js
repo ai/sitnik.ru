@@ -1,5 +1,5 @@
-let showEarth = require('../earth/earth.js')
-let query = require('../query.js')
+import { showEarth } from '../earth/earth.js'
+import { query } from '../query.js'
 
 let saveData = navigator.connection && navigator.connection.saveData
 

@@ -1,2 +1,2 @@
-require('./base/base')
-require('./globe/globe')
+import './base/base.js'
+import './globe/globe.js'

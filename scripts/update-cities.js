@@ -1,28 +1,30 @@
 #!/usr/bin/env node
 
-let { red, gray, bold, green } = require('colorette')
-let { existsSync } = require('fs')
-let { writeFile } = require('fs').promises
-let { join } = require('path')
-let dotenv = require('dotenv')
-let parser = require('fast-xml-parser')
+import { red, gray, bold, green } from 'colorette'
+import { fileURLToPath } from 'url'
+import { join, dirname } from 'path'
+import { existsSync } from 'fs'
+import { writeFile } from 'fs/promises'
+import dotenv from 'dotenv'
+import parser from 'fast-xml-parser'
 
-let MyError = require('./lib/my-error')
-let read = require('./lib/read')
-let get = require('./lib/get')
+import { MyError } from './lib/my-error.js'
+import { read } from './lib/read.js'
+import { get } from './lib/get.js'
 
 dotenv.config()
 
 let BOOKMARKS_URL = 'https://www.google.com/bookmarks/lookup?output=xml'
 
-let BOOKMARKS_FILE = join(__dirname, 'cities', 'bookmarks.xml')
-let PROCESSED_FILE = join(__dirname, 'cities', 'processed.json')
-let CITIES_FILE = join(__dirname, 'cities', 'cities.json')
-let DOTS_FILE = join(__dirname, '..', 'src', 'earth', 'dots.js')
+const SCRIPTS = dirname(fileURLToPath(import.meta.url))
+const BOOKMARKS_FILE = join(SCRIPTS, 'cities', 'bookmarks.xml')
+const PROCESSED_FILE = join(SCRIPTS, 'cities', 'processed.json')
+const CITIES_FILE = join(SCRIPTS, 'cities', 'cities.json')
+const DOTS_FILE = join(SCRIPTS, '..', 'src', 'earth', 'dots.js')
 
 // Helpers
 
-function print (message, number) {
+function print(message, number) {
   process.stderr.write(message)
   if (number) process.stderr.write(': ' + bold(green(number)))
   process.stderr.write('\n')
@@ -31,7 +33,7 @@ function print (message, number) {
 let requests = 0
 let pool = []
 
-function nextTick () {
+function nextTick() {
   let tick = pool.pop()
   if (!tick) return
 
@@ -55,7 +57,7 @@ function nextTick () {
     .catch(tick[2])
 }
 
-function gmap (name, token, params) {
+function gmap(name, token, params) {
   params.key = token
   let query = Object.keys(params)
     .map(i => i + '=' + encodeURIComponent(params[i]))
@@ -74,11 +76,11 @@ function gmap (name, token, params) {
   })
 }
 
-function inside (address, ...value) {
+function inside(address, ...value) {
   return address.some(i => value.includes(i.long_name))
 }
 
-function cityName (responce) {
+function cityName(responce) {
   let address = (responce.result || responce.results[0]).address_components
   let country = address.find(i => i.types.includes('country'))
   let city = address.find(i => i.types.includes('locality'))
@@ -107,7 +109,7 @@ function cityName (responce) {
   }
 }
 
-function saveLatLng (cities, city, responce) {
+function saveLatLng(cities, city, responce) {
   let location = responce.results[0].geometry.location
   for (let i in cities) {
     if (cities[i][0] === location.lat && cities[i][1] === location.lng) {
@@ -117,7 +119,7 @@ function saveLatLng (cities, city, responce) {
   cities[city] = [location.lat, location.lng]
 }
 
-function prettyStringify (data) {
+function prettyStringify(data) {
   if (!Array.isArray(data)) {
     let prev = data
     data = {}
@@ -128,25 +130,25 @@ function prettyStringify (data) {
   return JSON.stringify(data, null, '  ') + '\n'
 }
 
-function prettyDots (dots) {
+function prettyDots(dots) {
   return (
-    'module.exports = [\n' +
+    'export default [\n' +
     dots.map(i => `  [${i[0]}, ${i[1]}]`).join(',\n') +
     '\n]\n'
   )
 }
 
-function diff (a1, b1, a2, b2) {
+function diff(a1, b1, a2, b2) {
   return Math.max(Math.abs(a1 - b1), Math.abs(a2 - b2))
 }
 
-function round (num) {
+function round(num) {
   return Math.round(num * 10) / 10
 }
 
 // Steps
 
-async function initBookmarks () {
+async function initBookmarks() {
   if (!existsSync(BOOKMARKS_FILE)) {
     throw new MyError(`Save ${BOOKMARKS_URL} as scripts/cities/bookmarks.xml`)
   }
@@ -155,7 +157,7 @@ async function initBookmarks () {
   return ast.xml_api_reply.bookmarks.bookmark
 }
 
-async function initProcessed () {
+async function initProcessed() {
   if (existsSync(PROCESSED_FILE)) {
     return JSON.parse(await read(PROCESSED_FILE))
   } else {
@@ -163,7 +165,7 @@ async function initProcessed () {
   }
 }
 
-async function initCities () {
+async function initCities() {
   if (existsSync(CITIES_FILE)) {
     return JSON.parse(await read(CITIES_FILE))
   } else {
@@ -171,7 +173,7 @@ async function initCities () {
   }
 }
 
-async function init () {
+async function init() {
   let [bookmarks, prevProcessed, cities] = await Promise.all([
     initBookmarks(),
     initProcessed(),
@@ -180,7 +182,7 @@ async function init () {
   return { bookmarks, prevProcessed, cities }
 }
 
-function filterBookmarks (data) {
+function filterBookmarks(data) {
   data.processed = {}
   let cities = Object.keys(data.prevProcessed).map(i => {
     return [i, data.prevProcessed[i]]
@@ -210,7 +212,7 @@ function filterBookmarks (data) {
   return data
 }
 
-async function findCities (data) {
+async function findCities(data) {
   let requesting = {}
   await Promise.all(
     data.newBookmarks.map(async ({ url, title, id }) => {
@@ -241,7 +243,7 @@ async function findCities (data) {
   return data
 }
 
-async function saveFiles (data) {
+async function saveFiles(data) {
   let locations = Object.values(data.cities)
   let dots = locations
     .reverse()

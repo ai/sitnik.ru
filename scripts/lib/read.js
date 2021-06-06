@@ -1,8 +1,6 @@
-let { readFile } = require('fs').promises
+import { readFile } from 'fs/promises'
 
-async function read (file) {
+export async function read(file) {
   let buffer = await readFile(file)
   return buffer.toString()
 }
-
-module.exports = read

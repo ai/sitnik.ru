@@ -1,23 +1,28 @@
 #!/usr/bin/env node
 
-let { writeFile, mkdir } = require('fs').promises
-let { join, dirname } = require('path')
-let { existsSync } = require('fs')
-let dotenv = require('dotenv')
+import { writeFile, mkdir } from 'fs/promises'
+import { join, dirname } from 'path'
+import { fileURLToPath } from 'url'
+import { existsSync } from 'fs'
+import dotenv from 'dotenv'
 
-let MyError = require('./lib/my-error')
-let read = require('./lib/read')
-let get = require('./lib/get')
+import { MyError } from './lib/my-error.js'
+import { read } from './lib/read.js'
+import { get } from './lib/get.js'
 
 dotenv.config()
 
-const FILE = join(__dirname, 'location', 'last.json')
+const FILE = join(
+  dirname(fileURLToPath(import.meta.url)),
+  'location',
+  'last.json'
+)
 
-async function loadLatLng () {
+async function loadLatLng() {
   return get('https://evilmartians.com/locations/ai')
 }
 
-async function loadName (latLng, lang) {
+async function loadName(latLng, lang) {
   let geodata = await get(
     'https://maps.googleapis.com/maps/api/geocode/json' +
       `?latlng=${latLng.latitude},${latLng.longitude}` +
@@ -48,7 +53,7 @@ async function loadName (latLng, lang) {
   return { country: country.long_name, city: city.long_name }
 }
 
-async function loadNames (latLng) {
+async function loadNames(latLng) {
   let [ru, en] = await Promise.all([
     loadName(latLng, 'ru'),
     loadName(latLng, 'en')
@@ -56,7 +61,7 @@ async function loadNames (latLng) {
   return { ...latLng, ru, en }
 }
 
-async function wasNotChanged (cur) {
+async function wasNotChanged(cur) {
   if (!existsSync(FILE)) return false
   let last = JSON.parse(await read(FILE))
   if (cur.latitude === last.latitude && cur.longitude === last.longitude) {
@@ -67,7 +72,7 @@ async function wasNotChanged (cur) {
   }
 }
 
-async function save (location) {
+async function save(location) {
   if (!existsSync(dirname(FILE))) {
     await mkdir(dirname(FILE))
   }

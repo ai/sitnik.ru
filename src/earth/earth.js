@@ -1,4 +1,4 @@
-let query = require('../query.js')
+import { query } from '../query.js'
 
 let initializing, postMessage, rotateStart
 
@@ -6,22 +6,22 @@ let earth = query('.earth')
 let canvas = query('.earth_canvas')
 let workerUrl = query('[as=script]').href
 
-function move (x, y) {
+function move(x, y) {
   postMessage(['move', rotateStart, [x, y]])
   rotateStart = [x, y]
 }
 
-function mouseMove (e) {
+function mouseMove(e) {
   move(e.clientX, e.clientY)
 }
 
-function mouseUp () {
+function mouseUp() {
   document.body.classList.remove('is-grabbing')
   document.removeEventListener('mousemove', mouseMove, false)
   document.removeEventListener('mouseup', mouseUp, false)
 }
 
-function detectAndStartEarth (offscreen) {
+function detectAndStartEarth(offscreen) {
   let webP = new Image()
   webP.src =
     'data:image/webp;base64,' +
@@ -31,7 +31,7 @@ function detectAndStartEarth (offscreen) {
   }
 }
 
-function startEarth (offscreen, isWebP) {
+function startEarth(offscreen, isWebP) {
   postMessage(
     [
       'init',
@@ -99,12 +99,12 @@ function startEarth (offscreen, isWebP) {
   }
 }
 
-function stopLoading () {
+function stopLoading() {
   canvas.style.opacity = 1
   query('.earth_loading').remove()
 }
 
-function init () {
+export function showEarth() {
   if (initializing) return
   initializing = true
 
@@ -131,5 +131,3 @@ function init () {
     document.head.appendChild(script)
   }
 }
-
-module.exports = init

@@ -2,37 +2,26 @@
   "private": true,
   "homepage": "https://sitnik.ru/",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "spell": "yaspeller *.md dist/**/*.html",
     "lint": "eslint . && stylelint src/**/*.sss",
     "test": "yarn lint & yarn build && size-limit && yarn spell",
-    "clean": "rm -Rf dist/ .parcel-cache src/globe/location.json",
+    "clean": "rm -Rf dist/ src/globe/location.json",
     "start": "serve dist/",
     "build": "NODE_ENV=production ./scripts/build.js"
   },
   "dependencies": {
-    "@babel/core": "^7.14.3",
-    "@parcel/core": "2.0.0-beta.2",
-    "@parcel/optimizer-cssnano": "2.0.0-beta.2",
-    "@parcel/optimizer-htmlnano": "2.0.0-beta.2",
-    "@parcel/packager-css": "2.0.0-beta.2",
-    "@parcel/packager-html": "2.0.0-beta.2",
-    "@parcel/transformer-css": "2.0.0-beta.2",
-    "@parcel/transformer-html": "2.0.0-beta.2",
-    "@parcel/transformer-postcss": "2.0.0-beta.2",
-    "@parcel/transformer-posthtml": "2.0.0-beta.2",
-    "@parcel/transformer-pug": "2.0.0-beta.2",
-    "@parcel/transformer-sugarss": "2.0.0-beta.2",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "autoprefixer": "^10.2.6",
-    "del": "^6.0.0",
+    "cssnano": "^5.0.5",
     "dotenv": "^10.0.0",
     "globby": "^11.0.3",
-    "parcel": "^2.0.0-beta.2",
     "postcss": "^8.3.0",
     "postcss-combine-media-query": "^1.0.1",
     "postcss-hexrgba": "^2.0.1",
+    "postcss-import": "^14.0.2",
     "postcss-media-minmax": "^5.0.0",
     "postcss-nested": "^5.0.5",
     "postcss-pxtorem": "^6.0.0",
@@ -81,24 +70,6 @@
     "not and_qq > 0",
     "not android > 0"
   ],
-  "postcss": {
-    "plugins": {
-      "postcss-media-minmax": {},
-      "postcss-nested": {},
-      "postcss-hexrgba": {},
-      "postcss-pxtorem": {
-        "propList": [
-          "*"
-        ],
-        "selectorBlackList": [
-          "html",
-          ".photo"
-        ],
-        "rootValue": 20
-      },
-      "autoprefixer": {}
-    }
-  },
   "engines": {
     "node": ">=13.2.0"
   },

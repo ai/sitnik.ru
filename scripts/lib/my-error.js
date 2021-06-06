@@ -1,7 +1,5 @@
-let red = require('./red')
-
-class MyError extends Error {
-  constructor (message) {
+export class MyError extends Error {
+  constructor(message) {
     super(message)
     this.name = 'MyError'
     Error.captureStackTrace(this, this.constructor)
@@ -11,12 +9,10 @@ class MyError extends Error {
 MyError.print = e => {
   process.stderr.write('\n')
   if (e.name === 'MyError' && e.message) {
-    process.stderr.write(red(e.message))
+    process.stderr.write(e.message)
   } else {
-    process.stderr.write(red(e.stack))
+    process.stderr.write(e.stack)
   }
   process.stderr.write('\n')
   process.exit(1)
 }
-
-module.exports = MyError
