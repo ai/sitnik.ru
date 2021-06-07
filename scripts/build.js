@@ -3,6 +3,7 @@
 import { writeFile, readFile, copyFile, rm, mkdir } from 'fs/promises'
 import { basename, join, dirname, extname } from 'path'
 import { existsSync, ReadStream } from 'fs'
+import { green, red, gray } from 'colorette'
 import { fileURLToPath } from 'url'
 import { transformSync } from '@babel/core'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
@@ -73,6 +74,14 @@ async function assetName(file) {
   let hash = await hashFile(file)
   let ext = extname(file)
   return basename(file, ext) + '.' + hash + ext
+}
+
+async function task(text, fn) {
+  let start = Date.now()
+  let result = await fn()
+  let ms = Date.now() - start
+  process.stdout.write(green('✔') + ' ' + text + ' ' + gray(ms + ' ms') + '\n')
+  return result
 }
 
 // Steps
@@ -301,27 +310,30 @@ async function compressAssets() {
 }
 
 async function build() {
-  let [location] = await Promise.all([loadLocation(), cleanDist()])
-  let [[css, classes], images] = await Promise.all([
-    compileStyles(),
-    copyImages(),
-    saveLocationCache(location)
+  let [location] = await Promise.all([
+    task('Load location', () => loadLocation()),
+    task('Clean dist/', () => cleanDist())
   ])
-  let js = await compileScripts(classes, images)
+  let [[css, classes], images] = await Promise.all([
+    task('Compile styles', () => compileStyles()),
+    task('Copy images', () => copyImages()),
+    task('Save location cache', () => saveLocationCache(location))
+  ])
+  let js = await task('Bundle scripts', () => compileScripts(classes, images))
   await Promise.all([
-    compileHtml(location, js, css, classes, images),
-    updateCSP(js, css)
+    task('Compile HTML', () => compileHtml(location, js, css, classes, images)),
+    task('Update nginx.conf', () => updateCSP(js, css))
   ])
   if (process.env.NODE_ENV === 'production') {
-    await compressAssets()
+    await task('Precompess assets', () => compressAssets())
   }
 }
 
 build().catch(e => {
   if (e.stack) {
-    process.stderr.write(e.stack + '\n')
+    process.stderr.write(red(e.stack) + '\n')
   } else {
-    process.stderr.write(e + '\n')
+    process.stderr.write(red(e) + '\n')
   }
   process.exit(1)
 })
