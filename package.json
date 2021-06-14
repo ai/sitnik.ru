@@ -19,7 +19,7 @@
     "cssnano": "^5.0.6",
     "dotenv": "^10.0.0",
     "globby": "^11.0.3",
-    "postcss": "^8.3.3",
+    "postcss": "^8.3.4",
     "postcss-combine-media-query": "^1.0.1",
     "postcss-hexrgba": "^2.0.1",
     "postcss-import": "^14.0.2",
@@ -32,7 +32,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "ssdeploy": "^0.6.21",
     "strip-debug": "^6.0.0",
-    "sugarss": "^4.0.0",
+    "sugarss": "^4.0.1",
     "terser": "^5.7.0",
     "three": "^0.129.0"
   },
