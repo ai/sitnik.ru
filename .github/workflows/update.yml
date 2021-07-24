@@ -32,7 +32,7 @@ jobs:
         run: yarn build
       - name: Install Google Cloud
         if: steps.location.outputs.updated
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        uses: google-github-actions/setup-gcloud@master
         with:
           version: '274.0.1'
           service_account_key: ${{ secrets.GCLOUD_AUTH }}
