@@ -47,8 +47,8 @@ async function loadName(latLng, lang) {
   if (!city) {
     city = address.find(i => i.types.includes('administrative_area_level_1'))
   }
-  if (city.long_name === 'New York' && lang === 'ru') {
-    city.long_name = 'Нью-Йорк'
+  if (city.long_name === 'Barcelona' && lang === 'ru') {
+    city.long_name = 'Барселона'
   }
   return { country: country.long_name, city: city.long_name }
 }
