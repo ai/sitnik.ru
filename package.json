@@ -4,7 +4,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "spell": "yaspeller *.md dist/**/*.html",
+    "spell": "yaspeller *.md dist/en/index.html dist/ru/index.html",
     "lint": "eslint . && stylelint src/**/*.sss",
     "test": "yarn lint & yarn build && size-limit && yarn spell",
     "clean": "rm -Rf dist/ src/globe/location.json",
@@ -165,7 +165,8 @@
       "Logux",
       "Логакс",
       "sitnikfriday",
-      "Ситникфрайдей"
+      "Ситникфрайдей",
+      "Castellano"
     ]
   },
   "sharec": {
