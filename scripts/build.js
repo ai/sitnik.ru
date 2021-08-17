@@ -95,8 +95,9 @@ async function loadLocation() {
   let location = {
     latitude: 40.7128,
     longitude: -74.006,
-    en: { country: 'USA', city: 'New York' },
-    ru: { country: 'США', city: 'Нью-Йорк' }
+    es: { country: 'España', city: 'Barcelona' },
+    en: { country: 'Spain', city: 'Barcelona' },
+    ru: { country: 'Испания', city: 'Барселона' }
   }
   if (existsSync(LOCATION)) {
     location = JSON.parse(await readFile(LOCATION))
@@ -259,7 +260,7 @@ async function compileHtml(location, js, css, classes, images) {
   }
 
   await Promise.all(
-    ['en', 'ru'].map(async lang => {
+    ['en', 'es', 'ru'].map(async lang => {
       let pugFile = join(SRC, lang, 'index.pug')
       let pugSource = await readFile(pugFile)
       let pugFn = pug.compile(pugSource.toString(), { filename: pugFile })

@@ -37,13 +37,6 @@ async function loadName(latLng, lang) {
   let country = address.find(i => i.types.includes('country'))
   let city = address.find(i => i.types.includes('locality'))
 
-  if (country.short_name === 'JP') {
-    if (address.some(i => i.short_name === 'Tōkyō-to')) {
-      city = { long_name: lang === 'ru' ? 'Токио' : 'Tokyo' }
-    }
-  } else if (country.short_name === 'US') {
-    country = { long_name: lang === 'ru' ? 'США' : 'USA' }
-  }
   if (!city) {
     city = address.find(i => i.types.includes('administrative_area_level_1'))
   }
@@ -54,11 +47,12 @@ async function loadName(latLng, lang) {
 }
 
 async function loadNames(latLng) {
-  let [ru, en] = await Promise.all([
+  let [ru, es, en] = await Promise.all([
     loadName(latLng, 'ru'),
+    loadName(latLng, 'es'),
     loadName(latLng, 'en')
   ])
-  return { ...latLng, ru, en }
+  return { ...latLng, ru, es, en }
 }
 
 async function wasNotChanged(cur) {
@@ -84,6 +78,7 @@ loadLatLng()
     if (await wasNotChanged(latLng)) return
     let location = await loadNames(latLng)
     process.stdout.write(`${location.en.city}, ${location.en.country}\n`)
+    process.stdout.write(`${location.es.city}, ${location.es.country}\n`)
     process.stdout.write(`${location.ru.city}, ${location.ru.country}\n`)
     await save(location)
   })

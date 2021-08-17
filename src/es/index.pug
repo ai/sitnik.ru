@@ -1,9 +1,9 @@
 doctype html
-html( lang="en" itemtype="https://schema.org/Person" itemscope )
+html( lang="es" itemtype="https://schema.org/Person" itemscope )
   head
     meta( charset="UTF-8" )
     title Andrey Sitnik
-    meta( name="description" content="Contacts and projects of Andrey Sitnik" )
+    meta( name="description" content="Contactos y proyectos de Andrey Sitnik" )
     include ../base/head.pug
   body
     .layout
@@ -12,7 +12,7 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
         a.photo( href="../photo/andreysitnik.jpg" target="_blank" )
           picture.photo_image
             source( srcset="../photo/photo.avif" type="image/avif" )
-            img.photo_image( src="../photo/photo.jpg" alt="Andrey Sitnik photo" itemprop="image" )
+            img.photo_image( src="../photo/photo.jpg" alt="Foto de Andrey Sitnik" itemprop="image" )
 
         h1.layout_title
           span( itemprop="givenName" ) Andrey
@@ -25,9 +25,9 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
             canvas.earth_canvas
 
           button.globe_location( type="button" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress" tabindex="-1" )
-            span( itemprop="addressLocality" )= location.en.city
+            span( itemprop="addressLocality" )= location.es.city
             = ', '
-            span( itemprop="addressCountry" )= location.en.country
+            span( itemprop="addressCountry" )= location.es.country
 
       .layout_links
 
@@ -36,7 +36,7 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
             a.link( href="mailto:andrey@sitnik.ru" itemprop="email" )
               | andrey@sitnik.ru
             .contacts_notes
-              a.link( href="https://keybase.io/iskin" itemprop="sameAs" rel="me" title="Public key for GnuPG to verify my signature or encrypt message for me" )
+              a.link( href="https://keybase.io/iskin" itemprop="sameAs" rel="me" title="Clave pública GnuPG para verificar mi firma o cifrar el mensaje por mí" )
                 | GPG 63BC 24D9 8C77 F786
           .contacts_contact
             a.link.is-text( href="tel:+19143123913" itemprop="telephone" )
@@ -44,9 +44,6 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
             .contacts_notes
               a.link( href="https://wa.me/19143123913" itemprop="sameAs" rel="me" )
                 | WhatsApp
-              = ' '
-              a.link( href="weixin://dl/chat?andrey_sitnik" itemprop="sameAs" rel="me" )
-                | WeChat
               = ' '
               a.link( href="https://t.me/sitnik" itemprop="sameAs" rel="me" )
                 | Telegram
@@ -63,23 +60,23 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
                     | Personal
                 li.projects_link
                   a.link( href="https://twitter.com/sitnikcode" itemprop="sameAs" rel="me" )
-                    | Development
+                    | Programación
             p
-              | My notes about sex, travels, and technologies
+              | Mis notas sobre sexo, viajes y tecnologías
 
           li.projects_item
             h2.projects_title
               a.link( href="https://github.com/ai" itemprop="sameAs" rel="me" )
                 | GitHub
             p
-              | I created Autoprefixer, PostCSS, Browserslist, Logux, and Nano ID
+              | He creado Autoprefixer, PostCSS, Browserslist, Logux y Nano ID
 
           li.projects_item( itemprop="worksFor" itemscope itemtype="http://schema.org/Organization" )
             h2.projects_title
               a.link( href="https://evilmartians.com/" itemprop="url" )
                 | Evil Martian
             p
-              = 'I am lead front-end developer in '
+              = 'Soy desarrollador principal de front-end en '
               span( itemprop="name" ) Evil Martians
 
           li.projects_item
@@ -93,31 +90,31 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
                   a.link( href="https://t.me/sitnikfriday" )
                     | Telegram
             p
-              | My sex-positive project
+              | Mi proyecto sexopositivo
 
           li.projects_item
             h2.projects_title
               a.link( href="https://twitter.com/linguopunk" )
                 | Linguopunk
             p
-              | My Twitter account about language diversity
+              | Mi cuenta de Twitter sobre la diversidad lingüística
 
           li.projects_item
             h2.projects_title
               a.link( href="https://twitter.com/lostinwiki" )
                 | Lost in Wikipedia
             p
-              | My Twitter account with strange facts from Wikipedia
+              | Mi cuenta de Twitter con datos extraños de Wikipedia
 
           li.projects_item
             h2.projects_title
               a.link( href="https://www.instagram.com/sitnikandrey/" itemprop="sameAs" rel="me" )
                 | Instagram
             p
-              | Photos from travels and henna body painting
+              | Fotos de viajes y pintura corporal con henna
 
       .layout_language
-        a.link( href="/es/" hreflang="en" rel="alternate" ) Castellano
+        a.link( href="/en/" hreflang="en" rel="alternate" ) English
         span.layout_separator= ' '
         a.link( href="/ru/" hreflang="ru" rel="alternate" ) Русский
 
