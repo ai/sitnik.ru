@@ -3,7 +3,7 @@
 import { writeFile, readFile, copyFile, rm, mkdir } from 'fs/promises'
 import { basename, join, dirname, extname } from 'path'
 import { existsSync, ReadStream } from 'fs'
-import { green, red, gray } from 'colorette'
+import { green, red, gray } from 'nanocolors'
 import { fileURLToPath } from 'url'
 import { transformSync } from '@babel/core'
 import { nodeResolve } from '@rollup/plugin-node-resolve'

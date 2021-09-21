@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { red, gray, bold, green } from 'colorette'
+import { red, gray, bold, green } from 'nanocolors'
 import { fileURLToPath } from 'url'
 import { join, dirname } from 'path'
 import { existsSync } from 'fs'
