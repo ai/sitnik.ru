@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - main
-env:
-  FORCE_COLOR: 2
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -15,6 +13,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
+          cache: yarn
       - name: Cache location
         continue-on-error: true
         uses: actions/cache@v2
@@ -22,20 +21,22 @@ jobs:
           path: ./scripts/location/
           key: location
       - name: Install build dependencies
-        uses: bahmutov/npm-install@v1
-        env:
-          NODE_ENV: production
+        run: yarn install --frozen-lockfile --production
       - name: Update location
         run: ./scripts/update-location.js
         env:
           GMAPS_TOKEN: ${{ secrets.GMAPS_TOKEN }}
+          FORCE_COLOR: 2
       - name: Build static files
         run: yarn build
+        env:
+          FORCE_COLOR: 2
       - name: Check files changes
         id: hash
         run: npx ssdeploy changed
         env:
           WEBSITE_URL: ${{ secrets.WEBSITE_URL }}
+          FORCE_COLOR: 2
       - name: Install Google Cloud
         if: "!steps.hash.outputs.noChanges"
         uses: google-github-actions/setup-gcloud@master
@@ -49,3 +50,4 @@ jobs:
           GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
           CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+          FORCE_COLOR: 2

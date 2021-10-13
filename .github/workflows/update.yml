@@ -2,8 +2,6 @@ name: Update location
 on:
   schedule:
     - cron: '28 * * * *'
-env:
-  FORCE_COLOR: 2
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -14,22 +12,24 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
+          cache: yarn
       - name: Check location
         id: location
         run: ./scripts/check-location.js
       - name: Install build dependencies
         if: steps.location.outputs.updated
-        uses: bahmutov/npm-install@v1
-        env:
-          NODE_ENV: production
+        run: yarn install --frozen-lockfile --production
       - name: Update location
         if: steps.location.outputs.updated
         run: ./scripts/update-location.js
         env:
           GMAPS_TOKEN: ${{ secrets.GMAPS_TOKEN }}
+          FORCE_COLOR: 2
       - name: Build static files
         if: steps.location.outputs.updated
         run: yarn build
+        env:
+          FORCE_COLOR: 2
       - name: Install Google Cloud
         if: steps.location.outputs.updated
         uses: google-github-actions/setup-gcloud@master
@@ -44,3 +44,4 @@ jobs:
           GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
           CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+          FORCE_COLOR: 2
