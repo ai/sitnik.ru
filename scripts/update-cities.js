@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-import { red, gray, bold, green } from 'nanocolors'
 import { fileURLToPath } from 'url'
 import { join, dirname } from 'path'
 import { existsSync } from 'fs'
 import { writeFile } from 'fs/promises'
-import dotenv from 'dotenv'
 import parser from 'fast-xml-parser'
+import dotenv from 'dotenv'
+import pico from 'picocolors'
 
 import { MyError } from './lib/my-error.js'
 import { read } from './lib/read.js'
@@ -26,7 +26,7 @@ const DOTS_FILE = join(SCRIPTS, '..', 'src', 'earth', 'dots.js')
 
 function print(message, number) {
   process.stderr.write(message)
-  if (number) process.stderr.write(': ' + bold(green(number)))
+  if (number) process.stderr.write(': ' + pico.bold(pico.green(number)))
   process.stderr.write('\n')
 }
 
@@ -43,7 +43,7 @@ function nextTick() {
       if (answer.status === 'ZERO_RESULTS' || answer.status === 'NOT_FOUND') {
         throw new MyError('404')
       } else if (answer.status === 'OK') {
-        process.stderr.write(gray('#'))
+        process.stderr.write(pico.gray('#'))
         return answer
       } else {
         throw new MyError(answer.error_message)
@@ -68,7 +68,9 @@ function gmap(name, token, params) {
     if (requests < 10) nextTick()
   }).catch(e => {
     if (e.message === '404') {
-      process.stderr.write(red('\n\nCan’t find ' + params.address + '\n\n'))
+      process.stderr.write(
+        pico.red('\n\nCan’t find ' + params.address + '\n\n')
+      )
       return e.message
     } else {
       throw e

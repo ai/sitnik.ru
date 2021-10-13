@@ -52,7 +52,7 @@
     "eslint-plugin-unicorn": "^36.0.0",
     "fast-xml-parser": "^3.20.0",
     "lint-staged": "^11.1.2",
-    "nanocolors": "^0.1.1",
+    "picocolors": "^1.0.0",
     "prettier": "^2.4.1",
     "serve": "^12.0.1",
     "simple-git-hooks": "^2.6.1",

@@ -3,7 +3,6 @@
 import { writeFile, readFile, copyFile, rm, mkdir } from 'fs/promises'
 import { basename, join, dirname, extname } from 'path'
 import { existsSync, ReadStream } from 'fs'
-import { green, red, gray } from 'nanocolors'
 import { fileURLToPath } from 'url'
 import { transformSync } from '@babel/core'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
@@ -27,6 +26,7 @@ import pxtorem from 'postcss-pxtorem'
 import cssnano from 'cssnano'
 import nested from 'postcss-nested'
 import dotenv from 'dotenv'
+import pico from 'picocolors'
 import zlib from 'zlib'
 import pug from 'pug'
 
@@ -80,7 +80,9 @@ async function task(text, fn) {
   let start = Date.now()
   let result = await fn()
   let ms = Date.now() - start
-  process.stdout.write(green('✔') + ' ' + text + ' ' + gray(ms + ' ms') + '\n')
+  process.stdout.write(
+    pico.green('✔') + ' ' + text + ' ' + pico.gray(ms + ' ms') + '\n'
+  )
   return result
 }
 
@@ -332,9 +334,9 @@ async function build() {
 
 build().catch(e => {
   if (e.stack) {
-    process.stderr.write(red(e.stack) + '\n')
+    process.stderr.write(pico.red(e.stack) + '\n')
   } else {
-    process.stderr.write(red(e) + '\n')
+    process.stderr.write(pico.red(e) + '\n')
   }
   process.exit(1)
 })
