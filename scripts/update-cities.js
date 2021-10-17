@@ -98,6 +98,10 @@ function cityName(responce) {
       })
     }
   }
+  if (!city.long_name) {
+    console.log(city)
+    throw new Error('No city name')
+  }
   if (inUS && city.long_name === 'Washington') {
     city.long_name += ', DC'
   }
@@ -155,7 +159,7 @@ async function initBookmarks() {
     throw new MyError(`Save ${BOOKMARKS_URL} as scripts/cities/bookmarks.xml`)
   }
   let xml = await read(BOOKMARKS_FILE)
-  let ast = parser.parse(xml, { parseTrueNumberOnly: true })
+  let ast = parser.parse(xml, { parseNodeValue: false })
   return ast.xml_api_reply.bookmarks.bookmark
 }
 
