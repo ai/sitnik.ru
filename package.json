@@ -4,62 +4,51 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "spell": "yaspeller *.md dist/en/index.html dist/ru/index.html",
     "lint": "eslint . && stylelint src/**/*.sss",
-    "test": "yarn lint & yarn build && size-limit && yarn spell",
+    "test": "yarn lint & yarn build && size-limit",
     "clean": "rm -Rf dist/ src/globe/location.json",
     "start": "serve dist/",
     "build": "NODE_ENV=production ./scripts/build.js"
   },
   "dependencies": {
-    "@babel/core": "^7.15.8",
-    "@rollup/plugin-commonjs": "^21.0.0",
-    "@rollup/plugin-node-resolve": "^13.0.5",
-    "autoprefixer": "^10.3.7",
-    "cssnano": "^5.0.8",
+    "@babel/core": "^7.16.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "autoprefixer": "^10.4.0",
+    "cssnano": "^5.0.9",
     "dotenv": "^10.0.0",
     "globby": "^12.0.2",
-    "postcss": "^8.3.9",
+    "postcss": "^8.3.11",
     "postcss-combine-media-query": "^1.0.1",
-    "postcss-hexrgba": "^2.0.1",
     "postcss-import": "^14.0.2",
     "postcss-media-minmax": "^5.0.0",
     "postcss-nested": "^5.0.6",
     "postcss-pxtorem": "^6.0.0",
     "posthtml": "^0.16.5",
     "pug": "^3.0.2",
-    "rollup": "^2.58.0",
+    "rollup": "^2.59.0",
     "rollup-plugin-terser": "^7.0.2",
     "ssdeploy": "^0.7.2",
     "strip-debug": "^6.0.0",
     "sugarss": "^4.0.1",
     "terser": "^5.9.0",
-    "three": "^0.133.1"
+    "three": "^0.134.0"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^46.0.0",
-    "@logux/sharec-config": "^0.12.2",
-    "@logux/stylelint-config": "^0.3.1",
-    "@size-limit/file": "^6.0.3",
-    "eslint": "^8.0.1",
+    "@logux/eslint-config": "^46.1.0",
+    "@logux/stylelint-config": "^0.5.0",
+    "@size-limit/file": "^6.0.4",
+    "eslint": "^8.2.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-jest": "^25.2.2",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prefer-let": "^1.1.0",
-    "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-unicorn": "^37.0.1",
-    "fast-xml-parser": "^3.20.3",
-    "lint-staged": "^11.2.3",
+    "eslint-plugin-prefer-let": "^3.0.1",
+    "eslint-plugin-promise": "^5.1.1",
+    "fast-xml-parser": "^3.21.1",
     "picocolors": "^1.0.0",
-    "prettier": "^2.4.1",
-    "serve": "^12.0.1",
-    "simple-git-hooks": "^2.6.1",
-    "size-limit": "^6.0.3",
-    "stylelint": "^13.13.1",
-    "typescript": "^4.4.4",
-    "yaspeller": "^7.2.0"
+    "serve": "^13.0.2",
+    "size-limit": "^6.0.4",
+    "stylelint": "^14.0.1"
   },
   "browserslist": [
     "last 2 versions",
@@ -93,10 +82,11 @@
     "**/errors.ts"
   ],
   "stylelint": {
-    "extends": "@logux/stylelint-config"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
+    "extends": "@logux/stylelint-config",
+    "customSyntax": "sugarss",
+    "rules": {
+      "color-no-hex": true
+    }
   },
   "prettier": {
     "arrowParens": "avoid",
@@ -105,14 +95,6 @@
     "semi": false,
     "singleQuote": true,
     "trailingComma": "none"
-  },
-  "lint-staged": {
-    "*.md": "yaspeller",
-    "*.js": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.sss": "stylelint --fix"
   },
   "size-limit": [
     {
@@ -133,44 +115,5 @@
       "gzip": false,
       "limit": "190 KB"
     }
-  ],
-  "yaspeller": {
-    "ignoreCapitalization": true,
-    "dictionary": [
-      "GPG",
-      "63BC",
-      "24D9",
-      "8C77",
-      "F786",
-      "WhatsApp",
-      "WeChat",
-      "NSFW",
-      "GitHub",
-      "Autoprefixer",
-      "PostCSS",
-      "Browserslist",
-      "Instagram",
-      "Linguopunk",
-      "ru",
-      "sitnik",
-      "Телеграм",
-      "ВКонтакте",
-      "Твиттер",
-      "Гитхаб",
-      "Автопрефиксер",
-      "Браузерслист",
-      "фронтенд",
-      "Инстаграм",
-      "Лингвопанк",
-      "Logux",
-      "Логакс",
-      "sitnikfriday",
-      "Ситникфрайдей",
-      "Castellano"
-    ]
-  },
-  "sharec": {
-    "config": "@logux/sharec-config",
-    "version": "0.12.2"
-  }
+  ]
 }

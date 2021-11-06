@@ -21,7 +21,6 @@ import { globby } from 'globby'
 import posthtml from 'posthtml'
 import postcss from 'postcss'
 import sugarss from 'sugarss'
-import hexrgba from 'postcss-hexrgba'
 import pxtorem from 'postcss-pxtorem'
 import cssnano from 'cssnano'
 import nested from 'postcss-nested'
@@ -153,7 +152,6 @@ async function compileStyles() {
     mediaMinMax(),
     postcssImport(),
     nested(),
-    hexrgba(),
     pxtorem({
       selectorBlackList: ['html', '.photo'],
       rootValue: 20,
