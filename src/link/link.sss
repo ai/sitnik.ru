@@ -1,19 +1,19 @@
 .link
   position: relative
   display: inline-block
-  color: hsl(214deg 100% 50%)
+  color: hsl(214 100% 50%)
   text-decoration: none
   border-radius: 0.3em
   transition: color 200ms
 
   @media (prefers-color-scheme: dark)
-    color: hsl(207deg 100% 58%)
+    color: hsl(207 100% 58%)
 
   &:visited
-    color: hsl(214deg 100% 50%)
+    color: hsl(214 100% 50%)
 
     @media (prefers-color-scheme: dark)
-      color: hsl(214deg 98% 66%)
+      color: hsl(214 98% 66%)
 
 .link::before
   position: absolute
@@ -25,7 +25,7 @@
   content: ""
   background: currentColor
   border-radius: 0.3em
-  opacity: 20%
+  opacity: 0.2
   transition: all 200ms
   transform: scaleY(0.06)
   transform-origin: 0 100% 0
@@ -34,22 +34,22 @@
     transform: none
 
 .link.is-text
-  color: hsl(0deg 0% 0%)
+  color: hsl(0 0% 0%)
 
   @media (prefers-color-scheme: dark)
-    color: hsl(0deg 0% 100%)
+    color: hsl(0 0% 100%)
 
   &::before
-    opacity: 0%
+    opacity: 0
 
 .link:focus
-  color: hsl(0deg 0% 100%)
+  color: hsl(0 0% 100%)
   transform: none
 
   &::before
-    background: hsl(214deg 100% 50%)
-    opacity: 100%
+    background: hsl(214 100% 50%)
+    opacity: 1
     transform: none
 
   @media (prefers-color-scheme: dark)
-    color: hsl(0deg 0% 100%)
+    color: hsl(0 0% 100%)

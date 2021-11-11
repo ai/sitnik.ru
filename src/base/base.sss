@@ -20,7 +20,7 @@ html
     font-size: 16px
 
 body
-  -webkit-tap-highlight-color: rgb(0 0 0 / 0%)
+  -webkit-tap-highlight-color: rgb(0 0 0 / 0)
 
   &.is-grabbing
     cursor: grabbing
@@ -40,10 +40,10 @@ a:active
     transition: none
 
 ::selection
-  background: hsla(214deg 100% 50% / 20%)
+  background: hsl(214 100% 50% / 0.2)
 
   @media (prefers-color-scheme: dark)
-    background: hsl(214deg 100% 50%)
+    background: hsl(214 100% 50%)
 
 @media (prefers-reduced-motion: reduce)
   *,
@@ -53,5 +53,5 @@ a:active
 
 @media (prefers-color-scheme: dark)
   body
-    color: hsl(0deg 0% 100%)
-    background: hsl(0deg 0% 20%)
+    color: hsl(0 0% 100%)
+    background: hsl(0 0% 20%)
