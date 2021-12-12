@@ -37,7 +37,7 @@ jobs:
           FORCE_COLOR: 2
       - name: Check files changes
         id: hash
-        run: npx ssdeploy changed
+        run: ./node_modules/.bin/ssdeploy changed
         env:
           WEBSITE_URL: ${{ secrets.WEBSITE_URL }}
           FORCE_COLOR: 2
@@ -48,7 +48,7 @@ jobs:
           service_account_key: ${{ secrets.GCLOUD_AUTH }}
       - name: Deploy files
         if: "!steps.hash.outputs.noChanges"
-        run: npx ssdeploy deploy --verbose
+        run: ./node_modules/.bin/ssdeploy deploy --verbose
         env:
           GCLOUD_APP: ${{ secrets.GCLOUD_APP }}
           GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
