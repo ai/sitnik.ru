@@ -46,6 +46,7 @@ dependencies:
   cssnano: 5.0.12_postcss@8.4.4
   dotenv: 10.0.0
   globby: 12.0.2
+  picocolors: 1.0.0
   postcss: 8.4.4
   postcss-combine-media-query: 1.0.1
   postcss-import: 14.0.2_postcss@8.4.4
@@ -73,7 +74,6 @@ devDependencies:
   eslint-plugin-prefer-let: 3.0.1
   eslint-plugin-promise: 5.2.0_eslint@8.4.1
   fast-xml-parser: 3.21.1
-  picocolors: 1.0.0
   serve: 13.0.2
   size-limit: 7.0.4
   stylelint: 14.1.0
