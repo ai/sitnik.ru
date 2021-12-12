@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "lint": "eslint . && stylelint src/**/*.sss",
-    "test": "yarn lint && yarn build && size-limit",
+    "test": "pnpm lint && pnpm build && size-limit",
     "clean": "rm -Rf dist/ src/globe/location.json",
     "start": "serve dist/",
     "build": "NODE_ENV=production ./scripts/build.js"

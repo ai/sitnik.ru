@@ -8,17 +8,21 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 6.23.6
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 16
-          cache: yarn
+          cache: pnpm
       - name: Check location
         id: location
         run: ./scripts/check-location.js
       - name: Install build dependencies
         if: steps.location.outputs.updated
-        run: yarn install --frozen-lockfile --production
+        run: pnpm install --frozen-lockfile --production
       - name: Update location
         if: steps.location.outputs.updated
         run: ./scripts/update-location.js
@@ -27,7 +31,7 @@ jobs:
           FORCE_COLOR: 2
       - name: Build static files
         if: steps.location.outputs.updated
-        run: yarn build
+        run: pnpm build
         env:
           FORCE_COLOR: 2
       - name: Install Google Cloud
@@ -38,7 +42,7 @@ jobs:
           service_account_key: ${{ secrets.GCLOUD_AUTH }}
       - name: Deploy files
         if: steps.location.outputs.updated
-        run: yarn run ssdeploy deploy
+        run: pnpx ssdeploy deploy
         env:
           GCLOUD_APP: ${{ secrets.GCLOUD_APP }}
           GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}

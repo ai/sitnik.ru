@@ -9,11 +9,15 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 6.23.6
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 16
-          cache: yarn
+          cache: pnpm
       - name: Cache location
         continue-on-error: true
         uses: actions/cache@v2
@@ -21,14 +25,14 @@ jobs:
           path: ./scripts/location/
           key: location
       - name: Install build dependencies
-        run: yarn install --frozen-lockfile --production
+        run: pnpm install --frozen-lockfile --production
       - name: Update location
         run: ./scripts/update-location.js
         env:
           GMAPS_TOKEN: ${{ secrets.GMAPS_TOKEN }}
           FORCE_COLOR: 2
       - name: Build static files
-        run: yarn build
+        run: pnpm build
         env:
           FORCE_COLOR: 2
       - name: Check files changes
