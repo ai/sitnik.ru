@@ -8,7 +8,15 @@ export function get(url, maxAttempts = 1, attempt = 1) {
         buffer += i
       })
       res.on('end', () => {
-        resolve(JSON.parse(buffer))
+        let data
+        try {
+          data = JSON.parse(buffer)
+        } catch (e) {
+          process.stderr.write(buffer.toString())
+          reject(e)
+          return
+        }
+        resolve(data)
       })
     }).on('error', reject)
   }).catch(e => {
