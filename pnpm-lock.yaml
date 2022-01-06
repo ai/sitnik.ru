@@ -5,7 +5,7 @@ specifiers:
   '@logux/eslint-config': ^46.1.1
   '@logux/stylelint-config': ^0.9.0
   '@rollup/plugin-commonjs': ^21.0.1
-  '@rollup/plugin-node-resolve': ^13.1.2
+  '@rollup/plugin-node-resolve': ^13.1.3
   '@size-limit/file': ^7.0.5
   autoprefixer: ^10.4.1
   cssnano: ^5.0.14
@@ -41,7 +41,7 @@ specifiers:
 dependencies:
   '@babel/core': 7.16.7
   '@rollup/plugin-commonjs': 21.0.1_rollup@2.63.0
-  '@rollup/plugin-node-resolve': 13.1.2_rollup@2.63.0
+  '@rollup/plugin-node-resolve': 13.1.3_rollup@2.63.0
   autoprefixer: 10.4.1_postcss@8.4.5
   cssnano: 5.0.14_postcss@8.4.5
   dotenv: 10.0.0
@@ -368,8 +368,8 @@ packages:
       rollup: 2.63.0
     dev: false
 
-  /@rollup/plugin-node-resolve/13.1.2_rollup@2.63.0:
-    resolution: {integrity: sha512-xyqbuf1vyOPC60jEKhx3DBHunymnCJswzjNTKfX4Jz7zCPar1UqbRZCNY1u5QaXh97beaFTWdoUUWiV4qX8o/g==}
+  /@rollup/plugin-node-resolve/13.1.3_rollup@2.63.0:
+    resolution: {integrity: sha512-BdxNk+LtmElRo5d06MGY4zoepyrXX1tkzX2hrnPEZ53k78GuOMWLqmJDGIIOPwVRIFZrLQOo+Yr6KtCuLIA0AQ==}
     engines: {node: '>= 10.0.0'}
     peerDependencies:
       rollup: ^2.42.0
@@ -695,7 +695,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001296
-      electron-to-chromium: 1.4.34
+      electron-to-chromium: 1.4.36
       escalade: 3.1.1
       node-releases: 2.0.1
       picocolors: 1.0.0
@@ -1168,8 +1168,8 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /electron-to-chromium/1.4.34:
-    resolution: {integrity: sha512-B7g6Y9No9XMYk1VNrQ8KAmSEo1Iltrz/5EjOGxl1DffQAb3z/XbpHRCfYKwV8D+CPXm4Q7Xg1sceSt9osNwRIA==}
+  /electron-to-chromium/1.4.36:
+    resolution: {integrity: sha512-MbLlbF39vKrXWlFEFpCgDHwdlz4O3LmHM5W4tiLRHjSmEUXjJjz8sZkMgWgvYxlZw3N1iDTmCEtOkkESb5TMCg==}
     dev: false
 
   /emoji-regex/8.0.0:
@@ -1307,7 +1307,7 @@ packages:
       eslint-import-resolver-node: 0.3.6
       eslint-module-utils: 2.7.2
       has: 1.0.3
-      is-core-module: 2.8.0
+      is-core-module: 2.8.1
       is-glob: 4.0.3
       minimatch: 3.0.4
       object.values: 1.1.5
@@ -1584,7 +1584,7 @@ packages:
     hasBin: true
     dependencies:
       debug: 4.3.3
-      graceful-fs: 4.2.8
+      graceful-fs: 4.2.9
       minimatch: 3.0.4
     transitivePeerDependencies:
       - supports-color
@@ -1722,8 +1722,8 @@ packages:
     resolution: {integrity: sha1-L0SUrIkZ43Z8XLtpHp9GMyQoXUM=}
     dev: true
 
-  /graceful-fs/4.2.8:
-    resolution: {integrity: sha512-qkIilPUYcNhJpd33n0GBXTB1MMPp14TxEsEs0pTrsSVucApsYzW5V+Q8Qxhik6KU3evy+qkAAowTByymK0avdg==}
+  /graceful-fs/4.2.9:
+    resolution: {integrity: sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==}
     dev: false
 
   /hard-rejection/2.1.0:
@@ -1876,8 +1876,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /is-core-module/2.8.0:
-    resolution: {integrity: sha512-vd15qHsaqrRL7dtH6QNuy0ndJmRDrS9HAM1CAiSifNUFv4x1a0CCVsj18hJ1mShxIG6T2i1sO78MkP56r0nYRw==}
+  /is-core-module/2.8.1:
+    resolution: {integrity: sha512-SdNCUs284hr40hFTFP6l0IfZ/RSrMXF3qgoRHd3/79unUTvrFO/JoXwkGm+5J/Oe3E/b5GsnG330uUNgRpu1PA==}
     dependencies:
       has: 1.0.3
 
@@ -2318,7 +2318,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       hosted-git-info: 4.0.2
-      is-core-module: 2.8.0
+      is-core-module: 2.8.1
       semver: 7.3.5
       validate-npm-package-license: 3.0.4
     dev: true
@@ -3175,7 +3175,7 @@ packages:
     resolution: {integrity: sha512-3wCbTpk5WJlyE4mSOtDLhqQmGFi0/TD9VPwmiolnk8U0wRgMEktqCXd3vy5buTO3tljvalNvKrjHEfrd2WpEKA==}
     hasBin: true
     dependencies:
-      is-core-module: 2.8.0
+      is-core-module: 2.8.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
@@ -3581,7 +3581,7 @@ packages:
       strip-ansi: 6.0.1
       style-search: 0.1.0
       svg-tags: 1.0.0
-      table: 6.7.5
+      table: 6.8.0
       v8-compile-cache: 2.3.0
       write-file-atomic: 3.0.3
     transitivePeerDependencies:
@@ -3631,8 +3631,8 @@ packages:
       stable: 0.1.8
     dev: false
 
-  /table/6.7.5:
-    resolution: {integrity: sha512-LFNeryOqiQHqCVKzhkymKwt6ozeRhlm8IL1mE8rNUurkir4heF6PzMyRgaTa4tlyPTGGgXuvVOF/OLWiH09Lqw==}
+  /table/6.8.0:
+    resolution: {integrity: sha512-s/fitrbVeEyHKFa7mFdkuQMWlH1Wgw/yEXMt5xACT4ZpzWFluehAxRtUUQKPuWhaLAWhFcVx6w3oC8VKaUfPGA==}
     engines: {node: '>=10.0.0'}
     dependencies:
       ajv: 8.8.2
