@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url'
 import { join, dirname } from 'path'
 import { existsSync } from 'fs'
 import { writeFile } from 'fs/promises'
-import parser from 'fast-xml-parser'
+import { XMLParser } from 'fast-xml-parser'
 import dotenv from 'dotenv'
 import pico from 'picocolors'
 
@@ -159,6 +159,7 @@ async function initBookmarks() {
     throw new MyError(`Save ${BOOKMARKS_URL} as scripts/cities/bookmarks.xml`)
   }
   let xml = await read(BOOKMARKS_FILE)
+  let parser = new XMLParser()
   let ast = parser.parse(xml, { parseNodeValue: false })
   return ast.xml_api_reply.bookmarks.bookmark
 }

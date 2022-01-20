@@ -45,7 +45,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.0.0",
-    "fast-xml-parser": "^3.21.1",
+    "fast-xml-parser": "^4.0.1",
     "serve": "^13.0.2",
     "size-limit": "^7.0.5",
     "stylelint": "^14.2.0"
