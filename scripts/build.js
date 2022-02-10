@@ -30,6 +30,7 @@ import zlib from 'zlib'
 import pug from 'pug'
 
 import { cssCompressor } from './lib/css-compressor.js'
+import { MyError } from './lib/my-error.js'
 
 let gzip = promisify(zlib.gzip)
 
@@ -232,8 +233,7 @@ async function compileHtml(location, js, css, classes, images) {
               .split(' ')
               .map(kls => {
                 if (!classes[kls]) {
-                  process.stderr.write(`Unused class .${kls}\n`)
-                  process.exit(1)
+                  throw new MyError(`Unused class .${kls}`)
                 }
                 return classes[kls]
               })
@@ -317,11 +317,4 @@ async function build() {
   }
 }
 
-build().catch(e => {
-  if (e.stack) {
-    process.stderr.write(pico.red(e.stack) + '\n')
-  } else {
-    process.stderr.write(pico.red(e) + '\n')
-  }
-  process.exit(1)
-})
+build().catch(MyError.print)

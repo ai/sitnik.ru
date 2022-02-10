@@ -1,6 +1,7 @@
-const A = 'a'.charCodeAt(0)
+import { MyError } from './my-error.js'
 
 const COMPRESSED = Symbol('compressed')
+const A = 'a'.charCodeAt(0)
 
 export function cssCompressor(classes) {
   let lastClass = -1
@@ -38,10 +39,7 @@ export function cssCompressor(classes) {
       } else if (decl.value.includes('var(')) {
         decl.value = decl.value.replace(/--[\w-]+/, name => {
           if (!customs[name]) {
-            process.stderr.write(
-              `Custom Properties ${name} without definition\n`
-            )
-            process.exit(1)
+            throw new MyError(`Custom Properties ${name} without definition`)
           }
           return customs[name]
         })
