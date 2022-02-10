@@ -1,19 +1,20 @@
 .link
   position: relative
   display: inline-block
-  color: hsl(214 100% 50%)
+  color: var(--accent)
   text-decoration: none
   border-radius: 0.3em
   transition: color 200ms
 
-  @media (prefers-color-scheme: dark)
-    color: hsl(207 100% 58%)
-
   &:visited
-    color: hsl(214 100% 50%)
+    color: var(--accent)
 
-    @media (prefers-color-scheme: dark)
-      color: hsl(207 100% 58%)
+  &.is-text
+    color: var(--text)
+
+  &:focus
+    color: hsl(0 0% 100%)
+    transform: none
 
 .link::before
   position: absolute
@@ -23,9 +24,8 @@
   left: -5px
   z-index: -1
   content: ""
-  background: currentcolor
+  background: var(--hover)
   border-radius: 0.3em
-  opacity: 0.2
   transition: all 200ms
   transform: scaleY(0.06)
   transform-origin: 0 100% 0
@@ -33,23 +33,10 @@
   :hover&
     transform: none
 
-.link.is-text
-  color: hsl(0 0% 0%)
-
-  @media (prefers-color-scheme: dark)
-    color: hsl(0 0% 100%)
-
-  &::before
+  .is-text&
     opacity: 0
 
-.link:focus
-  color: hsl(0 0% 100%)
-  transform: none
-
-  &::before
-    background: hsl(214 100% 50%)
+  :focus&
+    background: var(--accent)
     opacity: 1
     transform: none
-
-  @media (prefers-color-scheme: dark)
-    color: hsl(0 0% 100%)

@@ -20,25 +20,22 @@
 
 .globe_location
   font-size: inherit
-  color: hsl(0 0% 0%)
+  color: var(--text)
   cursor: text
   user-select: text
   background: none
   border: none
 
-  @media (prefers-color-scheme: dark)
-    color: hsl(0 0% 100%)
-
   @media (width <= 980px)
     position: relative
     margin-left: 17px
-    color: hsl(214 100% 50%)
+    color: var(--accent)
     cursor: pointer
     border-bottom: 1px dashed
-    -webkit-tap-highlight-color: hsl(214 100% 50% / 0.3)
+    -webkit-tap-highlight-color: var(--hover)
 
     &:active
-      background: hsl(214 100% 50% / 0.2)
+      background: var(--hover)
 
 .globe_location::before
   @media (width <= 980px)
@@ -49,12 +46,9 @@
     margin: 0 6px 0 3px
     content: ""
     border: 6px solid
-    border-color: transparent transparent transparent hsl(214 100% 50%)
+    border-color: transparent transparent transparent var(--accent)
     border-right-width: 0
     transition: transform 400ms
 
     .globe.is-open &
       transform: rotate(90deg)
-
-  @media (width <= 980px) and (prefers-color-scheme: dark)
-    border-color: transparent transparent transparent hsl(214 98% 66%)
