@@ -1,9 +1,15 @@
 const A = 'a'.charCodeAt(0)
 
+const COMPRESSED = Symbol('compressed')
+
 export function cssCompressor(classes) {
   let lastUsed = -1
-  return root => {
-    root.walkRules(rule => {
+  return {
+    postcssPlugin: 'cssCompressor',
+    Rule(rule) {
+      if (rule[COMPRESSED]) return
+      rule[COMPRESSED] = true
+
       rule.selector = rule.selector.replace(/\.[\w-]+/g, str => {
         let kls = str.substr(1)
         if (!classes[kls]) {
@@ -13,6 +19,8 @@ export function cssCompressor(classes) {
         }
         return '.' + classes[kls]
       })
-    })
+    }
   }
 }
+
+cssCompressor.postcss = true
