@@ -29,13 +29,14 @@ import pico from 'picocolors'
 import zlib from 'zlib'
 import pug from 'pug'
 
+import { cssCompressor } from './lib/css-compressor.js'
+
 let gzip = promisify(zlib.gzip)
 
 dotenv.config()
 
 // Helpers
 
-const A = 'a'.charCodeAt(0)
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const SRC = join(ROOT, 'src')
 const DIST = join(ROOT, 'dist')
@@ -131,20 +132,6 @@ async function copyImages() {
 
 async function compileStyles() {
   let classes = {}
-  let lastUsed = -1
-  function cssPlugin(root) {
-    root.walkRules(rule => {
-      rule.selector = rule.selector.replace(/\.[\w-]+/g, str => {
-        let kls = str.substr(1)
-        if (!classes[kls]) {
-          lastUsed += 1
-          if (lastUsed === 26) lastUsed -= 26 + 7 + 25
-          classes[kls] = String.fromCharCode(A + lastUsed)
-        }
-        return '.' + classes[kls]
-      })
-    })
-  }
   let from = join(SRC, 'index.sss')
   let sss = await readFile(from)
   let result = await postcss([
@@ -158,7 +145,7 @@ async function compileStyles() {
       propList: ['*']
     }),
     autoprefixer(),
-    cssPlugin,
+    cssCompressor(classes),
     cssnano()
   ]).process(sss, { from, parser: sugarss, map: false })
   return [result.css, classes]
