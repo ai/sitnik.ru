@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
 import { writeFile, readFile, copyFile, rm, mkdir } from 'fs/promises'
-import { basename, join, dirname, extname } from 'path'
+import { basename, join, extname } from 'path'
 import { existsSync, ReadStream } from 'fs'
-import { fileURLToPath } from 'url'
 import { transformSync } from '@babel/core'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import rollupCommonJS from '@rollup/plugin-commonjs'
@@ -30,6 +29,8 @@ import pico from 'picocolors'
 import zlib from 'zlib'
 import pug from 'pug'
 
+import { SRC, DIST, LOCATION, NGINX } from './lib/dirs.js'
+import { htmlCompressor } from './lib/html-compressor.js'
 import { cssCompressor } from './lib/css-compressor.js'
 import { MyError } from './lib/my-error.js'
 
@@ -38,12 +39,6 @@ let gzip = promisify(zlib.gzip)
 dotenv.config()
 
 // Helpers
-
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
-const SRC = join(ROOT, 'src')
-const DIST = join(ROOT, 'dist')
-const NGINX = join(ROOT, 'nginx.conf')
-const LOCATION = join(ROOT, 'scripts', 'location', 'last.json')
 
 function sha256(string) {
   return createHash('sha256').update(string, 'utf8').digest('base64')
@@ -204,50 +199,6 @@ async function compileScripts(classes, images) {
 }
 
 async function compileHtml(location, js, css, classes, images) {
-  let isImage = /\.(webp|avif|ico|png|jpg)$/
-  function htmlPlugin(tree) {
-    tree.walk(i => {
-      if (i.attrs) {
-        for (let attr in i.attrs) {
-          if (isImage.test(i.attrs[attr])) {
-            let file = join(SRC, 'en', i.attrs[attr])
-            if (!images[file]) {
-              throw new Error('Unknown image ' + i.attrs[attr])
-            }
-            i.attrs[attr] = `/${images[file]}`
-          }
-        }
-      }
-      if (i.tag === 'link' && i.attrs.rel === 'stylesheet') {
-        return [{ tag: 'style', content: [css] }]
-      } else if (i.tag === 'script') {
-        return {
-          tag: 'script',
-          content: js
-        }
-      } else if (i.attrs && i.attrs.class) {
-        return {
-          tag: i.tag,
-          content: i.content,
-          attrs: {
-            ...i.attrs,
-            class: i.attrs.class
-              .split(' ')
-              .map(kls => {
-                if (!classes[kls]) {
-                  throw new MyError(`Unused class .${kls}`)
-                }
-                return classes[kls]
-              })
-              .join(' ')
-          }
-        }
-      } else {
-        return i
-      }
-    })
-  }
-
   await Promise.all(
     ['en', 'es', 'ru'].map(async lang => {
       let pugFile = join(SRC, lang, 'index.pug')
@@ -256,8 +207,9 @@ async function compileHtml(location, js, css, classes, images) {
       let html = pugFn({ location })
 
       html = posthtml()
-        .use(htmlPlugin)
+        .use(htmlCompressor(js, images, classes, css))
         .process(html.toString(), { sync: true }).html
+
       await mkdir(join(DIST, lang))
       let file = join(DIST, lang, 'index.html')
       await writeFile(file, html)
