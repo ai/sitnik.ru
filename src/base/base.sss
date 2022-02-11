@@ -3,11 +3,11 @@
   margin: 0
 
 html
-  --text: hsl(0 0% 0%)
-  --background: hsl(0 0% 100%)
-  --accent: hsl(214 100% 50%)
-  --hover: hsl(214 100% 50% / 0.2)
-  --placeholder: hsl(0 0% 90%)
+  --text: lch(0% 0 0)
+  --background: lch(100% 0 0)
+  --accent: lch(48.8% 82.3 283.1)
+  --hover: lch(48.8% 82.3 283.1 / 0.2)
+  --placeholder: lch(90% 0 0)
 
   font-family: Arial, sans-serif
   font-size: 20px
@@ -26,16 +26,16 @@ html
     font-size: 16px
 
   @media (prefers-color-scheme: dark)
-    --text: hsl(0 0% 100%)
-    --background: hsl(0 0% 20%)
-    --accent: hsl(207 100% 58%)
-    --hover: hsl(207 100% 58% / 0.3)
-    --placeholder: hsl(0 0% 60%)
+    --text: lch(100% 0 0)
+    --background: lch(21.3% 0 0)
+    --accent: lch(62.8% 57.9 263.7)
+    --hover: lch(62.8% 57.9 263.7 / 0.3)
+    --placeholder: lch(60% 0 0)
 
 body
   color: var(--text)
   background: var(--background)
-  -webkit-tap-highlight-color: hsl(0 0 0 / 0)
+  -webkit-tap-highlight-color: lch(0% 0 0 / 0)
 
   &.is-grabbing
     cursor: grabbing

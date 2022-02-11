@@ -12,6 +12,7 @@ import { promisify } from 'util'
 import postcssImport from 'postcss-import'
 import combineMedia from 'postcss-combine-media-query'
 import autoprefixer from 'autoprefixer'
+import labFunction from 'postcss-lab-function'
 import mediaMinMax from 'postcss-media-minmax'
 import stripDebug from 'strip-debug'
 import { minify } from 'terser'
@@ -140,6 +141,7 @@ async function compileStyles() {
     mediaMinMax(),
     postcssImport(),
     nested(),
+    labFunction(),
     pxtorem({
       selectorBlackList: ['html', '.photo'],
       rootValue: 20,

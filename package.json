@@ -22,6 +22,7 @@
     "postcss": "^8.4.6",
     "postcss-combine-media-query": "^1.0.1",
     "postcss-import": "^14.0.2",
+    "postcss-lab-function": "^4.0.4",
     "postcss-media-minmax": "^5.0.0",
     "postcss-nested": "^5.0.6",
     "postcss-pxtorem": "^6.0.0",
@@ -85,7 +86,12 @@
     "extends": "@logux/stylelint-config",
     "customSyntax": "sugarss",
     "rules": {
-      "color-no-hex": true
+      "function-disallowed-list": [
+        "rgb",
+        "rgba",
+        "hsl",
+        "hsla"
+      ]
     }
   },
   "prettier": {
