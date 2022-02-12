@@ -24,6 +24,12 @@ html( lang="es" itemtype="https://schema.org/Person" itemscope )
             .earth_loading
             canvas.earth_canvas
 
+          .globe_visited
+            = visited.countries.length
+            = ' '
+            = pluralize(visited.countries.length, 'país', 'países')
+            = ' visitado'
+
           button.globe_location( type="button" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress" tabindex="-1" )
             span( itemprop="addressLocality" )= location.es.city
             = ', '

@@ -29,7 +29,7 @@ import pico from 'picocolors'
 import zlib from 'zlib'
 import pug from 'pug'
 
-import { SRC, DIST, LOCATION, NGINX } from './lib/dirs.js'
+import { SRC, DIST, LOCATION, NGINX, CITIES } from './lib/dirs.js'
 import { htmlCompressor } from './lib/html-compressor.js'
 import { cssCompressor } from './lib/css-compressor.js'
 import { MyError } from './lib/my-error.js'
@@ -88,6 +88,22 @@ async function task(text, fn) {
 async function cleanDist() {
   await rm(DIST, { recursive: true, force: true })
   await mkdir(DIST)
+}
+
+async function loadVisited() {
+  let cities = Object.keys(JSON.parse(await readFile(CITIES)))
+  let countries = {}
+  for (let city of cities) {
+    if (city.includes(',')) {
+      let country = city.split(',')[1].trim()
+      if (country !== 'DC') {
+        countries[country] = true
+      }
+    } else {
+      countries[city] = true
+    }
+  }
+  return { cities, countries: Object.keys(countries) }
 }
 
 async function loadLocation() {
@@ -198,13 +214,23 @@ async function compileScripts(classes, images) {
   return js
 }
 
-async function compileHtml(location, js, css, classes, images) {
+async function compileHtml(visited, location, js, css, classes, images) {
   await Promise.all(
     ['en', 'es', 'ru'].map(async lang => {
       let pugFile = join(SRC, lang, 'index.pug')
       let pugSource = await readFile(pugFile)
       let pugFn = pug.compile(pugSource.toString(), { filename: pugFile })
-      let html = pugFn({ location })
+      function pluralize(count, one, other, few) {
+        let form = new Intl.PluralRules(lang).select(count)
+        if (form === 'one') {
+          return one
+        } else if (form === 'few') {
+          return few
+        } else {
+          return other
+        }
+      }
+      let html = pugFn({ location, visited, pluralize })
 
       html = posthtml()
         .use(htmlCompressor(js, images, classes, css))
@@ -252,7 +278,8 @@ async function compressAssets() {
 }
 
 async function build() {
-  let [location] = await Promise.all([
+  let [visited, location] = await Promise.all([
+    task('Load visited cities', () => loadVisited()),
     task('Load location', () => loadLocation()),
     task('Clean dist/', () => cleanDist())
   ])
@@ -263,7 +290,9 @@ async function build() {
   ])
   let js = await task('Bundle scripts', () => compileScripts(classes, images))
   await Promise.all([
-    task('Compile HTML', () => compileHtml(location, js, css, classes, images)),
+    task('Compile HTML', () => {
+      return compileHtml(visited, location, js, css, classes, images)
+    }),
     task('Update nginx.conf', () => updateCSP(js, css))
   ])
   if (process.env.NODE_ENV === 'production') {
