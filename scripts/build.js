@@ -31,7 +31,6 @@ import pug from 'pug'
 
 import { SRC, DIST, LOCATION, NGINX, CITIES } from './lib/dirs.js'
 import { htmlCompressor } from './lib/html-compressor.js'
-import { cssCompressor } from './lib/css-compressor.js'
 import { MyError } from './lib/my-error.js'
 
 let gzip = promisify(zlib.gzip)
@@ -42,10 +41,6 @@ dotenv.config()
 
 function sha256(string) {
   return createHash('sha256').update(string, 'utf8').digest('base64')
-}
-
-function replaceAll(str, from, to) {
-  return str.replace(new RegExp(from, 'g'), to)
 }
 
 let hashCache = {}
@@ -144,7 +139,6 @@ async function copyImages() {
 }
 
 async function compileStyles() {
-  let classes = {}
   let from = join(SRC, 'index.sss')
   let sss = await readFile(from)
   let result = await postcss([
@@ -159,13 +153,12 @@ async function compileStyles() {
       propList: ['*']
     }),
     autoprefixer(),
-    cssCompressor(classes),
     cssnano()
   ]).process(sss, { from, parser: sugarss, map: false })
-  return [result.css, classes]
+  return [result.css]
 }
 
-async function compileScripts(classes, images) {
+async function compileScripts(images) {
   let plugins = [nodeResolve(), rollupCommonJS(), terser()]
   let mapFile = images[join(SRC, 'earth', 'map.webp')]
   let hereFile = images[join(SRC, 'earth', 'here.webp')]
@@ -200,21 +193,11 @@ async function compileScripts(classes, images) {
   worker = transformSync(worker, { plugins: [stripDebug] }).code
   worker = (await minify(worker, { sourceMap: false })).code
 
-  for (let origin in classes) {
-    let converted = classes[origin]
-    if (origin.startsWith('earth') || origin.startsWith('globe')) {
-      js = replaceAll(js, `".${origin}"`, `".${converted}"`)
-    }
-    if (origin.startsWith('is-')) {
-      js = replaceAll(js, `"${origin}"`, `"${converted}"`)
-    }
-  }
-
   await writeFile(join(DIST, workerFile), worker)
   return js
 }
 
-async function compileHtml(visited, location, js, css, classes, images) {
+async function compileHtml(visited, location, js, css, images) {
   await Promise.all(
     ['en', 'es', 'ru'].map(async lang => {
       let pugFile = join(SRC, lang, 'index.pug')
@@ -233,7 +216,7 @@ async function compileHtml(visited, location, js, css, classes, images) {
       let html = pugFn({ location, visited, pluralize })
 
       html = posthtml()
-        .use(htmlCompressor(js, images, classes, css))
+        .use(htmlCompressor(js, images, css))
         .process(html.toString(), { sync: true }).html
 
       await mkdir(join(DIST, lang))
@@ -283,16 +266,14 @@ async function build() {
     task('Load location', () => loadLocation()),
     task('Clean dist/', () => cleanDist())
   ])
-  let [[css, classes], images] = await Promise.all([
+  let [[css], images] = await Promise.all([
     task('Compile styles', () => compileStyles()),
     task('Copy images', () => copyImages()),
     task('Save location cache', () => saveLocationCache(location))
   ])
-  let js = await task('Bundle scripts', () => compileScripts(classes, images))
+  let js = await task('Bundle scripts', () => compileScripts(images))
   await Promise.all([
-    task('Compile HTML', () => {
-      return compileHtml(visited, location, js, css, classes, images)
-    }),
+    task('Compile HTML', () => compileHtml(visited, location, js, css, images)),
     task('Update nginx.conf', () => updateCSP(js, css))
   ])
   if (process.env.NODE_ENV === 'production') {

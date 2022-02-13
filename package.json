@@ -107,7 +107,7 @@
       "name": "Critical",
       "path": "dist/en/index.html.gz",
       "gzip": false,
-      "limit": "4 KB"
+      "limit": "5 KB"
     },
     {
       "name": "Full",

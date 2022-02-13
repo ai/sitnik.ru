@@ -1,11 +1,10 @@
 import { join } from 'path'
 
-import { MyError } from './my-error.js'
 import { SRC } from './dirs.js'
 
 const IS_IMAGE = /\.(webp|avif|ico|png|jpg)$/
 
-export function htmlCompressor(js, images, classes, css) {
+export function htmlCompressor(js, images, css) {
   return tree => {
     tree.walk(i => {
       if (i.attrs) {
@@ -25,23 +24,6 @@ export function htmlCompressor(js, images, classes, css) {
         return {
           tag: 'script',
           content: js
-        }
-      } else if (i.attrs && i.attrs.class) {
-        return {
-          tag: i.tag,
-          content: i.content,
-          attrs: {
-            ...i.attrs,
-            class: i.attrs.class
-              .split(' ')
-              .map(kls => {
-                if (!classes[kls]) {
-                  throw new MyError(`Unused class .${kls}`)
-                }
-                return classes[kls]
-              })
-              .join(' ')
-          }
         }
       } else {
         return i
