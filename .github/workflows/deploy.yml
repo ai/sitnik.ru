@@ -25,7 +25,7 @@ jobs:
           path: ./scripts/location/
           key: location
       - name: Install build dependencies
-        run: pnpm install --frozen-lockfile --production
+        run: pnpm install --frozen-lockfile --production --ignore-scripts
       - name: Update location
         run: ./scripts/update-location.js
         env:
