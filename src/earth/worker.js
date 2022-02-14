@@ -131,11 +131,10 @@ let commands = {
     renderer.setSize(width, height)
     canvasHeight = height
 
-    // Temporary disable to check Safari
-    // if (!isWebP) {
-    //   mapUrl = mapUrl.replace('webp', 'png')
-    //   hereUrl = hereUrl.replace('webp', 'png')
-    // }
+    if (!isWebP) {
+      mapUrl = mapUrl.replace('webp', 'png')
+      hereUrl = hereUrl.replace('webp', 'png')
+    }
 
     if (isDark) {
       scene.background = new Color(0x333333)
