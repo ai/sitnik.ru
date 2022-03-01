@@ -1,7 +1,7 @@
 name: Update location
 on:
-  schedule:
-    - cron: '28 * * * *'
+  # schedule:
+  #   - cron: '28 * * * *'
 jobs:
   update:
     runs-on: ubuntu-latest
