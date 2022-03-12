@@ -26,11 +26,11 @@ jobs:
           key: location
       - name: Install build dependencies
         run: pnpm install --frozen-lockfile --production --ignore-scripts
-      - name: Update location
-        run: ./scripts/update-location.js
-        env:
-          GMAPS_TOKEN: ${{ secrets.GMAPS_TOKEN }}
-          FORCE_COLOR: 2
+      #- name: Update location
+      #  run: ./scripts/update-location.js
+      #  env:
+      #    GMAPS_TOKEN: ${{ secrets.GMAPS_TOKEN }}
+      #    FORCE_COLOR: 2
       - name: Build static files
         run: pnpm build
         env:

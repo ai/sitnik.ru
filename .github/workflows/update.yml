@@ -1,5 +1,8 @@
 name: Update location
 on:
+  push:
+    branches:
+      - none
   # schedule:
   #   - cron: '28 * * * *'
 jobs:
