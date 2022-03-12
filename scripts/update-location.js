@@ -1,22 +1,16 @@
 #!/usr/bin/env node
 
 import { writeFile, mkdir } from 'fs/promises'
-import { join, dirname } from 'path'
-import { fileURLToPath } from 'url'
 import { existsSync } from 'fs'
+import { dirname } from 'path'
 import dotenv from 'dotenv'
 
+import { LOCATION } from './lib/dirs.js'
 import { MyError } from './lib/my-error.js'
 import { read } from './lib/read.js'
 import { get } from './lib/get.js'
 
 dotenv.config()
-
-const FILE = join(
-  dirname(fileURLToPath(import.meta.url)),
-  'location',
-  'last.json'
-)
 
 async function loadLatLng() {
   return get('https://evilmartians.com/locations/ai')
@@ -56,8 +50,8 @@ async function loadNames(latLng) {
 }
 
 async function wasNotChanged(cur) {
-  if (!existsSync(FILE)) return false
-  let last = JSON.parse(await read(FILE))
+  if (!existsSync(LOCATION)) return false
+  let last = JSON.parse(await read(LOCATION))
   if (cur.latitude === last.latitude && cur.longitude === last.longitude) {
     process.stdout.write('Location was not changed\n')
     return true
@@ -67,10 +61,10 @@ async function wasNotChanged(cur) {
 }
 
 async function save(location) {
-  if (!existsSync(dirname(FILE))) {
-    await mkdir(dirname(FILE))
+  if (!existsSync(dirname(LOCATION))) {
+    await mkdir(dirname(LOCATION))
   }
-  await writeFile(FILE, JSON.stringify(location, null, 2))
+  await writeFile(LOCATION, JSON.stringify(location, null, 2))
 }
 
 loadLatLng()
