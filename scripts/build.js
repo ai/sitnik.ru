@@ -103,8 +103,8 @@ async function loadVisited() {
 
 async function loadLocation() {
   let location = {
-    latitude: 40.7128,
-    longitude: -74.006,
+    latitude: 41.38,
+    longitude: 2.18,
     es: { country: 'España', city: 'Barcelona' },
     en: { country: 'Spain', city: 'Barcelona' },
     ru: { country: 'Испания', city: 'Барселона' }
