@@ -3,11 +3,11 @@
   margin: 0
 
 html
-  --text: lch(0% 0 0)
-  --background: lch(100% 0 0)
-  --accent: lch(48.8% 82.3 283.1)
-  --hover: lch(48.8% 82.3 283.1 / 0.2)
-  --placeholder: lch(90% 0 0)
+  --text: oklch(0% 0 0)
+  --background: oklch(100% 0 0)
+  --accent: oklch(58% 0.23 259.5)
+  --hover: oklch(58% 0.23 259.5 / 0.2)
+  --placeholder: oklch(90% 0 0)
 
   font-family: Arial, sans-serif
   font-size: 20px
@@ -26,16 +26,16 @@ html
     font-size: 16px
 
   @media (prefers-color-scheme: dark)
-    --text: lch(100% 0 0)
-    --background: lch(21.3% 0 0)
-    --accent: lch(62.8% 57.9 263.7)
-    --hover: lch(62.8% 57.9 263.7 / 0.3)
-    --placeholder: lch(60% 0 0)
+    --text: oklch(100% 0 0)
+    --background: oklch(32% 0 0)
+    --accent: oklch(69% 0.17 248.78)
+    --hover: oklch(69% 0.17 248.78 / 0.3)
+    --placeholder: oklch(66% 0 0)
 
 body
   color: var(--text)
   background: var(--background)
-  -webkit-tap-highlight-color: lch(0% 0 0 / 0)
+  -webkit-tap-highlight-color: oklch(0% 0 0 / 0)
 
   &.is-grabbing
     cursor: grabbing

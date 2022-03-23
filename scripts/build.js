@@ -8,10 +8,10 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 import rollupCommonJS from '@rollup/plugin-commonjs'
 import { createHash } from 'crypto'
 import { promisify } from 'util'
+import oklabFunction from '@csstools/postcss-oklab-function'
 import postcssImport from 'postcss-import'
 import combineMedia from 'postcss-combine-media-query'
 import autoprefixer from 'autoprefixer'
-import labFunction from 'postcss-lab-function'
 import mediaMinMax from 'postcss-media-minmax'
 import stripDebug from 'strip-debug'
 import { minify } from 'terser'
@@ -146,7 +146,7 @@ async function compileStyles() {
     mediaMinMax(),
     postcssImport(),
     nested(),
-    labFunction(),
+    oklabFunction(),
     pxtorem({
       selectorBlackList: ['html', '.photo'],
       rootValue: 20,
