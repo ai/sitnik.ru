@@ -21,7 +21,7 @@
     "picocolors": "^1.0.0",
     "postcss": "^8.4.12",
     "postcss-combine-media-query": "^1.0.1",
-    "postcss-import": "^14.0.2",
+    "postcss-import": "^14.1.0",
     "postcss-lab-function": "^4.1.2",
     "postcss-media-minmax": "^5.0.0",
     "postcss-nested": "^5.0.6",
