@@ -146,7 +146,11 @@ async function compileStyles() {
     mediaMinMax(),
     postcssImport(),
     nested(),
-    oklabFunction(),
+    oklabFunction({
+      subFeatures: {
+        displayP3: false
+      }
+    }),
     pxtorem({
       selectorBlackList: ['html', '.photo'],
       rootValue: 20,
