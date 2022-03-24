@@ -34,7 +34,7 @@
     "strip-debug": "^6.0.0",
     "sugarss": "^4.0.1",
     "terser": "^5.12.1",
-    "three": "^0.138.3"
+    "three": "^0.139.0"
   },
   "devDependencies": {
     "@logux/eslint-config": "^46.1.1",
