@@ -10,6 +10,9 @@
     "start": "serve dist/",
     "build": "NODE_ENV=production ./scripts/build.js"
   },
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "dependencies": {
     "@babel/core": "^7.17.8",
     "@csstools/postcss-oklab-function": "^1.0.2",
@@ -50,74 +53,7 @@
     "size-limit": "^7.0.8",
     "stylelint": "^14.6.0"
   },
-  "browserslist": [
-    "last 2 versions",
-    "not dead",
-    "not ie 11",
-    "not ie_mob 11",
-    "not op_mini all",
-    "not op_mob > 0",
-    "not and_qq > 0",
-    "not android > 0"
-  ],
-  "engines": {
-    "node": ">=14.0.0"
-  },
   "browser": {
     "node_modules/three/src/renderers/webvr/*": "./src/empty.js"
-  },
-  "eslintConfig": {
-    "extends": "@logux/eslint-config",
-    "rules": {
-      "security/detect-non-literal-regexp": "off",
-      "security/detect-unsafe-regex": "off",
-      "node/no-unpublished-require": "off",
-      "node/global-require": "off",
-      "no-console": "off"
-    }
-  },
-  "eslintIgnore": [
-    "dist",
-    ".cache",
-    "**/errors.ts"
-  ],
-  "stylelint": {
-    "extends": "@logux/stylelint-config",
-    "rules": {
-      "function-disallowed-list": [
-        "rgb",
-        "rgba",
-        "hsl",
-        "hsla"
-      ]
-    }
-  },
-  "prettier": {
-    "arrowParens": "avoid",
-    "jsxSingleQuote": false,
-    "quoteProps": "consistent",
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "none"
-  },
-  "size-limit": [
-    {
-      "name": "Critical",
-      "path": "dist/en/index.html.gz",
-      "gzip": false,
-      "limit": "5 KB"
-    },
-    {
-      "name": "Full",
-      "path": [
-        "dist/en/index.html.gz",
-        "dist/worker.*.js.gz",
-        "dist/map.*.webp",
-        "dist/here.*.webp",
-        "dist/photo.*.avif"
-      ],
-      "gzip": false,
-      "limit": "190 KB"
-    }
-  ]
+  }
 }

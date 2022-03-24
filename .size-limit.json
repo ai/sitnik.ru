@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Critical",
+    "path": "dist/en/index.html.gz",
+    "gzip": false,
+    "limit": "5 KB"
+  },
+  {
+    "name": "Full",
+    "path": [
+      "dist/en/index.html.gz",
+      "dist/worker.*.js.gz",
+      "dist/map.*.webp",
+      "dist/here.*.webp",
+      "dist/photo.*.avif"
+    ],
+    "gzip": false,
+    "limit": "190 KB"
+  }
+]
