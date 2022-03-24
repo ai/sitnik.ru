@@ -1,0 +1,72 @@
+.globe {
+  @media (width > 980px) {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: calc(100% - 120px);
+  }
+
+  @media (width <= 980px) {
+    position: relative;
+    overflow: hidden;
+    transition: padding-bottom 400ms;
+
+    &.is-open {
+      padding-bottom: calc(90vw + 20px);
+    }
+  }
+}
+
+.globe_visited {
+  font-size: 14px;
+
+  @media (width <= 980px) {
+    margin-top: 0;
+  }
+}
+
+.globe_location {
+  font-size: inherit;
+  color: var(--text);
+  cursor: text;
+  user-select: text;
+  background: none;
+  border: none;
+
+  @media (width <= 980px) {
+    position: relative;
+    margin-left: 17px;
+    color: var(--accent);
+    cursor: pointer;
+    border-bottom: 1px dashed;
+    -webkit-tap-highlight-color: var(--hover);
+
+    &:active {
+      background: var(--hover);
+    }
+  }
+}
+
+.globe_location::before {
+  @media (width <= 980px) {
+    position: absolute;
+    top: 7px;
+    left: -17px;
+    display: inline-block;
+    margin: 0 6px 0 3px;
+    content: "";
+    border: 6px solid;
+    border-color: transparent transparent transparent var(--accent);
+    border-right-width: 0;
+    transition: transform 400ms;
+
+    @nest .globe.is-open & {
+      transform: rotate(90deg);
+    }
+  }
+}

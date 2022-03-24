@@ -4,7 +4,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "lint": "eslint . && stylelint src/**/*.sss",
+    "lint": "eslint . && stylelint src/**/*.css",
     "test": "pnpm lint && pnpm build && size-limit",
     "clean": "rm -Rf dist/ src/globe/location.json",
     "start": "serve dist/",
@@ -32,7 +32,6 @@
     "rollup-plugin-terser": "^7.0.2",
     "ssdeploy": "^0.8.0",
     "strip-debug": "^6.0.0",
-    "sugarss": "^4.0.1",
     "terser": "^5.12.1",
     "three": "^0.139.0"
   },
@@ -84,7 +83,6 @@
   ],
   "stylelint": {
     "extends": "@logux/stylelint-config",
-    "customSyntax": "sugarss",
     "rules": {
       "function-disallowed-list": [
         "rgb",

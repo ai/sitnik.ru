@@ -35,7 +35,6 @@ specifiers:
   ssdeploy: ^0.8.0
   strip-debug: ^6.0.0
   stylelint: ^14.6.0
-  sugarss: ^4.0.1
   terser: ^5.12.1
   three: ^0.139.0
 
@@ -61,7 +60,6 @@ dependencies:
   rollup-plugin-terser: 7.0.2_rollup@2.70.1
   ssdeploy: 0.8.0
   strip-debug: 6.0.0
-  sugarss: 4.0.1_postcss@8.4.12
   terser: 5.12.1
   three: 0.139.0
 
@@ -3609,15 +3607,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
-
-  /sugarss/4.0.1_postcss@8.4.12:
-    resolution: {integrity: sha512-WCjS5NfuVJjkQzK10s8WOBY+hhDxxNt/N6ZaGwxFZ+wN3/lKKFSaaKUNecULcTTvE4urLcKaZFQD8vO0mOZujw==}
-    engines: {node: '>=12.0'}
-    peerDependencies:
-      postcss: ^8.3.3
-    dependencies:
-      postcss: 8.4.12
-    dev: false
 
   /supports-color/5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}

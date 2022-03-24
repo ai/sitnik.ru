@@ -1,0 +1,36 @@
+.contacts {
+  font-size: 40px;
+
+  @media (width > 980px) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.contacts_notes {
+  display: flex;
+  margin-top: 2px;
+  font-size: 20px;
+
+  @media (width > 980px) {
+    justify-content: space-between;
+  }
+
+  @media (width <= 980px) {
+    & a {
+      margin-right: 15px;
+    }
+  }
+}
+
+.contacts_notes.is-right {
+  @media (width > 980px) {
+    justify-content: flex-end;
+  }
+}
+
+.contacts_contact {
+  @media (width <= 980px) {
+    padding-top: 30px;
+  }
+}

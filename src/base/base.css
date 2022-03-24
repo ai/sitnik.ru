@@ -1,0 +1,81 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  --text: oklch(0% 0 0);
+  --background: oklch(100% 0 0);
+  --accent: oklch(58% 0.23 260);
+  --hover: oklch(58% 0.23 260 / 0.2);
+  --placeholder: oklch(90% 0 0);
+
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.4;
+
+  @media (width >= 2200px) {
+    font-size: 30px;
+  }
+
+  @media (width < 1400px) {
+    font-size: 16px;
+  }
+
+  @media (width < 1120px) {
+    font-size: 14px;
+  }
+
+  @media (width <= 980px) {
+    font-size: 16px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --text: oklch(100% 0 0);
+    --background: oklch(32% 0 0);
+    --accent: oklch(69% 0.17 249);
+    --hover: oklch(69% 0.17 249 / 0.3);
+    --placeholder: oklch(66% 0 0);
+  }
+}
+
+body {
+  color: var(--text);
+  background: var(--background);
+  -webkit-tap-highlight-color: oklch(0% 0 0 / 0);
+
+  &.is-grabbing {
+    cursor: grabbing;
+  }
+}
+
+a,
+button {
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+a:active {
+  transition: nonel;
+
+  &::before {
+    transition: none;
+  }
+}
+
+::selection {
+  background: var(--hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before {
+    transition: none !important;
+    animation-play-state: paused !important;
+  }
+}

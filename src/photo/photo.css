@@ -1,0 +1,36 @@
+.photo {
+  top: 17px;
+  left: 17px;
+  z-index: 2;
+  display: block;
+  width: 150px;
+  height: 150px;
+  line-height: 1;
+  background: var(--placeholder);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 var(--hover);
+  transition: box-shadow 200ms;
+
+  &:hover {
+    box-shadow: 0 0 0 7px var(--hover);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 7px var(--accent);
+  }
+
+  @media (width > 980px) {
+    position: absolute;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background: transparent;
+  }
+}
+
+.photo_image {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: 50%;
+}

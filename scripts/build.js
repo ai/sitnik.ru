@@ -131,7 +131,7 @@ async function copyImages() {
 }
 
 async function compileStyles() {
-  let from = join(SRC, 'index.sss')
+  let from = join(SRC, 'index.css')
   let sss = await readFile(from)
   let { plugins, options } = await postcssLoadConfig()
   let result = await postcss(plugins).process(sss, {

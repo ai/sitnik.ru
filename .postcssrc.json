@@ -1,5 +1,4 @@
 {
-  "parser": "sugarss",
   "plugins": {
     "postcss-import": {},
     "postcss-nesting": {},
