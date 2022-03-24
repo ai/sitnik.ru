@@ -3,16 +3,12 @@
 import { writeFile, readFile, copyFile, rm, mkdir } from 'fs/promises'
 import { basename, join, extname } from 'path'
 import { existsSync, ReadStream } from 'fs'
+import postcssLoadConfig from 'postcss-load-config'
 import { transformSync } from '@babel/core'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import rollupCommonJS from '@rollup/plugin-commonjs'
 import { createHash } from 'crypto'
 import { promisify } from 'util'
-import oklabFunction from '@csstools/postcss-oklab-function'
-import postcssImport from 'postcss-import'
-import combineMedia from 'postcss-combine-media-query'
-import autoprefixer from 'autoprefixer'
-import mediaMinMax from 'postcss-media-minmax'
 import stripDebug from 'strip-debug'
 import { minify } from 'terser'
 import { terser } from 'rollup-plugin-terser'
@@ -20,10 +16,6 @@ import { rollup } from 'rollup'
 import { globby } from 'globby'
 import posthtml from 'posthtml'
 import postcss from 'postcss'
-import sugarss from 'sugarss'
-import pxtorem from 'postcss-pxtorem'
-import cssnano from 'cssnano'
-import nested from 'postcss-nested'
 import dotenv from 'dotenv'
 import pico from 'picocolors'
 import zlib from 'zlib'
@@ -141,24 +133,12 @@ async function copyImages() {
 async function compileStyles() {
   let from = join(SRC, 'index.sss')
   let sss = await readFile(from)
-  let result = await postcss([
-    combineMedia(),
-    mediaMinMax(),
-    postcssImport(),
-    nested(),
-    oklabFunction({
-      subFeatures: {
-        displayP3: false
-      }
-    }),
-    pxtorem({
-      selectorBlackList: ['html', '.photo'],
-      rootValue: 20,
-      propList: ['*']
-    }),
-    autoprefixer(),
-    cssnano()
-  ]).process(sss, { from, parser: sugarss, map: false })
+  let { plugins, options } = await postcssLoadConfig()
+  let result = await postcss(plugins).process(sss, {
+    ...options,
+    from,
+    map: false
+  })
   for (let warn of result.warnings()) {
     process.stderr.write(pico.yellow(warn.toString()) + '\n')
   }

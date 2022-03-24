@@ -30,13 +30,13 @@
   transform: scaleY(0.06)
   transform-origin: 0 100% 0
 
-  :hover&
+  @nest :hover&
     transform: none
 
-  .is-text&
+  @nest .is-text&
     opacity: 0
 
-  :focus&
+  @nest :focus&
     background: var(--accent)
     opacity: 1
     transform: none
