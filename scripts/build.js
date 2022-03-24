@@ -159,6 +159,9 @@ async function compileStyles() {
     autoprefixer(),
     cssnano()
   ]).process(sss, { from, parser: sugarss, map: false })
+  for (let warn of result.warnings()) {
+    process.stderr.write(pico.yellow(warn.toString()) + '\n')
+  }
   return [result.css]
 }
 
