@@ -9,9 +9,14 @@
       }
     },
     "postcss-pxtorem": {
-      "selectorBlackList": ["html", ".photo"],
+      "selectorBlackList": [
+        "html",
+        ".photo"
+      ],
       "rootValue": 20,
-      "propList": ["*"]
+      "propList": [
+        "*"
+      ]
     },
     "autoprefixer": {},
     "cssnano": {}
