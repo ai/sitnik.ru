@@ -30,12 +30,22 @@ html {
     font-size: 16px;
   }
 
+  @media (color-gamut: p3) {
+    --accent: oklch(54% 0.27 260);
+    --hover: oklch(54% 0.27 260 / 0.2);
+  }
+
   @media (prefers-color-scheme: dark) {
     --text: oklch(100% 0 0);
     --background: oklch(32% 0 0);
     --accent: oklch(69% 0.17 249);
     --hover: oklch(69% 0.17 249 / 0.3);
     --placeholder: oklch(66% 0 0);
+
+    @media (color-gamut: p3) {
+      --accent: oklch(63% 0.22 249);
+      --hover: oklch(63% 0.22 249 / 0.2);
+    }
   }
 }
 
