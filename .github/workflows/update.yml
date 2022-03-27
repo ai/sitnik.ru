@@ -47,12 +47,14 @@ jobs:
         run: pnpm build
         env:
           FORCE_COLOR: 2
+      - name: Auth Google Cloud
+        if: steps.location.outputs.updated
+        uses: google-github-actions/auth@v0
+        with:
+          credentials_json: ${{ secrets.GCLOUD_AUTH }}
       - name: Install Google Cloud
         if: steps.location.outputs.updated
-        uses: google-github-actions/setup-gcloud@master
-        with:
-          version: '274.0.1'
-          service_account_key: ${{ secrets.GCLOUD_AUTH }}
+        uses: google-github-actions/setup-gcloud@v0
       - name: Deploy files
         if: steps.location.outputs.updated
         run: pnpx ssdeploy deploy
