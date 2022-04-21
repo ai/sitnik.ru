@@ -60,8 +60,8 @@ jobs:
           cache-name: cache-pnpm-modules
         with:
           path: ~/.pnpm-store
-          key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: pnpm-
+          key: pnpm-production-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: pnpm-production-
       - name: Cache location
         continue-on-error: true
         uses: actions/cache@v3
