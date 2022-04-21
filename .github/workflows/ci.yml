@@ -39,6 +39,7 @@ jobs:
           FORCE_COLOR: 2
 
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     needs:
