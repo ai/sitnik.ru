@@ -29,7 +29,6 @@ jobs:
         with:
           path: ~/.pnpm-store
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: pnpm-
       - name: Check location
         id: location
         run: ./scripts/check-location.js
