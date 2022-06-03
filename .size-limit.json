@@ -15,6 +15,6 @@
       "dist/photo.*.avif"
     ],
     "gzip": false,
-    "limit": "190 KB"
+    "limit": "195 KB"
   }
 ]
