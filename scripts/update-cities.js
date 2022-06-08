@@ -5,7 +5,7 @@ import { existsSync } from 'fs'
 import dotenv from 'dotenv'
 import pico from 'picocolors'
 
-import { CITIES, PLACES, DOTS } from './lib/dirs.js'
+import { CITIES, PLACES, DOTS, COUNTRIES } from './lib/dirs.js'
 import { MyError } from './lib/my-error.js'
 import { read } from './lib/read.js'
 import { get } from './lib/get.js'
@@ -34,12 +34,20 @@ function distance(a, b) {
   return Math.max(Math.abs(a[0] - b[0]), Math.abs(a[1] - b[1]))
 }
 
-function round(num) {
+function round2(num) {
+  return Math.round(num * 100) / 100
+}
+
+function round1(num) {
   return Math.round(num * 10) / 10
 }
 
 function inside(address, ...value) {
   return address.some(i => value.includes(i.long_name))
+}
+
+function prettyJson(data) {
+  return JSON.stringify(data, null, '  ') + '\n'
 }
 
 // Google Maps API
@@ -147,7 +155,7 @@ async function initPlaces() {
     )
   }
   let places = JSON.parse(await read(PLACES)).features
-  print('Places: ' + pico.bold(places.length))
+  print('Places:   ' + pico.bold(places.length))
   return places
 }
 
@@ -166,9 +174,11 @@ function reduceDots(data) {
       data.dots.push(place.geometry.coordinates)
     }
   }
-  print('Cities: ' + pico.bold(data.dots.length))
+  print('Cities:   ' + pico.bold(data.dots.length))
 
-  data.dots = data.dots.reverse().sort((a, b) => a[0] + a[1] - b[0] - b[1])
+  data.dots = data.dots
+    .sort((a, b) => a[0] + a[1] - b[0] - b[1])
+    .map(i => [round2(i[1]), round2(i[0])])
 
   return data
 }
@@ -183,7 +193,7 @@ async function loadCities(data) {
       if (!wasProcessed) {
         sent = true
         let res = await gmap('geocode/json', {
-          latlng: `${dot[1]},${dot[0]}`,
+          latlng: dot.join(','),
           key: process.env.GMAPS_TOKEN
         })
         let city = cityName(res)
@@ -203,18 +213,42 @@ async function loadCities(data) {
   return data
 }
 
+async function foundCountries(data) {
+  let countries = {
+    Vatican: true
+  }
+  for (let city of Object.keys(data.cities)) {
+    if (city.includes(',')) {
+      let country = city.split(',')[1].trim()
+      if (country !== 'DC') {
+        countries[country] = true
+      }
+    } else {
+      countries[city] = true
+    }
+  }
+  data.countries = Object.keys(countries).sort()
+  print('Countries: ' + pico.bold(data.countries.length))
+  return data
+}
+
 async function saveFile(data) {
-  let output = prettyDots(data.dots.map(i => [round(i[1]), round(i[0])]))
+  let output = prettyDots(data.dots.map(i => [round1(i[0]), round1(i[1])]))
   let prevDots = await readFile(DOTS)
   if (prevDots.toString() === output) {
     print(pico.yellow('\nNo new cities'))
     print(`Download update from https://takeout.google.com/`)
-  } else {
-    await Promise.all([
-      writeFile(DOTS, output),
-      writeFile(CITIES, JSON.stringify(data.cities, null, '  ') + '\n')
-    ])
   }
+  await Promise.all([
+    writeFile(COUNTRIES, prettyJson(data.countries)),
+    writeFile(DOTS, output),
+    writeFile(CITIES, prettyJson(data.cities))
+  ])
 }
 
-init().then(reduceDots).then(loadCities).then(saveFile).catch(MyError.print)
+init()
+  .then(reduceDots)
+  .then(loadCities)
+  .then(foundCountries)
+  .then(saveFile)
+  .catch(MyError.print)

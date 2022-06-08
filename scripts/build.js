@@ -21,7 +21,7 @@ import pico from 'picocolors'
 import zlib from 'zlib'
 import pug from 'pug'
 
-import { SRC, DIST, LOCATION, NGINX, CITIES } from './lib/dirs.js'
+import { SRC, DIST, LOCATION, NGINX, COUNTRIES } from './lib/dirs.js'
 import { htmlCompressor } from './lib/html-compressor.js'
 import { MyError } from './lib/my-error.js'
 
@@ -78,20 +78,8 @@ async function cleanDist() {
 }
 
 async function loadVisited() {
-  let cities = Object.keys(JSON.parse(await readFile(CITIES)))
-  let countries = {}
-  for (let city of cities) {
-    if (city.includes(',')) {
-      let country = city.split(',')[1].trim()
-      if (country !== 'DC') {
-        countries[country] = true
-      }
-    } else if (city !== 'Dipkarpaz') {
-      countries[city] = true
-    }
-  }
-  console.log(Object.keys(countries).sort())
-  return { cities, countries: Object.keys(countries) }
+  let countries = Object.keys(JSON.parse(await readFile(COUNTRIES)))
+  return { countries }
 }
 
 async function loadLocation() {
@@ -250,7 +238,7 @@ async function compressAssets() {
 
 async function build() {
   let [visited, location] = await Promise.all([
-    task('Load visited cities', () => loadVisited()),
+    task('Load visited countries', () => loadVisited()),
     task('Load location', () => loadLocation()),
     task('Clean dist/', () => cleanDist())
   ])
