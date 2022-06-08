@@ -50,7 +50,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "serve": "^13.0.2",
     "size-limit": "^7.0.8",
-    "stylelint": "^14.8.5"
+    "stylelint": "^14.9.0"
   },
   "browser": {
     "node_modules/three/src/renderers/webvr/*": "./src/empty.js"
