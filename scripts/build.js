@@ -86,10 +86,11 @@ async function loadVisited() {
       if (country !== 'DC') {
         countries[country] = true
       }
-    } else {
+    } else if (city !== 'Dipkarpaz') {
       countries[city] = true
     }
   }
+  console.log(Object.keys(countries).sort())
   return { cities, countries: Object.keys(countries) }
 }
 

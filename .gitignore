@@ -1,6 +1,6 @@
 node_modules/
 
 dist/
-scripts/cities/bookmarks.xml
+scripts/cities/places.json
 scripts/location/
 .env

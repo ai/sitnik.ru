@@ -1,26 +1,18 @@
 #!/usr/bin/env node
 
-import { fileURLToPath } from 'url'
-import { join, dirname } from 'path'
+import { writeFile, readFile } from 'fs/promises'
 import { existsSync } from 'fs'
-import { writeFile } from 'fs/promises'
-import { XMLParser } from 'fast-xml-parser'
 import dotenv from 'dotenv'
 import pico from 'picocolors'
 
+import { CITIES, PLACES, DOTS } from './lib/dirs.js'
 import { MyError } from './lib/my-error.js'
 import { read } from './lib/read.js'
 import { get } from './lib/get.js'
 
+const MIN_DISTANCE = 0.7
+
 dotenv.config()
-
-let BOOKMARKS_URL = 'https://www.google.com/bookmarks/lookup?output=xml'
-
-const SCRIPTS = dirname(fileURLToPath(import.meta.url))
-const BOOKMARKS_FILE = join(SCRIPTS, 'cities', 'bookmarks.xml')
-const PROCESSED_FILE = join(SCRIPTS, 'cities', 'processed.json')
-const CITIES_FILE = join(SCRIPTS, 'cities', 'cities.json')
-const DOTS_FILE = join(SCRIPTS, '..', 'src', 'earth', 'dots.js')
 
 // Helpers
 
@@ -29,6 +21,28 @@ function print(message, number) {
   if (number) process.stderr.write(': ' + pico.bold(pico.green(number)))
   process.stderr.write('\n')
 }
+
+function prettyDots(dots) {
+  return (
+    'export default [\n' +
+    dots.map(i => `  [${i[0]}, ${i[1]}]`).join(',\n') +
+    '\n]\n'
+  )
+}
+
+function distance(a, b) {
+  return Math.max(Math.abs(a[0] - b[0]), Math.abs(a[1] - b[1]))
+}
+
+function round(num) {
+  return Math.round(num * 10) / 10
+}
+
+function inside(address, ...value) {
+  return address.some(i => value.includes(i.long_name))
+}
+
+// Google Maps API
 
 let requests = 0
 let pool = []
@@ -57,49 +71,29 @@ function nextTick() {
     .catch(tick[2])
 }
 
-function gmap(name, token, params) {
-  params.key = token
-  let query = Object.keys(params)
-    .map(i => i + '=' + encodeURIComponent(params[i]))
-    .join('&')
-  let url = `https://maps.googleapis.com/maps/api/${name}?${query}`
-  return new Promise((resolve, reject) => {
-    pool.push([url, resolve, reject])
-    if (requests < 10) nextTick()
-  }).catch(e => {
-    if (e.message === '404') {
-      process.stderr.write(
-        pico.red('\n\nCan’t find ' + params.address + '\n\n')
-      )
-      return e.message
-    } else {
-      throw e
+function cityName(response) {
+  let city, inUS, country
+  for (let result of response.results) {
+    let address = result.address_components
+    country = address.find(i => i.types.includes('country'))
+    city = address.find(i => i.types.includes('locality'))
+    inUS = country && country.short_name === 'US'
+    if (!city) {
+      if (inUS && inside(address, 'Brooklyn', 'Queens')) {
+        city = { long_name: 'New York' }
+      } else if (inside(address, 'İstanbul')) {
+        city = { long_name: 'İstanbul' }
+      } else {
+        city = address.find(i => {
+          return i.types.includes('political') && !i.short_name.includes('Krai')
+        })
+      }
     }
-  })
-}
-
-function inside(address, ...value) {
-  return address.some(i => value.includes(i.long_name))
-}
-
-function cityName(responce) {
-  let address = (responce.result || responce.results[0]).address_components
-  let country = address.find(i => i.types.includes('country'))
-  let city = address.find(i => i.types.includes('locality'))
-  let inUS = country && country.short_name === 'US'
-  if (!city) {
-    if (inUS && inside(address, 'Brooklyn', 'Queens')) {
-      city = { long_name: 'New York' }
-    } else if (inside(address, 'İstanbul')) {
-      city = { long_name: 'İstanbul' }
-    } else {
-      city = address.find(i => {
-        return i.types.includes('political') && !i.short_name.includes('Krai')
-      })
-    }
+    if (city && city.long_name) break
   }
-  if (!city.long_name) {
-    console.log(city)
+  if (!city || !city.long_name) {
+    process.stderr.write('\n')
+    console.log(city ?? response.results)
     throw new Error('No city name')
   }
   if (inUS && city.long_name === 'Washington') {
@@ -115,167 +109,112 @@ function cityName(responce) {
   }
 }
 
-function saveLatLng(cities, city, responce) {
-  let location = responce.results[0].geometry.location
-  for (let i in cities) {
-    if (cities[i][0] === location.lat && cities[i][1] === location.lng) {
-      return
+function gmap(name, params) {
+  let query = Object.keys(params)
+    .map(i => i + '=' + encodeURIComponent(params[i]))
+    .join('&')
+  let url = `https://maps.googleapis.com/maps/api/${name}?${query}`
+  return new Promise((resolve, reject) => {
+    pool.push([url, resolve, reject])
+    if (requests < 5) nextTick()
+  }).catch(e => {
+    if (e.message === '404') {
+      process.stderr.write(
+        pico.red('\n\nCan’t find ' + params.address + '\n\n')
+      )
+      return e.message
+    } else {
+      throw e
     }
-  }
-  cities[city] = [location.lat, location.lng]
-}
-
-function prettyStringify(data) {
-  if (!Array.isArray(data)) {
-    let prev = data
-    data = {}
-    for (let i of Object.keys(prev).sort()) {
-      data[i] = prev[i]
-    }
-  }
-  return JSON.stringify(data, null, '  ') + '\n'
-}
-
-function prettyDots(dots) {
-  return (
-    'export default [\n' +
-    dots.map(i => `  [${i[0]}, ${i[1]}]`).join(',\n') +
-    '\n]\n'
-  )
-}
-
-function diff(a1, b1, a2, b2) {
-  return Math.max(Math.abs(a1 - b1), Math.abs(a2 - b2))
-}
-
-function round(num) {
-  return Math.round(num * 10) / 10
+  })
 }
 
 // Steps
 
-async function initBookmarks() {
-  if (!existsSync(BOOKMARKS_FILE)) {
-    throw new MyError(`Save ${BOOKMARKS_URL} as scripts/cities/bookmarks.xml`)
-  }
-  let xml = await read(BOOKMARKS_FILE)
-  let parser = new XMLParser()
-  let ast = parser.parse(xml, { parseNodeValue: false })
-  return ast.xml_api_reply.bookmarks.bookmark
-}
-
-async function initProcessed() {
-  if (existsSync(PROCESSED_FILE)) {
-    return JSON.parse(await read(PROCESSED_FILE))
-  } else {
-    return {}
-  }
-}
-
 async function initCities() {
-  if (existsSync(CITIES_FILE)) {
-    return JSON.parse(await read(CITIES_FILE))
+  if (existsSync(CITIES)) {
+    return JSON.parse(await read(CITIES))
   } else {
     return {}
   }
+}
+
+async function initPlaces() {
+  if (!existsSync(PLACES)) {
+    throw new MyError(
+      'Export places from https://takeout.google.com/ ' +
+        'to scripts/cities/places.json'
+    )
+  }
+  let places = JSON.parse(await read(PLACES)).features
+  print('Places: ' + pico.bold(places.length))
+  return places
 }
 
 async function init() {
-  let [bookmarks, prevProcessed, cities] = await Promise.all([
-    initBookmarks(),
-    initProcessed(),
-    initCities()
-  ])
-  return { bookmarks, prevProcessed, cities }
+  let [cities, places] = await Promise.all([initCities(), initPlaces()])
+  return { cities, places }
 }
 
-function filterBookmarks(data) {
-  data.processed = {}
-  let cities = Object.keys(data.prevProcessed).map(i => {
-    return [i, data.prevProcessed[i]]
-  })
-  for (let id in data.prevProcessed) {
-    if (data.bookmarks.every(i => String(i.id) !== id)) {
-      let city = data.prevProcessed[id]
-      if (cities.every(i => i[0] === id || i[1] !== city)) {
-        delete data.cities[city]
-      }
+function reduceDots(data) {
+  data.dots = []
+  for (let place of data.places) {
+    let near = data.dots.find(point => {
+      return distance(point, place.geometry.coordinates) < MIN_DISTANCE
+    })
+    if (!near) {
+      data.dots.push(place.geometry.coordinates)
     }
   }
-  data.newBookmarks = data.bookmarks.filter(({ id }) => {
-    if (data.prevProcessed[id]) {
-      data.processed[id] = data.prevProcessed[id]
-      return false
-    } else {
-      return true
-    }
-  })
-  if (data.newBookmarks.length === 0) {
-    print('No new bookmarks')
-    print(`Download update from ${BOOKMARKS_URL}`)
-  } else {
-    print('New bookmarks', data.newBookmarks.length)
-  }
+  print('Cities: ' + pico.bold(data.dots.length))
+
+  data.dots = data.dots.reverse().sort((a, b) => a[0] + a[1] - b[0] - b[1])
+
   return data
 }
 
-async function findCities(data) {
-  let requesting = {}
+async function loadCities(data) {
+  let sent = false
   await Promise.all(
-    data.newBookmarks.map(async ({ url, title, id }) => {
-      let res
-      let gmapsToken = process.env.GMAPS_TOKEN
-      if (url.includes('?cid=')) {
-        let cid = url.match(/\?cid=(\d+)/)[1]
-        res = await gmap('place/details/json', gmapsToken, { cid })
-      } else {
-        res = await gmap('geocode/json', gmapsToken, { address: title })
-      }
-      if (res === '404') {
-        data.processed[id] = false
-        return
-      }
-      let city = cityName(res)
-      data.processed[id] = city
-      if (!data.cities[city] && !requesting[city]) {
-        requesting[city] = true
-        res = await gmap('geocode/json', gmapsToken, { address: city })
-        if (res !== '404') saveLatLng(data.cities, city, res)
+    data.dots.map(async dot => {
+      let wasProcessed = Object.values(data.cities).find(i => {
+        return dot[0] === i[0] && dot[1] === i[1]
+      })
+      if (!wasProcessed) {
+        sent = true
+        let res = await gmap('geocode/json', {
+          latlng: `${dot[1]},${dot[0]}`,
+          key: process.env.GMAPS_TOKEN
+        })
+        let city = cityName(res)
+        data.cities[city] = dot
       }
     })
   )
-  if (data.newBookmarks.length > 0) {
-    process.stderr.write('\n')
-  }
-  return data
-}
-
-async function saveFiles(data) {
-  let locations = Object.values(data.cities)
-  let dots = locations
-    .reverse()
-    .filter((i, index) => {
-      for (let j of locations.slice(index + 1)) {
-        if (diff(i[0], j[0], i[1], j[1]) < 0.7) {
-          return false
-        }
-      }
-      return true
+  for (let city in data.cities) {
+    let found = data.dots.find(dot => {
+      return data.cities[city][0] === dot[0] && data.cities[city][1] === dot[1]
     })
-    .map(i => [round(i[0]), round([i[1]])])
-    .sort((a, b) => a[0] + a[1] - b[0] - b[1])
-
-  print('Total cities', Object.values(data.cities).length)
-  await Promise.all([
-    writeFile(PROCESSED_FILE, prettyStringify(data.processed)),
-    writeFile(CITIES_FILE, prettyStringify(data.cities)),
-    writeFile(DOTS_FILE, prettyDots(dots))
-  ])
+    if (!found) {
+      delete data.cities[city]
+    }
+  }
+  if (sent) process.stdout.write('\n')
   return data
 }
 
-init()
-  .then(filterBookmarks)
-  .then(findCities)
-  .then(saveFiles)
-  .catch(MyError.print)
+async function saveFile(data) {
+  let output = prettyDots(data.dots.map(i => [round(i[1]), round(i[0])]))
+  let prevDots = await readFile(DOTS)
+  if (prevDots.toString() === output) {
+    print(pico.yellow('\nNo new cities'))
+    print(`Download update from https://takeout.google.com/`)
+  } else {
+    await Promise.all([
+      writeFile(DOTS, output),
+      writeFile(CITIES, JSON.stringify(data.cities, null, '  ') + '\n')
+    ])
+  }
+}
+
+init().then(reduceDots).then(loadCities).then(saveFile).catch(MyError.print)
