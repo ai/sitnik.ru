@@ -14,7 +14,7 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "@babel/core": "^7.18.6",
+    "@babel/core": "^7.18.9",
     "@csstools/postcss-oklab-function": "^1.1.1",
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-node-resolve": "^13.3.0",
@@ -31,7 +31,7 @@
     "postcss-pxtorem": "^6.0.0",
     "posthtml": "^0.16.6",
     "pug": "^3.0.2",
-    "rollup": "^2.76.0",
+    "rollup": "^2.77.0",
     "rollup-plugin-terser": "^7.0.2",
     "ssdeploy": "^0.8.1",
     "strip-debug": "^6.0.0",
@@ -42,7 +42,7 @@
     "@logux/eslint-config": "^47.2.0",
     "@logux/stylelint-config": "^0.10.1",
     "@size-limit/file": "^7.0.8",
-    "eslint": "^8.19.0",
+    "eslint": "^8.20.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.2.4",
