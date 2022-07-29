@@ -18,7 +18,7 @@
     "@csstools/postcss-oklab-function": "^1.1.1",
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-node-resolve": "^13.3.0",
-    "autoprefixer": "^10.4.7",
+    "autoprefixer": "^10.4.8",
     "cssnano": "^5.1.12",
     "dotenv": "^16.0.1",
     "globby": "^13.1.2",
@@ -36,7 +36,7 @@
     "ssdeploy": "^0.8.1",
     "strip-debug": "^6.0.0",
     "terser": "^5.14.2",
-    "three": "^0.142.0"
+    "three": "^0.143.0"
   },
   "devDependencies": {
     "@logux/eslint-config": "^47.2.0",
