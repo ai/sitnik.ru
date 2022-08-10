@@ -14,16 +14,16 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "@babel/core": "^7.18.9",
+    "@babel/core": "^7.18.10",
     "@csstools/postcss-oklab-function": "^1.1.1",
-    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "autoprefixer": "^10.4.8",
     "cssnano": "^5.1.12",
     "dotenv": "^16.0.1",
     "globby": "^13.1.2",
     "picocolors": "^1.0.0",
-    "postcss": "^8.4.14",
+    "postcss": "^8.4.16",
     "postcss-import": "^14.1.0",
     "postcss-load-config": "^4.0.1",
     "postcss-media-minmax": "^5.0.0",
@@ -41,15 +41,15 @@
   "devDependencies": {
     "@logux/eslint-config": "^47.2.0",
     "@logux/stylelint-config": "^0.10.1",
-    "@size-limit/file": "^7.0.8",
-    "eslint": "^8.20.0",
+    "@size-limit/file": "^8.0.0",
+    "eslint": "^8.21.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.2.4",
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.0.0",
     "serve": "^14.0.1",
-    "size-limit": "^7.0.8",
+    "size-limit": "^8.0.0",
     "stylelint": "^14.9.1"
   },
   "browser": {
