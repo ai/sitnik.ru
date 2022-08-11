@@ -114,5 +114,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           status: ${{ job.status }}
           env: ${{ steps.deployment.outputs.env }}
-          env_url: https://sitnik.ru/
+          env_url: ${{ secrets.WEBSITE_URL }}
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
