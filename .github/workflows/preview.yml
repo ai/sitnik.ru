@@ -39,21 +39,14 @@ jobs:
         run: pnpm install --frozen-lockfile --production --ignore-scripts
       - name: Build static files
         run: pnpm build
-      - name: Check files changes
-        id: hash
-        run: ./node_modules/.bin/ssdeploy changed
-        env:
-          WEBSITE_URL: ${{ secrets.WEBSITE_URL }}
       - name: Auth Google Cloud
         uses: google-github-actions/auth@v0
         with:
           credentials_json: ${{ secrets.GCLOUD_AUTH }}
       - name: Install Google Cloud
-        if: "!steps.hash.outputs.noChanges"
         uses: google-github-actions/setup-gcloud@v0
       - name: Deploy files
         id: deploy
-        if: "!steps.hash.outputs.noChanges"
         run: ./node_modules/.bin/ssdeploy preview $PR --verbose
         env:
           PR: ${{ github.event.number }}
