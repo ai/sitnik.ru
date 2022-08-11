@@ -57,7 +57,7 @@ dependencies:
   pug: 3.0.2
   rollup: 2.77.3
   rollup-plugin-terser: 7.0.2_rollup@2.77.3
-  ssdeploy: github.com/ai/ssdeploy/fc2a01b7a4f886b9648f4927113b17e5dd37224e
+  ssdeploy: github.com/ai/ssdeploy/d1b0fc0bd267905d661053bf02bc307e6a4cbd65
   strip-debug: 6.0.0
   terser: 5.14.2
   three: 0.143.0
@@ -3991,8 +3991,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  github.com/ai/ssdeploy/fc2a01b7a4f886b9648f4927113b17e5dd37224e:
-    resolution: {tarball: https://codeload.github.com/ai/ssdeploy/tar.gz/fc2a01b7a4f886b9648f4927113b17e5dd37224e}
+  github.com/ai/ssdeploy/d1b0fc0bd267905d661053bf02bc307e6a4cbd65:
+    resolution: {tarball: https://codeload.github.com/ai/ssdeploy/tar.gz/d1b0fc0bd267905d661053bf02bc307e6a4cbd65}
     name: ssdeploy
     version: 0.8.1
     engines: {node: '>=14.0.0'}
