@@ -14,13 +14,26 @@ jobs:
           env: preview-${{ github.event.number }}
       - name: Checkout the repository
         uses: actions/checkout@v3
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+      - name: Install asdf
+        uses: asdf-vm/actions/setup@v1
+      - name: Cache asdf
+        id: asdf-cache
+        uses: actions/cache@v3
         with:
-          node-version: 18
-          cache: pnpm
+          path: ~/.asdf
+          key: asdf-${{ hashFiles('**/.tool-versions') }}
+      - name: Install asdf tools
+        if: steps.asdf-cache.outputs.cache-hit != 'true'
+        uses: asdf-vm/actions/install@v1
+      - name: Cache pnpm modules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-pnpm-modules
+        with:
+          path: ~/.local/share/pnpm/
+          key: pnpm-production-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
-        run: pnpm install --production --frozen-lockfile
+        run: pnpm install --frozen-lockfile --production --ignore-scripts
       - name: Auth Google Cloud
         uses: google-github-actions/auth@v0
         with:
