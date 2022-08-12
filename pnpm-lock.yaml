@@ -7,7 +7,7 @@ specifiers:
   '@logux/stylelint-config': ^0.10.1
   '@rollup/plugin-commonjs': ^22.0.2
   '@rollup/plugin-node-resolve': ^13.3.0
-  '@size-limit/file': ^8.0.0
+  '@size-limit/file': ^8.0.1
   autoprefixer: ^10.4.8
   cssnano: ^5.1.12
   dotenv: ^16.0.1
@@ -30,7 +30,7 @@ specifiers:
   rollup: ^2.77.3
   rollup-plugin-terser: ^7.0.2
   serve: ^14.0.1
-  size-limit: ^8.0.0
+  size-limit: ^8.0.1
   ssdeploy: github:ai/ssdeploy
   strip-debug: ^6.0.0
   stylelint: ^14.10.0
@@ -57,7 +57,7 @@ dependencies:
   pug: 3.0.2
   rollup: 2.77.3
   rollup-plugin-terser: 7.0.2_rollup@2.77.3
-  ssdeploy: github.com/ai/ssdeploy/79b6bf62bb22ba64192eeada9ceddb2fbef39db1
+  ssdeploy: github.com/ai/ssdeploy/a7620ec347ae075b5affd62c796b79a09c60eea8
   strip-debug: 6.0.0
   terser: 5.14.2
   three: 0.143.0
@@ -65,7 +65,7 @@ dependencies:
 devDependencies:
   '@logux/eslint-config': 47.2.0_7hz3xvmviof7onfgk6hpedqcom
   '@logux/stylelint-config': 0.10.1_stylelint@14.10.0
-  '@size-limit/file': 8.0.0_size-limit@8.0.0
+  '@size-limit/file': 8.0.1_size-limit@8.0.1
   eslint: 8.21.0
   eslint-config-standard: 17.0.0_dfwa53o44x4e5xhsfv5mvfhk5a
   eslint-plugin-import: 2.26.0_eslint@8.21.0
@@ -73,7 +73,7 @@ devDependencies:
   eslint-plugin-prefer-let: 3.0.1
   eslint-plugin-promise: 6.0.0_eslint@8.21.0
   serve: 14.0.1
-  size-limit: 8.0.0
+  size-limit: 8.0.1
   stylelint: 14.10.0
 
 packages:
@@ -479,14 +479,14 @@ packages:
       rollup: 2.77.3
     dev: false
 
-  /@size-limit/file/8.0.0_size-limit@8.0.0:
-    resolution: {integrity: sha512-xd4bBk/YyezsMQfpi2V3/blodCuPNVF5UwMd4L9LxBvon0PK4C1+3zBXxZpvN7AcMvPbJ8RUMS+iHpD4KcwaOg==}
+  /@size-limit/file/8.0.1_size-limit@8.0.1:
+    resolution: {integrity: sha512-kwgc5UJQIz5qbRow3atSiW2K7vEIIw4DelT4WLn09cOwcJgWs82Imgz2UqVivHJmCisn/ltPjT4qmxaDfjFflw==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     peerDependencies:
-      size-limit: 8.0.0
+      size-limit: 8.0.1
     dependencies:
       semver: 7.3.7
-      size-limit: 8.0.0
+      size-limit: 8.0.1
     dev: true
 
   /@trysound/sax/0.2.0:
@@ -3415,8 +3415,8 @@ packages:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
     dev: true
 
-  /size-limit/8.0.0:
-    resolution: {integrity: sha512-344dzCZZiTz+N0WS801SNG/qd8MCa6dzJhsj8gLQg4JlmddwUdi/Ol0HfliEVL7jgtOz8fNgDeB2+14xwalvVA==}
+  /size-limit/8.0.1:
+    resolution: {integrity: sha512-VHrozqkQTYfcv1OlZIRIL0x6f+xhZ3TT+RTXC5AvKn/yA+3PIWERrKWqHMJPD7G/Vi0SuBtWAn3IvCGx2/UB1g==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     hasBin: true
     dependencies:
@@ -3955,8 +3955,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  github.com/ai/ssdeploy/79b6bf62bb22ba64192eeada9ceddb2fbef39db1:
-    resolution: {tarball: https://codeload.github.com/ai/ssdeploy/tar.gz/79b6bf62bb22ba64192eeada9ceddb2fbef39db1}
+  github.com/ai/ssdeploy/a7620ec347ae075b5affd62c796b79a09c60eea8:
+    resolution: {tarball: https://codeload.github.com/ai/ssdeploy/tar.gz/a7620ec347ae075b5affd62c796b79a09c60eea8}
     name: ssdeploy
     version: 0.8.1
     engines: {node: '>=14.0.0'}
