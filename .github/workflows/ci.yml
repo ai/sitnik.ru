@@ -122,8 +122,6 @@ jobs:
     name: Preview
     runs-on: ubuntu-latest
     if: github.ref != 'refs/heads/main'
-    needs:
-      - test
     steps:
       - name: Notify about new deployment
         uses: bobheadxi/deployments@v1
