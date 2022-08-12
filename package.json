@@ -33,7 +33,7 @@
     "pug": "^3.0.2",
     "rollup": "^2.77.3",
     "rollup-plugin-terser": "^7.0.2",
-    "ssdeploy": "^0.8.1",
+    "ssdeploy": "^0.9.0",
     "strip-debug": "^6.0.0",
     "terser": "^5.14.2",
     "three": "^0.143.0"
@@ -41,7 +41,7 @@
   "devDependencies": {
     "@logux/eslint-config": "^47.2.0",
     "@logux/stylelint-config": "^0.10.1",
-    "@size-limit/file": "^8.0.0",
+    "@size-limit/file": "^8.0.1",
     "eslint": "^8.21.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
@@ -49,7 +49,7 @@
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.0.0",
     "serve": "^14.0.1",
-    "size-limit": "^8.0.0",
+    "size-limit": "^8.0.1",
     "stylelint": "^14.10.0"
   },
   "browser": {
