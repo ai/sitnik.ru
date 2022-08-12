@@ -113,6 +113,7 @@ jobs:
           step: finish
           token: ${{ secrets.GITHUB_TOKEN }}
           status: ${{ job.status }}
+          ref: ${{ github.ref }}
           env: ${{ steps.deployment.outputs.env }}
           env_url: ${{ secrets.WEBSITE_URL }}
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
@@ -130,6 +131,7 @@ jobs:
         with:
           step: start
           token: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.head_ref }}
           env: preview-${{ github.event.number }}
       - name: Checkout the repository
         uses: actions/checkout@v3
