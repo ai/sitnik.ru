@@ -47,7 +47,7 @@ jobs:
         uses: google-github-actions/setup-gcloud@v0
       - name: Deploy files
         id: deploy
-        run: ./node_modules/.bin/ssdeploy preview $PR
+        run: ./node_modules/.bin/ssdeploy preview $PR --verbose
         env:
           PR: ${{ github.event.number }}
           GCLOUD_APP: ${{ secrets.GCLOUD_APP }}
