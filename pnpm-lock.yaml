@@ -57,7 +57,7 @@ dependencies:
   pug: 3.0.2
   rollup: 2.77.3
   rollup-plugin-terser: 7.0.2_rollup@2.77.3
-  ssdeploy: github.com/ai/ssdeploy/8986bcc47a91035beddb09d10cded8cbd36039e9
+  ssdeploy: github.com/ai/ssdeploy/b9edf03987dcba90508775118f63922a503c37e9
   strip-debug: 6.0.0
   terser: 5.14.2
   three: 0.143.0
@@ -539,8 +539,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.7.1:
-    resolution: {integrity: sha512-GKX1Qnqxo4S+Z/+Z8KKPLpH282LD7jLHWJcVryOflnsnH+BtSDfieR6ObwBMwpnNws0bUK8GI7z0unQf9bARNQ==}
+  /@types/node/18.7.2:
+    resolution: {integrity: sha512-ce7MIiaYWCFv6A83oEultwhBXb22fxwNOQf5DIxWA4WXvDQ7K+L0fbWl/YOfCzlR5B/uFkSnVBhPcOfOECcWvA==}
     dev: false
 
   /@types/normalize-package-data/2.4.1:
@@ -554,7 +554,7 @@ packages:
   /@types/resolve/1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 18.7.1
+      '@types/node': 18.7.2
     dev: false
 
   /@zeit/schemas/2.21.0:
@@ -781,7 +781,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001375
-      electron-to-chromium: 1.4.216
+      electron-to-chromium: 1.4.217
       node-releases: 2.0.6
       update-browserslist-db: 1.0.5_browserslist@4.21.3
     dev: false
@@ -1265,8 +1265,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /electron-to-chromium/1.4.216:
-    resolution: {integrity: sha512-jDkyyqIy2n+dtl3isE0Y8znnN936BGobE8SDnwErubJ3zOophPDFPMr7rCoIH+EUae6T7+t1cbBggGtvVf3ZtQ==}
+  /electron-to-chromium/1.4.217:
+    resolution: {integrity: sha512-iX8GbAMij7cOtJPZo02CClpaPMWjvN5meqXiJXkBgwvraNWTNH0Z7F9tkznI34JRPtWASoPM/xWamq3oNb49GA==}
     dev: false
 
   /emoji-regex/8.0.0:
@@ -2158,7 +2158,7 @@ packages:
     resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 18.7.1
+      '@types/node': 18.7.2
       merge-stream: 2.0.0
       supports-color: 7.2.0
     dev: false
@@ -3955,8 +3955,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  github.com/ai/ssdeploy/8986bcc47a91035beddb09d10cded8cbd36039e9:
-    resolution: {tarball: https://codeload.github.com/ai/ssdeploy/tar.gz/8986bcc47a91035beddb09d10cded8cbd36039e9}
+  github.com/ai/ssdeploy/b9edf03987dcba90508775118f63922a503c37e9:
+    resolution: {tarball: https://codeload.github.com/ai/ssdeploy/tar.gz/b9edf03987dcba90508775118f63922a503c37e9}
     name: ssdeploy
     version: 0.8.1
     engines: {node: '>=14.0.0'}
