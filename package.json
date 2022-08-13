@@ -19,7 +19,7 @@
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "autoprefixer": "^10.4.8",
-    "cssnano": "^5.1.12",
+    "cssnano": "^5.1.13",
     "dotenv": "^16.0.1",
     "globby": "^13.1.2",
     "picocolors": "^1.0.0",
@@ -33,7 +33,7 @@
     "pug": "^3.0.2",
     "rollup": "^2.77.3",
     "rollup-plugin-terser": "^7.0.2",
-    "ssdeploy": "^0.9.0",
+    "ssdeploy": "^0.9.1",
     "strip-debug": "^6.0.0",
     "terser": "^5.14.2",
     "three": "^0.143.0"
