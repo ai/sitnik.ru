@@ -4,7 +4,7 @@ specifiers:
   '@babel/core': ^7.18.13
   '@csstools/postcss-oklab-function': ^1.1.1
   '@logux/eslint-config': ^47.2.0
-  '@logux/stylelint-config': ^0.11.0
+  '@logux/stylelint-config': ^0.12.0
   '@rollup/plugin-commonjs': ^22.0.2
   '@rollup/plugin-node-resolve': ^13.3.0
   '@size-limit/file': ^8.0.1
@@ -64,7 +64,7 @@ dependencies:
 
 devDependencies:
   '@logux/eslint-config': 47.2.0_c5zrp42zbc5s4i6yiprz55kwaq
-  '@logux/stylelint-config': 0.11.0_stylelint@14.11.0
+  '@logux/stylelint-config': 0.12.0_stylelint@14.11.0
   '@size-limit/file': 8.0.1_size-limit@8.0.1
   eslint: 8.23.0
   eslint-config-standard: 17.0.0_ci7jzfiysajw25w4iodapaa2cq
@@ -412,14 +412,14 @@ packages:
       eslint-plugin-promise: 6.0.1_eslint@8.23.0
     dev: true
 
-  /@logux/stylelint-config/0.11.0_stylelint@14.11.0:
-    resolution: {integrity: sha512-Rzn6qKTSpUku0hyUv6l9kgfD7zGVrdzX47VnyD2rXfGnVHReLvIcSRecoCCkQk+X0hOSVMfwPN5ZxZM/4SCkEA==}
+  /@logux/stylelint-config/0.12.0_stylelint@14.11.0:
+    resolution: {integrity: sha512-4dMnN6BzUiRxxWZ7RGy6K9nJfrU5PhdJ9WohcbyPV1BZ9BO4PUXW6c7S8L4f1fAUiQXnAVEiccahv4SJz15LQQ==}
     peerDependencies:
-      stylelint: ^14.2.0
+      stylelint: ^14.11.0
     dependencies:
       stylelint: 14.11.0
       stylelint-config-recess-order: 3.0.0_stylelint@14.11.0
-      stylelint-config-standard: 27.0.0_stylelint@14.11.0
+      stylelint-config-standard: 28.0.0_stylelint@14.11.0
       stylelint-gamut: 1.2.9_stylelint@14.11.0
       stylelint-order: 5.0.0_stylelint@14.11.0
     dev: true
@@ -787,7 +787,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001388
-      electron-to-chromium: 1.4.240
+      electron-to-chromium: 1.4.241
       node-releases: 2.0.6
       update-browserslist-db: 1.0.7_browserslist@4.21.3
     dev: false
@@ -1275,8 +1275,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /electron-to-chromium/1.4.240:
-    resolution: {integrity: sha512-r20dUOtZ4vUPTqAajDGonIM1uas5tf85Up+wPdtNBNvBSqGCfkpvMVvQ1T8YJzPV9/Y9g3FbUDcXb94Rafycow==}
+  /electron-to-chromium/1.4.241:
+    resolution: {integrity: sha512-e7Wsh4ilaioBZ5bMm6+F4V5c11dh56/5Jwz7Hl5Tu1J7cnB+Pqx5qIF2iC7HPpfyQMqGSvvLP5bBAIDd2gAtGw==}
     dev: false
 
   /emoji-regex/8.0.0:
@@ -3635,10 +3635,10 @@ packages:
       stylelint: 14.11.0
     dev: true
 
-  /stylelint-config-standard/27.0.0_stylelint@14.11.0:
-    resolution: {integrity: sha512-J+wxyODWQCW2kgdhVzj51a4cFcJkglkMQrjPU/1Jo8w2oKSKK5ZRqHvDDWxEmjYWIYbMhhIMS5dOgVpGUMIACw==}
+  /stylelint-config-standard/28.0.0_stylelint@14.11.0:
+    resolution: {integrity: sha512-q/StuowDdDmFCravzGHAwgS9pjX0bdOQUEBBDIkIWsQuYGgYz/xsO8CM6eepmIQ1fc5bKdDVimlJZ6MoOUcJ5Q==}
     peerDependencies:
-      stylelint: ^14.10.0
+      stylelint: ^14.11.0
     dependencies:
       stylelint: 14.11.0
       stylelint-config-recommended: 9.0.0_stylelint@14.11.0
