@@ -41,7 +41,7 @@
   "devDependencies": {
     "@logux/eslint-config": "^47.2.0",
     "@logux/stylelint-config": "^0.12.0",
-    "@size-limit/file": "^8.0.1",
+    "@size-limit/file": "^8.1.0",
     "eslint": "^8.23.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
@@ -49,7 +49,7 @@
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.0.1",
     "serve": "^14.0.1",
-    "size-limit": "^8.0.1",
+    "size-limit": "^8.1.0",
     "stylelint": "^14.11.0"
   },
   "browser": {

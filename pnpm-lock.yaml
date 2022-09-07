@@ -7,7 +7,7 @@ specifiers:
   '@logux/stylelint-config': ^0.12.0
   '@rollup/plugin-commonjs': ^22.0.2
   '@rollup/plugin-node-resolve': ^14.0.0
-  '@size-limit/file': ^8.0.1
+  '@size-limit/file': ^8.1.0
   autoprefixer: ^10.4.8
   cssnano: ^5.1.13
   dotenv: ^16.0.2
@@ -30,7 +30,7 @@ specifiers:
   rollup: ^2.79.0
   rollup-plugin-terser: ^7.0.2
   serve: ^14.0.1
-  size-limit: ^8.0.1
+  size-limit: ^8.1.0
   ssdeploy: ^0.9.2
   strip-debug: ^6.0.0
   stylelint: ^14.11.0
@@ -65,7 +65,7 @@ dependencies:
 devDependencies:
   '@logux/eslint-config': 47.2.0_c5zrp42zbc5s4i6yiprz55kwaq
   '@logux/stylelint-config': 0.12.0_stylelint@14.11.0
-  '@size-limit/file': 8.0.1_size-limit@8.0.1
+  '@size-limit/file': 8.1.0_size-limit@8.1.0
   eslint: 8.23.0
   eslint-config-standard: 17.0.0_ci7jzfiysajw25w4iodapaa2cq
   eslint-plugin-import: 2.26.0_eslint@8.23.0
@@ -73,7 +73,7 @@ devDependencies:
   eslint-plugin-prefer-let: 3.0.1
   eslint-plugin-promise: 6.0.1_eslint@8.23.0
   serve: 14.0.1
-  size-limit: 8.0.1
+  size-limit: 8.1.0
   stylelint: 14.11.0
 
 packages:
@@ -485,14 +485,14 @@ packages:
       rollup: 2.79.0
     dev: false
 
-  /@size-limit/file/8.0.1_size-limit@8.0.1:
-    resolution: {integrity: sha512-kwgc5UJQIz5qbRow3atSiW2K7vEIIw4DelT4WLn09cOwcJgWs82Imgz2UqVivHJmCisn/ltPjT4qmxaDfjFflw==}
+  /@size-limit/file/8.1.0_size-limit@8.1.0:
+    resolution: {integrity: sha512-Ur+NgJSRHBnbQBrD8X2doxXYdBcVJsMxe2KfWrUmnZ6wYz09YKhQ1iYLqNztjf2yf/JEp00zp1vyhmimUQfUHQ==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     peerDependencies:
-      size-limit: 8.0.1
+      size-limit: 8.1.0
     dependencies:
       semver: 7.3.7
-      size-limit: 8.0.1
+      size-limit: 8.1.0
     dev: true
 
   /@trysound/sax/0.2.0:
@@ -787,7 +787,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001390
-      electron-to-chromium: 1.4.242
+      electron-to-chromium: 1.4.243
       node-releases: 2.0.6
       update-browserslist-db: 1.0.7_browserslist@4.21.3
     dev: false
@@ -1275,8 +1275,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /electron-to-chromium/1.4.242:
-    resolution: {integrity: sha512-nPdgMWtjjWGCtreW/2adkrB2jyHjClo9PtVhR6rW+oxa4E4Wom642Tn+5LslHP3XPL5MCpkn5/UEY60EXylNeQ==}
+  /electron-to-chromium/1.4.243:
+    resolution: {integrity: sha512-BgLD2gBX43OSXwlT01oYRRD5NIB4n3okTRxkzEAC6G0SZG4TTlyrWMjbOo0fajCwqwpRtMHXQNMjtRN6qpNtfw==}
     dev: false
 
   /emoji-regex/8.0.0:
@@ -3425,8 +3425,8 @@ packages:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
     dev: true
 
-  /size-limit/8.0.1:
-    resolution: {integrity: sha512-VHrozqkQTYfcv1OlZIRIL0x6f+xhZ3TT+RTXC5AvKn/yA+3PIWERrKWqHMJPD7G/Vi0SuBtWAn3IvCGx2/UB1g==}
+  /size-limit/8.1.0:
+    resolution: {integrity: sha512-bUL+Uyyt/G+a1XzKlI2WKHVDepmXtqMDhF65pdtjccheiQTNjExWW4nFefgbRL2QgNTzRfK6ayFKjO3o4ER4gg==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     hasBin: true
     dependencies:
