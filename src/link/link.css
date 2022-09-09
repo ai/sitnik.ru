@@ -5,6 +5,7 @@
   text-decoration: none;
   border-radius: 0.3em;
   transition: color 200ms;
+  will-change: transform;
 
   &:visited {
     color: var(--accent);
