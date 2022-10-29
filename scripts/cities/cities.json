@@ -309,15 +309,11 @@
   ],
   "Djibouti, Djibouti": [
     11.55,
-    43.15
+    43.16
   ],
   "Napoli, Italy": [
     40.85,
     14.27
-  ],
-  "Pisa, Italy": [
-    43.72,
-    10.4
   ],
   "Torino, Italy": [
     45.05,
@@ -575,10 +571,6 @@
     41.9,
     12.45
   ],
-  "Girona, Spain": [
-    41.98,
-    2.82
-  ],
   "Rota, Spain": [
     36.62,
     -6.35
@@ -614,5 +606,17 @@
   "Cambremer, France": [
     49.15,
     0.05
+  ],
+  "Begur, Spain": [
+    41.96,
+    3.22
+  ],
+  "Faro, Portugal": [
+    37.08,
+    -8.05
+  ],
+  "Livorno, Italy": [
+    43.55,
+    10.31
   ]
 }
