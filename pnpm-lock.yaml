@@ -14,7 +14,7 @@ specifiers:
   eslint: ^8.26.0
   eslint-config-standard: ^17.0.0
   eslint-plugin-import: ^2.26.0
-  eslint-plugin-n: ^15.3.0
+  eslint-plugin-n: ^15.4.0
   eslint-plugin-prefer-let: ^3.0.1
   eslint-plugin-promise: ^6.1.1
   globby: ^13.1.2
@@ -63,13 +63,13 @@ dependencies:
   three: 0.146.0
 
 devDependencies:
-  '@logux/eslint-config': 47.2.0_typfqbe2hunit2r2qngsk4xez4
+  '@logux/eslint-config': 47.2.0_jahyy7t53shwinejmgjfgml2ge
   '@logux/stylelint-config': 0.12.0_stylelint@14.14.0
   '@size-limit/file': 8.1.0_size-limit@8.1.0
   eslint: 8.26.0
-  eslint-config-standard: 17.0.0_43wwz2xsig5yhgcv2rleettsby
+  eslint-config-standard: 17.0.0_pxgizx7scytnzv6tfhdgsab7u4
   eslint-plugin-import: 2.26.0_eslint@8.26.0
-  eslint-plugin-n: 15.3.0_eslint@8.26.0
+  eslint-plugin-n: 15.4.0_eslint@8.26.0
   eslint-plugin-prefer-let: 3.0.1
   eslint-plugin-promise: 6.1.1_eslint@8.26.0
   serve: 14.0.1
@@ -389,7 +389,7 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: false
 
-  /@logux/eslint-config/47.2.0_typfqbe2hunit2r2qngsk4xez4:
+  /@logux/eslint-config/47.2.0_jahyy7t53shwinejmgjfgml2ge:
     resolution: {integrity: sha512-nNPPkw+kfA2bLyhkxaqGzd3MWSN4S2dUf69xo2syskBd5ZfFk2WT9ssO+yDDUd26yNgN3AmweKztEwyUim9wOQ==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
@@ -401,9 +401,9 @@ packages:
       eslint-plugin-promise: ^6.0.0
     dependencies:
       eslint: 8.26.0
-      eslint-config-standard: 17.0.0_43wwz2xsig5yhgcv2rleettsby
+      eslint-config-standard: 17.0.0_pxgizx7scytnzv6tfhdgsab7u4
       eslint-plugin-import: 2.26.0_eslint@8.26.0
-      eslint-plugin-n: 15.3.0_eslint@8.26.0
+      eslint-plugin-n: 15.4.0_eslint@8.26.0
       eslint-plugin-prefer-let: 3.0.1
       eslint-plugin-promise: 6.1.1_eslint@8.26.0
     dev: true
@@ -545,8 +545,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.11.7:
-    resolution: {integrity: sha512-LhFTglglr63mNXUSRYD8A+ZAIu5sFqNJ4Y2fPuY7UlrySJH87rRRlhtVmMHplmfk5WkoJGmDjE9oiTfyX94CpQ==}
+  /@types/node/18.11.8:
+    resolution: {integrity: sha512-uGwPWlE0Hj972KkHtCDVwZ8O39GmyjfMane1Z3GUBGGnkZ2USDq7SxLpVIiIHpweY9DS0QTDH0Nw7RNBsAAZ5A==}
     dev: false
 
   /@types/normalize-package-data/2.4.1:
@@ -716,7 +716,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.4
-      caniuse-lite: 1.0.30001426
+      caniuse-lite: 1.0.30001427
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -785,7 +785,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001426
+      caniuse-lite: 1.0.30001427
       electron-to-chromium: 1.4.284
       node-releases: 2.0.6
       update-browserslist-db: 1.0.10_browserslist@4.21.4
@@ -855,13 +855,13 @@ packages:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
       browserslist: 4.21.4
-      caniuse-lite: 1.0.30001426
+      caniuse-lite: 1.0.30001427
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: false
 
-  /caniuse-lite/1.0.30001426:
-    resolution: {integrity: sha512-n7cosrHLl8AWt0wwZw/PJZgUg3lV0gk9LMI7ikGJwhyhgsd2Nb65vKvmSexCqq/J7rbH3mFG6yZZiPR5dLPW5A==}
+  /caniuse-lite/1.0.30001427:
+    resolution: {integrity: sha512-lfXQ73oB9c8DP5Suxaszm+Ta2sr/4tf8+381GkIm1MLj/YdLf+rEDyDSRCzeltuyTVGm+/s18gdZ0q+Wmp8VsQ==}
     dev: false
 
   /chalk-template/0.4.0:
@@ -1173,8 +1173,8 @@ packages:
     dependencies:
       ms: 2.1.2
 
-  /decamelize-keys/1.1.0:
-    resolution: {integrity: sha512-ocLWuYzRPoS9bfiSdDd3cxvrzovVMZnRDVEzAs+hWIVXGDbHxWMECij2OBuyB/An0FFW/nLuq6Kv1i/YC5Qfzg==}
+  /decamelize-keys/1.1.1:
+    resolution: {integrity: sha512-WiPxgEirIV0/eIOMcnFBA3/IJZAZqKnwAwWyvvdi4lsr1WCN22nhdf/3db3DoZcUjTV2SqfzIwNyp6y2xs3nmg==}
     engines: {node: '>=0.10.0'}
     dependencies:
       decamelize: 1.2.0
@@ -1359,7 +1359,7 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /eslint-config-standard/17.0.0_43wwz2xsig5yhgcv2rleettsby:
+  /eslint-config-standard/17.0.0_pxgizx7scytnzv6tfhdgsab7u4:
     resolution: {integrity: sha512-/2ks1GKyqSOkH7JFvXJicu0iMpoojkwB+f5Du/1SC0PtBL+s8v30k9njRZ21pm2drKYm2342jFnGWzttxPmZVg==}
     peerDependencies:
       eslint: ^8.0.1
@@ -1369,7 +1369,7 @@ packages:
     dependencies:
       eslint: 8.26.0
       eslint-plugin-import: 2.26.0_eslint@8.26.0
-      eslint-plugin-n: 15.3.0_eslint@8.26.0
+      eslint-plugin-n: 15.4.0_eslint@8.26.0
       eslint-plugin-promise: 6.1.1_eslint@8.26.0
     dev: true
 
@@ -1451,8 +1451,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-n/15.3.0_eslint@8.26.0:
-    resolution: {integrity: sha512-IyzPnEWHypCWasDpxeJnim60jhlumbmq0pubL6IOcnk8u2y53s5QfT8JnXy7skjHJ44yWHRb11PLtDHuu1kg/Q==}
+  /eslint-plugin-n/15.4.0_eslint@8.26.0:
+    resolution: {integrity: sha512-MkoKy9/lfd52TAXK4fkABgCp0aglk82Q3viy2UOWIEpTVE/Cem5P/UAxMBA4vSw7Gy+2egPqImE9euitLGp5aw==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
       eslint: '>=7.0.0'
@@ -2176,7 +2176,7 @@ packages:
     resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 18.11.7
+      '@types/node': 18.11.8
       merge-stream: 2.0.0
       supports-color: 7.2.0
     dev: false
@@ -2335,7 +2335,7 @@ packages:
       '@types/minimist': 1.2.2
       camelcase-keys: 6.2.2
       decamelize: 1.2.0
-      decamelize-keys: 1.1.0
+      decamelize-keys: 1.1.1
       hard-rejection: 2.1.0
       minimist-options: 4.1.0
       normalize-package-data: 3.0.3
