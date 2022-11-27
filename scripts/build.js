@@ -84,11 +84,16 @@ async function loadVisited() {
 
 async function loadLocation() {
   let location = {
-    latitude: 41.38,
-    longitude: 2.18,
-    es: { country: 'España', city: 'Barcelona' },
-    en: { country: 'Spain', city: 'Barcelona' },
-    ru: { country: 'Испания', city: 'Барселона' }
+    // latitude: 41.38,
+    // longitude: 2.18,
+    // es: { country: 'España', city: 'Barcelona' },
+    // en: { country: 'Spain', city: 'Barcelona' },
+    // ru: { country: 'Испания', city: 'Барселона' }
+    latitude: 41.43,
+    longitude: 44.8,
+    es: { country: 'Georgia', city: 'Tiflis' },
+    en: { country: 'Georgia', city: 'Tbilisi' },
+    ru: { country: 'Грузия', city: 'Тбилиси' }
   }
   if (existsSync(LOCATION)) {
     location = JSON.parse(await readFile(LOCATION))
