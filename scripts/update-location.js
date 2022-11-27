@@ -25,7 +25,7 @@ async function loadName(latLng, lang) {
   )
   if (!geodata.results[0]) {
     console.error(geodata)
-    throw new MyError('Bad responce from Google')
+    throw new MyError('Bad response from Google')
   }
   let address = geodata.results[0].address_components
   let country = address.find(i => i.types.includes('country'))
