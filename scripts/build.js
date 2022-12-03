@@ -89,11 +89,11 @@ async function loadLocation() {
     // es: { country: 'España', city: 'Barcelona' },
     // en: { country: 'Spain', city: 'Barcelona' },
     // ru: { country: 'Испания', city: 'Барселона' }
-    latitude: 41.43,
-    longitude: 44.8,
-    es: { country: 'Georgia', city: 'Tiflis' },
-    en: { country: 'Georgia', city: 'Tbilisi' },
-    ru: { country: 'Грузия', city: 'Тбилиси' }
+    latitude: 40.7,
+    longitude: 29,
+    es: { country: 'Turquía', city: 'Estambul' },
+    en: { country: 'Türkiye', city: 'Istanbul' },
+    ru: { country: 'Турция', city: 'Стамбул' }
   }
   if (existsSync(LOCATION)) {
     location = JSON.parse(await readFile(LOCATION))
