@@ -218,11 +218,12 @@ async function foundCountries(data) {
     Vatican: true
   }
   for (let city of Object.keys(data.cities)) {
-    if (city.includes(',')) {
+    if (city === 'Dipkarpaz, Cyprus') {
+      countries.KKTC = true
+    } else if (city.includes(',')) {
       let country = city.split(',')[1].trim()
-      if (country !== 'DC') {
-        countries[country] = true
-      }
+      if (country === 'DC') continue
+      countries[country] = true
     } else {
       countries[city] = true
     }

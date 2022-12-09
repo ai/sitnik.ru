@@ -176,8 +176,8 @@
     79.88
   ],
   "T'bilisi, Georgia": [
-    41.73,
-    44.77
+    41.72,
+    44.79
   ],
   "Ahangama, Sri Lanka": [
     5.98,
@@ -236,16 +236,12 @@
     11.1
   ],
   "İstanbul, Turkey": [
-    41.04,
+    41.01,
     28.98
   ],
   "Kraków, Poland": [
     50.06,
     19.94
-  ],
-  "Limassol, Cyprus": [
-    34.69,
-    33.06
   ],
   "Budapest, Hungary": [
     47.48,
@@ -551,10 +547,6 @@
     58.79,
     16.92
   ],
-  "Gazimağusa": [
-    35.13,
-    33.93
-  ],
   "Kastrup, Denmark": [
     55.62,
     12.58
@@ -618,5 +610,21 @@
   "Livorno, Italy": [
     43.55,
     10.31
+  ],
+  "Genève, Switzerland": [
+    46.21,
+    6.15
+  ],
+  "Dipkarpaz, Cyprus": [
+    35.64,
+    34.54
+  ],
+  "Larnaca, Cyprus": [
+    34.9,
+    33.64
+  ],
+  "Vilnius, Lithuania": [
+    54.68,
+    25.29
   ]
 }
