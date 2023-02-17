@@ -35,15 +35,15 @@
   transform: scaleY(0.06);
   transform-origin: 0 100% 0;
 
-  @nest :hover& {
+  :hover& {
     transform: none;
   }
 
-  @nest .is-text& {
+  .is-text& {
     opacity: 0;
   }
 
-  @nest :focus& {
+  :focus& {
     background: var(--accent);
     opacity: 1;
     transform: none;

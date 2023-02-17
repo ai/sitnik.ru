@@ -65,7 +65,7 @@
     border-right-width: 0;
     transition: transform 400ms;
 
-    @nest .globe.is-open & {
+    .globe.is-open & {
       transform: rotate(90deg);
     }
   }
