@@ -152,20 +152,10 @@ async function compileScripts(images) {
   let worker = workerOutput.output[0].code.trim()
 
   js = js
-    .replace(/var /g, 'let ')
-    .replace(/function\s*\((\w+)\)/g, '$1=>')
     .replace(/}\(\);$/, '}()')
     .replace(/\w+\("\[as=script]"\)\.href/, `"/${workerFile}"`)
     .replace(/\w+\("[^"]+\[href\*=map]"\)\.href/, `"/${mapFile}"`)
     .replace(/\w+\("[^"]+\[href\*=here]"\)\.href/, `"/${hereFile}"`)
-  worker = worker
-    .replace(/\/\/ .*?\\n/g, '\\n')
-    .replace(/\s\/\/.*?\\n/g, '\\n')
-    .replace(/((\\t)+\\n)+/g, '')
-    .replace(/(\\n)+/g, '\\n')
-    .replace(/TypeError("[^"]+")/g, 'TypeError("TypeError")')
-    .replace(/(\n)+/g, '\n')
-    .replace(/{aliceblue[^}]+}/, '{}')
   worker = transformSync(worker, { plugins: [stripDebug] }).code
   worker = (await minify(worker, { sourceMap: false })).code
 
