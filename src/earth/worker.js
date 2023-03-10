@@ -1,20 +1,22 @@
-import { MeshPhongMaterial } from 'three/src/materials/MeshPhongMaterial.js'
-import { MeshBasicMaterial } from 'three/src/materials/MeshBasicMaterial.js'
-import { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js'
-import { ImageBitmapLoader } from 'three/src/loaders/ImageBitmapLoader.js'
-import { DirectionalLight } from 'three/src/lights/DirectionalLight.js'
-import { SphereGeometry } from 'three/src/geometries/SphereGeometry.js'
-import { SpriteMaterial } from 'three/src/materials/SpriteMaterial.js'
-import { WebGLRenderer } from 'three/src/renderers/WebGLRenderer.js'
-import { CanvasTexture } from 'three/src/textures/CanvasTexture.js'
-import { AmbientLight } from 'three/src/lights/AmbientLight.js'
-import { ImageLoader } from 'three/src/loaders/ImageLoader.js'
-import { Spherical } from 'three/src/math/Spherical.js'
-import { Vector3 } from 'three/src/math/Vector3.js'
-import { Sprite } from 'three/src/objects/Sprite.js'
-import { Scene } from 'three/src/scenes/Scene.js'
-import { Color } from 'three/src/math/Color.js'
-import { Mesh } from 'three/src/objects/Mesh.js'
+import {
+  MeshPhongMaterial,
+  MeshBasicMaterial,
+  PerspectiveCamera,
+  ImageBitmapLoader,
+  DirectionalLight,
+  SpriteMaterial,
+  SphereGeometry,
+  WebGLRenderer,
+  CanvasTexture,
+  AmbientLight,
+  ImageLoader,
+  Spherical,
+  Vector3,
+  Sprite,
+  Scene,
+  Color,
+  Mesh
+} from 'three'
 
 import visited from './dots.js'
 

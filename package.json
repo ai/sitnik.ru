@@ -51,8 +51,5 @@
     "serve": "^14.2.0",
     "size-limit": "^8.2.4",
     "stylelint": "^15.2.0"
-  },
-  "browser": {
-    "node_modules/three/src/renderers/webvr/*": "./src/empty.js"
   }
 }
