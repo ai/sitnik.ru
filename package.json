@@ -14,7 +14,7 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "@babel/core": "^7.21.0",
+    "@babel/core": "^7.21.3",
     "@csstools/postcss-oklab-function": "^2.1.0",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
