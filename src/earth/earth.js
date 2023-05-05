@@ -53,6 +53,12 @@ function startEarth(offscreen, isWebP) {
     postMessage(['resize', earth.clientWidth, earth.clientHeight])
   })
 
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      postMessage(['resize', earth.clientWidth, earth.clientHeight])
+    }
+  })
+
   canvas.addEventListener('mousedown', e => {
     if (e.button === 0) {
       // left
