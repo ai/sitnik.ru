@@ -36,7 +36,7 @@
     "ssdeploy": "^0.9.3",
     "strip-debug": "^7.0.0",
     "terser": "^5.17.3",
-    "three": "^0.152.2"
+    "three": "~0.151.3"
   },
   "devDependencies": {
     "@logux/eslint-config": "^49.0.0",
