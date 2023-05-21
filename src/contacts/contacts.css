@@ -29,7 +29,7 @@
   }
 }
 
-.contacts_contact {
+.contacts_wrapper {
   @media (width <= 980px) {
     padding-top: 30px;
   }
