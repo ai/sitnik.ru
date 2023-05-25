@@ -1,9 +1,11 @@
 import {
+  LinearSRGBColorSpace,
   MeshPhongMaterial,
   MeshBasicMaterial,
   PerspectiveCamera,
   ImageBitmapLoader,
   DirectionalLight,
+  ColorManagement,
   SpriteMaterial,
   SphereGeometry,
   WebGLRenderer,
@@ -23,6 +25,8 @@ import visited from './dots.js'
 const IS_WORKER = typeof window !== 'object'
 const RADIUS = 0.765 * 0.88
 const PI2 = 2 * Math.PI
+
+ColorManagement.enabled = false
 
 // Base
 
@@ -129,6 +133,7 @@ let commands = {
     if (!canvas.style) canvas.style = { width, height }
 
     renderer = new WebGLRenderer({ canvas, antialias: true })
+    renderer.outputColorSpace = LinearSRGBColorSpace
     renderer.setPixelRatio(pixelRatio)
     renderer.setSize(width, height)
     canvasHeight = height
