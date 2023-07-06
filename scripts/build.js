@@ -1,27 +1,27 @@
 #!/usr/bin/env node
 
-import { writeFile, readFile, copyFile, rm, mkdir } from 'fs/promises'
-import { basename, join, extname } from 'path'
-import { existsSync, ReadStream } from 'fs'
-import postcssLoadConfig from 'postcss-load-config'
 import { transformSync } from '@babel/core'
-import { nodeResolve } from '@rollup/plugin-node-resolve'
 import rollupCommonJS from '@rollup/plugin-commonjs'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 import { createHash } from 'crypto'
-import { promisify } from 'util'
+import dotenv from 'dotenv'
+import { existsSync, ReadStream } from 'fs'
+import { copyFile, mkdir, readFile, rm, writeFile } from 'fs/promises'
+import { globby } from 'globby'
+import { basename, extname, join } from 'path'
+import pico from 'picocolors'
+import postcss from 'postcss'
+import postcssLoadConfig from 'postcss-load-config'
+import posthtml from 'posthtml'
+import pug from 'pug'
+import { rollup } from 'rollup'
+import { terser } from 'rollup-plugin-terser'
 import stripDebug from 'strip-debug'
 import { minify } from 'terser'
-import { terser } from 'rollup-plugin-terser'
-import { rollup } from 'rollup'
-import { globby } from 'globby'
-import posthtml from 'posthtml'
-import postcss from 'postcss'
-import dotenv from 'dotenv'
-import pico from 'picocolors'
+import { promisify } from 'util'
 import zlib from 'zlib'
-import pug from 'pug'
 
-import { SRC, DIST, LOCATION, NGINX, COUNTRIES } from './lib/dirs.js'
+import { COUNTRIES, DIST, LOCATION, NGINX, SRC } from './lib/dirs.js'
 import { htmlCompressor } from './lib/html-compressor.js'
 import { MyError } from './lib/my-error.js'
 
@@ -73,7 +73,7 @@ async function task(text, fn) {
 // Steps
 
 async function cleanDist() {
-  await rm(DIST, { recursive: true, force: true })
+  await rm(DIST, { force: true, recursive: true })
   await mkdir(DIST)
 }
 
@@ -84,11 +84,11 @@ async function loadVisited() {
 
 async function loadLocation() {
   let location = {
+    en: { city: 'Barcelona', country: 'Spain' },
+    es: { city: 'Barcelona', country: 'España' },
     latitude: 41.38,
     longitude: 2.18,
-    es: { country: 'España', city: 'Barcelona' },
-    en: { country: 'Spain', city: 'Barcelona' },
-    ru: { country: 'Испания', city: 'Барселона' }
+    ru: { city: 'Барселона', country: 'Испания' }
   }
   if (existsSync(LOCATION)) {
     location = JSON.parse(await readFile(LOCATION))
@@ -122,7 +122,7 @@ async function copyImages() {
 async function compileStyles() {
   let from = join(SRC, 'index.css')
   let sss = await readFile(from)
-  let { plugins, options } = await postcssLoadConfig()
+  let { options, plugins } = await postcssLoadConfig()
   let result = await postcss(plugins).process(sss, {
     ...options,
     from,
@@ -179,7 +179,7 @@ async function compileHtml(visited, location, js, css, images) {
           return other
         }
       }
-      let html = pugFn({ location, visited, pluralize })
+      let html = pugFn({ location, pluralize, visited })
 
       html = posthtml()
         .use(htmlCompressor(js, images, css))

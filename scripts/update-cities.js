@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
-import { writeFile, readFile } from 'fs/promises'
-import { existsSync } from 'fs'
 import dotenv from 'dotenv'
+import { existsSync } from 'fs'
+import { readFile, writeFile } from 'fs/promises'
 import pico from 'picocolors'
 
-import { CITIES, PLACES, DOTS, COUNTRIES } from './lib/dirs.js'
+import { CITIES, COUNTRIES, DOTS, PLACES } from './lib/dirs.js'
+import { get } from './lib/get.js'
 import { MyError } from './lib/my-error.js'
 import { read } from './lib/read.js'
-import { get } from './lib/get.js'
 
 const MIN_DISTANCE = 0.7
 
@@ -193,8 +193,8 @@ async function loadCities(data) {
       if (!wasProcessed) {
         sent = true
         let res = await gmap('geocode/json', {
-          latlng: dot.join(','),
-          key: process.env.GMAPS_TOKEN
+          key: process.env.GMAPS_TOKEN,
+          latlng: dot.join(',')
         })
         let city = cityName(res)
         data.cities[city] = dot

@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
-import { writeFile, mkdir } from 'fs/promises'
-import { existsSync } from 'fs'
-import { dirname } from 'path'
 import dotenv from 'dotenv'
+import { existsSync } from 'fs'
+import { mkdir, writeFile } from 'fs/promises'
+import { dirname } from 'path'
 
 import { LOCATION } from './lib/dirs.js'
+import { get } from './lib/get.js'
 import { MyError } from './lib/my-error.js'
 import { read } from './lib/read.js'
-import { get } from './lib/get.js'
 
 dotenv.config()
 
@@ -37,7 +37,7 @@ async function loadName(latLng, lang) {
   if (city.long_name === 'Barcelona' && lang === 'ru') {
     city.long_name = 'Барселона'
   }
-  return { country: country.long_name, city: city.long_name }
+  return { city: city.long_name, country: country.long_name }
 }
 
 async function loadNames(latLng) {
@@ -46,7 +46,7 @@ async function loadNames(latLng) {
     loadName(latLng, 'es'),
     loadName(latLng, 'en')
   ])
-  return { ...latLng, ru, es, en }
+  return { ...latLng, en, es, ru }
 }
 
 async function wasNotChanged(cur) {

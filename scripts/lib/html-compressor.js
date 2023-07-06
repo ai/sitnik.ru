@@ -19,11 +19,11 @@ export function htmlCompressor(js, images, css) {
         }
       }
       if (i.tag === 'link' && i.attrs.rel === 'stylesheet') {
-        return [{ tag: 'style', content: [css] }]
+        return [{ content: [css], tag: 'style' }]
       } else if (i.tag === 'script') {
         return {
-          tag: 'script',
-          content: js
+          content: js,
+          tag: 'script'
         }
       } else {
         return i

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { MyError } from './lib/my-error.js'
 import { get } from './lib/get.js'
+import { MyError } from './lib/my-error.js'
 
 async function check() {
   let [last, cur] = await Promise.all([

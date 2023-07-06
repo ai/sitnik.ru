@@ -1,23 +1,23 @@
 import {
-  LinearSRGBColorSpace,
-  MeshPhongMaterial,
-  MeshBasicMaterial,
-  PerspectiveCamera,
-  ImageBitmapLoader,
-  DirectionalLight,
-  ColorManagement,
-  SpriteMaterial,
-  SphereGeometry,
-  WebGLRenderer,
-  CanvasTexture,
   AmbientLight,
-  ImageLoader,
-  Spherical,
-  Vector3,
-  Sprite,
-  Scene,
+  CanvasTexture,
   Color,
-  Mesh
+  ColorManagement,
+  DirectionalLight,
+  ImageBitmapLoader,
+  ImageLoader,
+  LinearSRGBColorSpace,
+  Mesh,
+  MeshBasicMaterial,
+  MeshPhongMaterial,
+  PerspectiveCamera,
+  Scene,
+  SphereGeometry,
+  Spherical,
+  Sprite,
+  SpriteMaterial,
+  Vector3,
+  WebGLRenderer
 } from 'three'
 
 import visited from './dots.js'
@@ -130,9 +130,9 @@ let commands = {
     latitude,
     longitude
   ) {
-    if (!canvas.style) canvas.style = { width, height }
+    if (!canvas.style) canvas.style = { height, width }
 
-    renderer = new WebGLRenderer({ canvas, antialias: true })
+    renderer = new WebGLRenderer({ antialias: true, canvas })
     renderer.outputColorSpace = LinearSRGBColorSpace
     renderer.setPixelRatio(pixelRatio)
     renderer.setSize(width, height)
@@ -174,12 +174,6 @@ let commands = {
     camera.lookAt(0, 0, 0)
   },
 
-  resize(width, height) {
-    renderer.setSize(width, height)
-    canvasHeight = height
-    renderer.render(scene, camera)
-  },
-
   move(start, end) {
     delta.setFromVector3(camera.position)
 
@@ -193,6 +187,12 @@ let commands = {
     let distanceToHere = camera.position.distanceTo(here.position)
     here.material.depthTest = distanceToHere > distanceToEdge
 
+    renderer.render(scene, camera)
+  },
+
+  resize(width, height) {
+    renderer.setSize(width, height)
+    canvasHeight = height
     renderer.render(scene, camera)
   }
 }
