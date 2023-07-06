@@ -177,8 +177,8 @@ let commands = {
   move(start, end) {
     delta.setFromVector3(camera.position)
 
-    delta.theta -= (PI2 * (end[0] - start[0])) / canvasHeight
-    delta.phi -= (PI2 * (end[1] - start[1])) / canvasHeight
+    delta.theta -= (PI2 * (end[0] - start[0])) / canvasHeight / 3
+    delta.phi -= (PI2 * (end[1] - start[1])) / canvasHeight / 3
 
     delta.makeSafe()
     camera.position.setFromSpherical(delta)
