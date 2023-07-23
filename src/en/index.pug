@@ -59,10 +59,9 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
 
         link( href="https://twitter.com/andrey_sitnik" itemprop="sameAs" rel="me" )
         link( href="https://vk.com/iskin" itemprop="sameAs" rel="me" )
-        link( href="https://twitter.com/andreysitnik" itemprop="sameAs" rel="me" )
-        link( href="https://twitter.com/sitnikcode" itemprop="sameAs" rel="me" )
         link( href="https://mastodon.social/@sitnik_ru" itemprop="sameAs" rel="me" )
         link( href="https://mastodon.social/@sitnik" itemprop="sameAs" rel="me" )
+
         ul.projects
           li.projects_item
             h2.projects_title
@@ -70,6 +69,19 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
                 | Mastodon
             p
               | My notes about sex, travels, and technologies
+
+          li.projects_item
+            h2.projects_title
+              span.projects_name Twitter
+              ul.projects_links
+                li.projects_link
+                  a.link( href="https://twitter.com/andreysitnik" itemprop="sameAs" rel="me" )
+                    | Personal
+                li.projects_link
+                  a.link( href="https://twitter.com/sitnikcode" itemprop="sameAs" rel="me" )
+                    | Development
+            p
+              | The copy of the content from Mastodon
 
           li.projects_item
             h2.projects_title
@@ -87,17 +99,29 @@ html( lang="en" itemtype="https://schema.org/Person" itemscope )
 
           li.projects_item
             h2.projects_title
-              a.link( href="https://mastodon.social/@linguopunk" )
-                | Linguopunk
+              span.projects_name Linguopunk
+              ul.projects_links
+                li.projects_link
+                  a.link( href="https://mastodon.social/@linguopunk" itemprop="sameAs" rel="me" )
+                    | Mastodon
+                li.projects_link
+                  a.link( href="https://twitter.com/linguopunk" itemprop="sameAs" rel="me" )
+                    | Twitter
             p
-              | My Mastodon account about language diversity
+              | My account about language diversity
 
           li.projects_item
             h2.projects_title
-              a.link( href="https://mastodon.social/@lostinwiki" )
-                | Lost in Wikipedia
+              span.projects_name Lost in Wikipedia
+              ul.projects_links
+                li.projects_link
+                  a.link( href="https://mastodon.social/@lostinwiki" itemprop="sameAs" rel="me" )
+                    | Mastodon
+                li.projects_link
+                  a.link( href="https://twitter.com/lostinwiki" itemprop="sameAs" rel="me" )
+                    | Twitter
             p
-              | My Mastodon account with strange facts from Wikipedia
+              | My account with strange facts from Wikipedia
 
       .layout_language
         a.link( href="/es/" hreflang="en" rel="alternate" ) Castellano
