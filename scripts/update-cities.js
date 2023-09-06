@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import dotenv from 'dotenv'
-import { existsSync } from 'fs'
-import { readFile, writeFile } from 'fs/promises'
+import { existsSync } from 'node:fs'
+import { readFile, writeFile } from 'node:fs/promises'
 import pico from 'picocolors'
 
 import { CITIES, COUNTRIES, DOTS, PLACES } from './lib/dirs.js'

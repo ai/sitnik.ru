@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 import dotenv from 'dotenv'
-import { existsSync } from 'fs'
-import { mkdir, writeFile } from 'fs/promises'
-import { dirname } from 'path'
+import { existsSync } from 'node:fs'
+import { mkdir, writeFile } from 'node:fs/promises'
+import { dirname } from 'node:path'
 
 import { LOCATION } from './lib/dirs.js'
 import { get } from './lib/get.js'

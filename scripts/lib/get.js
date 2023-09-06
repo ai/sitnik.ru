@@ -1,4 +1,4 @@
-import { get as httpGet } from 'https'
+import { get as httpGet } from 'node:https'
 
 export function get(url, maxAttempts = 1, attempt = 1) {
   return new Promise((resolve, reject) => {
