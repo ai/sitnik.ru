@@ -78,7 +78,7 @@ dependencies:
 devDependencies:
   '@logux/eslint-config':
     specifier: ^52.0.1
-    version: 52.0.1(eslint-config-standard@17.1.0)(eslint-plugin-import@2.28.1)(eslint-plugin-n@16.0.2)(eslint-plugin-node-import@1.0.1)(eslint-plugin-perfectionist@2.0.0)(eslint-plugin-prefer-let@3.0.1)(eslint-plugin-promise@6.1.1)(eslint@8.48.0)
+    version: 52.0.1(eslint-config-standard@17.1.0)(eslint-plugin-import@2.28.1)(eslint-plugin-n@16.0.2)(eslint-plugin-node-import@1.0.2)(eslint-plugin-perfectionist@2.0.0)(eslint-plugin-prefer-let@3.0.1)(eslint-plugin-promise@6.1.1)(eslint@8.48.0)
   '@logux/stylelint-config':
     specifier: ^0.16.0
     version: 0.16.0(stylelint@15.10.3)
@@ -98,8 +98,8 @@ devDependencies:
     specifier: ^16.0.2
     version: 16.0.2(eslint@8.48.0)
   eslint-plugin-node-import:
-    specifier: ^1.0.1
-    version: 1.0.1(eslint@8.48.0)
+    specifier: ^1.0.2
+    version: 1.0.2(eslint@8.48.0)
   eslint-plugin-prefer-let:
     specifier: ^3.0.1
     version: 3.0.1
@@ -496,7 +496,7 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: false
 
-  /@logux/eslint-config@52.0.1(eslint-config-standard@17.1.0)(eslint-plugin-import@2.28.1)(eslint-plugin-n@16.0.2)(eslint-plugin-node-import@1.0.1)(eslint-plugin-perfectionist@2.0.0)(eslint-plugin-prefer-let@3.0.1)(eslint-plugin-promise@6.1.1)(eslint@8.48.0):
+  /@logux/eslint-config@52.0.1(eslint-config-standard@17.1.0)(eslint-plugin-import@2.28.1)(eslint-plugin-n@16.0.2)(eslint-plugin-node-import@1.0.2)(eslint-plugin-perfectionist@2.0.0)(eslint-plugin-prefer-let@3.0.1)(eslint-plugin-promise@6.1.1)(eslint@8.48.0):
     resolution: {integrity: sha512-VnphQAsUoP2gdlZScn0jESbeGXA3lyCTlPEPNpDGJU0/75Cmi6YVTQ6/ownBVN6ASAEcql2UcYroseQzv2t2dA==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
@@ -513,7 +513,7 @@ packages:
       eslint-config-standard: 17.1.0(eslint-plugin-import@2.28.1)(eslint-plugin-n@16.0.2)(eslint-plugin-promise@6.1.1)(eslint@8.48.0)
       eslint-plugin-import: 2.28.1(eslint@8.48.0)
       eslint-plugin-n: 16.0.2(eslint@8.48.0)
-      eslint-plugin-node-import: 1.0.1(eslint@8.48.0)
+      eslint-plugin-node-import: 1.0.2(eslint@8.48.0)
       eslint-plugin-perfectionist: 2.0.0(eslint@8.48.0)(typescript@5.2.2)
       eslint-plugin-prefer-let: 3.0.1
       eslint-plugin-promise: 6.1.1(eslint@8.48.0)
@@ -1769,8 +1769,8 @@ packages:
       semver: 7.5.4
     dev: true
 
-  /eslint-plugin-node-import@1.0.1(eslint@8.48.0):
-    resolution: {integrity: sha512-tnZ1x3gdU/B5YJL7rn594WoHafFhgaboM93DlKJwMKXpm0RxBV2cpEj8ytszGg/v003jHuaSxjAis4vJOzp/iA==}
+  /eslint-plugin-node-import@1.0.2(eslint@8.48.0):
+    resolution: {integrity: sha512-PYacc4kEiP7rB7Rmt+/FQV4ZvXYfpEjm3ZnPbHPN4XXtRlf7o0BClaeRLjDClEpCSd02FBL4TKG0hzfCK3+NXg==}
     engines: {node: ^14.18.0 || ^16.0.0 || >= 18.0.0}
     peerDependencies:
       eslint: '>=7'
