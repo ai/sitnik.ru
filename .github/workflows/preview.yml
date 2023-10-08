@@ -8,7 +8,7 @@ jobs:
   preview:
     name: Deploy
     runs-on: ubuntu-latest
-    if: secrets.GCLOUD_APP != ''
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
     steps:
       - name: Notify about new deployment
         uses: bobheadxi/deployments@v1

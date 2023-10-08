@@ -9,7 +9,7 @@ jobs:
   close:
     name: Close
     runs-on: ubuntu-latest
-    if: secrets.GCLOUD_APP != ''
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
     steps:
       - name: Clean from GitHub
         uses: bobheadxi/deployments@v1
