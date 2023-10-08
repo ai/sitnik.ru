@@ -23,7 +23,7 @@
     "dotenv": "^16.3.1",
     "globby": "^13.2.2",
     "picocolors": "^1.0.0",
-    "postcss": "^8.4.29",
+    "postcss": "^8.4.31",
     "postcss-import": "^15.1.0",
     "postcss-load-config": "^4.0.1",
     "postcss-media-minmax": "^5.0.0",
