@@ -5,10 +5,10 @@ permissions:
   contents: read
   deployments: write
 jobs:
-
   preview:
     name: Deploy
     runs-on: ubuntu-latest
+    if: secrets.GCLOUD_APP != ''
     steps:
       - name: Notify about new deployment
         uses: bobheadxi/deployments@v1

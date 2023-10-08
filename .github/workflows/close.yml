@@ -1,7 +1,7 @@
 name: Clean Preview
 on:
   pull_request:
-    types: [ closed ]
+    types: [closed]
 permissions:
   contents: read
   deployments: write
@@ -9,6 +9,7 @@ jobs:
   close:
     name: Close
     runs-on: ubuntu-latest
+    if: secrets.GCLOUD_APP != ''
     steps:
       - name: Clean from GitHub
         uses: bobheadxi/deployments@v1
@@ -38,4 +39,3 @@ jobs:
           GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
           CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
-
