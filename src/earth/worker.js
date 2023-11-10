@@ -58,6 +58,7 @@ function setPosition(position, radius, latitude, longitude) {
   position.y = radius * Math.cos(phi)
 }
 
+let initialized = false
 let loaded = 0
 
 function load() {
@@ -65,7 +66,25 @@ function load() {
   if (loaded === 2) {
     renderer.render(scene, camera)
     finishLoading(1)
+    initialized = true
+    requestAnimationFrame(rotate)
   }
+}
+
+function move(start, end) {
+  delta.setFromVector3(camera.position)
+
+  delta.theta -= (PI2 * (end[0] - start[0])) / canvasHeight / 3
+  delta.phi -= (PI2 * (end[1] - start[1])) / canvasHeight / 3
+
+  delta.makeSafe()
+  camera.position.setFromSpherical(delta)
+  camera.lookAt(0, 0, 0)
+
+  let distanceToHere = camera.position.distanceTo(here.position)
+  here.material.depthTest = distanceToHere > distanceToEdge
+
+  if (initialized) renderer.render(scene, camera)
 }
 
 // Scene
@@ -114,6 +133,18 @@ function moveSun() {
 
 moveSun()
 setInterval(moveSun, 30 * 60 * 1000)
+
+// Auto-rotate on the start
+
+let rotating = true
+let prevRotate = Date.now()
+function rotate() {
+  if (!rotating) return
+  let delay = Date.now() - prevRotate
+  move([0, 0], [delay / 100, 0])
+  prevRotate = Date.now()
+  requestAnimationFrame(rotate)
+}
 
 // Messages
 
@@ -175,27 +206,18 @@ let commands = {
   },
 
   move(start, end) {
-    delta.setFromVector3(camera.position)
-
-    delta.theta -= (PI2 * (end[0] - start[0])) / canvasHeight / 3
-    delta.phi -= (PI2 * (end[1] - start[1])) / canvasHeight / 3
-
-    delta.makeSafe()
-    camera.position.setFromSpherical(delta)
-    camera.lookAt(0, 0, 0)
-
-    let distanceToHere = camera.position.distanceTo(here.position)
-    here.material.depthTest = distanceToHere > distanceToEdge
-
-    renderer.render(scene, camera)
+    if (rotating) rotating = false
+    move(start, end)
   },
 
   resize(width, height) {
     renderer.setSize(width, height)
     canvasHeight = height
-    renderer.render(scene, camera)
+    if (initialized) renderer.render(scene, camera)
   }
 }
+
+// Main
 
 function onMessage(e) {
   commands[e.data[0]].apply(null, e.data.slice(1))
