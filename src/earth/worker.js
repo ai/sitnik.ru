@@ -141,7 +141,7 @@ let prevRotate = Date.now()
 function rotate() {
   if (!rotating) return
   let delay = Date.now() - prevRotate
-  move([0, 0], [delay / 100, 0])
+  move([0, 0], [-delay / 100, 0])
   prevRotate = Date.now()
   requestAnimationFrame(rotate)
 }
