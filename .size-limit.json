@@ -2,7 +2,7 @@
   {
     "name": "Critical",
     "path": "dist/en/index.html.gz",
-    "gzip": false,
+    "brotli": false,
     "limit": "5 KB"
   },
   {
@@ -14,7 +14,7 @@
       "dist/here.*.webp",
       "dist/photo.*.avif"
     ],
-    "gzip": false,
+    "brotli": false,
     "limit": "205 KB"
   }
 ]
