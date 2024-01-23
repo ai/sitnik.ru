@@ -5,12 +5,13 @@ import { existsSync } from 'node:fs'
 import { readFile, writeFile } from 'node:fs/promises'
 import pico from 'picocolors'
 
-import { CITIES, COUNTRIES, DOTS, PLACES } from './lib/dirs.js'
+import { ADDRESSES, CITIES, COUNTRIES, DOTS, PLACES } from './lib/dirs.js'
 import { get } from './lib/get.js'
 import { MyError } from './lib/my-error.js'
 import { read } from './lib/read.js'
 
 const MIN_DISTANCE = 0.7
+const URL_WITH_DOT = /\?q=(-?\d+\.\d+),(-?\d+\.\d+)($|&)/
 
 dotenv.config()
 
@@ -109,7 +110,11 @@ function cityName(response) {
   }
   if (!city || !city.long_name) {
     process.stderr.write('\n')
-    console.log(city ?? response.results)
+    if (city) {
+      console.log(city)
+    } else {
+      console.log(...response.results)
+    }
     throw new Error('No city name')
   }
   if (inUS && city.long_name === 'Washington') {
@@ -140,6 +145,7 @@ function gmap(name, params) {
       )
       return e.message
     } else {
+      console.log(params)
       throw e
     }
   })
@@ -167,57 +173,106 @@ async function initPlaces() {
   return places
 }
 
+async function initAddresses() {
+  if (existsSync(ADDRESSES)) {
+    return JSON.parse(await readFile(ADDRESSES))
+  } else {
+    return {}
+  }
+}
+
 async function init() {
-  let [cities, places] = await Promise.all([initCities(), initPlaces()])
-  return { cities, places }
+  let [cities, places, addresses] = await Promise.all([
+    initCities(),
+    initPlaces(),
+    initAddresses()
+  ])
+  return { addresses, cities, places }
+}
+
+async function getDots(data) {
+  data.dots = []
+  let sent = false
+  await Promise.all(
+    data.places.map(async place => {
+      let latlng = place.geometry.coordinates.reverse()
+      if (latlng[0] === 0 && latlng[1] === 0) {
+        let urlDots = place.properties.google_maps_url.match(URL_WITH_DOT)
+        if (urlDots) {
+          latlng = [parseFloat(urlDots[1]), parseFloat(urlDots[2])]
+        } else {
+          let url = new URL(place.properties.google_maps_url)
+          let address = new URLSearchParams(url.search).get('q')
+          if (!data.addresses[address]) {
+            sent = true
+            let found = await gmap('geocode/json', {
+              address,
+              key: process.env.GMAPS_TOKEN
+            })
+            let location = found.results[0].geometry.location
+            data.addresses[address] = [location.lat, location.lng]
+          }
+          latlng = data.addresses[address]
+        }
+      }
+      data.dots.push(latlng)
+    })
+  )
+  if (sent) print('')
+  await writeFile(ADDRESSES, prettyJson(data.addresses))
+  return data
 }
 
 function reduceDots(data) {
-  data.dots = []
-  for (let place of data.places) {
-    let near = data.dots.find(point => {
-      return distance(point, place.geometry.coordinates) < MIN_DISTANCE
-    })
-    if (!near) {
-      data.dots.push(place.geometry.coordinates)
+  data.distant = []
+  for (let dot of data.dots) {
+    if (!data.distant.find(other => distance(other, dot) < MIN_DISTANCE)) {
+      data.distant.push(dot)
     }
   }
   print('Cities:   ' + pico.bold(data.dots.length))
 
-  data.dots = data.dots
+  data.distant = data.distant
     .sort((a, b) => a[0] + a[1] - b[0] - b[1])
-    .map(i => [round2(i[1]), round2(i[0])])
+    .map(i => [round2(i[0]), round2(i[1])])
 
   return data
 }
 
 async function loadCities(data) {
   let sent = false
+  let added = []
   await Promise.all(
-    data.dots.map(async dot => {
+    data.distant.map(async dot => {
       let wasProcessed = Object.values(data.cities).find(i => {
         return dot[0] === i[0] && dot[1] === i[1]
       })
       if (!wasProcessed) {
         sent = true
-        let res = await gmap('geocode/json', {
-          key: process.env.GMAPS_TOKEN,
-          latlng: dot.join(',')
-        })
-        let city = cityName(res)
+        let city = cityName(
+          await gmap('geocode/json', {
+            key: process.env.GMAPS_TOKEN,
+            latlng: dot.join(',')
+          })
+        )
+        added.push(city)
         data.cities[city] = dot
       }
     })
   )
+  if (sent) print('')
+  for (let city of added) {
+    print(pico.green('Add ' + city))
+  }
   for (let city in data.cities) {
-    let found = data.dots.find(dot => {
+    let found = data.distant.find(dot => {
       return data.cities[city][0] === dot[0] && data.cities[city][1] === dot[1]
     })
     if (!found) {
+      print(pico.red(`Remove ${city}`))
       delete data.cities[city]
     }
   }
-  if (sent) process.stdout.write('\n')
   return data
 }
 
@@ -242,7 +297,7 @@ async function foundCountries(data) {
 }
 
 async function saveFile(data) {
-  let output = prettyDots(data.dots.map(i => [round1(i[0]), round1(i[1])]))
+  let output = prettyDots(data.distant.map(i => [round1(i[0]), round1(i[1])]))
   let prevDots = await readFile(DOTS)
   if (prevDots.toString() === output) {
     print(pico.yellow('\nNo new cities'))
@@ -251,11 +306,13 @@ async function saveFile(data) {
   await Promise.all([
     writeFile(COUNTRIES, prettyJson(data.countries)),
     writeFile(DOTS, output),
-    writeFile(CITIES, prettyJson(data.cities))
+    writeFile(CITIES, prettyJson(data.cities)),
+    writeFile(ADDRESSES, prettyJson(data.addresses))
   ])
 }
 
 init()
+  .then(getDots)
   .then(reduceDots)
   .then(loadCities)
   .then(foundCountries)

@@ -1,6 +1,7 @@
 node_modules/
 
 dist/
+scripts/cities/addresses.json
 scripts/cities/places.json
 scripts/location/
 .env

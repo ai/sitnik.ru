@@ -13,7 +13,7 @@
   ],
   "Almaty, Kazakhstan": [
     43.25,
-    76.94
+    76.95
   ],
   "Amsterdam, Netherlands": [
     52.38,
@@ -56,8 +56,8 @@
     20.46
   ],
   "Berlin, Germany": [
-    52.55,
-    13.4
+    52.51,
+    13.33
   ],
   "Big Pine, United States": [
     37.13,
@@ -86,10 +86,6 @@
   "Cambremer, France": [
     49.15,
     0.05
-  ],
-  "Cascais, Portugal": [
-    38.69,
-    -9.42
   ],
   "Chandler, United States": [
     33.26,
@@ -125,7 +121,7 @@
   ],
   "Djibouti, Djibouti": [
     11.55,
-    43.16
+    43.15
   ],
   "Dong Cheng Qu, China": [
     39.95,
@@ -211,10 +207,6 @@
     43.52,
     -112.07
   ],
-  "İstanbul, Turkey": [
-    41.01,
-    28.98
-  ],
   "Kaliningrad, Russia": [
     54.71,
     20.51
@@ -253,7 +245,7 @@
   ],
   "Kuta, Indonesia": [
     -8.72,
-    115.18
+    115.17
   ],
   "Kyiv, Ukraine": [
     50.44,
@@ -279,6 +271,10 @@
     37.94,
     -119.03
   ],
+  "Lisboa, Portugal": [
+    38.7,
+    -9.19
+  ],
   "Livorno, Italy": [
     43.55,
     10.31
@@ -289,7 +285,7 @@
   ],
   "Madrid, Spain": [
     40.42,
-    -3.7
+    -3.71
   ],
   "Marfino, Russia": [
     55.7,
@@ -312,8 +308,8 @@
     -122.5
   ],
   "Mumbai, India": [
-    18.94,
-    72.84
+    19.17,
+    72.86
   ],
   "Málaga, Spain": [
     36.67,
@@ -359,13 +355,9 @@
     51.19,
     71.42
   ],
-  "Nyköping, Sweden": [
-    58.79,
-    16.92
-  ],
   "Odesa, Ukraine": [
-    46.48,
-    30.74
+    46.47,
+    30.75
   ],
   "Oklahoma City, United States": [
     35.47,
@@ -380,8 +372,8 @@
     73.41
   ],
   "Orbetello, Italy": [
-    42.44,
-    11.21
+    42.48,
+    11.28
   ],
   "Osaka, Japan": [
     34.7,
@@ -435,10 +427,6 @@
     36.62,
     -6.35
   ],
-  "Rubí, Spain": [
-    41.49,
-    2.03
-  ],
   "Rīga, Latvia": [
     56.95,
     24.1
@@ -456,7 +444,7 @@
     50.22
   ],
   "San Pedro de Atacama, Chile": [
-    -22.91,
+    -22.92,
     -68.19
   ],
   "Sankt-Peterburg, Russia": [
@@ -523,8 +511,12 @@
     -23,
     -43.24
   ],
+  "Södermanlands län, Sweden": [
+    58.79,
+    16.91
+  ],
   "T'bilisi, Georgia": [
-    41.72,
+    41.71,
     44.79
   ],
   "Tambon Hua Hin, Thailand": [
@@ -532,7 +524,7 @@
     99.96
   ],
   "Tambon Patong, Thailand": [
-    7.9,
+    7.89,
     98.3
   ],
   "Tehran, Iran": [
@@ -568,8 +560,8 @@
     22.29
   ],
   "València, Spain": [
-    39.47,
-    -0.38
+    39.46,
+    -0.35
   ],
   "Vancouver, Canada": [
     49.28,
@@ -587,9 +579,17 @@
     58.52,
     31.27
   ],
+  "Vic, Spain": [
+    41.93,
+    2.25
+  ],
   "Vicuña, Chile": [
     -30.04,
     -70.72
+  ],
+  "Vilanova i la Geltrú, Spain": [
+    41.22,
+    1.73
   ],
   "Vilnius, Lithuania": [
     54.68,
@@ -600,11 +600,11 @@
     131.89
   ],
   "Vyazemsky, Russia": [
-    47.53,
+    47.54,
     134.75
   ],
   "Warszawa, Poland": [
-    52.19,
+    52.18,
     20.98
   ],
   "Washington, DC, United States": [
@@ -612,8 +612,8 @@
     -77.01
   ],
   "Wien, Austria": [
-    48.18,
-    16.4
+    48.2,
+    16.36
   ],
   "Winslow, United States": [
     35.03,
@@ -625,6 +625,14 @@
   ],
   "Yeoksam-dong, South Korea": [
     37.5,
-    127.04
+    127.03
+  ],
+  "Zaragoza, Spain": [
+    41.66,
+    -0.9
+  ],
+  "İstanbul, Türkiye": [
+    41.07,
+    28.99
   ]
 }
