@@ -1,467 +1,275 @@
 {
-  "Vicuña, Chile": [
-    -30.04,
-    -70.72
-  ],
-  "Saavedra, Argentina": [
-    -34.56,
-    -58.5
-  ],
-  "Santiago, Chile": [
-    -33.43,
-    -70.66
-  ],
-  "Antofagasta, Chile": [
-    -23.71,
-    -70.43
-  ],
-  "San Pedro de Atacama, Chile": [
-    -22.91,
-    -68.19
-  ],
-  "Khabarovsk, Russia": [
-    48.47,
-    135.06
-  ],
-  "Petropavlovsk-Kamchatskiy, Russia": [
-    53.01,
-    158.65
-  ],
-  "Vyazemsky, Russia": [
-    47.53,
-    134.75
-  ],
-  "Sumida City, Japan": [
-    35.71,
-    139.82
-  ],
-  "Osaka, Japan": [
-    34.7,
-    135.52
-  ],
-  "Dong Cheng Qu, China": [
-    39.95,
-    116.43
-  ],
-  "Pu Dong Xin Qu, China": [
-    31.2,
-    121.6
-  ],
-  "Hang Zhou Shi, China": [
-    30.32,
-    120.17
-  ],
-  "Novosibirsk, Russia": [
-    55,
-    82.75
-  ],
-  "Guang Zhou Shi, China": [
-    23.18,
-    113.33
-  ],
   "Abakan, Russia": [
     53.75,
     91.4
-  ],
-  "Omsk, Russia": [
-    54.89,
-    73.41
-  ],
-  "Nur-Sultan, Kazakhstan": [
-    51.19,
-    71.42
-  ],
-  "Almaty, Kazakhstan": [
-    43.25,
-    76.94
-  ],
-  "Yekaterinburg, Russia": [
-    56.84,
-    60.6
-  ],
-  "Kyzylorda, Kazakhstan": [
-    44.85,
-    65.5
-  ],
-  "Tambon Hua Hin, Thailand": [
-    12.57,
-    99.96
-  ],
-  "Karmakshy District, Kazakhstan": [
-    45.92,
-    63.34
-  ],
-  "Singapore, Singapore": [
-    1.29,
-    103.85
-  ],
-  "Tambon Patong, Thailand": [
-    7.9,
-    98.3
-  ],
-  "Kuta, Indonesia": [
-    -8.72,
-    115.18
-  ],
-  "Kazan, Russia": [
-    55.79,
-    49.13
-  ],
-  "Ulyanovsk, Russia": [
-    54.32,
-    48.4
-  ],
-  "Nizhnij Novgorod, Russia": [
-    56.32,
-    43.99
-  ],
-  "Cherepovets, Russia": [
-    59.13,
-    37.9
-  ],
-  "Samara, Russia": [
-    53.25,
-    50.22
-  ],
-  "Mumbai, India": [
-    18.94,
-    72.84
-  ],
-  "Tver, Russia": [
-    56.84,
-    35.93
-  ],
-  "Sankt-Peterburg, Russia": [
-    59.93,
-    30.32
-  ],
-  "Sosnovy Bor, Russia": [
-    59.85,
-    29.05
-  ],
-  "Bakı, Azerbaijan": [
-    40.37,
-    49.84
-  ],
-  "Morjim, India": [
-    15.62,
-    73.74
-  ],
-  "Veliky Novgorod, Russia": [
-    58.52,
-    31.27
-  ],
-  "Tromsø, Norway": [
-    69.65,
-    18.94
-  ],
-  "Novosrednenskoe, Russia": [
-    44.09,
-    43.82
-  ],
-  "Tehran, Iran": [
-    35.7,
-    51.4
-  ],
-  "Belgorod, Russia": [
-    50.59,
-    36.6
-  ],
-  "Rostov-na-Donu, Russia": [
-    47.23,
-    39.7
-  ],
-  "Colombo, Sri Lanka": [
-    6.89,
-    79.88
-  ],
-  "T'bilisi, Georgia": [
-    41.72,
-    44.79
   ],
   "Ahangama, Sri Lanka": [
     5.98,
     80.35
   ],
-  "Helsinki, Finland": [
-    60.17,
-    24.93
-  ],
-  "Rīga, Latvia": [
-    56.95,
-    24.1
-  ],
-  "Kyiv, Ukraine": [
-    50.44,
-    30.53
-  ],
-  "Dubai, United Arab Emirates": [
-    25.19,
-    55.28
-  ],
-  "Norrmalm, Sweden": [
-    59.33,
-    18.07
-  ],
-  "Odesa, Ukraine": [
-    46.48,
-    30.74
-  ],
-  "L'viv, Ukraine": [
-    49.84,
-    24.03
-  ],
-  "Nikolai, Sweden": [
-    59.27,
-    15.21
-  ],
-  "Kaliningrad, Russia": [
-    54.71,
-    20.51
-  ],
-  "Warszawa, Poland": [
-    52.19,
-    20.98
-  ],
-  "Shehyni, Ukraine": [
-    49.8,
-    22.96
-  ],
-  "Uzhhorod, Ukraine": [
-    48.62,
-    22.29
-  ],
-  "Ullensaker, Norway": [
-    60.19,
-    11.1
-  ],
-  "İstanbul, Turkey": [
-    41.01,
-    28.98
-  ],
-  "Kraków, Poland": [
-    50.06,
-    19.94
-  ],
-  "Budapest, Hungary": [
-    47.48,
-    19.05
-  ],
-  "Berlin, Germany": [
-    52.55,
-    13.4
-  ],
-  "Beograd, Serbia": [
-    44.81,
-    20.46
-  ],
-  "Vathi, Greece": [
-    37.75,
-    26.98
-  ],
-  "Dresden, Germany": [
-    51.07,
-    13.75
-  ],
-  "Wien, Austria": [
-    48.18,
-    16.4
-  ],
-  "Keszthely, Hungary": [
-    46.76,
-    17.24
-  ],
-  "Staré Město, Czechia": [
-    50.09,
-    14.42
-  ],
-  "Sutomore, Montenegro": [
-    42.13,
-    19.06
-  ],
-  "Düsseldorf, Germany": [
-    51.27,
-    6.78
-  ],
-  "Frankfurt am Main, Germany": [
-    50.13,
-    8.63
-  ],
-  "Bari, Italy": [
-    41.13,
-    16.86
-  ],
   "Al Hudaydah, Yemen": [
     14.8,
     42.94
+  ],
+  "Almaty, Kazakhstan": [
+    43.25,
+    76.94
   ],
   "Amsterdam, Netherlands": [
     52.38,
     4.89
   ],
-  "Freiburg im Breisgau, Germany": [
-    48,
-    7.85
-  ],
-  "Djibouti, Djibouti": [
-    11.55,
-    43.16
-  ],
-  "Napoli, Italy": [
-    40.85,
-    14.27
-  ],
-  "Torino, Italy": [
-    45.05,
-    7.68
-  ],
-  "Orbetello, Italy": [
-    42.44,
-    11.21
-  ],
-  "Greater London, United Kingdom": [
-    51.52,
-    -0.08
-  ],
-  "Paris, France": [
-    48.84,
-    2.31
-  ],
-  "Béziers, France": [
-    43.34,
-    3.21
-  ],
   "Andorra la Vella, Andorra": [
     42.51,
     1.52
   ],
-  "Santander, Spain": [
-    43.47,
-    -3.79
-  ],
-  "València, Spain": [
-    39.47,
-    -0.38
-  ],
-  "Porto, Portugal": [
-    41.15,
-    -8.61
-  ],
-  "Gibraltar, Gibraltar": [
-    36.14,
-    -5.37
-  ],
-  "Málaga, Spain": [
-    36.67,
-    -4.48
-  ],
-  "Madrid, Spain": [
-    40.42,
-    -3.7
-  ],
-  "Marrakech, Morocco": [
-    31.64,
-    -8.01
-  ],
-  "Hoosick Falls, United States": [
-    42.9,
-    -73.35
-  ],
-  "Cascais, Portugal": [
-    38.69,
-    -9.42
-  ],
-  "Boston, United States": [
-    42.35,
-    -71.05
-  ],
-  "Niagara Falls, United States": [
-    43.09,
-    -79.06
-  ],
-  "Washington, DC, United States": [
-    38.88,
-    -77.01
-  ],
-  "Charlottesville, United States": [
-    38.05,
-    -78.49
-  ],
-  "New York, United States": [
-    40.76,
-    -73.99
-  ],
-  "Bay Lake, United States": [
-    28.38,
-    -81.57
-  ],
-  "Chicago, United States": [
-    41.89,
-    -87.63
-  ],
-  "Miami Beach, United States": [
-    25.79,
-    -80.13
-  ],
-  "Omaha, United States": [
-    41.26,
-    -95.93
-  ],
-  "Varadero, Cuba": [
-    23.14,
-    -81.27
-  ],
-  "St. Petersburg, United States": [
-    27.77,
-    -82.64
-  ],
-  "Holbox, Mexico": [
-    21.53,
-    -87.38
-  ],
-  "Oklahoma City, United States": [
-    35.47,
-    -97.51
-  ],
-  "Coba, Mexico": [
-    20.49,
-    -87.77
+  "Antofagasta, Chile": [
+    -23.71,
+    -70.43
   ],
   "Austin, United States": [
     30.26,
     -97.73
   ],
-  "Idaho Falls, United States": [
-    43.52,
-    -112.07
+  "Bakı, Azerbaijan": [
+    40.37,
+    49.84
+  ],
+  "Bari, Italy": [
+    41.13,
+    16.86
+  ],
+  "Bay Lake, United States": [
+    28.38,
+    -81.57
+  ],
+  "Begur, Spain": [
+    41.96,
+    3.22
+  ],
+  "Belgorod, Russia": [
+    50.59,
+    36.6
+  ],
+  "Beograd, Serbia": [
+    44.81,
+    20.46
+  ],
+  "Berlin, Germany": [
+    52.55,
+    13.4
+  ],
+  "Big Pine, United States": [
+    37.13,
+    -118.42
+  ],
+  "Boston, United States": [
+    42.35,
+    -71.05
+  ],
+  "Bratislava, Slovakia": [
+    48.14,
+    17.12
+  ],
+  "Budapest, Hungary": [
+    47.48,
+    19.05
+  ],
+  "Buena Vista, United States": [
+    37.77,
+    -119.81
+  ],
+  "Béziers, France": [
+    43.34,
+    3.21
+  ],
+  "Cambremer, France": [
+    49.15,
+    0.05
+  ],
+  "Cascais, Portugal": [
+    38.69,
+    -9.42
+  ],
+  "Chandler, United States": [
+    33.26,
+    -111.89
+  ],
+  "Charlottesville, United States": [
+    38.05,
+    -78.49
+  ],
+  "Cherepovets, Russia": [
+    59.13,
+    37.9
+  ],
+  "Chicago, United States": [
+    41.89,
+    -87.63
+  ],
+  "Ciudad de México, Mexico": [
+    19.41,
+    -99.17
+  ],
+  "Coba, Mexico": [
+    20.49,
+    -87.77
+  ],
+  "Colombo, Sri Lanka": [
+    6.89,
+    79.88
+  ],
+  "Dipkarpaz, Cyprus": [
+    35.64,
+    34.54
+  ],
+  "Djibouti, Djibouti": [
+    11.55,
+    43.16
+  ],
+  "Dong Cheng Qu, China": [
+    39.95,
+    116.43
+  ],
+  "Dresden, Germany": [
+    51.07,
+    13.75
+  ],
+  "Dubai, United Arab Emirates": [
+    25.19,
+    55.28
+  ],
+  "Düsseldorf, Germany": [
+    51.27,
+    6.78
+  ],
+  "Faro, Portugal": [
+    37.08,
+    -8.05
+  ],
+  "Frankfurt am Main, Germany": [
+    50.13,
+    8.63
+  ],
+  "Freiburg im Breisgau, Germany": [
+    48,
+    7.85
+  ],
+  "Fremont Center, United States": [
+    41.85,
+    -75.06
+  ],
+  "Genève, Switzerland": [
+    46.21,
+    6.15
+  ],
+  "Gibraltar, Gibraltar": [
+    36.14,
+    -5.37
   ],
   "Gold Bar, United States": [
     47.81,
     -121.57
   ],
-  "Salt Lake City, United States": [
-    40.77,
-    -111.95
+  "Greater London, United Kingdom": [
+    51.52,
+    -0.08
   ],
-  "Vancouver, Canada": [
-    49.28,
-    -123.12
+  "Guang Zhou Shi, China": [
+    23.18,
+    113.33
   ],
-  "Page, United States": [
-    36.9,
-    -111.48
+  "Hang Zhou Shi, China": [
+    30.32,
+    120.17
   ],
-  "Winslow, United States": [
-    35.03,
-    -111.02
+  "Havana, Cuba": [
+    23.14,
+    -82.4
   ],
-  "St. George, United States": [
-    37.09,
-    -113.58
+  "Helsinki, Finland": [
+    60.17,
+    24.93
   ],
-  "Chandler, United States": [
-    33.26,
-    -111.89
+  "Holbox, Mexico": [
+    21.53,
+    -87.38
+  ],
+  "Hoosick Falls, United States": [
+    42.9,
+    -73.35
+  ],
+  "Hoàn Kiếm, Vietnam": [
+    21.03,
+    105.85
+  ],
+  "Hạ Long, Vietnam": [
+    20.95,
+    107.03
+  ],
+  "Idaho Falls, United States": [
+    43.52,
+    -112.07
+  ],
+  "İstanbul, Turkey": [
+    41.01,
+    28.98
+  ],
+  "Kaliningrad, Russia": [
+    54.71,
+    20.51
+  ],
+  "Kandy, Sri Lanka": [
+    7.28,
+    80.63
+  ],
+  "Karmakshy District, Kazakhstan": [
+    45.92,
+    63.34
+  ],
+  "Kastrup, Denmark": [
+    55.62,
+    12.58
+  ],
+  "Kazan, Russia": [
+    55.79,
+    49.13
+  ],
+  "Keszthely, Hungary": [
+    46.76,
+    17.24
+  ],
+  "Khabarovsk, Russia": [
+    48.47,
+    135.06
+  ],
+  "Khwaeng Khlong Toei Nuea, Thailand": [
+    13.74,
+    100.56
+  ],
+  "Kraków, Poland": [
+    50.06,
+    19.94
+  ],
+  "Kuta, Indonesia": [
+    -8.72,
+    115.18
+  ],
+  "Kyiv, Ukraine": [
+    50.44,
+    30.53
+  ],
+  "Kyzylorda, Kazakhstan": [
+    44.85,
+    65.5
+  ],
+  "L'viv, Ukraine": [
+    49.84,
+    24.03
+  ],
+  "Larnaca, Cyprus": [
+    34.9,
+    33.64
   ],
   "Las Vegas, United States": [
     36.1,
@@ -471,160 +279,352 @@
     37.94,
     -119.03
   ],
-  "Ciudad de México, Mexico": [
-    19.41,
-    -99.17
-  ],
-  "Big Pine, United States": [
-    37.13,
-    -118.42
-  ],
-  "Playa del Carmen, Mexico": [
-    20.63,
-    -87.07
-  ],
-  "Buena Vista, United States": [
-    37.77,
-    -119.81
-  ],
-  "Rubí, Spain": [
-    41.49,
-    2.03
-  ],
-  "Seattle, United States": [
-    47.62,
-    -122.3
+  "Livorno, Italy": [
+    43.55,
+    10.31
   ],
   "Losevo, Russia": [
     60.68,
     30
   ],
-  "Vladivostok, Russia": [
-    43.13,
-    131.89
-  ],
-  "Kandy, Sri Lanka": [
-    7.28,
-    80.63
-  ],
-  "Yeoksam-dong, South Korea": [
-    37.5,
-    127.04
-  ],
-  "Risovaya Pad', Russia": [
-    42.61,
-    131.14
-  ],
-  "Hạ Long, Vietnam": [
-    20.95,
-    107.03
-  ],
-  "Hoàn Kiếm, Vietnam": [
-    21.03,
-    105.85
-  ],
-  "Pattaya City, Thailand": [
-    12.89,
-    100.87
-  ],
-  "Khwaeng Khlong Toei Nuea, Thailand": [
-    13.74,
-    100.56
-  ],
-  "New Delhi, India": [
-    28.64,
-    77.18
-  ],
-  "Shevelkino, Russia": [
-    55.83,
-    38.1
-  ],
-  "Sokol, Belarus": [
-    53.88,
-    27.9
-  ],
-  "Nyköping, Sweden": [
-    58.79,
-    16.92
-  ],
-  "Kastrup, Denmark": [
-    55.62,
-    12.58
-  ],
-  "Bratislava, Slovakia": [
-    48.14,
-    17.12
-  ],
-  "Sheraton Al Matar, Egypt": [
-    30.11,
-    31.4
-  ],
-  "Roma, Italy": [
-    41.9,
-    12.45
-  ],
-  "Rota, Spain": [
-    36.62,
-    -6.35
-  ],
-  "Fremont Center, United States": [
-    41.85,
-    -75.06
-  ],
-  "Titusville, United States": [
-    28.52,
-    -80.68
-  ],
-  "Havana, Cuba": [
-    23.14,
-    -82.4
-  ],
-  "São Conrado, Brazil": [
-    -23,
-    -43.24
-  ],
-  "Panamá, Panama": [
-    8.99,
-    -79.53
-  ],
-  "Moss Beach, United States": [
-    37.54,
-    -122.5
+  "Madrid, Spain": [
+    40.42,
+    -3.7
   ],
   "Marfino, Russia": [
     55.7,
     37.39
   ],
-  "Cambremer, France": [
-    49.15,
-    0.05
+  "Marrakech, Morocco": [
+    31.64,
+    -8.01
   ],
-  "Begur, Spain": [
-    41.96,
-    3.22
+  "Miami Beach, United States": [
+    25.79,
+    -80.13
   ],
-  "Faro, Portugal": [
-    37.08,
-    -8.05
+  "Morjim, India": [
+    15.62,
+    73.74
   ],
-  "Livorno, Italy": [
-    43.55,
-    10.31
+  "Moss Beach, United States": [
+    37.54,
+    -122.5
   ],
-  "Genève, Switzerland": [
-    46.21,
-    6.15
+  "Mumbai, India": [
+    18.94,
+    72.84
   ],
-  "Dipkarpaz, Cyprus": [
-    35.64,
-    34.54
+  "Málaga, Spain": [
+    36.67,
+    -4.48
   ],
-  "Larnaca, Cyprus": [
-    34.9,
-    33.64
+  "Napoli, Italy": [
+    40.85,
+    14.27
+  ],
+  "New Delhi, India": [
+    28.64,
+    77.18
+  ],
+  "New York, United States": [
+    40.76,
+    -73.99
+  ],
+  "Niagara Falls, United States": [
+    43.09,
+    -79.06
+  ],
+  "Nikolai, Sweden": [
+    59.27,
+    15.21
+  ],
+  "Nizhnij Novgorod, Russia": [
+    56.32,
+    43.99
+  ],
+  "Norrmalm, Sweden": [
+    59.33,
+    18.07
+  ],
+  "Novosibirsk, Russia": [
+    55,
+    82.75
+  ],
+  "Novosrednenskoe, Russia": [
+    44.09,
+    43.82
+  ],
+  "Nur-Sultan, Kazakhstan": [
+    51.19,
+    71.42
+  ],
+  "Nyköping, Sweden": [
+    58.79,
+    16.92
+  ],
+  "Odesa, Ukraine": [
+    46.48,
+    30.74
+  ],
+  "Oklahoma City, United States": [
+    35.47,
+    -97.51
+  ],
+  "Omaha, United States": [
+    41.26,
+    -95.93
+  ],
+  "Omsk, Russia": [
+    54.89,
+    73.41
+  ],
+  "Orbetello, Italy": [
+    42.44,
+    11.21
+  ],
+  "Osaka, Japan": [
+    34.7,
+    135.52
+  ],
+  "Page, United States": [
+    36.9,
+    -111.48
+  ],
+  "Panamá, Panama": [
+    8.99,
+    -79.53
+  ],
+  "Paris, France": [
+    48.84,
+    2.31
+  ],
+  "Pattaya City, Thailand": [
+    12.89,
+    100.87
+  ],
+  "Petropavlovsk-Kamchatskiy, Russia": [
+    53.01,
+    158.65
+  ],
+  "Playa del Carmen, Mexico": [
+    20.63,
+    -87.07
+  ],
+  "Porto, Portugal": [
+    41.15,
+    -8.61
+  ],
+  "Pu Dong Xin Qu, China": [
+    31.2,
+    121.6
+  ],
+  "Risovaya Pad', Russia": [
+    42.61,
+    131.14
+  ],
+  "Roma, Italy": [
+    41.9,
+    12.45
+  ],
+  "Rostov-na-Donu, Russia": [
+    47.23,
+    39.7
+  ],
+  "Rota, Spain": [
+    36.62,
+    -6.35
+  ],
+  "Rubí, Spain": [
+    41.49,
+    2.03
+  ],
+  "Rīga, Latvia": [
+    56.95,
+    24.1
+  ],
+  "Saavedra, Argentina": [
+    -34.56,
+    -58.5
+  ],
+  "Salt Lake City, United States": [
+    40.77,
+    -111.95
+  ],
+  "Samara, Russia": [
+    53.25,
+    50.22
+  ],
+  "San Pedro de Atacama, Chile": [
+    -22.91,
+    -68.19
+  ],
+  "Sankt-Peterburg, Russia": [
+    59.93,
+    30.32
+  ],
+  "Santander, Spain": [
+    43.47,
+    -3.79
+  ],
+  "Santiago, Chile": [
+    -33.43,
+    -70.66
+  ],
+  "Seattle, United States": [
+    47.62,
+    -122.3
+  ],
+  "Shehyni, Ukraine": [
+    49.8,
+    22.96
+  ],
+  "Sheraton Al Matar, Egypt": [
+    30.11,
+    31.4
+  ],
+  "Shevelkino, Russia": [
+    55.83,
+    38.1
+  ],
+  "Singapore, Singapore": [
+    1.29,
+    103.85
+  ],
+  "Sokol, Belarus": [
+    53.88,
+    27.9
+  ],
+  "Sosnovy Bor, Russia": [
+    59.85,
+    29.05
+  ],
+  "St. George, United States": [
+    37.09,
+    -113.58
+  ],
+  "St. Petersburg, United States": [
+    27.77,
+    -82.64
+  ],
+  "Staré Město, Czechia": [
+    50.09,
+    14.42
+  ],
+  "Sumida City, Japan": [
+    35.71,
+    139.82
+  ],
+  "Sutomore, Montenegro": [
+    42.13,
+    19.06
+  ],
+  "São Conrado, Brazil": [
+    -23,
+    -43.24
+  ],
+  "T'bilisi, Georgia": [
+    41.72,
+    44.79
+  ],
+  "Tambon Hua Hin, Thailand": [
+    12.57,
+    99.96
+  ],
+  "Tambon Patong, Thailand": [
+    7.9,
+    98.3
+  ],
+  "Tehran, Iran": [
+    35.7,
+    51.4
+  ],
+  "Titusville, United States": [
+    28.52,
+    -80.68
+  ],
+  "Torino, Italy": [
+    45.05,
+    7.68
+  ],
+  "Tromsø, Norway": [
+    69.65,
+    18.94
+  ],
+  "Tver, Russia": [
+    56.84,
+    35.93
+  ],
+  "Ullensaker, Norway": [
+    60.19,
+    11.1
+  ],
+  "Ulyanovsk, Russia": [
+    54.32,
+    48.4
+  ],
+  "Uzhhorod, Ukraine": [
+    48.62,
+    22.29
+  ],
+  "València, Spain": [
+    39.47,
+    -0.38
+  ],
+  "Vancouver, Canada": [
+    49.28,
+    -123.12
+  ],
+  "Varadero, Cuba": [
+    23.14,
+    -81.27
+  ],
+  "Vathi, Greece": [
+    37.75,
+    26.98
+  ],
+  "Veliky Novgorod, Russia": [
+    58.52,
+    31.27
+  ],
+  "Vicuña, Chile": [
+    -30.04,
+    -70.72
   ],
   "Vilnius, Lithuania": [
     54.68,
     25.29
+  ],
+  "Vladivostok, Russia": [
+    43.13,
+    131.89
+  ],
+  "Vyazemsky, Russia": [
+    47.53,
+    134.75
+  ],
+  "Warszawa, Poland": [
+    52.19,
+    20.98
+  ],
+  "Washington, DC, United States": [
+    38.88,
+    -77.01
+  ],
+  "Wien, Austria": [
+    48.18,
+    16.4
+  ],
+  "Winslow, United States": [
+    35.03,
+    -111.02
+  ],
+  "Yekaterinburg, Russia": [
+    56.84,
+    60.6
+  ],
+  "Yeoksam-dong, South Korea": [
+    37.5,
+    127.04
   ]
 }

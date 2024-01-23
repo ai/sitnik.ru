@@ -47,6 +47,14 @@ function inside(address, ...value) {
 }
 
 function prettyJson(data) {
+  if (!Array.isArray(data)) {
+    data = Object.keys(data)
+      .sort()
+      .reduce((sorted, key) => {
+        sorted[key] = data[key]
+        return sorted
+      }, {})
+  }
   return JSON.stringify(data, null, '  ') + '\n'
 }
 
