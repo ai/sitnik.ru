@@ -87,6 +87,10 @@
     49.15,
     0.05
   ],
+  "Cascadura, Brazil": [
+    -22.88,
+    -43.32
+  ],
   "Chandler, United States": [
     33.26,
     -111.89
@@ -143,6 +147,10 @@
     37.08,
     -8.05
   ],
+  "Firenze, Italy": [
+    43.77,
+    11.24
+  ],
   "Frankfurt am Main, Germany": [
     50.13,
     8.63
@@ -154,6 +162,10 @@
   "Fremont Center, United States": [
     41.85,
     -75.06
+  ],
+  "Gandia, Spain": [
+    38.97,
+    -0.18
   ],
   "Genève, Switzerland": [
     46.21,
@@ -507,10 +519,6 @@
     42.13,
     19.06
   ],
-  "São Conrado, Brazil": [
-    -23,
-    -43.24
-  ],
   "Södermanlands län, Sweden": [
     58.79,
     16.91
@@ -526,6 +534,10 @@
   "Tambon Patong, Thailand": [
     7.89,
     98.3
+  ],
+  "Tarragona, Spain": [
+    41.11,
+    1.26
   ],
   "Tehran, Iran": [
     35.7,
@@ -559,10 +571,6 @@
     48.62,
     22.29
   ],
-  "València, Spain": [
-    39.46,
-    -0.35
-  ],
   "Vancouver, Canada": [
     49.28,
     -123.12
@@ -586,10 +594,6 @@
   "Vicuña, Chile": [
     -30.04,
     -70.72
-  ],
-  "Vilanova i la Geltrú, Spain": [
-    41.22,
-    1.73
   ],
   "Vilnius, Lithuania": [
     54.68,
