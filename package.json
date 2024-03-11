@@ -41,18 +41,11 @@
     "three": "~0.154.0"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^52.0.2",
+    "@logux/eslint-config": "^53.0.0",
     "@logux/stylelint-config": "^0.18.0",
     "@size-limit/file": "^11.0.3",
     "eslint": "^8.57.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-n": "^16.6.2",
-    "eslint-plugin-node-import": "^1.0.4",
-    "eslint-plugin-node-imports": "^1.0.2",
-    "eslint-plugin-perfectionist": "^2.6.0",
-    "eslint-plugin-prefer-let": "^3.0.1",
-    "eslint-plugin-promise": "^6.1.1",
+    "globals": "^14.0.0",
     "serve": "^14.2.1",
     "size-limit": "^11.0.3",
     "stylelint": "^16.2.1"
