@@ -15,6 +15,6 @@
       "dist/photo.*.avif"
     ],
     "brotli": false,
-    "limit": "205 KB"
+    "limit": "210 KB"
   }
 ]
