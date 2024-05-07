@@ -15,6 +15,9 @@ export default [
     files: ['src/**/*.js'],
     languageOptions: {
       globals: globals.browser
+    },
+    rules: {
+      'n/no-unsupported-features/node-builtins': 'off'
     }
   }
 ]
