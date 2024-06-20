@@ -53,8 +53,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-        with:
-          dependencies-cache: production
       - name: Install build dependencies
         run: pnpm install --production --ignore-scripts
       - name: Build static files
