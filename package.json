@@ -13,7 +13,7 @@
     "build": "NODE_ENV=production ./scripts/build.js"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=22.0.0"
   },
   "dependencies": {
     "@babel/core": "^7.24.5",

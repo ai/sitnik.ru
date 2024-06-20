@@ -15,10 +15,17 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v4
-      - name: Install tools from asdf config
-        uses: ai/asdf-cache-action@v1
-      - name: Install all dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --ignore-scripts
       - name: Build and test
         run: pnpm test
 
@@ -38,22 +45,18 @@ jobs:
           env: production
       - name: Checkout the repository
         uses: actions/checkout@v4
-      - name: Install tools from asdf config
-        uses: ai/asdf-cache-action@v1
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
         with:
           dependencies-cache: production
-      # - name: Cache location
-      #   continue-on-error: true
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: ./scripts/location/
-      #     key: location
       - name: Install build dependencies
-        run: pnpm install --frozen-lockfile --production --ignore-scripts
-      #- name: Update location
-      #  run: ./scripts/update-location.js
-      #  env:
-      #    GMAPS_TOKEN: ${{ secrets.GMAPS_TOKEN }}
+        run: pnpm install --production --ignore-scripts
       - name: Build static files
         run: pnpm build
       - name: Check files changes
