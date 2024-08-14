@@ -1,11 +1,11 @@
 {
+  "A Coruña, Spain": [
+    43.37,
+    -8.41
+  ],
   "Abakan, Russia": [
     53.75,
     91.4
-  ],
-  "Ahangama, Sri Lanka": [
-    5.98,
-    80.35
   ],
   "Al Hudaydah, Yemen": [
     14.8,
@@ -17,7 +17,7 @@
   ],
   "Amsterdam, Netherlands": [
     52.38,
-    4.89
+    4.92
   ],
   "Andorra la Vella, Andorra": [
     42.51,
@@ -79,6 +79,10 @@
     37.77,
     -119.81
   ],
+  "Buenos Aires, Argentina": [
+    -34.59,
+    -58.42
+  ],
   "Béziers, France": [
     43.34,
     3.21
@@ -86,10 +90,6 @@
   "Cambremer, France": [
     49.15,
     0.05
-  ],
-  "Cascadura, Brazil": [
-    -22.88,
-    -43.32
   ],
   "Chandler, United States": [
     33.26,
@@ -116,8 +116,12 @@
     -87.77
   ],
   "Colombo, Sri Lanka": [
-    6.89,
-    79.88
+    6.9,
+    79.86
+  ],
+  "Copacabana, Brazil": [
+    -22.97,
+    -43.18
   ],
   "Dipkarpaz, Cyprus": [
     35.64,
@@ -307,6 +311,10 @@
     31.64,
     -8.01
   ],
+  "Matara, Sri Lanka": [
+    5.96,
+    80.53
+  ],
   "Miami Beach, United States": [
     25.79,
     -80.13
@@ -320,12 +328,12 @@
     -122.5
   ],
   "Mumbai, India": [
-    19.17,
-    72.86
+    18.94,
+    72.84
   ],
   "Málaga, Spain": [
-    36.67,
-    -4.48
+    36.71,
+    -4.43
   ],
   "Napoli, Italy": [
     40.85,
@@ -439,13 +447,13 @@
     36.62,
     -6.35
   ],
+  "Rouen, France": [
+    49.44,
+    1.09
+  ],
   "Rīga, Latvia": [
     56.95,
     24.1
-  ],
-  "Saavedra, Argentina": [
-    -34.56,
-    -58.5
   ],
   "Salt Lake City, United States": [
     40.77,
