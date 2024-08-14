@@ -1,8 +1,8 @@
-@import "./base/base.css";
-@import "./link/link.css";
-@import "./layout/layout.css";
-@import "./photo/photo.css";
-@import "./contacts/contacts.css";
-@import "./projects/projects.css";
-@import "./globe/globe.css";
-@import "./earth/earth.css";
+@import url("./base/base.css");
+@import url("./link/link.css");
+@import url("./layout/layout.css");
+@import url("./photo/photo.css");
+@import url("./contacts/contacts.css");
+@import url("./projects/projects.css");
+@import url("./globe/globe.css");
+@import url("./earth/earth.css");

@@ -16,7 +16,7 @@
   }
 
   &:focus {
-    color: oklch(100% 0 0);
+    color: oklch(1 0 0);
     transform: none;
   }
 }

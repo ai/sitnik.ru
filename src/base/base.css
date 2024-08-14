@@ -4,11 +4,11 @@
 }
 
 html {
-  --text: oklch(0% 0 0);
-  --background: oklch(100% 0 0);
-  --accent: oklch(58% 0.23 260);
-  --hover: oklch(58% 0.23 260 / 0.2);
-  --placeholder: oklch(90% 0 0);
+  --text: oklch(0 0 0);
+  --background: oklch(1 0 0);
+  --accent: oklch(0.58 0.23 260);
+  --hover: oklch(0.58 0.23 260 / 0.2);
+  --placeholder: oklch(0.9 0 0);
 
   font-family: Arial, sans-serif;
   font-size: 20px;
@@ -31,20 +31,20 @@ html {
   }
 
   @media (color-gamut: p3) {
-    --accent: oklch(54% 0.27 260);
-    --hover: oklch(54% 0.27 260 / 0.2);
+    --accent: oklch(0.54 0.27 260);
+    --hover: oklch(0.54 0.27 260 / 0.2);
   }
 
   @media (prefers-color-scheme: dark) {
-    --text: oklch(100% 0 0);
-    --background: oklch(32% 0 0);
-    --accent: oklch(69% 0.17 249);
-    --hover: oklch(69% 0.17 249 / 0.3);
-    --placeholder: oklch(66% 0 0);
+    --text: oklch(1 0 0);
+    --background: oklch(0.32 0 0);
+    --accent: oklch(0.69 0.17 249);
+    --hover: oklch(0.69 0.17 249 / 0.3);
+    --placeholder: oklch(0.66 0 0);
 
     @media (color-gamut: p3) {
-      --accent: oklch(63% 0.22 249);
-      --hover: oklch(63% 0.22 249 / 0.2);
+      --accent: oklch(0.63 0.22 249);
+      --hover: oklch(0.63 0.22 249 / 0.2);
     }
   }
 }
@@ -52,7 +52,7 @@ html {
 body {
   color: var(--text);
   background: var(--background);
-  -webkit-tap-highlight-color: oklch(0% 0 0 / 0);
+  -webkit-tap-highlight-color: oklch(0 0 0 / 0);
 
   &.is-grabbing {
     cursor: grabbing;

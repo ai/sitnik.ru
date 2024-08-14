@@ -89,7 +89,7 @@ function nextTick() {
 }
 
 function cityName(response) {
-  let city, inUS, country
+  let city, country, inUS
   for (let result of response.results) {
     let address = result.address_components
     country = address.find(i => i.types.includes('country'))
