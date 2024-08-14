@@ -31,18 +31,18 @@
   transition: all 200ms;
   transform: scaleY(0.06);
   transform-origin: 0 100% 0;
+}
 
-  :hover& {
-    transform: none;
-  }
+.link:hover::before {
+  transform: none;
+}
 
-  .is-text& {
-    opacity: 0;
-  }
+.link.is-text::before {
+  opacity: 0;
+}
 
-  :focus& {
-    background: var(--accent);
-    opacity: 1;
-    transform: none;
-  }
+.link:focus::before {
+  background: var(--accent);
+  opacity: 1;
+  transform: none;
 }
