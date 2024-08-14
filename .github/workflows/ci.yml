@@ -8,7 +8,6 @@ permissions:
   contents: read
   deployments: write
 jobs:
-
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -36,13 +35,6 @@ jobs:
     needs:
       - test
     steps:
-      - name: Notify about new deployment
-        uses: bobheadxi/deployments@v1
-        id: deployment
-        with:
-          step: start
-          token: ${{ secrets.GITHUB_TOKEN }}
-          env: production
       - name: Checkout the repository
         uses: actions/checkout@v4
       - name: Install pnpm
@@ -63,29 +55,18 @@ jobs:
         env:
           WEBSITE_URL: ${{ secrets.WEBSITE_URL }}
       - name: Auth Google Cloud
-        if: "!steps.hash.outputs.noChanges"
+        if: '!steps.hash.outputs.noChanges'
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCLOUD_AUTH }}
       - name: Install Google Cloud
-        if: "!steps.hash.outputs.noChanges"
+        if: '!steps.hash.outputs.noChanges'
         uses: google-github-actions/setup-gcloud@v1
       - name: Deploy files
-        if: "!steps.hash.outputs.noChanges"
+        if: '!steps.hash.outputs.noChanges'
         run: ./node_modules/.bin/ssdeploy deploy --verbose
         env:
           GCLOUD_APP: ${{ secrets.GCLOUD_APP }}
           GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
           CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
-      - name: Update deployment status
-        uses: bobheadxi/deployments@v1
-        if: always()
-        with:
-          step: finish
-          token: ${{ secrets.GITHUB_TOKEN }}
-          status: ${{ job.status }}
-          ref: ${{ github.ref }}
-          env: ${{ steps.deployment.outputs.env }}
-          env_url: ${{ secrets.WEBSITE_URL }}
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
