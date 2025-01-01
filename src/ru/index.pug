@@ -61,20 +61,24 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
         link( href="https://twitter.com/sitnikcode" itemprop="sameAs" rel="me" )
         link( href="https://mastodon.social/@sitnik_en" itemprop="sameAs" rel="me" )
         link( href="https://mastodon.social/@sitnik" itemprop="sameAs" rel="me" )
+        link( href="https://bsky.app/profile/en.sitnik.ru" itemprop="sameAs" rel="me" )
+
         ul.projects
           li.projects_item
             h2.projects_title
-              a.link( href="https://mastodon.social/@sitnik_ru" itemprop="sameAs" rel="me" )
-                | Мастодон
+              span.projects_name Соцсети
+              ul.projects_links
+                li.projects_link
+                  a.link( href="https://mastodon.social/@sitnik_ru" itemprop="sameAs" rel="me" )
+                    | Мастодон
+                li.projects_link
+                  a.link( href="https://bsky.app/profile/ru.sitnik.ru" itemprop="sameAs" rel="me" )
+                    | Блюскай
+                li.projects_link
+                  a.link( href="https://twitter.com/andrey_sitnik" itemprop="sameAs" rel="me" )
+                    | Твиттер
             p
               | Мои заметки о сексе, путешествиях и технологиях
-
-          li.projects_item
-            h2.projects_title
-              a.link( href="https://twitter.com/andrey_sitnik" itemprop="sameAs" rel="me" )
-                | Твиттер
-            p
-              | Копия заметок с Мастодона
 
           li.projects_item
             h2.projects_title
@@ -85,24 +89,16 @@ html( lang="ru" itemtype="https://schema.org/Person" itemscope )
 
           li.projects_item
             h2.projects_title
-              a.link( href="https://t.me/sitnikfriday" )
-                | Ситникфрайдей
+              span.projects_name Sitnikfriday
+              ul.projects_links
+                li.projects_link
+                  a.link( href="https://bsky.app/profile/friday.sitnik.ru" itemprop="sameAs" rel="me" )
+                    | Блюскай
+                li.projects_link
+                  a.link( href="https://t.me/sitnikfriday" itemprop="sameAs" rel="me" )
+                    | Телеграм
             p
               | Мой проект про секс-позитивизм
-
-          li.projects_item
-            h2.projects_title
-              a.link( href="https://t.me/linguopunk" )
-                | Лингвопанк
-            p
-              | Мой канал про языковое разнообразие
-
-          li.projects_item
-            h2.projects_title
-              a.link( href="https://t.me/lostinwiki" )
-                | Однажды в Википедии
-            p
-              | Мой канал с странными фактами из Википедии
 
       .layout_language
         a.link( href="/en/" hreflang="en" rel="alternate" ) English
