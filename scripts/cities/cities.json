@@ -35,6 +35,10 @@
     40.37,
     49.84
   ],
+  "Barcelona, Spain": [
+    41.41,
+    2.14
+  ],
   "Bari, Italy": [
     41.13,
     16.86
@@ -56,8 +60,8 @@
     20.46
   ],
   "Berlin, Germany": [
-    52.43,
-    13.56
+    52.53,
+    13.37
   ],
   "Big Pine, United States": [
     37.13,
@@ -70,6 +74,10 @@
   "Bratislava, Slovakia": [
     48.14,
     17.12
+  ],
+  "Bruxelles, Belgium": [
+    50.83,
+    4.36
   ],
   "Budapest, Hungary": [
     47.48,
@@ -602,10 +610,6 @@
   "Veliky Novgorod, Russia": [
     58.52,
     31.27
-  ],
-  "Vic, Spain": [
-    41.93,
-    2.25
   ],
   "Vicuña, Chile": [
     -30.04,
