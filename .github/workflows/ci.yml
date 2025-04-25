@@ -70,7 +70,7 @@ jobs:
         id: deploy
         uses: google-github-actions/deploy-cloudrun@v2.7.3
         with:
-          service: browserslist
+          service: sitnik
           region: europe-west1
           image: europe-west1-docker.pkg.dev/sitnikru/web/server:latest
           flags: |
@@ -79,7 +79,7 @@ jobs:
       - name: Move traffic to new revision
         shell: bash
         run: |
-          gcloud run services update-traffic browserslist \
+          gcloud run services update-traffic sitnik \
             --project sitnikru \
             --region europe-west1 \
             --to-latest
