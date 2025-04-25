@@ -36,7 +36,6 @@
     "posthtml": "^0.16.6",
     "pug": "^3.0.3",
     "rollup": "^4.40.0",
-    "ssdeploy": "^0.9.3",
     "strip-debug": "^7.0.0",
     "terser": "^5.39.0",
     "three": "~0.154.0"
