@@ -227,6 +227,10 @@
     21.03,
     105.85
   ],
+  "Huang Pu Qu, China": [
+    31.21,
+    121.48
+  ],
   "Hạ Long, Vietnam": [
     20.95,
     107.03
@@ -279,6 +283,10 @@
     50.44,
     30.53
   ],
+  "Kyoto, Japan": [
+    35,
+    135.76
+  ],
   "Kyzylorda, Kazakhstan": [
     44.85,
     65.5
@@ -310,10 +318,6 @@
   "Losevo, Russia": [
     60.68,
     30
-  ],
-  "Madrid, Spain": [
-    40.42,
-    -3.71
   ],
   "Marfino, Russia": [
     55.7,
@@ -407,10 +411,6 @@
     42.48,
     11.28
   ],
-  "Osaka, Japan": [
-    34.7,
-    135.52
-  ],
   "Page, United States": [
     36.9,
     -111.48
@@ -438,10 +438,6 @@
   "Porto, Portugal": [
     41.15,
     -8.61
-  ],
-  "Pu Dong Xin Qu, China": [
-    31.2,
-    121.6
   ],
   "Rabat, Morocco": [
     34.02,
@@ -515,6 +511,10 @@
     1.29,
     103.85
   ],
+  "Sofia, Bulgaria": [
+    42.69,
+    23.32
+  ],
   "Sokol, Belarus": [
     53.88,
     27.9
@@ -567,6 +567,10 @@
     35.7,
     51.4
   ],
+  "Tenkawa, Japan": [
+    34.27,
+    135.88
+  ],
   "Titusville, United States": [
     28.52,
     -80.68
@@ -590,6 +594,10 @@
   "Ulyanovsk, Russia": [
     54.32,
     48.4
+  ],
+  "Urbanizaciones Este, Spain": [
+    40.4,
+    -3.85
   ],
   "Uzhhorod, Ukraine": [
     48.62,
