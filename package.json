@@ -14,8 +14,9 @@
     "build": "NODE_ENV=production ./scripts/build.js"
   },
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=22"
   },
+  "packageManager": "pnpm@10.9.0",
   "dependencies": {
     "@babel/core": "^7.26.10",
     "@csstools/postcss-oklab-function": "^4.0.9",
