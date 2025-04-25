@@ -2,12 +2,6 @@
   "plugins": {
     "postcss-import": {},
     "postcss-nesting": {},
-    "postcss-media-minmax": {},
-    "@csstools/postcss-oklab-function": {
-      "subFeatures": {
-        "displayP3": false
-      }
-    },
     "postcss-pxtorem": {
       "selectorBlackList": [
         "html",
