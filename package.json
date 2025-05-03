@@ -18,7 +18,7 @@
   },
   "packageManager": "pnpm@10.9.0",
   "dependencies": {
-    "@babel/core": "^7.26.10",
+    "@babel/core": "^7.27.1",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^0.4.4",
@@ -34,7 +34,7 @@
     "postcss-pxtorem": "^6.1.0",
     "posthtml": "^0.16.6",
     "pug": "^3.0.3",
-    "rollup": "^4.40.0",
+    "rollup": "^4.40.1",
     "strip-debug": "^7.0.0",
     "terser": "^5.39.0",
     "three": "~0.154.0"
@@ -43,10 +43,10 @@
     "@logux/eslint-config": "^55.2.1",
     "@logux/stylelint-config": "^0.20.0",
     "@size-limit/file": "^11.2.0",
-    "eslint": "^9.25.1",
+    "eslint": "^9.26.0",
     "globals": "^16.0.0",
     "serve": "^14.2.4",
     "size-limit": "^11.2.0",
-    "stylelint": "^16.19.0"
+    "stylelint": "^16.19.1"
   }
 }
