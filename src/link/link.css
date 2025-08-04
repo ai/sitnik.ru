@@ -28,9 +28,9 @@
   content: "";
   background: var(--hover);
   border-radius: 0.3em;
-  transition: all 200ms;
   transform: scaleY(0.06);
   transform-origin: 0 100% 0;
+  transition: all 200ms;
 }
 
 .link:hover::before {
