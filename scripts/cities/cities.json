@@ -36,8 +36,8 @@
     49.84
   ],
   "Barcelona, Spain": [
-    41.41,
-    2.14
+    41.4,
+    2.17
   ],
   "Bari, Italy": [
     41.13,
@@ -66,6 +66,10 @@
   "Big Pine, United States": [
     37.13,
     -118.42
+  ],
+  "Bilbao, Spain": [
+    43.26,
+    -2.94
   ],
   "Boston, United States": [
     42.35,
@@ -144,8 +148,8 @@
     43.15
   ],
   "Dong Cheng Qu, China": [
-    39.95,
-    116.43
+    39.94,
+    116.42
   ],
   "Dresden, Germany": [
     51.07,
@@ -219,6 +223,10 @@
     21.53,
     -87.38
   ],
+  "Holmenkollen, Norway": [
+    59.96,
+    10.66
+  ],
   "Hoosick Falls, United States": [
     42.9,
     -73.35
@@ -282,10 +290,6 @@
   "Kyiv, Ukraine": [
     50.44,
     30.53
-  ],
-  "Kyoto, Japan": [
-    35,
-    135.76
   ],
   "Kyzylorda, Kazakhstan": [
     44.85,
@@ -410,6 +414,10 @@
   "Orbetello, Italy": [
     42.48,
     11.28
+  ],
+  "Osaka, Japan": [
+    34.67,
+    135.5
   ],
   "Page, United States": [
     36.9,
@@ -567,10 +575,6 @@
     35.7,
     51.4
   ],
-  "Tenkawa, Japan": [
-    34.27,
-    135.88
-  ],
   "Titusville, United States": [
     28.52,
     -80.68
@@ -586,10 +590,6 @@
   "Tver, Russia": [
     56.84,
     35.93
-  ],
-  "Ullensaker, Norway": [
-    60.19,
-    11.1
   ],
   "Ulyanovsk, Russia": [
     54.32,
