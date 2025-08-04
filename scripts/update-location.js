@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import dotenv from 'dotenv'
 import { existsSync } from 'node:fs'
 import { mkdir, writeFile } from 'node:fs/promises'
 import { dirname } from 'node:path'
@@ -9,8 +8,6 @@ import { LOCATION } from './lib/dirs.js'
 import { get } from './lib/get.js'
 import { MyError } from './lib/my-error.js'
 import { read } from './lib/read.js'
-
-dotenv.config()
 
 async function loadLatLng() {
   return get('https://evilmartians.com/locations/ai')

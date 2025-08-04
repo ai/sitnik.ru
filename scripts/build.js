@@ -4,7 +4,6 @@ import { transformSync } from '@babel/core'
 import rollupCommonJS from '@rollup/plugin-commonjs'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import terser from '@rollup/plugin-terser'
-import dotenv from 'dotenv'
 import { globby } from 'globby'
 import { createHash } from 'node:crypto'
 import { existsSync, ReadStream } from 'node:fs'
@@ -26,8 +25,6 @@ import { htmlCompressor } from './lib/html-compressor.js'
 import { MyError } from './lib/my-error.js'
 
 let gzip = promisify(zlib.gzip)
-
-dotenv.config()
 
 // Helpers
 

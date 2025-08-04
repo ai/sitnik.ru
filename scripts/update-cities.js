@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import dotenv from 'dotenv'
 import { existsSync } from 'node:fs'
 import { readFile, writeFile } from 'node:fs/promises'
 import pico from 'picocolors'
@@ -12,8 +11,6 @@ import { read } from './lib/read.js'
 
 const MIN_DISTANCE = 0.7
 const URL_WITH_DOT = /\?q=(-?\d+\.\d+),(-?\d+\.\d+)($|&)/
-
-dotenv.config()
 
 // Helpers
 
