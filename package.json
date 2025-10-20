@@ -18,12 +18,12 @@
   },
   "packageManager": "pnpm@10.9.0",
   "dependencies": {
-    "@babel/core": "^7.28.0",
-    "@rollup/plugin-commonjs": "^28.0.6",
-    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@babel/core": "^7.28.4",
+    "@rollup/plugin-commonjs": "^28.0.8",
+    "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^0.4.4",
     "autoprefixer": "^10.4.21",
-    "cssnano": "^7.1.0",
+    "cssnano": "^7.1.1",
     "globby": "^14.1.0",
     "picocolors": "^1.1.1",
     "postcss": "^8.5.6",
@@ -31,21 +31,21 @@
     "postcss-load-config": "^6.0.1",
     "postcss-nesting": "^13.0.2",
     "postcss-pxtorem": "^6.1.0",
-    "posthtml": "^0.16.6",
+    "posthtml": "^0.16.7",
     "pug": "^3.0.3",
-    "rollup": "^4.46.2",
+    "rollup": "^4.52.5",
     "strip-debug": "^7.0.0",
-    "terser": "^5.43.1",
+    "terser": "^5.44.0",
     "three": "~0.154.0"
   },
   "devDependencies": {
     "@logux/eslint-config": "^56.1.0",
     "@logux/stylelint-config": "^0.21.0",
     "@size-limit/file": "^11.2.0",
-    "eslint": "^9.32.0",
-    "globals": "^16.3.0",
-    "serve": "^14.2.4",
+    "eslint": "^9.38.0",
+    "globals": "^16.4.0",
+    "serve": "^14.2.5",
     "size-limit": "^11.2.0",
-    "stylelint": "^16.23.0"
+    "stylelint": "^16.25.0"
   }
 }
