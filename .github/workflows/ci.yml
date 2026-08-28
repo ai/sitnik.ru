@@ -96,7 +96,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          VERSIONS="orgs/ai/packages/container/sitnik.es/versions"
+          VERSIONS="users/ai/packages/container/sitnik.es/versions"
           IDS=$(gh api --paginate "$VERSIONS?per_page=100" \
             | jq -r '.[] | select(.metadata.container.tags == []) | .id')
           if [ -n "$IDS" ]; then
