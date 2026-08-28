@@ -37,14 +37,10 @@ jobs:
         run: pnpm ci
       - name: Install production dependencies
         run: pnpm install --prod --ignore-scripts
-      - name: Build regions
-        run: pnpm prebuild
       - name: Build static files
         run: pnpm build
-      - name: Bundle server with production dependencies
-        run: pnpm --filter=server --prod deploy --legacy server/dist
       - name: Pack build artifacts
-        run: tar -cf dist.tar client/dist server/dist
+        run: tar -cf dist.tar dist
       - name: Upload build artifacts
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
