@@ -14,44 +14,44 @@
     "build": "NODE_ENV=production ./scripts/build.js"
   },
   "dependencies": {
-    "@babel/core": "^8.0.6",
+    "@babel/core": "^8.0.7",
     "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^1.0.0",
     "autoprefixer": "^10.6.1",
-    "cssnano": "^9.0.5",
+    "cssnano": "9.0.5",
     "globby": "^16.2.4",
     "picocolors": "^1.1.1",
-    "postcss": "^8.5.28",
+    "postcss": "^8.5.30",
     "postcss-import": "^17.0.0",
     "postcss-load-config": "^6.0.1",
-    "postcss-nesting": "^14.0.2",
+    "postcss-nesting": "^14.0.3",
     "postcss-pxtorem": "^6.1.0",
     "posthtml": "^0.16.7",
     "pug": "^3.0.4",
-    "rollup": "^4.63.5",
+    "rollup": "^4.64.6",
     "terser": "^5.51.2",
     "three": "~0.154.0"
   },
   "devDependencies": {
     "@logux/oxc-configs": "^1.2.0",
-    "@logux/stylelint-config": "^1.0.1",
-    "@size-limit/file": "^14.0.1",
+    "@logux/stylelint-config": "^1.1.0",
+    "@size-limit/file": "^14.2.0",
     "eslint-plugin-prefer-let": "^4.2.2",
-    "globals": "^17.12.0",
+    "globals": "^17.13.0",
     "multiocular": "^0.8.4",
-    "oxlint": "^1.85.0",
-    "oxlint-tsgolint": "^7.0.2003",
+    "oxlint": "^1.87.0",
+    "oxlint-tsgolint": "^7.0.2004",
     "serve": "^14.2.6",
-    "size-limit": "^14.0.1",
-    "stylelint": "^17.15.0",
+    "size-limit": "^14.2.0",
+    "stylelint": "^17.16.0",
     "typescript": "^7.0.2"
   },
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "26.7.0"
+      "version": "26.11.1"
     }
   },
-  "packageManager": "pnpm@12.0.0"
+  "packageManager": "pnpm@12.13.0"
 }
